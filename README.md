@@ -41,8 +41,8 @@
 
 | Contract | Address |
 |---|---|
-| APIPaymentGateway | TBD after deployment |
-| AgentRegistry | TBD after deployment |
+| APIPaymentGateway | 0x73b4c7286879D600887167d76094ebF8cc07c1B0 |
+| AgentRegistry | 0x07CDf733e2ce4FFF114FC38c6B63F9D4A7Abb054 |
 
 ## 🚀 Quick Start
 

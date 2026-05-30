@@ -6,12 +6,11 @@ import { CELO_STABLECOINS } from "@/lib/stablecoins";
 import { useWallet } from "@/components/wallet/WalletContext";
 
 const API_PRODUCTS = [
-  { id: 0, name: "AI Chat", icon: "🤖", priceUsd: "0.001", description: "GPT-4 powered chat completion", totalCalls: "145,230" },
-  { id: 1, name: "Image Analysis", icon: "🖼️", priceUsd: "0.003", description: "Vision AI image understanding", totalCalls: "82,104" },
-  { id: 2, name: "Web Search", icon: "🔍", priceUsd: "0.002", description: "Real-time web search results", totalCalls: "215,992" },
-  { id: 3, name: "Data Analysis", icon: "📊", priceUsd: "0.005", description: "Advanced data processing", totalCalls: "45,821" },
-  { id: 4, name: "Translation", icon: "🌐", priceUsd: "0.001", description: "Multi-language translation", totalCalls: "312,045" },
-  { id: 5, name: "Summarization", icon: "📝", priceUsd: "0.002", description: "Document summarization", totalCalls: "119,402" },
+  { id: 0, name: "Weather Info", priceUsd: "$0.001 USDC/call", description: "Real-time global weather parameters.", inputs: ["Dhaka"] },
+  { id: 1, name: "Global News", priceUsd: "$0.002 USDC/call", description: "Latest headlines by category.", inputs: ["technology"] },
+  { id: 2, name: "Crypto Pulse", priceUsd: "$0.001 USDC/call", description: "Live multi-currency asset prices.", inputs: ["bitcoin,ethereum,usd-coin"] },
+  { id: 3, name: "AI Summary", priceUsd: "$0.005 USDC/call", description: "Summarize extensive text via Gemini.", inputs: ["Web3 protocols enable ownership..."] },
+  { id: 4, name: "AI Translate", priceUsd: "$0.003 USDC/call", description: "Translate English to 30 global languages.", inputs: ["Hello, the future is agentic.", "Spanish"] },
 ];
 
 export default function Home() {
@@ -90,12 +89,12 @@ export default function Home() {
 
       {/* API Products Grid */}
       <section id="apis" className="py-24 px-4 max-w-7xl mx-auto w-full">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Available APIs</h2>
-          <p className="text-text-secondary">Instant access to powerful AI models. No keys required.</p>
+        <div className="mb-10">
+          <h2 className="text-3xl font-black mb-2 text-white font-sans tracking-tight">API Marketplace</h2>
+          <p className="text-blue-300 text-sm">Sub-cent micropayments enabled by x402 on Celo.</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {API_PRODUCTS.map((api) => (
             <APICard 
               key={api.id}

@@ -1,39 +1,40 @@
 "use client";
-import { useState } from "react";
-import { StablecoinKey, CELO_STABLECOINS } from "@/lib/stablecoins";
 
 interface APICardProps {
   id: number;
   name: string;
-  icon: string;
   priceUsd: string;
   description: string;
-  totalCalls: string;
+  inputs: string[];
   onTryIt: (id: number, name: string) => void;
 }
 
-export default function APICard({ id, name, icon, priceUsd, description, totalCalls, onTryIt }: APICardProps) {
+export default function APICard({ id, name, priceUsd, description, inputs, onTryIt }: APICardProps) {
   return (
-    <div className="card p-6 flex flex-col h-full group hover:border-brand-yellow/50 transition-colors">
+    <div className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 flex flex-col h-full hover:border-[#334155] transition-colors shadow-lg">
       <div className="flex justify-between items-start mb-4">
-        <div className="flex items-center space-x-3">
-          <span className="text-3xl">{icon}</span>
-          <h3 className="text-lg font-bold text-white group-hover:text-brand-yellow transition-colors">{name}</h3>
+        <h3 className="text-xl font-bold text-white">{name}</h3>
+        <div className="bg-[#002A1A] border border-[#00E676]/30 text-[#00E676] px-3 py-1 rounded-full text-xs font-semibold">
+          {priceUsd}
         </div>
-        <span className="badge">{priceUsd} cUSD</span>
       </div>
       
-      <p className="text-text-secondary mb-6 flex-grow">{description}</p>
+      <p className="text-[#94A3B8] mb-8 text-sm flex-grow">{description}</p>
       
-      <div className="flex justify-between items-center pt-4 border-t border-brand-border">
-        <div className="text-xs text-text-muted">
-          Calls: <span className="text-brand-green font-mono">{totalCalls}</span>
-        </div>
+      <div className="flex flex-col sm:flex-row items-center gap-3 mt-auto">
+        {inputs.map((placeholder, idx) => (
+          <input 
+            key={idx}
+            type="text" 
+            placeholder={placeholder}
+            className="w-full sm:flex-grow bg-[#050505] border border-[#1E293B] text-white placeholder-[#475569] text-sm rounded-xl px-4 py-2 focus:outline-none focus:border-[#3B82F6]"
+          />
+        ))}
         <button 
           onClick={() => onTryIt(id, name)}
-          className="btn-secondary text-sm py-1"
+          className="w-full sm:w-auto bg-gradient-to-b from-[#FDE047] to-[#F5C518] text-black font-bold text-sm px-6 py-2 rounded-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_10px_rgba(245,197,24,0.3)] hover:brightness-110 transition-all whitespace-nowrap"
         >
-          Try it
+          Call API &rarr;
         </button>
       </div>
     </div>
