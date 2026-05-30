@@ -1,0 +1,12 @@
+{
+  "name": "Pay For API",
+  "description": "Pay-per-call AI APIs using Celo stablecoins — cUSD, cEUR, cKES, cBRL, cGHS, cCOP, PUSO. No subscriptions. Pay only what you use.",
+  "url": "https://pay-for-api.vercel.app",
+  "iconUrl": "https://pay-for-api.vercel.app/logo.png",
+  "logo": "https://pay-for-api.vercel.app/logo.png",
+  "category": "finance",
+  "chain": "celo",
+  "chainId": 42220,
+  "miniPayHook": "hooks/useMiniPay.ts",
+  "miniPayHookUrl": "https://github.com/Dark-Brain07/pay-for-api/blob/main/hooks/useMiniPay.ts"
+}

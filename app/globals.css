@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
+@theme {
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --color-brand-yellow: #F5C518;
+  --color-brand-green: #00E676;
+  --color-brand-black: #0A0A0A;
+  --color-brand-card: #111111;
+  --color-brand-input: #1A1A1A;
+  --color-brand-elevated: #1E1E1E;
+  --color-brand-border: #2A2A2A;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1A1A1A;
+  --bg-elevated: #1E1E1E;
+  --accent-yellow: #F5C518;
+  --accent-green: #00E676;
+  --accent-yellow-dim: #F5C51820;
+  --accent-green-dim: #00E67620;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --text-muted: #555555;
+  --border: #2A2A2A;
+  --border-accent: #F5C51840;
+  --success: #00E676;
+  --error: #FF4444;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: var(--font-mono);
+}
+
+@layer utilities {
+  .card {
+    @apply bg-brand-card border border-brand-border rounded-xl;
+  }
+  .btn-primary {
+    @apply bg-brand-yellow text-black font-bold hover:bg-brand-yellow/90 px-4 py-2 rounded-lg transition-colors disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply bg-transparent border border-brand-green text-brand-green hover:bg-brand-green/10 px-4 py-2 rounded-lg transition-colors disabled:opacity-50;
+  }
+  .input-field {
+    @apply bg-brand-input border border-brand-border text-white focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow rounded-lg px-4 py-2 outline-none;
+  }
+  .badge {
+    @apply bg-brand-yellow/10 text-brand-yellow border border-brand-yellow/20 px-2 py-1 rounded-full text-xs;
+  }
+  .code-block {
+    @apply bg-[#0D0D0D] border border-brand-border font-mono text-brand-green p-4 rounded-lg overflow-x-auto;
+  }
 }
