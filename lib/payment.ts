@@ -10,33 +10,21 @@ export async function processPayment(
 ) {
   const signer = await provider.getSigner();
   
-  // Create contract instances
+  // The merchant / receiver address (x402 requirement)
+  const receiverAddress = "0xfd4960F33670f3477ebe817B184dd59fC4961437";
+  
+  // Create ERC20 token instance for direct transfer
   const tokenContract = new ethers.Contract(
     tokenAddress,
-    ["function approve(address spender, uint256 amount) public returns (bool)"],
+    ["function transfer(address to, uint256 amount) public returns (bool)"],
     signer
   );
   
-  const gatewayContract = new ethers.Contract(
-    CONTRACTS.API_GATEWAY.address,
-    CONTRACTS.API_GATEWAY.abi,
-    signer
-  );
-
   const parsedAmount = ethers.parseUnits(amount, 18);
 
-  // 1. Approve token spending
-  const approveTx = await tokenContract.approve(CONTRACTS.API_GATEWAY.address, parsedAmount);
-  await approveTx.wait();
-
-  // 2. Pay for API
-  const payTx = await gatewayContract.payForAPI(
-    tokenAddress,
-    parsedAmount,
-    productId,
-    requestId
-  );
-  const receipt = await payTx.wait();
+  // Direct ERC20 Transfer to receiver (No smart contract gateway)
+  const transferTx = await tokenContract.transfer(receiverAddress, parsedAmount);
+  const receipt = await transferTx.wait();
   
   return receipt;
 }
