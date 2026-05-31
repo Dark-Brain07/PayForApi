@@ -91,10 +91,10 @@ export default function Marketplace() {
       {/* Result Modal */}
       {(isCalling || apiResult) && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
-          <div className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 w-full max-w-2xl shadow-2xl relative overflow-hidden">
+          <div className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 w-full max-w-2xl shadow-2xl relative flex flex-col max-h-[90vh]">
             
             {/* Header */}
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex justify-between items-center mb-6 shrink-0">
               <h3 className="text-xl font-bold text-white">
                 {isCalling ? "Verifying Payment..." : "API Response"}
               </h3>
@@ -106,12 +106,12 @@ export default function Marketplace() {
             </div>
             
             {isCalling ? (
-              <div className="flex flex-col items-center justify-center py-12">
+              <div className="flex flex-col items-center justify-center py-12 shrink-0">
                 <div className="w-12 h-12 border-4 border-brand-yellow border-t-transparent rounded-full animate-spin mb-4"></div>
                 <div className="text-brand-yellow animate-pulse font-bold">Executing API via Smart Contract...</div>
               </div>
             ) : (
-              <div className="mb-6">
+              <div className="mb-6 overflow-y-auto min-h-0 pr-2 custom-scrollbar">
                 <APIResultDisplay 
                   apiId={lastApiId!} 
                   data={
@@ -130,7 +130,7 @@ export default function Marketplace() {
             {!isCalling && (
               <button 
                 onClick={() => setApiResult(null)}
-                className="w-full bg-[#1E293B] hover:bg-[#334155] text-white font-bold py-3 rounded-xl transition-colors border border-white/5"
+                className="w-full bg-[#1E293B] hover:bg-[#334155] text-white font-bold py-3 rounded-xl transition-colors border border-white/5 shrink-0 mt-2"
               >
                 Done
               </button>

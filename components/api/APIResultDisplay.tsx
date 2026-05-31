@@ -109,7 +109,7 @@ export default function APIResultDisplay({ apiId, data }: { apiId: number, data:
     return (
       <div className="p-8 bg-gradient-to-br from-[#0B0E14] to-[#050505] rounded-xl border border-[#1E293B] relative shadow-2xl">
         <div className="absolute -left-1 top-6 bottom-6 w-1.5 bg-gradient-to-b from-[#FDE047] to-[#F5C518] rounded-r-full shadow-[0_0_10px_rgba(245,197,24,0.5)]"></div>
-        <p className="text-lg text-white leading-loose font-medium pl-4">{textResult}</p>
+        <p className="text-lg text-white leading-loose font-medium pl-4 whitespace-pre-wrap">{textResult}</p>
       </div>
     );
   }
