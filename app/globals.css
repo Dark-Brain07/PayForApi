@@ -56,3 +56,8 @@ body {
     @apply bg-[#0D0D0D] border border-brand-border font-mono text-brand-green p-4 rounded-lg overflow-x-auto;
   }
 }
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}

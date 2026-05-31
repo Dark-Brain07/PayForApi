@@ -9,17 +9,20 @@ const getHandler = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
   const text = searchParams.get('text') || 'hello';
   const language = searchParams.get('language') || 'French';
+  const apiKey = process.env.GEMINI_API_KEY;
+  
+  if (!apiKey || apiKey === 'placeholder' || apiKey.includes('get_free_from')) {
+    return NextResponse.json({ mock: true, translation: `Mock Translation of: ${text} to ${language}` });
+  }
+  
   try {
-    const response = await fetch("https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-fr", {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ inputs: text })
+      body: JSON.stringify({ contents: [{ parts: [{ text: `Translate the following text to ${language}:\n\n"${text}"` }] }] })
     });
     const data = await response.json();
-    if (data.error) {
-       return NextResponse.json({ mock: true, translation: `Mock Translation of: ${text} to ${language} (API Rate Limited)` });
-    }
-    return NextResponse.json({ translation: data[0]?.translation_text || "Translation failed" });
+    return NextResponse.json({ translation: data.candidates?.[0]?.content?.parts?.[0]?.text || "Translation failed" });
   } catch (error) {
     return NextResponse.json({ mock: true, translation: `Mock Translation of: ${text} to ${language}` });
   }

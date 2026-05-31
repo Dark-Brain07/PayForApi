@@ -22,8 +22,13 @@ export async function processPayment(
   
   const parsedAmount = ethers.parseUnits(amount, 18);
 
-  // Direct ERC20 Transfer to receiver (No smart contract gateway)
-  const transferTx = await tokenContract.transfer(receiverAddress, parsedAmount);
+  // Celo-specific override to explicitly pay gas (transaction fee) in cUSD
+  const overrides = {
+    feeCurrency: "0x765DE816845861e75A25fCA122bb6898B8B1282a" // cUSD contract address
+  };
+
+  // Direct ERC20 Transfer to receiver with feeCurrency override
+  const transferTx = await tokenContract.transfer(receiverAddress, parsedAmount, overrides);
   const receipt = await transferTx.wait();
   
   return receipt;

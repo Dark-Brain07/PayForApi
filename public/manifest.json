@@ -1,0 +1,21 @@
+{
+  "name": "Pay For API",
+  "short_name": "Pay For API",
+  "description": "Pay-per-call AI APIs using Celo stablecoins. No subscriptions. Pay only what you use.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0E14",
+  "theme_color": "#0B0E14",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

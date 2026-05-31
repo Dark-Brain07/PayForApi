@@ -7,13 +7,28 @@ export const dynamic = 'force-dynamic';
 
 const getHandler = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
-  const category = searchParams.get('category') || 'technology';
+  const categoryRaw = searchParams.get('category') || 'technology';
+  const category = categoryRaw.trim().toLowerCase();
+  
+  const validCategories = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
+  if (!validCategories.includes(category)) {
+    return NextResponse.json({ error: `Invalid category '${category}'. Please use one of: ${validCategories.join(', ')}` });
+  }
+
   const apiKey = process.env.NEWS_API_KEY;
   if (!apiKey || apiKey === 'placeholder' || apiKey.includes('get_free_from')) {
     return NextResponse.json({ mock: true, articles: [{ title: "AI Reaches New Heights", source: {name: "Mock News"}, description: "Mock description" }] });
   }
-  const data = await fetch(`https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${apiKey}`);
-  return NextResponse.json(await data.json());
+  const data = await fetch(`https://newsapi.org/v2/top-headlines?category=${category}&country=us&apiKey=${apiKey}`, {
+    headers: { 'User-Agent': 'PayForAPI/1.0' },
+    cache: 'no-store'
+  });
+  const json = await data.json();
+  console.log("NEWS API RESPONSE:", JSON.stringify(json).substring(0, 200));
+  if (json.status === 'error') {
+    return NextResponse.json({ error: json.message });
+  }
+  return NextResponse.json(json);
 };
 
 export const GET = withX402(

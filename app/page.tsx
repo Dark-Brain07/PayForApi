@@ -1,30 +1,84 @@
 "use client";
-import { useState, useEffect } from "react";
-import APICard from "@/components/api/APICard";
-import PaymentModal from "@/components/payment/PaymentModal";
-import APIResultDisplay from "@/components/api/APIResultDisplay";
+import Link from "next/link";
 import { CELO_STABLECOINS } from "@/lib/stablecoins";
 import { useWallet } from "@/components/wallet/WalletContext";
+import { useState, useEffect } from "react";
 
-const API_PRODUCTS = [
-  { id: 0, name: "Weather Info", priceUsd: "$0.001 USDC/call", description: "Real-time global weather parameters.", inputs: ["Dhaka"] },
-  { id: 1, name: "Global News", priceUsd: "$0.002 USDC/call", description: "Latest headlines by category.", inputs: ["technology"] },
-  { id: 2, name: "Crypto Pulse", priceUsd: "$0.001 USDC/call", description: "Live multi-currency asset prices.", inputs: ["bitcoin,ethereum,usd-coin"] },
-  { id: 3, name: "AI Summary", priceUsd: "$0.005 USDC/call", description: "Summarize extensive text via Gemini.", inputs: ["Web3 protocols enable ownership..."] },
-  { id: 4, name: "AI Translate", priceUsd: "$0.003 USDC/call", description: "Translate English to 30 global languages.", inputs: ["Hello, the future is agentic.", "Spanish"] },
-];
+function InteractiveTerminal() {
+  const [bootLogs, setBootLogs] = useState<string[]>([]);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const logs = [
+      "> Initialize Celo Network...",
+      "> Loading ERC-8004 Agent...",
+      "> Loading MiniPay x x402 for payment...",
+      "> Authenticating node connection...",
+      "> Loading currencies: [cUSD, cEUR, cKES, cBRL, cGHS, cCOP, PUSO] ... OK",
+      "> Checking API Integrations... OK",
+      "> SUCCESS: All systems operational."
+    ];
+    
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex < logs.length) {
+        const currentLog = logs[currentIndex];
+        setBootLogs(prev => [...prev, currentLog]);
+      }
+      
+      currentIndex++;
+      if (currentIndex >= logs.length) {
+        clearInterval(interval);
+        setTimeout(() => setIsReady(true), 400);
+      }
+    }, 150); 
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (isReady) {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Enter') {
+          window.location.href = '/marketplace';
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [isReady]);
+
+  return (
+    <>
+      <div className="absolute top-6 left-6 text-brand-green/50 text-[10px] md:text-xs font-mono space-y-1 text-left">
+        {bootLogs.map((log, index) => (
+          <p key={index} className={log?.includes("SUCCESS") ? "text-brand-green font-bold mt-2" : ""}>
+            {log}
+          </p>
+        ))}
+      </div>
+
+      {isReady && (
+        <div className="z-10 mt-32 md:mt-24 flex flex-col items-center w-full">
+
+          
+          <div className="mt-16 text-text-secondary text-sm md:text-base animate-pulse opacity-50 hover:opacity-100 hover:text-brand-yellow transition-all flex items-center space-x-2">
+            <span className="border border-text-secondary/30 px-2 py-1 rounded">ENTER</span>
+            <span>to execute</span>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
 
 export default function Home() {
   const { isMiniPay, address } = useWallet();
-  const [selectedProduct, setSelectedProduct] = useState<{id: number, name: string, values: string[]} | null>(null);
-  const [apiResult, setApiResult] = useState<string | null>(null);
-  const [lastApiId, setLastApiId] = useState<number | null>(null);
-  const [isCalling, setIsCalling] = useState(false);
-  
+
   return (
     <div className="flex flex-col w-full">
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 max-w-7xl mx-auto w-full text-center">
+      {/* Terminal Hero Section */}
+      <section className="pt-20 pb-24 px-4 max-w-5xl mx-auto w-full text-center">
         {isMiniPay && (
           <div className="inline-flex items-center space-x-2 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow px-4 py-2 rounded-full mb-8 text-sm font-medium animate-pulse">
             <span>📱</span>
@@ -32,258 +86,34 @@ export default function Home() {
           </div>
         )}
         
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-          Pay Per <span className="text-brand-yellow">API Call</span>
-        </h1>
-        <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-10 leading-relaxed">
-          AI APIs powered by Celo stablecoins. No subscriptions. No credit cards. Just pay what you use.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
-          <button className="btn-primary text-lg px-8 py-4 w-full sm:w-auto" onClick={() => document.getElementById("apis")?.scrollIntoView({behavior: "smooth"})}>
-            Try API Playground
-          </button>
-          <a href="/docs" className="btn-secondary text-lg px-8 py-4 w-full sm:w-auto text-center border-brand-green/50">
-            View Docs
-          </a>
-        </div>
-        
-        {/* Animated stats bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto border-y border-brand-border py-8">
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-bold text-white mb-1">920K+</span>
-            <span className="text-sm text-text-secondary uppercase tracking-wider">Total Calls</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-bold text-brand-green mb-1">$1.4K+</span>
-            <span className="text-sm text-text-secondary uppercase tracking-wider">Revenue</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-bold text-white mb-1">12K+</span>
-            <span className="text-sm text-text-secondary uppercase tracking-wider">Active Users</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-bold text-brand-yellow mb-1">7</span>
-            <span className="text-sm text-text-secondary uppercase tracking-wider">Supported Tokens</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Stablecoin Ticker */}
-      <section className="w-full bg-brand-elevated border-y border-brand-border py-4 overflow-hidden flex whitespace-nowrap">
-        <div className="animate-[ticker_30s_linear_infinite] flex items-center space-x-12 px-6">
-          {Object.entries(CELO_STABLECOINS).map(([key, token], i) => (
-            <div key={`${key}-1`} className="flex items-center space-x-2">
-              <span className="text-xl">{token.flag}</span>
-              <span className={i % 2 === 0 ? "text-brand-yellow font-bold" : "text-brand-green font-bold"}>{token.symbol}</span>
-              <span className="text-text-secondary">@ {token.pricePerCall}/call</span>
+        <div 
+          onClick={() => window.location.href = '/marketplace'}
+          className="max-w-4xl mx-auto bg-[#0a0a0a] border border-[#222] rounded-xl shadow-[0_0_50px_rgba(0,255,0,0.1)] overflow-hidden cursor-pointer group hover:border-brand-green/50 transition-all duration-300 relative"
+        >
+          {/* Terminal Header */}
+          <div className="bg-[#111] px-4 py-3 flex items-center border-b border-[#222]">
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+              <div className="w-3 h-3 rounded-full bg-brand-yellow/80"></div>
+              <div className="w-3 h-3 rounded-full bg-brand-green/80"></div>
             </div>
-          ))}
-        </div>
-        <div className="animate-[ticker_30s_linear_infinite] flex items-center space-x-12 px-6">
-          {Object.entries(CELO_STABLECOINS).map(([key, token], i) => (
-            <div key={`${key}-2`} className="flex items-center space-x-2">
-              <span className="text-xl">{token.flag}</span>
-              <span className={i % 2 === 0 ? "text-brand-yellow font-bold" : "text-brand-green font-bold"}>{token.symbol}</span>
-              <span className="text-text-secondary">@ {token.pricePerCall}/call</span>
+            <div className="mx-auto text-[#666] text-sm font-mono tracking-wider flex items-center space-x-2">
+              <span>root@celo</span>
+              <span>~</span>
+              <span>pay-for-api</span>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* API Products Grid */}
-      <section id="apis" className="py-24 px-4 max-w-7xl mx-auto w-full">
-        <div className="mb-10">
-          <h2 className="text-3xl font-black mb-2 text-white font-sans tracking-tight">API Marketplace</h2>
-          <p className="text-blue-300 text-sm">Sub-cent micropayments enabled by x402 on Celo.</p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {API_PRODUCTS.map((api) => (
-            <APICard 
-              key={api.id}
-              {...api}
-              onTryIt={(id, name, values) => setSelectedProduct({id, name, values})}
-            />
-          ))}
-        </div>
-      </section>
-      
-      {/* Payment Flow Section */}
-      <section className="py-24 px-4 bg-brand-elevated border-y border-brand-border w-full">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">How It Works</h2>
-            <p className="text-text-secondary">Zero-friction API access powered by blockchain</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { step: "1", title: "Choose API", desc: "Select the endpoint you need from our collection" },
-              { step: "2", title: "Select Token", desc: "Pay with any of the 7 supported Celo stablecoins" },
-              { step: "3", title: "Pay on Celo", desc: "Sign a sub-cent transaction that finalizes in seconds" },
-              { step: "4", title: "Get Response", desc: "The smart contract unlocks access and returns data" },
-            ].map((s) => (
-              <div key={s.step} className="flex flex-col items-center text-center p-6">
-                <div className="w-16 h-16 rounded-full bg-brand-yellow/10 text-brand-yellow border-2 border-brand-yellow flex items-center justify-center text-2xl font-bold mb-6">
-                  {s.step}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">{s.title}</h3>
-                <p className="text-text-secondary">{s.desc}</p>
-              </div>
-            ))}
+          {/* Terminal Body */}
+          <div className="p-8 md:p-12 text-left font-mono min-h-[350px] flex flex-col justify-center items-center relative overflow-hidden">
+            {/* Background Matrix/Grid effect */}
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgzMCwgNDEsIDU5LCAwLjEpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20 pointer-events-none"></div>
+
+            <InteractiveTerminal />
           </div>
         </div>
       </section>
 
-      {/* Code Example Section */}
-      <section className="py-24 px-4 max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Developer Friendly</h2>
-            <p className="text-text-secondary text-lg mb-8">
-              Integrate in minutes. Just pass your wallet address and the transaction hash in the headers. Our gateway verifies the payment onchain and routes the request.
-            </p>
-            <ul className="space-y-4">
-              <li className="flex items-center space-x-3 text-white">
-                <span className="text-brand-green">✓</span>
-                <span>No API keys to leak</span>
-              </li>
-              <li className="flex items-center space-x-3 text-white">
-                <span className="text-brand-green">✓</span>
-                <span>Pay only for successful requests</span>
-              </li>
-              <li className="flex items-center space-x-3 text-white">
-                <span className="text-brand-green">✓</span>
-                <span>Works in browser and server</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="code-block text-sm relative">
-            <div className="absolute top-4 right-4 text-xs text-text-muted">JavaScript</div>
-            <pre>
-              <code className="text-brand-green">
-{`// Pay for API with cUSD
-const response = await fetch("https://pay-for-api.vercel.app/api/chat", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "X-Payment-Token": "cUSD",
-    "X-Wallet-Address": userAddress,
-  },
-  body: JSON.stringify({ 
-    message: "Hello AI!",
-    txHash: "0x..." // Payment transaction hash
-  }),
-});
-
-const data = await response.json();
-console.log(data.response);`}
-              </code>
-            </pre>
-          </div>
-        </div>
-      </section>
-
-      <PaymentModal 
-        isOpen={!!selectedProduct} 
-        onClose={() => setSelectedProduct(null)}
-        productId={selectedProduct?.id ?? 0}
-        productName={selectedProduct?.name ?? ""}
-        onSuccess={async (txHash, token) => {
-          const product = selectedProduct;
-          setLastApiId(product!.id);
-          setSelectedProduct(null);
-          setIsCalling(true);
-          try {
-            const { id, values } = product!;
-            let payload: any = { txHash, walletAddress: address || "0x0000000000000000000000000000000000000000" };
-            let endpoint = "";
-            
-            if (id === 0) {
-              endpoint = "/api/weather";
-              payload.city = values[0] || "Dhaka";
-            } else if (id === 1) {
-              endpoint = "/api/news";
-              payload.category = values[0] || "technology";
-            } else if (id === 2) {
-              endpoint = "/api/crypto";
-              payload.ids = values[0] || "bitcoin,ethereum,usd-coin";
-            } else if (id === 3) {
-              endpoint = "/api/summary";
-              payload.text = values[0] || "Web3 protocols enable ownership...";
-            } else if (id === 4) {
-              endpoint = "/api/translate";
-              payload.text = values[0] || "Hello, the future is agentic.";
-              payload.language = values[1] || "Spanish";
-            }
-            
-            const res = await fetch(endpoint, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload)
-            });
-            const data = await res.json();
-            setApiResult(JSON.stringify(data, null, 2));
-          } catch (e: any) {
-            setApiResult("Error: " + e.message);
-          } finally {
-            setIsCalling(false);
-          }
-        }}
-      />
-
-      {/* Result Modal */}
-      {(isCalling || apiResult) && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
-          <div className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 w-full max-w-2xl shadow-2xl relative overflow-hidden">
-            
-            {/* Header */}
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-white">
-                {isCalling ? "Verifying Payment..." : "API Response"}
-              </h3>
-              {!isCalling && (
-                <button onClick={() => setApiResult(null)} className="text-gray-500 hover:text-white transition-colors">
-                  ✕
-                </button>
-              )}
-            </div>
-            
-            {isCalling ? (
-              <div className="flex flex-col items-center justify-center py-12">
-                <div className="w-12 h-12 border-4 border-brand-yellow border-t-transparent rounded-full animate-spin mb-4"></div>
-                <div className="text-brand-yellow animate-pulse font-bold">Executing API via Smart Contract...</div>
-              </div>
-            ) : (
-              <div className="mb-6">
-                <APIResultDisplay 
-                  apiId={lastApiId!} 
-                  data={
-                    (() => {
-                      try {
-                        return JSON.parse(apiResult || "{}");
-                      } catch {
-                        return { error: apiResult };
-                      }
-                    })()
-                  } 
-                />
-              </div>
-            )}
-            
-            {!isCalling && (
-              <button 
-                onClick={() => setApiResult(null)}
-                className="w-full bg-[#1E293B] hover:bg-[#334155] text-white font-bold py-3 rounded-xl transition-colors border border-white/5"
-              >
-                Done
-              </button>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
