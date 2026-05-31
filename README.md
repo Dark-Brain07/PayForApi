@@ -22,12 +22,11 @@
 
 | API | Endpoint | Price |
 |---|---|---|
-| AI Chat | /api/chat | 0.001 cUSD |
-| Image Analysis | /api/vision | 0.003 cUSD |
-| Web Search | /api/search | 0.002 cUSD |
-| Data Analysis | /api/data | 0.005 cUSD |
-| Translation | /api/translate | 0.001 cUSD |
-| Summarization | /api/summarize | 0.002 cUSD |
+| Weather Info | /api/weather | 0.001 cUSD |
+| Global News | /api/news | 0.002 cUSD |
+| Crypto Pulse | /api/crypto | 0.001 cUSD |
+| AI Summary | /api/summary | 0.005 cUSD |
+| AI Translate | /api/translate | 0.003 cUSD |
 
 ## 📱 MiniPay Integration
 
