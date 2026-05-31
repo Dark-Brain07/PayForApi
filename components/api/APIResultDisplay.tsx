@@ -3,13 +3,14 @@ import React from 'react';
 export default function APIResultDisplay({ apiId, data }: { apiId: number, data: any }) {
   if (!data) return null;
   
-  if (data.error) {
-    return <div className="text-red-500 font-bold p-4 bg-red-500/10 rounded-xl border border-red-500/20">{data.error}</div>;
+  if (data.error || (data.cod && String(data.cod) !== "200")) {
+    const errorMsg = data.error || data.message || `API Error (Code: ${data.cod})`;
+    return <div className="text-red-500 font-bold p-4 bg-red-500/10 rounded-xl border border-red-500/20">{errorMsg}</div>;
   }
 
   // Weather
   if (apiId === 0) {
-    const tempCelsius = data.main?.temp ? (data.main.temp - 273.15).toFixed(1) : '--';
+    const tempCelsius = data.main?.temp !== undefined ? (Number(data.main.temp) - 273.15).toFixed(1) : '--';
     const desc = data.weather?.[0]?.description || 'Unknown';
     const main = data.weather?.[0]?.main || 'Clear';
     
