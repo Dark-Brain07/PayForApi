@@ -6,11 +6,11 @@ import APIResultDisplay from "@/components/api/APIResultDisplay";
 import { useWallet } from "@/components/wallet/WalletContext";
 
 const API_PRODUCTS = [
-  { id: 0, name: "Weather Info", priceUsd: "$0.001 USDC/call", description: "Real-time global weather parameters.", inputs: ["Dhaka"] },
-  { id: 1, name: "Global News", priceUsd: "$0.002 USDC/call", description: "Latest headlines by category.", inputs: ["technology"] },
-  { id: 2, name: "Crypto Pulse", priceUsd: "$0.001 USDC/call", description: "Live multi-currency asset prices.", inputs: ["bitcoin,ethereum,usd-coin"] },
-  { id: 3, name: "AI Summary", priceUsd: "$0.005 USDC/call", description: "Summarize extensive text via Gemini.", inputs: ["Web3 protocols enable ownership..."] },
-  { id: 4, name: "AI Translate", priceUsd: "$0.003 USDC/call", description: "Translate English to 30 global languages.", inputs: ["Hello, the future is agentic.", "Spanish"] },
+  { id: 0, name: "Weather Info", priceUsd: "$0.001 cUSD/call", description: "Real-time global weather parameters.", inputs: ["Dhaka"] },
+  { id: 1, name: "Global News", priceUsd: "$0.002 cUSD/call", description: "Latest headlines by category.", inputs: ["technology"] },
+  { id: 2, name: "Crypto Pulse", priceUsd: "$0.001 cUSD/call", description: "Live multi-currency asset prices.", inputs: ["bitcoin,ethereum,usd-coin"] },
+  { id: 3, name: "AI Summary", priceUsd: "$0.005 cUSD/call", description: "Summarize extensive text via Gemini.", inputs: ["Web3 protocols enable ownership..."] },
+  { id: 4, name: "AI Translate", priceUsd: "$0.003 cUSD/call", description: "Translate English to 30 global languages.", inputs: ["Hello, the future is agentic.", "Spanish"] },
 ];
 
 export default function Marketplace() {
