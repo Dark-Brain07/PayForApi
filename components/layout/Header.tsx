@@ -92,16 +92,21 @@ export default function Header() {
             
             {isConnected ? (
               <div className="flex items-center space-x-3">
-                {/* Balances Display */}
-                <div className="hidden lg:flex items-center space-x-2 bg-[#0B0E14] border border-[#1E293B] rounded-xl p-1 shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
-                  <div className="flex items-center px-3 py-1.5 bg-gradient-to-r from-[#00E676]/10 to-transparent rounded-lg border border-[#00E676]/20 transition-all hover:border-[#00E676]/40">
-                    <span className="text-[#00E676] font-black text-sm mr-1.5 drop-shadow-[0_0_8px_rgba(0,230,118,0.5)]">{cusdBalance}</span>
-                    <span className="text-[#94A3B8] text-xs font-bold uppercase tracking-wider">cUSD</span>
+                {/* Balances & Donate Display */}
+                <div className="hidden lg:flex flex-col items-center gap-1.5">
+                  <div className="flex items-center space-x-2 bg-[#0B0E14] border border-[#1E293B] rounded-xl p-1 shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
+                    <div className="flex items-center px-2 py-1 bg-gradient-to-r from-[#00E676]/10 to-transparent rounded-lg border border-[#00E676]/20 transition-all hover:border-[#00E676]/40">
+                      <span className="text-[#00E676] font-black text-xs mr-1 drop-shadow-[0_0_8px_rgba(0,230,118,0.5)]">{cusdBalance}</span>
+                      <span className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-wider">cUSD</span>
+                    </div>
+                    <div className="flex items-center px-2 py-1 bg-gradient-to-r from-[#F5C518]/10 to-transparent rounded-lg border border-[#F5C518]/20 transition-all hover:border-[#F5C518]/40">
+                      <span className="text-[#F5C518] font-black text-xs mr-1 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">{apicBalance}</span>
+                      <span className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-wider">APIC</span>
+                    </div>
                   </div>
-                  <div className="flex items-center px-3 py-1.5 bg-gradient-to-r from-[#F5C518]/10 to-transparent rounded-lg border border-[#F5C518]/20 transition-all hover:border-[#F5C518]/40">
-                    <span className="text-[#F5C518] font-black text-sm mr-1.5 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">{apicBalance}</span>
-                    <span className="text-[#94A3B8] text-xs font-bold uppercase tracking-wider">APIC</span>
-                  </div>
+                  <Link href="/explorer" className="w-full text-center py-1 bg-brand-yellow/10 hover:bg-brand-yellow/20 text-brand-yellow border border-brand-yellow/30 rounded-lg text-[11px] font-bold transition-all shadow-[0_0_5px_rgba(245,197,24,0.1)] hover:shadow-[0_0_10px_rgba(245,197,24,0.2)]">
+                    💖 Donate Us
+                  </Link>
                 </div>
 
                 <div className="btn-secondary flex items-center space-x-2 cursor-default">
