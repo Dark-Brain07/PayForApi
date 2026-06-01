@@ -134,8 +134,8 @@ export default function Explorer() {
             <p className="text-base mb-8 text-white/90 max-w-lg mx-auto leading-relaxed">
               Love using Pay For API? Help us keep building and making the application even better! Your generous donations directly fund advanced AI integrations, faster nodes, and continuous upgrades.
             </p>
-            <div className="flex flex-col xl:flex-row justify-center items-center gap-4">
-              <div className="bg-[#050505] border border-[#1E293B] px-4 py-3 rounded-xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] text-[#00E676] font-mono text-sm break-all w-full max-w-sm">
+            <div className="flex flex-col xl:flex-row justify-center items-center gap-4 w-full">
+              <div className="bg-[#050505] border border-[#1E293B] px-3 sm:px-4 py-3 rounded-xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] text-[#00E676] font-mono text-xs sm:text-sm truncate w-full max-w-sm text-center">
                 0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476
               </div>
               <button 
@@ -160,8 +160,9 @@ export default function Explorer() {
             </h2>
             <span className="text-xs font-bold text-[#F5C518] bg-[#F5C518]/10 px-3 py-1 rounded-full border border-[#F5C518]/30">STABLECOINS</span>
           </div>
-          <div className="p-0 flex-grow bg-[#050505] overflow-y-auto max-h-[400px] lg:max-h-full">
-            <table className="w-full text-left border-collapse relative">
+          <div className="p-0 flex-grow bg-[#050505] overflow-y-auto overflow-x-auto max-h-[400px] lg:max-h-full">
+            <div className="min-w-[400px]">
+              <table className="w-full text-left border-collapse relative">
               <thead className="bg-[#1E293B] sticky top-0 z-10 shadow-md">
                 <tr>
                   <th className="py-3 px-6 text-[#94A3B8] font-bold text-xs uppercase tracking-wider">Rank</th>
@@ -203,6 +204,7 @@ export default function Explorer() {
                 )}
               </tbody>
             </table>
+            </div>
           </div>
         </div>
       </div>

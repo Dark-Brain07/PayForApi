@@ -8,6 +8,7 @@ import { CELO_STABLECOINS } from "@/lib/stablecoins";
 
 export default function Header() {
   const { address, isConnected, connect, disconnect, isMiniPay } = useWallet();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const truncateAddress = (addr: string) => {
     return `${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}`;
@@ -83,7 +84,7 @@ export default function Header() {
             )}
           </nav>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             {isMiniPay && (
               <span className="hidden md:inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-brand-yellow/10 text-brand-yellow border border-brand-yellow/20">
                 MiniPay
@@ -91,7 +92,7 @@ export default function Header() {
             )}
             
             {isConnected ? (
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2 sm:space-x-3">
                 {/* Balances & Donate Display */}
                 <div className="hidden lg:flex flex-col items-center gap-1.5">
                   <div className="flex items-center space-x-2 bg-[#0B0E14] border border-[#1E293B] rounded-xl p-1 shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
@@ -109,29 +110,87 @@ export default function Header() {
                   </Link>
                 </div>
 
-                <div className="btn-secondary flex items-center space-x-2 cursor-default">
+                <div className="btn-secondary flex items-center space-x-1.5 sm:space-x-2 cursor-default px-2 sm:px-4 text-xs sm:text-base">
                   <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse shadow-[0_0_10px_#00E676]"></span>
                   <span className="font-medium">{address ? truncateAddress(address) : "Connected"}</span>
                 </div>
                 {!isMiniPay && (
                   <button 
                     onClick={disconnect}
-                    className="bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 px-3 py-2 rounded-lg transition-colors text-sm font-bold"
+                    className="bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 px-2 py-2 sm:px-3 rounded-lg transition-colors text-xs sm:text-sm font-bold"
                   >
-                    Disconnect
+                    <span className="hidden sm:inline">Disconnect</span>
+                    <span className="sm:hidden">Exit</span>
                   </button>
                 )}
               </div>
             ) : (
               <button 
                 onClick={connect}
-                className="btn-primary"
+                className="btn-primary px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base"
               >
                 Connect Wallet
               </button>
             )}
+
+            {/* Mobile Menu Hamburger */}
+            <button 
+              className="md:hidden text-[#94A3B8] hover:text-white transition-colors ml-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Panel */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-[#1E293B] py-4 pb-6 absolute left-0 right-0 bg-brand-black shadow-2xl px-4 z-40">
+            <nav className="flex flex-col space-y-4">
+              <Link href="/marketplace" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+                Marketplace
+              </Link>
+              <Link href="/rewards" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+                Rewards
+              </Link>
+              <Link href="/docs" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+                Docs
+              </Link>
+              <Link href="/explorer" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+                Explorer
+              </Link>
+              {isConnected && (
+                <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow font-black text-lg p-2 rounded-lg bg-brand-yellow/10 border border-brand-yellow/20">
+                  Dashboard
+                </Link>
+              )}
+            </nav>
+            {isConnected && (
+              <div className="mt-6 pt-6 border-t border-[#1E293B]">
+                <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-wider mb-3">Wallet Balances</div>
+                <div className="flex justify-between items-center mb-4">
+                   <div className="flex items-center space-x-2">
+                     <span className="text-[#00E676] font-black text-lg">{cusdBalance}</span>
+                     <span className="text-[#94A3B8] font-bold text-sm">cUSD</span>
+                   </div>
+                   <div className="flex items-center space-x-2">
+                     <span className="text-[#F5C518] font-black text-lg">{apicBalance}</span>
+                     <span className="text-[#94A3B8] font-bold text-sm">APIC</span>
+                   </div>
+                </div>
+                <Link href="/explorer" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-center py-3 bg-brand-yellow/10 text-brand-yellow border border-brand-yellow/30 rounded-xl font-black shadow-[0_0_15px_rgba(245,197,24,0.15)] flex items-center justify-center gap-2">
+                  <span>💖</span> Donate Us
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </header>
   );
