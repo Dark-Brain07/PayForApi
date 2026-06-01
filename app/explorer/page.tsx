@@ -93,10 +93,6 @@ export default function Explorer() {
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="flex justify-between items-center mb-12">
         <h1 className="text-4xl font-black text-white tracking-tight">Network Explorer</h1>
-        <div className="flex items-center space-x-3 bg-brand-green/10 border border-brand-green/30 px-4 py-2 rounded-full">
-          <span className="w-3 h-3 rounded-full bg-brand-green animate-pulse shadow-[0_0_10px_#00E676]"></span>
-          <span className="text-sm font-bold text-brand-green uppercase tracking-wider">Live on Celo Mainnet</span>
-        </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
