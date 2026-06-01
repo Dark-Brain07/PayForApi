@@ -125,9 +125,9 @@ export default function Explorer() {
         </div>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 items-start">
         {/* Support The Ecosystem (Left Half) */}
-        <div className="card overflow-hidden border border-[#1E293B] shadow-lg flex flex-col h-full">
+        <div className="card overflow-hidden border border-[#1E293B] shadow-lg flex flex-col">
           <div className="p-6 border-b border-[#1E293B] bg-[#0B0E14] text-center sm:text-left shrink-0">
             <h2 className="text-xl font-bold text-white uppercase tracking-wider flex items-center justify-center sm:justify-start gap-2">
               <span>💖</span> Support The Ecosystem
@@ -156,7 +156,7 @@ export default function Explorer() {
         </div>
 
         {/* Top 10 Donors Leaderboard (Right Half) */}
-        <div className="card overflow-hidden border border-[#1E293B] shadow-lg flex flex-col h-full">
+        <div className="card overflow-hidden border border-[#1E293B] shadow-lg flex flex-col">
           <div className="p-6 border-b border-[#1E293B] bg-[#0B0E14] flex justify-between items-center shrink-0">
             <h2 className="text-xl font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <span>🏆</span> Top 10 Donors
