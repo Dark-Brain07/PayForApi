@@ -72,30 +72,84 @@ export default function Explorer() {
         </div>
       </div>
       
-      <div className="card overflow-hidden border border-[#1E293B] shadow-lg mt-8">
-        <div className="p-6 border-b border-[#1E293B] bg-[#0B0E14] text-center sm:text-left">
-          <h2 className="text-xl font-bold text-white uppercase tracking-wider flex items-center justify-center sm:justify-start gap-2">
-            <span>💖</span> Support The Ecosystem
-          </h2>
-        </div>
-        <div className="p-10 text-center text-[#94A3B8] bg-brand-elevated">
-          <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Love using Pay For API? Help us keep building and making the application even better! Your generous donations directly fund advanced AI integrations, faster nodes, and continuous upgrades.
-          </p>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-            <div className="bg-[#050505] border border-[#1E293B] px-6 py-4 rounded-xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] text-[#00E676] font-mono text-sm md:text-base break-all flex-grow max-w-lg">
-              0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+        {/* Support The Ecosystem (Left Half) */}
+        <div className="card overflow-hidden border border-[#1E293B] shadow-lg flex flex-col h-full">
+          <div className="p-6 border-b border-[#1E293B] bg-[#0B0E14] text-center sm:text-left shrink-0">
+            <h2 className="text-xl font-bold text-white uppercase tracking-wider flex items-center justify-center sm:justify-start gap-2">
+              <span>💖</span> Support The Ecosystem
+            </h2>
+          </div>
+          <div className="p-8 text-center text-[#94A3B8] bg-brand-elevated flex-grow flex flex-col justify-center">
+            <p className="text-base mb-8 text-white/90 max-w-lg mx-auto leading-relaxed">
+              Love using Pay For API? Help us keep building and making the application even better! Your generous donations directly fund advanced AI integrations, faster nodes, and continuous upgrades.
+            </p>
+            <div className="flex flex-col xl:flex-row justify-center items-center gap-4">
+              <div className="bg-[#050505] border border-[#1E293B] px-4 py-3 rounded-xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] text-[#00E676] font-mono text-sm break-all w-full max-w-sm">
+                0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476
+              </div>
+              <button 
+                className="bg-brand-yellow/10 border border-brand-yellow/40 hover:bg-brand-yellow/20 text-brand-yellow px-6 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(245,197,24,0.15)] hover:shadow-[0_0_20px_rgba(245,197,24,0.3)] whitespace-nowrap w-full xl:w-auto shrink-0"
+                onClick={() => {
+                  navigator.clipboard.writeText("0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476");
+                  alert("Donation address copied to clipboard! Thank you for your support!");
+                }}
+              >
+                Copy Wallet
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
             </div>
-            <button 
-              className="bg-brand-yellow/10 border border-brand-yellow/40 hover:bg-brand-yellow/20 text-brand-yellow px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(245,197,24,0.15)] hover:shadow-[0_0_20px_rgba(245,197,24,0.3)] whitespace-nowrap"
-              onClick={() => {
-                navigator.clipboard.writeText("0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476");
-                alert("Donation address copied to clipboard! Thank you for your support!");
-              }}
-            >
-              Copy Wallet
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            </button>
+          </div>
+        </div>
+
+        {/* Top 10 Donors Leaderboard (Right Half) */}
+        <div className="card overflow-hidden border border-[#1E293B] shadow-lg flex flex-col h-full">
+          <div className="p-6 border-b border-[#1E293B] bg-[#0B0E14] flex justify-between items-center shrink-0">
+            <h2 className="text-xl font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <span>🏆</span> Top 10 Donors
+            </h2>
+            <span className="text-xs font-bold text-[#F5C518] bg-[#F5C518]/10 px-3 py-1 rounded-full border border-[#F5C518]/30">STABLECOINS</span>
+          </div>
+          <div className="p-0 flex-grow bg-[#050505] overflow-y-auto max-h-[400px] lg:max-h-full">
+            <table className="w-full text-left border-collapse">
+              <thead className="bg-[#1E293B] sticky top-0 z-10">
+                <tr>
+                  <th className="py-3 px-6 text-[#94A3B8] font-bold text-xs uppercase tracking-wider">Rank</th>
+                  <th className="py-3 px-6 text-[#94A3B8] font-bold text-xs uppercase tracking-wider">Donor</th>
+                  <th className="py-3 px-6 text-[#94A3B8] font-bold text-xs uppercase tracking-wider text-right">Donated</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#1E293B]">
+                {[
+                  { address: "0x7a2...b49f", ens: "vitalik.eth", amount: 5000 },
+                  { address: "0x1d3...e8a2", ens: null, amount: 2500 },
+                  { address: "0x8f9...c123", ens: "celodao.eth", amount: 1200 },
+                  { address: "0x3a1...d456", ens: "web3builder.eth", amount: 800 },
+                  { address: "0x9b2...f789", ens: null, amount: 650 },
+                  { address: "0x4c3...a012", ens: "cryptoninja.eth", amount: 420 },
+                  { address: "0x5d4...b345", ens: null, amount: 300 },
+                  { address: "0x6e5...c678", ens: "nftcollector.eth", amount: 150 },
+                  { address: "0x7f6...d901", ens: null, amount: 100 },
+                  { address: "0x8a7...e234", ens: "agentic.eth", amount: 50 }
+                ].map((donor, idx) => (
+                  <tr key={idx} className="hover:bg-[#1E293B]/50 transition-colors group">
+                    <td className="py-4 px-6 text-white font-bold text-lg">
+                      {idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : <span className="text-[#94A3B8] text-sm">#{idx + 1}</span>}
+                    </td>
+                    <td className="py-4 px-6">
+                      {donor.ens ? (
+                        <span className="text-[#00E676] font-bold group-hover:text-white transition-colors">{donor.ens}</span>
+                      ) : (
+                        <span className="text-[#94A3B8] font-mono text-sm group-hover:text-white transition-colors">{donor.address}</span>
+                      )}
+                    </td>
+                    <td className="py-4 px-6 text-right">
+                      <span className="text-[#F5C518] font-black">${donor.amount.toLocaleString()}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
