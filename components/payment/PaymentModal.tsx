@@ -6,15 +6,18 @@ import { useWallet } from "@/components/wallet/WalletContext";
 import { ethers } from "ethers";
 import { processPayment } from "@/lib/payment";
 
+import { CONTRACTS } from "@/lib/contracts";
+
 interface PaymentModalProps {
   isOpen: boolean;
   onClose: () => void;
   productId: number;
   productName: string;
-  onSuccess: (txHash: string, token: StablecoinKey) => void;
+  priceCredits?: number;
+  onSuccess: (txHash: string, token: string) => void;
 }
 
-export default function PaymentModal({ isOpen, onClose, productId, productName, onSuccess }: PaymentModalProps) {
+export default function PaymentModal({ isOpen, onClose, productId, productName, priceCredits, onSuccess }: PaymentModalProps) {
   const { isMiniPay, address } = useWallet();
   const [selectedToken, setSelectedToken] = useState<StablecoinKey>(DEFAULT_TOKEN);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -61,11 +64,44 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
     }
   };
 
+  const handlePayCredits = async () => {
+    if (!address) {
+      setError("Please connect your wallet first.");
+      return;
+    }
+    if (!priceCredits) return;
+    
+    setIsProcessing(true);
+    setError(null);
+    
+    try {
+      if (typeof window !== "undefined" && (window as any).ethereum) {
+        const provider = new ethers.BrowserProvider((window as any).ethereum);
+        const requestId = ethers.id(Date.now().toString() + Math.random().toString());
+        
+        const receipt = await processPayment(
+          provider,
+          CONTRACTS.API_CREDITS.address,
+          priceCredits.toString(),
+          productId,
+          requestId
+        );
+        
+        onSuccess(receipt.hash, "APIC");
+      }
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Credit payment failed. Please try again.");
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col">
-        <div className="p-6 border-b border-brand-border flex justify-between items-center">
-          <h2 className="text-xl font-bold text-white">Select Payment Token</h2>
+      <div className="bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="p-6 border-b border-brand-border flex justify-between items-center shrink-0">
+          <h2 className="text-xl font-bold text-white">Select Payment Method</h2>
           <button onClick={onClose} className="text-text-secondary hover:text-white transition-colors">
             ✕
           </button>
@@ -86,7 +122,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
           )}
         </div>
         
-        <div className="p-6 border-t border-brand-border bg-brand-elevated">
+        <div className="p-6 border-t border-brand-border bg-brand-elevated space-y-3 shrink-0">
           <button 
             onClick={handlePay}
             disabled={isProcessing}
@@ -101,6 +137,23 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
               <span>Pay {CELO_STABLECOINS[selectedToken].pricePerCall} {CELO_STABLECOINS[selectedToken].symbol}</span>
             )}
           </button>
+          
+          {priceCredits && (
+            <button 
+              onClick={handlePayCredits}
+              disabled={isProcessing}
+              className="w-full bg-brand-yellow/10 border border-brand-yellow/30 hover:bg-brand-yellow/20 text-brand-yellow font-bold py-4 rounded-xl transition-colors text-lg flex justify-center items-center space-x-2"
+            >
+              {isProcessing ? (
+                <>
+                  <span className="w-5 h-5 border-2 border-brand-yellow/20 border-t-brand-yellow rounded-full animate-spin"></span>
+                  <span>Processing Credits...</span>
+                </>
+              ) : (
+                <span>Pay with {priceCredits} APIC</span>
+              )}
+            </button>
+          )}
         </div>
       </div>
     </div>
