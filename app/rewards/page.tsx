@@ -12,6 +12,8 @@ export default function Rewards() {
   const [isMinting, setIsMinting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [lastClaimTime, setLastClaimTime] = useState<number>(0);
+  const [timeRemaining, setTimeRemaining] = useState<string | null>(null);
   
   const MAX_SUPPLY = 100000;
 
@@ -35,6 +37,9 @@ export default function Rewards() {
       const bal = await creditsContract.balanceOf(address);
       setBalance(ethers.formatUnits(bal, 18));
 
+      const lastClaim = await creditsContract.lastClaimTime(address);
+      setLastClaimTime(Number(lastClaim));
+
       const minted = await nftContract.totalSupply();
       setNftsMinted(minted.toString());
     } catch (err) {
@@ -50,6 +55,40 @@ export default function Rewards() {
       return () => clearInterval(interval);
     }
   }, [isConnected, address]);
+
+  useEffect(() => {
+    if (!lastClaimTime) {
+      setTimeRemaining(null);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      const now = Math.floor(Date.now() / 1000);
+      const targetTime = lastClaimTime + 86400; // 24 hours in seconds
+
+      if (now >= targetTime) {
+        setTimeRemaining(null);
+      } else {
+        const diff = targetTime - now;
+        const h = Math.floor(diff / 3600);
+        const m = Math.floor((diff % 3600) / 60);
+        const s = diff % 60;
+        setTimeRemaining(`${h}h ${m}m ${s}s`);
+      }
+    }, 1000);
+    
+    // Initial call to avoid 1s delay
+    const now = Math.floor(Date.now() / 1000);
+    const targetTime = lastClaimTime + 86400;
+    if (now < targetTime) {
+      const diff = targetTime - now;
+      setTimeRemaining(`${Math.floor(diff / 3600)}h ${Math.floor((diff % 3600) / 60)}m ${diff % 60}s`);
+    } else {
+      setTimeRemaining(null);
+    }
+
+    return () => clearInterval(interval);
+  }, [lastClaimTime]);
 
   const handleClaim = async () => {
     if (!isConnected) return setError("Connect wallet first!");
@@ -141,10 +180,14 @@ export default function Rewards() {
 
             <button 
               onClick={handleClaim} 
-              disabled={isClaiming || !isConnected}
-              className="w-full btn-primary py-4 text-lg"
+              disabled={isClaiming || !isConnected || timeRemaining !== null}
+              className={`w-full py-4 text-lg font-bold rounded-xl transition-all ${
+                timeRemaining !== null 
+                ? "bg-[#1E293B] text-gray-400 border border-[#334155] cursor-not-allowed" 
+                : "btn-primary"
+              }`}
             >
-              {isClaiming ? "Claiming..." : "Claim Daily Credits"}
+              {isClaiming ? "Claiming..." : timeRemaining ? `Claim in ${timeRemaining}` : "Claim Daily Credits"}
             </button>
           </div>
 
