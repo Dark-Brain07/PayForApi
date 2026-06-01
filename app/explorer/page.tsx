@@ -41,39 +41,40 @@ export default function Explorer() {
 
     async function fetchLeaderboard() {
       try {
+        const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
         const donationWallet = "0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476";
-        const response = await fetch(`https://api.celoscan.io/api?module=account&action=tokentx&address=${donationWallet}&sort=asc`);
-        const data = await response.json();
         
-        if (data.status === "1" && data.result) {
-          const donations: Record<string, number> = {};
+        const erc20Abi = ["event Transfer(address indexed from, address indexed to, uint256 value)"];
+        const cusdContract = new ethers.Contract(CELO_STABLECOINS.cUSD.address, erc20Abi, provider);
+        
+        // Query last ~2 million blocks (about 1 month of Celo blocks)
+        const currentBlock = await provider.getBlockNumber();
+        const fromBlock = Math.max(0, currentBlock - 2000000);
+        
+        const filter = cusdContract.filters.Transfer(null, donationWallet);
+        const events = await cusdContract.queryFilter(filter, fromBlock, "latest");
+        
+        const donations: Record<string, number> = {};
+        
+        events.forEach((event: any) => {
+          const from = event.args.from;
+          const amount = Number(ethers.formatUnits(event.args.value, 18));
           
-          data.result.forEach((tx: any) => {
-            if (tx.to.toLowerCase() === donationWallet.toLowerCase()) {
-              const symbol = tx.tokenSymbol.toUpperCase();
-              // Track popular stablecoins on Celo
-              if (["CUSD", "USDC", "CEUR", "CBRL"].includes(symbol)) {
-                const amount = Number(ethers.formatUnits(tx.value, tx.tokenDecimal));
-                const from = tx.from;
-                
-                if (donations[from]) {
-                  donations[from] += amount;
-                } else {
-                  donations[from] = amount;
-                }
-              }
-            }
-          });
+          if (donations[from]) {
+            donations[from] += amount;
+          } else {
+            donations[from] = amount;
+          }
+        });
+        
+        const sortedDonors: DonorInfo[] = Object.keys(donations)
+          .map(address => ({ address, amount: donations[address] }))
+          .sort((a, b) => b.amount - a.amount)
+          .slice(0, 10);
           
-          const sortedDonors: DonorInfo[] = Object.keys(donations)
-            .map(address => ({ address, amount: donations[address] }))
-            .sort((a, b) => b.amount - a.amount)
-            .slice(0, 10);
-            
-          setTopDonors(sortedDonors);
-        }
+        setTopDonors(sortedDonors);
       } catch (error) {
-        console.error("Error fetching leaderboard", error);
+        console.error("Error fetching leaderboard from RPC", error);
       } finally {
         setLeaderboardLoading(false);
       }
