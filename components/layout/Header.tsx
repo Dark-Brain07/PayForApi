@@ -1,6 +1,10 @@
 "use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useWallet } from "@/components/wallet/WalletContext";
+import { ethers } from "ethers";
+import { CONTRACTS } from "@/lib/contracts";
+import { CELO_STABLECOINS } from "@/lib/stablecoins";
 
 export default function Header() {
   const { address, isConnected, connect, disconnect, isMiniPay } = useWallet();
@@ -8,6 +12,43 @@ export default function Header() {
   const truncateAddress = (addr: string) => {
     return `${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}`;
   };
+
+  const [cusdBalance, setCusdBalance] = useState<string>("0.00");
+  const [apicBalance, setApicBalance] = useState<string>("0.00");
+
+  useEffect(() => {
+    const fetchBalances = async () => {
+      if (isConnected && address && typeof window !== "undefined" && (window as any).ethereum) {
+        try {
+          const provider = new ethers.BrowserProvider((window as any).ethereum);
+          
+          const cusdContract = new ethers.Contract(
+            CELO_STABLECOINS.cUSD.address,
+            ["function balanceOf(address) view returns (uint256)"],
+            provider
+          );
+          
+          const apicContract = new ethers.Contract(
+            CONTRACTS.API_CREDITS.address,
+            CONTRACTS.API_CREDITS.abi,
+            provider
+          );
+
+          const cusdBal = await cusdContract.balanceOf(address);
+          const apicBal = await apicContract.balanceOf(address);
+
+          setCusdBalance(Number(ethers.formatUnits(cusdBal, 18)).toFixed(2));
+          setApicBalance(Number(ethers.formatUnits(apicBal, 18)).toFixed(2));
+        } catch (error) {
+          console.error("Failed to fetch balances", error);
+        }
+      }
+    };
+
+    fetchBalances();
+    const interval = setInterval(fetchBalances, 10000);
+    return () => clearInterval(interval);
+  }, [isConnected, address]);
 
   return (
     <header className="bg-brand-black sticky top-0 z-50">
@@ -50,10 +91,22 @@ export default function Header() {
             )}
             
             {isConnected ? (
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-3">
+                {/* Balances Display */}
+                <div className="hidden lg:flex items-center space-x-2 bg-[#0B0E14] border border-[#1E293B] rounded-xl p-1 shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
+                  <div className="flex items-center px-3 py-1.5 bg-gradient-to-r from-[#00E676]/10 to-transparent rounded-lg border border-[#00E676]/20 transition-all hover:border-[#00E676]/40">
+                    <span className="text-[#00E676] font-black text-sm mr-1.5 drop-shadow-[0_0_8px_rgba(0,230,118,0.5)]">{cusdBalance}</span>
+                    <span className="text-[#94A3B8] text-xs font-bold uppercase tracking-wider">cUSD</span>
+                  </div>
+                  <div className="flex items-center px-3 py-1.5 bg-gradient-to-r from-[#F5C518]/10 to-transparent rounded-lg border border-[#F5C518]/20 transition-all hover:border-[#F5C518]/40">
+                    <span className="text-[#F5C518] font-black text-sm mr-1.5 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">{apicBalance}</span>
+                    <span className="text-[#94A3B8] text-xs font-bold uppercase tracking-wider">APIC</span>
+                  </div>
+                </div>
+
                 <div className="btn-secondary flex items-center space-x-2 cursor-default">
-                  <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
-                  <span>{address ? truncateAddress(address) : "Connected"}</span>
+                  <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse shadow-[0_0_10px_#00E676]"></span>
+                  <span className="font-medium">{address ? truncateAddress(address) : "Connected"}</span>
                 </div>
                 {!isMiniPay && (
                   <button 
