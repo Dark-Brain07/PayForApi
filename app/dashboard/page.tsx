@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
@@ -73,10 +74,15 @@ export default function Dashboard() {
       <h1 className="text-4xl font-black mb-8 text-white tracking-tight">Your API Dashboard</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <div className="card p-6 border border-[#1E293B] shadow-lg relative overflow-hidden group hover:border-[#334155] transition-all">
+        <div className="card p-6 border border-[#1E293B] shadow-lg relative overflow-hidden group hover:border-[#334155] transition-all flex flex-col justify-between">
           <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent opacity-50"></div>
-          <h3 className="text-[#94A3B8] text-sm font-bold uppercase tracking-wider mb-2 relative z-10">Connected Address</h3>
-          <p className="font-mono text-white text-sm break-all relative z-10">{address}</p>
+          <div className="mb-4">
+            <h3 className="text-[#94A3B8] text-sm font-bold uppercase tracking-wider mb-2 relative z-10">Connected Address</h3>
+            <p className="font-mono text-white text-sm break-all relative z-10">{address}</p>
+          </div>
+          <Link href="/explorer" className="relative z-10 bg-brand-yellow/10 hover:bg-brand-yellow/20 text-brand-yellow border border-brand-yellow/30 px-4 py-2.5 rounded-lg font-bold text-center transition-all flex items-center justify-center gap-2 mt-auto shadow-[0_0_10px_rgba(245,197,24,0.1)] hover:shadow-[0_0_15px_rgba(245,197,24,0.2)]">
+            <span>💖</span> Donate Us
+          </Link>
         </div>
         
         <div className="card p-6 border border-[#1E293B] shadow-lg relative overflow-hidden group hover:border-[#334155] transition-all flex flex-col items-center justify-center text-center">
