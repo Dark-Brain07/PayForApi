@@ -26,6 +26,9 @@ export default function Header() {
             <Link href="/marketplace" className="text-text-secondary hover:text-brand-yellow transition-colors">
               Marketplace
             </Link>
+            <Link href="/rewards" className="text-text-secondary hover:text-brand-yellow transition-colors">
+              Rewards
+            </Link>
             <Link href="/docs" className="text-text-secondary hover:text-brand-yellow transition-colors">
               Docs
             </Link>
