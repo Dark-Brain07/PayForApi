@@ -17,7 +17,7 @@ export const GET = withX402(
   (process.env.NEXT_PUBLIC_GATEWAY_ADDRESS || '0x0000000000000000000000000000000000000000') as `0x${string}`,
   {
     price: '$0.001',
-    network: 'celo-mainnet',
+    network: 'celo-mainnet' as any,
     config: { description: 'Live crypto prices - 1 call' },
   }
 );
