@@ -1,23 +1,21 @@
 export const CONTRACTS = {
-  API_GATEWAY: {
-    address: process.env.NEXT_PUBLIC_GATEWAY_ADDRESS || "0x0000000000000000000000000000000000000000",
+  COMMUNITY_NFT: {
+    address: process.env.NEXT_PUBLIC_NFT_ADDRESS || "0x0D2238a8E6a2c5951E6cBeb8e03278f5d0C8FFB6",
     abi: [
-      "function payForAPI(address token, uint256 amount, uint256 productId, bytes32 requestId) external",
-      "function getProduct(uint256 productId) external view returns (tuple(string name, string description, uint256 priceUSD, bool active, uint256 totalCalls, uint256 totalRevenue))",
-      "function getUserStats(address user) external view returns (uint256 calls, uint256 spent)",
-      "function getRecentPayments(uint256 count) external view returns (tuple(address user, address token, uint256 amount, string apiProduct, uint256 timestamp, bytes32 requestId)[])",
-      "function totalCalls() external view returns (uint256)",
-      "function totalRevenue() external view returns (uint256)",
-      "function productCount() external view returns (uint256)",
+      "function mint(uint256 amount) external",
+      "function totalSupply() external view returns (uint256)",
+      "function MAX_SUPPLY() external view returns (uint256)",
+      "function consecutiveMintDays(address) external view returns (uint256)",
+      "function lastMintTime(address) external view returns (uint256)"
     ],
   },
-  AGENT_REGISTRY: {
-    address: process.env.NEXT_PUBLIC_REGISTRY_ADDRESS || "0x0000000000000000000000000000000000000000",
+  API_CREDITS: {
+    address: process.env.NEXT_PUBLIC_CREDITS_ADDRESS || "0x486776B119aAf9eEe3c215D0e42d9Aa426A76b80",
     abi: [
-      "function registerAgent(string name, string description, bytes32 pubKeyHash) external",
-      "function getAgent(address wallet) external view returns (tuple(string name, string description, address wallet, bytes32 pubKeyHash, bool active, uint256 registeredAt, uint256 totalRequests))",
-      "function registeredAgents(address) external view returns (bool)",
-      "function getTotalAgents() external view returns (uint256)",
+      "function claim() external",
+      "function balanceOf(address account) external view returns (uint256)",
+      "function consecutiveDays(address) external view returns (uint256)",
+      "function lastClaimTime(address) external view returns (uint256)"
     ],
   },
 } as const;
