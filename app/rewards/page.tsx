@@ -107,6 +107,23 @@ export default function Rewards() {
           <p className="text-text-secondary text-lg">Claim free API credits and mint community NFTs daily to earn massive streaks.</p>
         </div>
 
+        <div className="mb-12 max-w-4xl mx-auto bg-gradient-to-r from-[#F5C518]/20 via-[#F5C518]/5 to-transparent border border-[#F5C518]/30 rounded-2xl p-8 relative overflow-hidden shadow-[0_0_40px_rgba(245,197,24,0.1)]">
+          <div className="absolute -top-10 -right-10 opacity-10">
+            <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor" className="text-[#F5C518]"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6">
+            <div className="flex-shrink-0 bg-[#F5C518]/20 p-5 rounded-full border border-[#F5C518]/50 shadow-[0_0_20px_rgba(245,197,24,0.3)]">
+              <span className="text-5xl font-black text-[#F5C518] drop-shadow-md">7</span>
+            </div>
+            <div className="text-center md:text-left">
+              <h3 className="text-3xl font-black text-white mb-2 tracking-tight">The 1,000 APIC Mega Bonus! 🚀</h3>
+              <p className="text-[#F5C518]/90 text-lg font-medium leading-relaxed">
+                Build your ultimate streak! Maintain a <strong className="text-[#F5C518] font-bold border-b border-[#F5C518]/40">7-day consecutive streak</strong> of BOTH claiming from the Faucet AND minting a Community NFT to automatically unlock a massive <strong className="text-[#F5C518] text-xl font-black">1,000 APIC</strong> bonus instantly dropped into your wallet on day 7!
+              </p>
+            </div>
+          </div>
+        </div>
+
         {error && <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 text-red-500 rounded-xl text-center font-medium max-w-2xl mx-auto">{error}</div>}
         {success && <div className="mb-6 p-4 bg-brand-green/10 border border-brand-green/50 text-brand-green rounded-xl text-center font-medium max-w-2xl mx-auto">{success}</div>}
 
