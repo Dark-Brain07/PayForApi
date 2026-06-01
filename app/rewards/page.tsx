@@ -12,6 +12,8 @@ export default function Rewards() {
   const [isMinting, setIsMinting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [faucetStreak, setFaucetStreak] = useState<number>(0);
+  const [nftStreak, setNftStreak] = useState<number>(0);
   const [lastClaimTime, setLastClaimTime] = useState<number>(0);
   const [timeRemaining, setTimeRemaining] = useState<string | null>(null);
   
@@ -39,6 +41,12 @@ export default function Rewards() {
 
       const lastClaim = await creditsContract.lastClaimTime(address);
       setLastClaimTime(Number(lastClaim));
+
+      const fStreak = await creditsContract.consecutiveDays(address);
+      setFaucetStreak(Number(fStreak));
+
+      const nStreak = await nftContract.consecutiveMintDays(address);
+      setNftStreak(Number(nStreak));
 
       const minted = await nftContract.totalSupply();
       setNftsMinted(minted.toString());
@@ -138,6 +146,14 @@ export default function Rewards() {
     }
   };
 
+  let displayStreak = 0;
+  if (isConnected) {
+    const minStreak = Math.min(faucetStreak, nftStreak);
+    if (minStreak > 0) {
+      displayStreak = (minStreak - 1) % 7 + 1;
+    }
+  }
+
   return (
     <div className="flex flex-col w-full min-h-screen pt-16">
       <section className="py-16 px-4 max-w-7xl mx-auto w-full">
@@ -161,6 +177,47 @@ export default function Rewards() {
               </p>
             </div>
           </div>
+        </div>
+
+        {/* Streak Progress Chart */}
+        <div className="mb-12 max-w-4xl mx-auto bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-8 relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden">
+          <h3 className="text-xl font-bold text-white mb-8 text-center uppercase tracking-widest text-[#94A3B8]">Mega Bonus Progress Tracker</h3>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            {[1, 2, 3, 4, 5, 6, 7].map((day) => {
+              const isActive = day <= displayStreak;
+              const isBonusDay = day === 7;
+              
+              return (
+                <div key={day} className="flex flex-col items-center relative flex-1 w-full group">
+                  {/* Connecting Line */}
+                  {day < 7 && (
+                    <div className={`hidden sm:block absolute top-6 left-[50%] w-full h-[2px] -z-10 transition-colors duration-1000 ${isActive ? 'bg-[#F5C518]' : 'bg-[#1E293B]'}`}></div>
+                  )}
+                  
+                  {/* Circle */}
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all duration-700 z-10 ${
+                    isActive 
+                      ? isBonusDay 
+                        ? 'bg-[#F5C518] text-black shadow-[0_0_20px_rgba(245,197,24,0.8)] animate-pulse scale-110'
+                        : 'bg-[#F5C518] text-black shadow-[0_0_15px_rgba(245,197,24,0.4)] scale-105'
+                      : 'bg-[#0B0E14] border-2 border-[#1E293B] text-[#475569]'
+                  }`}>
+                    {isActive ? "✓" : day}
+                  </div>
+                  
+                  <span className={`mt-4 text-xs font-bold uppercase tracking-wider transition-colors duration-500 ${isActive ? 'text-[#F5C518]' : 'text-[#475569]'}`}>
+                    {isBonusDay ? '1k APIC' : `Day ${day}`}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          
+          {!isConnected && (
+             <div className="absolute inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center rounded-2xl z-20">
+               <span className="text-white font-bold bg-[#1E293B] px-6 py-3 rounded-full border border-white/10 shadow-xl">Connect Wallet to View Streak</span>
+             </div>
+          )}
         </div>
 
         {error && <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 text-red-500 rounded-xl text-center font-medium max-w-2xl mx-auto">{error}</div>}
