@@ -72,19 +72,30 @@ export default function Explorer() {
         </div>
       </div>
       
-      <div className="card overflow-hidden border border-[#1E293B] shadow-lg">
-        <div className="p-6 border-b border-[#1E293B] bg-[#0B0E14]">
-          <h2 className="text-xl font-bold text-white uppercase tracking-wider">Network Transparency</h2>
+      <div className="card overflow-hidden border border-[#1E293B] shadow-lg mt-8">
+        <div className="p-6 border-b border-[#1E293B] bg-[#0B0E14] text-center sm:text-left">
+          <h2 className="text-xl font-bold text-white uppercase tracking-wider flex items-center justify-center sm:justify-start gap-2">
+            <span>💖</span> Support The Ecosystem
+          </h2>
         </div>
-        <div className="p-12 text-center text-[#94A3B8] bg-brand-elevated">
-          <p className="text-lg">
-            Pay For API operates via direct P2P smart contract transfers. 100% of the network revenue displayed above is verifiably backed on the Celo blockchain.
+        <div className="p-10 text-center text-[#94A3B8] bg-brand-elevated">
+          <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed">
+            Love using Pay For API? Help us keep building and making the application even better! Your generous donations directly fund advanced AI integrations, faster nodes, and continuous upgrades.
           </p>
-          <div className="mt-6 flex justify-center">
-            <a href={`https://celoscan.io/address/0xfd4960F33670f3477ebe817B184dd59fC4961437`} target="_blank" rel="noreferrer" className="bg-[#1E293B] hover:bg-[#334155] border border-[#475569] text-white px-6 py-3 rounded-full font-bold transition-all flex items-center gap-2">
-              View Merchant Wallet on CeloScan 
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+            <div className="bg-[#050505] border border-[#1E293B] px-6 py-4 rounded-xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] text-[#00E676] font-mono text-sm md:text-base break-all flex-grow max-w-lg">
+              0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476
+            </div>
+            <button 
+              className="bg-brand-yellow/10 border border-brand-yellow/40 hover:bg-brand-yellow/20 text-brand-yellow px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(245,197,24,0.15)] hover:shadow-[0_0_20px_rgba(245,197,24,0.3)] whitespace-nowrap"
+              onClick={() => {
+                navigator.clipboard.writeText("0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476");
+                alert("Donation address copied to clipboard! Thank you for your support!");
+              }}
+            >
+              Copy Wallet
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
           </div>
         </div>
       </div>
