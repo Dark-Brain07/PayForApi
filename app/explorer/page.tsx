@@ -4,9 +4,16 @@ import { ethers } from "ethers";
 import { CONTRACTS, CELO_MAINNET } from "@/lib/contracts";
 import { CELO_STABLECOINS } from "@/lib/stablecoins";
 
+interface DonorInfo {
+  address: string;
+  amount: number;
+}
+
 export default function Explorer() {
   const [stats, setStats] = useState({ revenueCusd: "0.00", revenueApic: "0.00" });
+  const [topDonors, setTopDonors] = useState<DonorInfo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [leaderboardLoading, setLeaderboardLoading] = useState(true);
 
   useEffect(() => {
     async function fetchStats() {
@@ -31,10 +38,56 @@ export default function Explorer() {
         setLoading(false);
       }
     }
+
+    async function fetchLeaderboard() {
+      try {
+        const donationWallet = "0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476";
+        const response = await fetch(`https://api.celoscan.io/api?module=account&action=tokentx&address=${donationWallet}&sort=asc`);
+        const data = await response.json();
+        
+        if (data.status === "1" && data.result) {
+          const donations: Record<string, number> = {};
+          
+          data.result.forEach((tx: any) => {
+            if (tx.to.toLowerCase() === donationWallet.toLowerCase()) {
+              const symbol = tx.tokenSymbol.toUpperCase();
+              // Track popular stablecoins on Celo
+              if (["CUSD", "USDC", "CEUR", "CBRL"].includes(symbol)) {
+                const amount = Number(ethers.formatUnits(tx.value, tx.tokenDecimal));
+                const from = tx.from;
+                
+                if (donations[from]) {
+                  donations[from] += amount;
+                } else {
+                  donations[from] = amount;
+                }
+              }
+            }
+          });
+          
+          const sortedDonors: DonorInfo[] = Object.keys(donations)
+            .map(address => ({ address, amount: donations[address] }))
+            .sort((a, b) => b.amount - a.amount)
+            .slice(0, 10);
+            
+          setTopDonors(sortedDonors);
+        }
+      } catch (error) {
+        console.error("Error fetching leaderboard", error);
+      } finally {
+        setLeaderboardLoading(false);
+      }
+    }
+
     fetchStats();
+    fetchLeaderboard();
     const interval = setInterval(fetchStats, 15000);
     return () => clearInterval(interval);
   }, []);
+
+  const truncateAddress = (addr: string) => {
+    return `${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}`;
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
@@ -111,8 +164,8 @@ export default function Explorer() {
             <span className="text-xs font-bold text-[#F5C518] bg-[#F5C518]/10 px-3 py-1 rounded-full border border-[#F5C518]/30">STABLECOINS</span>
           </div>
           <div className="p-0 flex-grow bg-[#050505] overflow-y-auto max-h-[400px] lg:max-h-full">
-            <table className="w-full text-left border-collapse">
-              <thead className="bg-[#1E293B] sticky top-0 z-10">
+            <table className="w-full text-left border-collapse relative">
+              <thead className="bg-[#1E293B] sticky top-0 z-10 shadow-md">
                 <tr>
                   <th className="py-3 px-6 text-[#94A3B8] font-bold text-xs uppercase tracking-wider">Rank</th>
                   <th className="py-3 px-6 text-[#94A3B8] font-bold text-xs uppercase tracking-wider">Donor</th>
@@ -120,34 +173,37 @@ export default function Explorer() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#1E293B]">
-                {[
-                  { address: "0x7a2...b49f", ens: "vitalik.eth", amount: 5000 },
-                  { address: "0x1d3...e8a2", ens: null, amount: 2500 },
-                  { address: "0x8f9...c123", ens: "celodao.eth", amount: 1200 },
-                  { address: "0x3a1...d456", ens: "web3builder.eth", amount: 800 },
-                  { address: "0x9b2...f789", ens: null, amount: 650 },
-                  { address: "0x4c3...a012", ens: "cryptoninja.eth", amount: 420 },
-                  { address: "0x5d4...b345", ens: null, amount: 300 },
-                  { address: "0x6e5...c678", ens: "nftcollector.eth", amount: 150 },
-                  { address: "0x7f6...d901", ens: null, amount: 100 },
-                  { address: "0x8a7...e234", ens: "agentic.eth", amount: 50 }
-                ].map((donor, idx) => (
-                  <tr key={idx} className="hover:bg-[#1E293B]/50 transition-colors group">
-                    <td className="py-4 px-6 text-white font-bold text-lg">
-                      {idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : <span className="text-[#94A3B8] text-sm">#{idx + 1}</span>}
-                    </td>
-                    <td className="py-4 px-6">
-                      {donor.ens ? (
-                        <span className="text-[#00E676] font-bold group-hover:text-white transition-colors">{donor.ens}</span>
-                      ) : (
-                        <span className="text-[#94A3B8] font-mono text-sm group-hover:text-white transition-colors">{donor.address}</span>
-                      )}
-                    </td>
-                    <td className="py-4 px-6 text-right">
-                      <span className="text-[#F5C518] font-black">${donor.amount.toLocaleString()}</span>
+                {leaderboardLoading ? (
+                  <tr>
+                    <td colSpan={3} className="py-12 text-center text-[#94A3B8]">
+                      <span className="animate-pulse flex items-center justify-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-brand-green"></span> Loading real-time blockchain data...
+                      </span>
                     </td>
                   </tr>
-                ))}
+                ) : topDonors.length === 0 ? (
+                  <tr>
+                    <td colSpan={3} className="py-12 text-center text-[#94A3B8]">
+                      Be the first to donate and claim the #1 spot!
+                    </td>
+                  </tr>
+                ) : (
+                  topDonors.map((donor, idx) => (
+                    <tr key={idx} className="hover:bg-[#1E293B]/50 transition-colors group">
+                      <td className="py-4 px-6 text-white font-bold text-lg">
+                        {idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : <span className="text-[#94A3B8] text-sm font-mono">#{idx + 1}</span>}
+                      </td>
+                      <td className="py-4 px-6">
+                        <a href={`https://celoscan.io/address/${donor.address}`} target="_blank" rel="noreferrer" className="text-[#94A3B8] font-mono text-sm group-hover:text-white transition-colors">
+                          {truncateAddress(donor.address)}
+                        </a>
+                      </td>
+                      <td className="py-4 px-6 text-right">
+                        <span className="text-[#F5C518] font-black">${donor.amount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
