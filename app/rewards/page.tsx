@@ -116,7 +116,7 @@ export default function Rewards() {
               <span className="text-5xl font-black text-[#F5C518] drop-shadow-md">7</span>
             </div>
             <div className="text-center md:text-left">
-              <h3 className="text-3xl font-black text-white mb-2 tracking-tight">The 1,000 APIC Mega Bonus! 🚀</h3>
+              <h3 className="text-3xl font-black text-white mb-2 tracking-tight">The 1,000 APIC Mega Bonus!</h3>
               <p className="text-[#F5C518]/90 text-lg font-medium leading-relaxed">
                 Build your ultimate streak! Maintain a <strong className="text-[#F5C518] font-bold border-b border-[#F5C518]/40">7-day consecutive streak</strong> of BOTH claiming from the Faucet AND minting a Community NFT to automatically unlock a massive <strong className="text-[#F5C518] text-xl font-black">1,000 APIC</strong> bonus instantly dropped into your wallet on day 7!
               </p>
