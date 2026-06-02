@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 const getHandler = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
   const text = searchParams.get('text') || 'Example text to summarize';
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY || "AIzaSyArf49d3AVD5Cdtngu9J_jxxASh-wXIH-0";
   if (!apiKey || apiKey === 'placeholder' || apiKey.includes('get_free_from')) {
     return NextResponse.json({ mock: true, summary: "Mock AI Summary of: " + text.substring(0, 50) + "..." });
   }

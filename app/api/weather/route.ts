@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 const getHandler = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
   const city = searchParams.get('city') || 'Dhaka';
-  const apiKey = process.env.OPENWEATHER_API_KEY;
+  const apiKey = process.env.OPENWEATHER_API_KEY || "3c9b9c607531d5ff02b2cbf40cfd1989";
   if (!apiKey || apiKey === 'placeholder' || apiKey.includes('get_free_from')) {
     return NextResponse.json({ mock: true, name: city, main: { temp: 298.15, humidity: 74, pressure: 1006 }, weather: [{ description: "haze", main: "Haze" }], wind: { speed: 1.54 }, sys: { country: "BD" } });
   }
