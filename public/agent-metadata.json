@@ -1,7 +1,7 @@
 {
   "name": "Pay For API Agent",
   "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
-  "image": "https://pay-for-api.vercel.app/logo.svg",
+  "image": "https://pay-for-api.vercel.app/logo.png",
   "active": true,
   "version": "1.0.0",
   "services": [
