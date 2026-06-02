@@ -29,7 +29,7 @@ export default function Marketplace() {
           <p className="text-text-secondary text-lg">Sub-cent micropayments enabled by x402 on Celo.</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           {API_PRODUCTS.map((api) => (
             <APICard 
               key={api.id}
