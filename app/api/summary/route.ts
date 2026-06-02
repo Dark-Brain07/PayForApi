@@ -13,7 +13,7 @@ const getHandler = async (req: NextRequest) => {
     return NextResponse.json({ mock: true, summary: "Mock AI Summary of: " + text.substring(0, 50) + "..." });
   }
   try {
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ contents: [{ parts: [{ text: "Summarize this text: " + text }] }] })
