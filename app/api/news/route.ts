@@ -15,7 +15,7 @@ const getHandler = async (req: NextRequest) => {
     return NextResponse.json({ error: `Invalid category '${category}'. Please use one of: ${validCategories.join(', ')}` });
   }
 
-  const apiKey = process.env.NEWS_API_KEY;
+  const apiKey = process.env.NEWS_API_KEY || "cdd52a365a664a4ca542a35327154b6e";
   if (!apiKey || apiKey === 'placeholder' || apiKey.includes('get_free_from')) {
     return NextResponse.json({ mock: true, articles: [{ title: "AI Reaches New Heights", source: {name: "Mock News"}, description: "Mock description" }] });
   }
