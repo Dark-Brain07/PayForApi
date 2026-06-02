@@ -47,9 +47,8 @@ export default function APICard({ id, name, priceUsd, priceCredits, description,
                 e.target.style.height = "auto";
                 e.target.style.height = `${e.target.scrollHeight}px`;
               }}
-              rows={1}
-              className="w-full sm:flex-grow bg-[#050505] border border-[#1E293B] text-white placeholder-[#475569] text-sm rounded-xl px-4 py-2 focus:outline-none focus:border-[#3B82F6] resize-none overflow-hidden"
-              style={{ minHeight: "38px" }}
+              rows={3}
+              className="w-full sm:flex-grow bg-[#050505] border border-[#1E293B] text-white placeholder-[#475569] text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-[#3B82F6] resize-none overflow-hidden"
             />
           ) : (
             <input 
