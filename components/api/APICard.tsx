@@ -15,7 +15,7 @@ interface APICardProps {
 export default function APICard({ id, name, priceUsd, priceCredits, description, inputs, onTryIt }: APICardProps) {
   const [values, setValues] = useState<string[]>(Array(inputs.length).fill(""));
   return (
-    <div className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 flex flex-col h-full hover:border-[#334155] transition-colors shadow-lg">
+    <div className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 flex flex-col h-fit hover:border-[#334155] transition-colors shadow-lg">
       <div className="flex justify-between items-start mb-4">
         <h3 className="text-xl font-bold text-white">{name}</h3>
         <div className="flex flex-col items-end gap-1">
