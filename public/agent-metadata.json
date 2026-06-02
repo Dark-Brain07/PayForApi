@@ -1,0 +1,109 @@
+{
+  "name": "Pay For API Agent",
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "image": "https://pay-for-api.vercel.app/logo.svg",
+  "active": true,
+  "version": "1.0.0",
+  "services": [
+    {
+      "name": "A2A",
+      "version": "1.0.0",
+      "endpoint": "https://pay-for-api.vercel.app/.well-known/minipay.json"
+    },
+    {
+      "name": "web",
+      "endpoint": "https://pay-for-api.vercel.app"
+    },
+    {
+      "name": "api_chat",
+      "endpoint": "https://pay-for-api.vercel.app/api/chat"
+    },
+    {
+      "name": "api_weather",
+      "endpoint": "https://pay-for-api.vercel.app/api/weather"
+    },
+    {
+      "name": "api_news",
+      "endpoint": "https://pay-for-api.vercel.app/api/news"
+    },
+    {
+      "name": "api_crypto",
+      "endpoint": "https://pay-for-api.vercel.app/api/crypto"
+    },
+    {
+      "name": "api_summary",
+      "endpoint": "https://pay-for-api.vercel.app/api/summary"
+    },
+    {
+      "name": "api_translate",
+      "endpoint": "https://pay-for-api.vercel.app/api/translate"
+    },
+    {
+      "name": "health",
+      "endpoint": "https://pay-for-api.vercel.app/api/health"
+    },
+    {
+      "name": "x402_gateway",
+      "endpoint": "https://celoscan.io/address/"
+    }
+  ],
+  "publisher": {
+    "url": "https://pay-for-api.vercel.app",
+    "name": "Pay For API Platform",
+    "twitter": "",
+    "telegram": ""
+  },
+  "attributes": [
+    {
+      "value": "API Gateway Agent",
+      "trait_type": "Agent Type"
+    },
+    {
+      "value": "Celo Mainnet",
+      "trait_type": "Chain"
+    },
+    {
+      "value": 42220,
+      "trait_type": "Chain ID"
+    },
+    {
+      "value": "AI Chat, Weather, News, Crypto, Translate, Summary",
+      "trait_type": "APIs Supported"
+    },
+    {
+      "value": "cUSD, cEUR, cKES, cBRL, cGHS, cCOP, PUSO",
+      "trait_type": "Settlement Tokens"
+    }
+  ],
+  "compliance": {
+    "kyc": false,
+    "open_source": true,
+    "verification_provider": "None",
+    "human_verification_required": false
+  },
+  "description": "Pay For API Agent is an autonomous API gateway on the Celo Mainnet. It allows users and other agents to access premium AI endpoints using micro-transactions in Celo stablecoins, supporting x402 protocol integration.",
+  "x402support": true,
+  "capabilities": [
+    "ai-chat",
+    "data-analysis",
+    "on-chain-settlement",
+    "x402-payment",
+    "micro-transactions"
+  ],
+  "external_url": "https://pay-for-api.vercel.app",
+  "registrations": [
+    {
+      "agentId": null,
+      "agentRegistry": "eip155:42220:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432"
+    }
+  ],
+  "supportedTrust": [
+    "reputation"
+  ],
+  "operational_metrics": {
+    "fee_currency": "cUSD / cEUR / cKES",
+    "fee_destination": "Platform Treasury",
+    "settlement_currency": "Celo Stablecoins",
+    "platform_fee_percent": 5
+  }
+}
