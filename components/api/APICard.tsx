@@ -32,7 +32,7 @@ export default function APICard({ id, name, priceUsd, priceCredits, description,
       
       <p className="text-[#94A3B8] mb-8 text-sm flex-grow">{description}</p>
       
-      <div className="flex flex-col sm:flex-row items-center gap-3 mt-auto">
+      <div className={`flex flex-col ${name === "AI Summary" || name === "AI Translate" ? '' : 'sm:flex-row'} items-stretch gap-3 mt-auto`}>
         {inputs.map((placeholder, idx) => {
           const isLongText = (name === "AI Summary" && idx === 0) || (name === "AI Translate" && idx === 0);
           return isLongText ? (
