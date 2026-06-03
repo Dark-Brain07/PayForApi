@@ -1,46 +1,46 @@
 {
   "name": "Pay For API Agent",
   "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
-  "image": "https://pay-for-api.vercel.app/logo.png",
+  "image": "https://payforapi.online/logo.png",
   "active": true,
   "version": "1.0.0",
   "services": [
     {
       "name": "A2A",
       "version": "1.0.0",
-      "endpoint": "https://pay-for-api.vercel.app/.well-known/minipay.json"
+      "endpoint": "https://payforapi.online/.well-known/minipay.json"
     },
     {
       "name": "web",
-      "endpoint": "https://pay-for-api.vercel.app"
+      "endpoint": "https://payforapi.online"
     },
     {
       "name": "api_chat",
-      "endpoint": "https://pay-for-api.vercel.app/api/chat"
+      "endpoint": "https://payforapi.online/api/chat"
     },
     {
       "name": "api_weather",
-      "endpoint": "https://pay-for-api.vercel.app/api/weather"
+      "endpoint": "https://payforapi.online/api/weather"
     },
     {
       "name": "api_news",
-      "endpoint": "https://pay-for-api.vercel.app/api/news"
+      "endpoint": "https://payforapi.online/api/news"
     },
     {
       "name": "api_crypto",
-      "endpoint": "https://pay-for-api.vercel.app/api/crypto"
+      "endpoint": "https://payforapi.online/api/crypto"
     },
     {
       "name": "api_summary",
-      "endpoint": "https://pay-for-api.vercel.app/api/summary"
+      "endpoint": "https://payforapi.online/api/summary"
     },
     {
       "name": "api_translate",
-      "endpoint": "https://pay-for-api.vercel.app/api/translate"
+      "endpoint": "https://payforapi.online/api/translate"
     },
     {
       "name": "health",
-      "endpoint": "https://pay-for-api.vercel.app/api/health"
+      "endpoint": "https://payforapi.online/api/health"
     },
     {
       "name": "x402_gateway",
@@ -48,7 +48,7 @@
     }
   ],
   "publisher": {
-    "url": "https://pay-for-api.vercel.app",
+    "url": "https://payforapi.online",
     "name": "Pay For API Platform",
     "twitter": "",
     "telegram": ""
@@ -90,7 +90,7 @@
     "x402-payment",
     "micro-transactions"
   ],
-  "external_url": "https://pay-for-api.vercel.app",
+  "external_url": "https://payforapi.online",
   "registrations": [
     {
       "agentId": null,
