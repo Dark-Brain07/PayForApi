@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ethers } from "ethers";
-import { CONTRACTS, CELO_MAINNET } from "@/lib/contracts";
+import { CELO_MAINNET } from "@/lib/contracts";
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, walletAddress, txHash } = await request.json();
+    const { message, walletAddress, txHash, localTime } = await request.json();
 
     if (!message || !walletAddress || !txHash) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -18,16 +18,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Transaction not found" }, { status: 402 });
     }
 
-    // Call AI and return response
-    const aiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
+    console.log(`Verified payment tx: ${txHash} for user ${walletAddress}`);
+
+    const freemodelUrl = "https://api.freemodel.dev/v1/chat/completions";
+    const apiKey = process.env.FREEMODEL_API_KEY;
+
+    if (!apiKey) {
+      return NextResponse.json({ error: "Freemodel API key missing" }, { status: 500 });
+    }
+
+    const aiResponse = await fetch(freemodelUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [{ role: "user", content: message }],
+        model: "gpt-4o-mini", // Or whatever model you want to use from Freemodel
+        messages: [
+          { role: "system", content: `You are a highly capable AI assistant. The exact current date and time for the user is ${localTime || new Date().toLocaleString()}. This time is ALREADY in the user's local timezone. Do NOT add or subtract any hours. If the user asks for the current time, reply with EXACTLY this time without performing any timezone conversions.` },
+          { role: "user", content: message }
+        ],
         max_tokens: 500,
       }),
     });

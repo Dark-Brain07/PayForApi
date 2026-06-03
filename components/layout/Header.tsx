@@ -68,6 +68,9 @@ export default function Header() {
             <Link href="/marketplace" className="text-text-secondary hover:text-brand-yellow transition-colors">
               Marketplace
             </Link>
+            <Link href="/chat" className="text-text-secondary hover:text-brand-yellow transition-colors font-bold text-brand-yellow/80">
+              AI Chat
+            </Link>
             <Link href="/rewards" className="text-text-secondary hover:text-brand-yellow transition-colors">
               Rewards
             </Link>
@@ -155,6 +158,9 @@ export default function Header() {
             <nav className="flex flex-col space-y-4">
               <Link href="/marketplace" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
                 Marketplace
+              </Link>
+              <Link href="/chat" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+                AI Chat
               </Link>
               <Link href="/rewards" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
                 Rewards
