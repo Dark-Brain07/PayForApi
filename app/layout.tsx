@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   other: {
     "mini-pay": "true",
     "talentapp:project": "pay-for-api",
+    "talentapp:project_verification": "8ca17029f3adbb9b374a2fcf59ed89f4f55fdf34ad60a58706430a864dfb85470f83f22fc292305f1f4e3af294f3918e73cba502dac7bafdea4ae9f802d5401e"
   },
 };
 
