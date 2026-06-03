@@ -6,7 +6,9 @@ export async function processPayment(
   tokenAddress: string,
   amount: string,
   productId: number,
-  requestId: string
+  requestId: string,
+  isMiniPay: boolean = false,
+  decimals: number = 18
 ) {
   const signer = await provider.getSigner();
   
@@ -20,12 +22,17 @@ export async function processPayment(
     signer
   );
   
-  const parsedAmount = ethers.parseUnits(amount, 18);
+  const parsedAmount = ethers.parseUnits(amount, decimals);
 
-  // Celo-specific override to explicitly pay gas (transaction fee) in cUSD
-  const overrides = {
-    feeCurrency: "0x765DE816845861e75A25fCA122bb6898B8B1282a" // cUSD contract address
-  };
+  const overrides: any = {};
+  
+  if (isMiniPay) {
+    // MiniPay best practices: use legacy tx type and let MiniPay handle fee abstraction automatically
+    overrides.type = 0;
+  } else {
+    // Celo-specific override to explicitly pay gas (transaction fee) in cUSD
+    overrides.feeCurrency = "0x765DE816845861e75A25fCA122bb6898B8B1282a"; // cUSD contract address
+  }
 
   // Direct ERC20 Transfer to receiver with feeCurrency override
   const transferTx = await tokenContract.transfer(receiverAddress, parsedAmount, overrides);

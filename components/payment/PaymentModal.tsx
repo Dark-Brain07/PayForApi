@@ -25,7 +25,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
 
   useEffect(() => {
     if (isMiniPay) {
-      setSelectedToken("cUSD");
+      setSelectedToken("USDC"); // MiniPay natively supports USDC, USDT, USDm
     }
   }, [isMiniPay]);
 
@@ -51,7 +51,9 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
           token.address,
           token.pricePerCall,
           productId,
-          requestId
+          requestId,
+          isMiniPay,
+          token.decimals
         );
         
         onSuccess(receipt.hash, selectedToken);
@@ -88,7 +90,9 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
           CONTRACTS.API_CREDITS.address,
           priceCredits.toString(),
           productId,
-          requestId
+          requestId,
+          isMiniPay,
+          18 // APIC uses 18 decimals
         );
         
         onSuccess(receipt.hash, "APIC");
