@@ -58,7 +58,11 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
       }
     } catch (err: any) {
       console.error(err);
-      setError(err.message || "Payment failed. Please try again.");
+      let errorMessage = err?.reason || err?.message || "Payment failed. Please try again.";
+      if (errorMessage.includes("transfer amount exceeds balance")) {
+        errorMessage = "Transaction failed: Insufficient balance. Please top up your wallet.";
+      }
+      setError(errorMessage);
     } finally {
       setIsProcessing(false);
     }
@@ -91,7 +95,11 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
       }
     } catch (err: any) {
       console.error(err);
-      setError(err.message || "Credit payment failed. Please try again.");
+      let errorMessage = err?.reason || err?.message || "Credit payment failed. Please try again.";
+      if (errorMessage.includes("transfer amount exceeds balance")) {
+        errorMessage = "Transaction failed: Insufficient APIC balance. Please top up your credits.";
+      }
+      setError(errorMessage);
     } finally {
       setIsProcessing(false);
     }
