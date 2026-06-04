@@ -19,6 +19,10 @@
       "endpoint": "https://payforapi.online/api/chat"
     },
     {
+      "name": "chat_ui",
+      "endpoint": "https://www.payforapi.online/chat"
+    },
+    {
       "name": "api_weather",
       "endpoint": "https://payforapi.online/api/weather"
     },
