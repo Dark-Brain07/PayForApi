@@ -64,24 +64,24 @@ export default function Header() {
             </Link>
           </div>
           
-          <nav className="hidden md:flex space-x-8">
-            <Link href="/marketplace" className="text-text-secondary hover:text-brand-yellow transition-colors">
+          <nav className="hidden md:flex space-x-8 items-center">
+            <Link href="/marketplace" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
               Marketplace
             </Link>
-            <Link href="/chat" className="text-text-secondary hover:text-brand-yellow transition-colors font-bold text-brand-yellow/80">
+            <Link href="/chat" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block font-bold text-brand-yellow/80">
               AI Chat
             </Link>
-            <Link href="/rewards" className="text-text-secondary hover:text-brand-yellow transition-colors">
+            <Link href="/rewards" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
               Rewards
             </Link>
-            <Link href="/docs" className="text-text-secondary hover:text-brand-yellow transition-colors">
+            <Link href="/docs" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
               Docs
             </Link>
-            <Link href="/explorer" className="text-text-secondary hover:text-brand-yellow transition-colors">
+            <Link href="/explorer" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
               Explorer
             </Link>
             {isConnected && (
-              <Link href="/dashboard" className="text-text-secondary hover:text-brand-yellow transition-colors">
+              <Link href="/dashboard" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
                 Dashboard
               </Link>
             )}
@@ -156,23 +156,23 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-[#1E293B] py-4 pb-6 absolute left-0 right-0 bg-brand-black shadow-2xl px-4 z-40">
             <nav className="flex flex-col space-y-4">
-              <Link href="/marketplace" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+              <Link href="/marketplace" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
                 Marketplace
               </Link>
-              <Link href="/chat" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+              <Link href="/chat" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
                 AI Chat
               </Link>
-              <Link href="/rewards" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+              <Link href="/rewards" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
                 Rewards
               </Link>
-              <Link href="/docs" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+              <Link href="/docs" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
                 Docs
               </Link>
-              <Link href="/explorer" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow transition-colors font-bold text-lg p-2 rounded-lg hover:bg-white/5">
+              <Link href="/explorer" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
                 Explorer
               </Link>
               {isConnected && (
-                <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow font-black text-lg p-2 rounded-lg bg-brand-yellow/10 border border-brand-yellow/20">
+                <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow font-black text-lg p-2 rounded-lg bg-brand-yellow/10 border border-brand-yellow/20 hover:scale-[1.02] transition-transform duration-300 block">
                   Dashboard
                 </Link>
               )}
