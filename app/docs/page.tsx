@@ -40,6 +40,7 @@ export default function Docs() {
           <h3 className="text-[10px] font-black text-[#94A3B8] uppercase tracking-[0.2em] mb-4">Core Concepts</h3>
           <ul className="space-y-3 mb-10">
             <li><button onClick={() => setActiveTab("intro")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "intro" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>Introduction</button></li>
+            <li><button onClick={() => setActiveTab("architecture")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "architecture" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>System Architecture</button></li>
           </ul>
         </div>
 
@@ -52,6 +53,7 @@ export default function Docs() {
           >
             <optgroup label="Core Concepts">
               <option value="intro">Introduction</option>
+              <option value="architecture">System Architecture</option>
             </optgroup>
           </select>
         </div>
@@ -87,6 +89,59 @@ export default function Docs() {
                     <div><strong className="text-white block mb-1">Privacy First</strong> <span className="text-[#94A3B8] text-sm">No PII or KYC required. Your cryptographic address is your sole identity.</span></div>
                   </li>
                 </ul>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "architecture" && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 w-full overflow-hidden">
+              <h2 className="text-3xl font-black text-white mb-6 border-b border-[#1E293B] pb-4">System Architecture</h2>
+              <p className="text-[#94A3B8] text-lg leading-relaxed mb-8">
+                The protocol operates through a 4-step trustless verification loop. Our decentralized gateway ensures that data is only dispensed once cryptographically secure payment settlement is confirmed on the Celo network.
+              </p>
+              
+              {/* Architecture Diagram */}
+              <div className="relative w-full bg-[#050505] border border-[#1E293B] rounded-[32px] p-8 mb-12 shadow-2xl flex flex-col items-center gap-8 overflow-x-auto custom-scrollbar">
+                <div className="w-[600px] sm:w-full flex justify-between items-center relative z-10 shrink-0">
+                  <div className="bg-[#0F141C] border border-[#334155] rounded-2xl p-5 w-1/4 text-center z-20 shadow-lg">
+                    <div className="text-brand-yellow text-3xl mb-3 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">📱</div>
+                    <div className="text-white font-black text-sm">Client Agent</div>
+                  </div>
+                  
+                  <div className="h-[2px] bg-gradient-to-r from-[#334155] via-brand-yellow to-[#334155] flex-grow mx-2 relative">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[9px] text-brand-yellow font-black uppercase tracking-widest bg-[#050505] px-3 py-1 rounded-full border border-brand-yellow/30">1. Sign Tx</div>
+                  </div>
+                  
+                  <div className="bg-[#002A1A] border border-[#00E676] rounded-2xl p-5 w-1/4 text-center z-20 shadow-[0_0_20px_rgba(0,230,118,0.15)]">
+                    <div className="text-[#00E676] text-3xl mb-3 drop-shadow-[0_0_8px_rgba(0,230,118,0.5)]">⛓️</div>
+                    <div className="text-white font-black text-sm">Celo Network</div>
+                  </div>
+                </div>
+
+                <div className="w-[600px] sm:w-full flex justify-between items-center relative z-10 shrink-0">
+                  <div className="bg-[#0F141C] border border-brand-yellow/50 rounded-2xl p-5 w-1/4 text-center z-20 shadow-[0_0_20px_rgba(245,197,24,0.15)] relative overflow-hidden">
+                    <div className="absolute inset-0 bg-brand-yellow/5 animate-pulse"></div>
+                    <div className="text-brand-yellow text-3xl mb-3 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)] relative z-10">⚡</div>
+                    <div className="text-white font-black text-sm relative z-10">Gateway Node</div>
+                  </div>
+                  
+                  <div className="h-[2px] bg-gradient-to-r from-brand-yellow via-[#334155] to-[#334155] flex-grow mx-2 relative">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[9px] text-[#94A3B8] font-black uppercase tracking-widest bg-[#050505] px-3 py-1 rounded-full border border-[#334155]">4. Return Data</div>
+                  </div>
+                  
+                  <div className="bg-[#1E1B4B] border border-[#818CF8] rounded-2xl p-5 w-1/4 text-center z-20 shadow-[0_0_20px_rgba(129,140,248,0.15)]">
+                    <div className="text-[#818CF8] text-3xl mb-3 drop-shadow-[0_0_8px_rgba(129,140,248,0.5)]">🌐</div>
+                    <div className="text-white font-black text-sm">Premium Data</div>
+                  </div>
+                </div>
+
+                {/* Vertical connecting lines */}
+                <div className="absolute left-[12.5%] top-[100px] bottom-[100px] w-[2px] bg-[#334155] z-0 hidden sm:block shadow-[0_0_10px_rgba(255,255,255,0.1)]">
+                  <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 text-[9px] text-[#94A3B8] font-black uppercase tracking-widest bg-[#050505] px-1 py-3 border border-[#334155] rounded-full whitespace-nowrap" style={{ writingMode: 'vertical-rl' }}>2. HTTP POST</div>
+                </div>
+                <div className="absolute right-[12.5%] top-[100px] bottom-[100px] w-[2px] bg-[#334155] z-0 hidden sm:block shadow-[0_0_10px_rgba(255,255,255,0.1)]">
+                   <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 text-[9px] text-[#94A3B8] font-black uppercase tracking-widest bg-[#050505] px-1 py-3 border border-[#334155] rounded-full whitespace-nowrap" style={{ writingMode: 'vertical-rl' }}>3. Verify Tx</div>
+                </div>
               </div>
             </div>
           )}
