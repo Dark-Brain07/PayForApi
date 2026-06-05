@@ -225,8 +225,11 @@ export default function Rewards() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Faucet Card */}
-          <div className="card p-8 flex flex-col items-center text-center relative overflow-hidden group">
+          <div className="card p-8 flex flex-col items-center text-center relative overflow-hidden group hover:border-brand-yellow/50 transition-colors duration-300">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-yellow/5 to-transparent pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity"></div>
+            <div className="w-16 h-16 bg-brand-yellow/10 rounded-full flex items-center justify-center mb-4 border border-brand-yellow/20">
+              <svg className="w-8 h-8 text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
             <h2 className="text-2xl font-bold text-white mb-2">API Credits Faucet</h2>
             <p className="text-text-secondary mb-8">Get 100 APIC on your first visit, and 50 APIC every 24 hours.</p>
             
@@ -249,8 +252,11 @@ export default function Rewards() {
           </div>
 
           {/* NFT Card */}
-          <div className="card p-8 flex flex-col items-center text-center relative overflow-hidden group">
+          <div className="card p-8 flex flex-col items-center text-center relative overflow-hidden group hover:border-brand-green/50 transition-colors duration-300">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-green/5 to-transparent pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity"></div>
+            <div className="w-16 h-16 bg-brand-green/10 rounded-full flex items-center justify-center mb-4 border border-brand-green/20">
+              <svg className="w-8 h-8 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            </div>
             <h2 className="text-2xl font-bold text-white mb-2">Community NFT</h2>
             <p className="text-text-secondary mb-8">Mint unlimited NFTs. Keep a 7-day streak for a 1,000 APIC bonus.</p>
             
