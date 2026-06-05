@@ -16,7 +16,7 @@ async function main() {
   const registryContract = new ethers.Contract(REGISTRY_ADDRESS, abi, deployer);
 
   // Once deployed to Vercel, this is where your metadata will live:
-  const metadataURI = "https://payforapi.online/agent-metadata.json";
+  const metadataURI = "ipfs://bafkreibg4w3asbccekjcuu47epis3kljbxxajg46dzis6ggq7ym4qse4qa";
   
   console.log("Using metadata URI:", metadataURI);
 
