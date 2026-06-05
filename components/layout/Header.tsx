@@ -68,9 +68,9 @@ export default function Header() {
             <Link href="/marketplace" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
               Marketplace
             </Link>
-            <Link href="/chat" className="relative text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-flex items-center font-semibold">
-              AI Chat
-              <span className="absolute -top-3.5 -right-14 px-1.5 py-0.5 bg-gradient-to-r from-brand-yellow/20 to-transparent text-brand-yellow text-[9px] font-black uppercase tracking-wider rounded border border-brand-yellow/30 whitespace-nowrap shadow-[0_0_8px_rgba(245,197,24,0.3)]">New Released</span>
+            <Link href="/chat" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2 font-semibold">
+              <span>AI Chat</span>
+              <span className="px-2 py-0.5 bg-gradient-to-r from-brand-yellow to-[#FDE047] text-black text-[9px] font-black uppercase tracking-wider rounded-md shadow-[0_0_12px_rgba(245,197,24,0.6)]">New Released</span>
             </Link>
             <Link href="/rewards" className="text-brand-yellow/90 hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block font-bold drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">
               Rewards
