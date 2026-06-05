@@ -14,6 +14,18 @@ interface APICardProps {
 
 export default function APICard({ id, name, priceUsd, priceCredits, description, inputs, onTryIt }: APICardProps) {
   const [values, setValues] = useState<string[]>(Array(inputs.length).fill(""));
+
+  const getIcon = () => {
+    switch (name) {
+      case "Weather Info": return "🌤️";
+      case "Global News": return "🌍";
+      case "Crypto Pulse": return "📈";
+      case "AI Summary": return "🧠";
+      case "AI Translate": return "🗣️";
+      default: return "⚡";
+    }
+  };
+
   return (
     <div className="group relative bg-[#0B0E14] border border-[#1E293B] rounded-[24px] p-6 sm:p-8 flex flex-col h-fit hover:border-brand-yellow/40 transition-all duration-500 shadow-xl hover:shadow-[0_0_40px_rgba(245,197,24,0.12)] overflow-hidden">
       {/* Subtle background glow effect on hover */}
@@ -22,7 +34,7 @@ export default function APICard({ id, name, priceUsd, priceCredits, description,
       <div className="relative z-10 flex flex-col sm:flex-row sm:justify-between sm:items-start mb-6 gap-4 sm:gap-0">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1E293B] to-[#0F141C] border border-[#334155] flex items-center justify-center shadow-inner shrink-0 group-hover:border-brand-yellow/30 transition-colors duration-500">
-             <span className="text-brand-yellow font-black text-xl group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">⚡</span>
+             <span className="text-brand-yellow font-black text-xl group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">{getIcon()}</span>
           </div>
           <h3 className="text-2xl font-black text-white tracking-tight">{name}</h3>
         </div>
