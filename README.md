@@ -5,6 +5,7 @@
 [![MiniPay](https://img.shields.io/badge/MiniPay-Compatible-brightgreen.svg)](https://docs.celo.org/developer/build-on-minipay/overview)
 [![Celo](https://img.shields.io/badge/Celo-Mainnet-yellow.svg)](https://celo.org)
 [![x402](https://img.shields.io/badge/x402-Enabled-blue.svg)](https://x402.org)
+[![GitHub stars](https://img.shields.io/github/stars/Dark-Brain07/pay-for-api?style=social)](https://github.com/Dark-Brain07/pay-for-api)
 
 ## 🌍 Supported Stablecoins
 
