@@ -22,10 +22,6 @@ export default function Docs() {
       <div className="border-b border-[#1E293B] bg-[#0A0D12] pt-20 pb-16 px-4 md:px-16 relative overflow-hidden shrink-0">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-yellow/10 border border-brand-yellow/30 rounded-full mb-6 shadow-[0_0_15px_rgba(245,197,24,0.1)]">
-            <span className="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span>
-            <span className="text-brand-yellow text-[10px] font-black uppercase tracking-widest">Protocol v1.0.0</span>
-          </div>
           <h1 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-200">Documentation</span></h1>
           <p className="text-[#94A3B8] text-lg md:text-xl max-w-3xl leading-relaxed font-medium">
             Integrate the world's first fully decentralized, subscriptionless API gateway. 
