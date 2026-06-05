@@ -112,6 +112,16 @@ export default function Home() {
             <InteractiveTerminal />
           </div>
         </div>
+
+        <div className="mt-12 flex justify-center opacity-0 animate-[fadeIn_1s_ease-out_1s_forwards]">
+          <Link href="/marketplace" className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-black transition-all duration-300 bg-brand-yellow rounded-xl hover:bg-brand-yellow/90 hover:scale-105 hover:shadow-[0_0_30px_rgba(245,197,24,0.4)] overflow-hidden">
+            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+            <span className="relative flex items-center gap-2 text-lg">
+              Explore API Marketplace
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+            </span>
+          </Link>
+        </div>
       </section>
 
     </div>
