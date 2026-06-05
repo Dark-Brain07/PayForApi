@@ -44,6 +44,16 @@ export default function Docs() {
             <li><button onClick={() => setActiveTab("x402")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "x402" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>x402 Authentication</button></li>
             <li><button onClick={() => setActiveTab("erc8004")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "erc8004" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>ERC-8004 Standard</button></li>
           </ul>
+
+          <h3 className="text-[10px] font-black text-[#94A3B8] uppercase tracking-[0.2em] mb-4">REST Endpoints</h3>
+          <ul className="space-y-3 mb-8 border-l border-[#1E293B] pl-4">
+            <li><button onClick={() => setActiveTab("api-chat")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-chat" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>Agentic Chat</button></li>
+            <li><button onClick={() => setActiveTab("api-weather")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-weather" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>Weather Info</button></li>
+            <li><button onClick={() => setActiveTab("api-news")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-news" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>Global News</button></li>
+            <li><button onClick={() => setActiveTab("api-crypto")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-crypto" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>Crypto Pulse</button></li>
+            <li><button onClick={() => setActiveTab("api-summary")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-summary" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>AI Summary</button></li>
+            <li><button onClick={() => setActiveTab("api-translate")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-translate" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>AI Translate</button></li>
+          </ul>
         </div>
 
         {/* Mobile Navigation Dropdown */}
@@ -58,6 +68,14 @@ export default function Docs() {
               <option value="architecture">System Architecture</option>
               <option value="x402">x402 Authentication</option>
               <option value="erc8004">ERC-8004 Standard</option>
+            </optgroup>
+            <optgroup label="REST Endpoints">
+              <option value="api-chat">Agentic Chat API</option>
+              <option value="api-weather">Weather Info API</option>
+              <option value="api-news">Global News API</option>
+              <option value="api-crypto">Crypto Pulse API</option>
+              <option value="api-summary">AI Summary API</option>
+              <option value="api-translate">AI Translate API</option>
             </optgroup>
           </select>
         </div>
@@ -204,6 +222,85 @@ Content-Type: application/json
                   <a href="https://celoscan.io/address/0x51E2b4B89ab2dAC4Aca64DccB3BAebF6B846eF52" target="_blank" rel="noreferrer" className="text-[#00E676] text-sm font-bold hover:underline">View on Explorer ↗</a>
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* Endpoints */}
+          {activeTab.startsWith("api-") && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end border-b border-[#1E293B] pb-4 mb-8 gap-4">
+                <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+                  {activeTab === "api-chat" && "Agentic AI Chat API"}
+                  {activeTab === "api-weather" && "Real-Time Weather API"}
+                  {activeTab === "api-news" && "Global News API"}
+                  {activeTab === "api-crypto" && "Crypto Pulse API"}
+                  {activeTab === "api-summary" && "AI Document Summary API"}
+                  {activeTab === "api-translate" && "AI Universal Translate API"}
+                </h2>
+                <div className="px-3 py-1.5 bg-[#00E676]/10 text-[#00E676] border border-[#00E676]/30 font-mono font-bold rounded-lg text-xs tracking-wider shadow-[0_0_10px_rgba(0,230,118,0.1)] shrink-0">
+                  POST /api/{activeTab.replace("api-", "")}
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <div className="bg-[#0F141C] border border-[#1E293B] rounded-2xl p-5 flex-1 shadow-lg">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-[10px] font-black text-[#94A3B8] uppercase tracking-widest">Execution Cost</span>
+                    <span className="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span>
+                  </div>
+                  <div className="text-3xl font-black text-white">
+                    {activeTab === "api-chat" || activeTab === "api-summary" ? "$0.005" : 
+                     activeTab === "api-translate" ? "$0.003" : 
+                     activeTab === "api-news" ? "$0.002" : "$0.001"} 
+                    <span className="text-sm font-bold text-[#00E676] ml-2">cUSD</span>
+                  </div>
+                </div>
+                <div className="bg-[#0F141C] border border-[#1E293B] rounded-2xl p-5 flex-1 shadow-lg">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-[10px] font-black text-[#94A3B8] uppercase tracking-widest">Compute Engine</span>
+                    <span className="w-2 h-2 rounded-full bg-[#818CF8] animate-pulse"></span>
+                  </div>
+                  <div className="text-2xl font-black text-white mt-1">
+                    {activeTab.includes("api-chat") || activeTab.includes("summary") || activeTab.includes("translate") ? "Gemini 2.5 Flash" : "Web2 Enterprise Oracle"}
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="text-xl font-black text-white mb-3 flex items-center gap-2">
+                <span className="text-[#3B82F6]">{"{"}</span> Request Schema <span className="text-[#3B82F6]">{"}"}</span>
+              </h3>
+              <p className="text-base text-[#94A3B8] mb-4">Standard JSON payload requiring payment verification parameters.</p>
+              
+              <CodeBlock 
+                language="json"
+                code={`{
+  "walletAddress": "0xYourCeloWalletAddress...",
+  "txHash": "0xTheTransactionHashConfirmingPayment...",
+${
+  activeTab === "api-chat" ? '  "message": "Analyze the systemic risks of DeFi protocols."' :
+  activeTab === "api-weather" ? '  "city": "London"' :
+  activeTab === "api-news" ? '  "category": "technology"' :
+  activeTab === "api-crypto" ? '  "ids": "celo,bitcoin,ethereum"' :
+  activeTab === "api-summary" ? '  "text": "Extensive text block of documentation to be summarized into key points..."' :
+  '  "text": "Hello world, the future is decentralized and agentic.",\n  "language": "French"'
+}
+}`}
+              />
+
+              <h3 className="text-xl font-black text-white mt-10 mb-3 flex items-center gap-2">
+                <span className="text-[#00E676]">{"{"}</span> Successful Response <span className="text-[#00E676]">{"}"}</span>
+              </h3>
+              <CodeBlock 
+                language="json"
+                code={`{
+  "success": true,
+  "data": {
+    // Expected requested payload data returned instantly
+  },
+  "txVerified": true,
+  "timestamp": "2026-06-05T00:00:00Z"
+}`}
+              />
             </div>
           )}
         </div>
