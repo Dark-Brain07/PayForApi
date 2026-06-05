@@ -41,6 +41,8 @@ export default function Docs() {
           <ul className="space-y-3 mb-10">
             <li><button onClick={() => setActiveTab("intro")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "intro" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>Introduction</button></li>
             <li><button onClick={() => setActiveTab("architecture")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "architecture" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>System Architecture</button></li>
+            <li><button onClick={() => setActiveTab("x402")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "x402" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>x402 Authentication</button></li>
+            <li><button onClick={() => setActiveTab("erc8004")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "erc8004" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>ERC-8004 Standard</button></li>
           </ul>
         </div>
 
@@ -54,6 +56,8 @@ export default function Docs() {
             <optgroup label="Core Concepts">
               <option value="intro">Introduction</option>
               <option value="architecture">System Architecture</option>
+              <option value="x402">x402 Authentication</option>
+              <option value="erc8004">ERC-8004 Standard</option>
             </optgroup>
           </select>
         </div>
@@ -141,6 +145,63 @@ export default function Docs() {
                 </div>
                 <div className="absolute right-[12.5%] top-[100px] bottom-[100px] w-[2px] bg-[#334155] z-0 hidden sm:block shadow-[0_0_10px_rgba(255,255,255,0.1)]">
                    <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 text-[9px] text-[#94A3B8] font-black uppercase tracking-widest bg-[#050505] px-1 py-3 border border-[#334155] rounded-full whitespace-nowrap" style={{ writingMode: 'vertical-rl' }}>3. Verify Tx</div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "x402" && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <h2 className="text-3xl font-black text-white mb-6 border-b border-[#1E293B] pb-4">x402 Protocol Implementation</h2>
+              <p className="text-[#94A3B8] text-lg leading-relaxed mb-6">
+                The traditional HTTP 402 "Payment Required" status code was standardized decades ago but rarely utilized due to the lack of native internet money. Pay For API modernizes this into the <strong className="text-brand-yellow">x402 standard</strong> for Web3 ecosystems.
+              </p>
+              
+              <h3 className="text-xl font-black text-white mt-8 mb-4">Authentication Workflow</h3>
+              <div className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 mb-8">
+                <ol className="list-decimal pl-5 text-[#94A3B8] space-y-4">
+                  <li><strong className="text-white">Transaction:</strong> The Client makes a request to a provider smart contract on Celo, paying the exact required cUSD fee.</li>
+                  <li><strong className="text-white">Receipt:</strong> The Client receives a Transaction Hash (<code className="bg-[#1E293B] text-white px-2 py-0.5 rounded text-xs font-mono">txHash</code>).</li>
+                  <li><strong className="text-white">Execution:</strong> The Client executes a standard REST HTTP POST to the PayForAPI Gateway, embedding the <code className="bg-[#1E293B] text-white px-2 py-0.5 rounded text-xs font-mono">txHash</code> and Wallet Address in the payload.</li>
+                  <li><strong className="text-white">Verification:</strong> The Gateway utilizes an RPC node to independently verify the transaction details (value, recipient, timestamp) instantly.</li>
+                  <li><strong className="text-white">Fulfillment:</strong> If verified, the Gateway fulfills the request. If not, it returns a strict <code className="text-red-400 font-mono text-sm bg-red-400/10 px-2 py-0.5 rounded">HTTP 402 Payment Required</code>.</li>
+                </ol>
+              </div>
+
+              <CodeBlock 
+                language="http"
+                code={`POST /api/chat HTTP/1.1
+Host: api.payforapi.com
+Content-Type: application/json
+
+{
+  "message": "Hello AI",
+  "walletAddress": "0xYourWalletAddress...",
+  "txHash": "0xTheTransactionHash..."
+}`} 
+              />
+            </div>
+          )}
+
+          {activeTab === "erc8004" && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <h2 className="text-3xl font-black text-white mb-6 border-b border-[#1E293B] pb-4">ERC-8004 Standard Integration</h2>
+              <p className="text-[#94A3B8] text-lg leading-relaxed mb-6">
+                Pay For API implements the cutting-edge <strong className="text-[#00E676] bg-[#00E676]/10 px-2 py-0.5 rounded-md">ERC-8004 Asset-Bound Intelligence</strong> standard natively on the Celo blockchain. This architecture allows smart contracts to not just handle basic payments, but to strictly define the capabilities, prices, and computational limits of the autonomous agents hooked into them.
+              </p>
+              <div className="bg-gradient-to-br from-[#002A1A] to-[#0A0D12] border border-[#00E676]/30 rounded-2xl p-8 mb-8 shadow-xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#00E676]/10 rounded-bl-full blur-2xl"></div>
+                <h4 className="text-[#00E676] font-black text-xl mb-3 relative z-10 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#00E676] animate-pulse"></span>
+                  Smart Contract Registry
+                </h4>
+                <p className="text-base text-[#94A3B8] mb-6 relative z-10 leading-relaxed">Our immutable core registry contract stores all available API endpoints, their dynamic cUSD/APIC prices, and their required schemas completely on-chain, creating a trustless source of truth for all agents.</p>
+                <div className="bg-[#050505] border border-[#1E293B] rounded-xl p-4 flex items-center justify-between relative z-10">
+                  <div>
+                    <div className="text-[10px] font-black text-[#64748B] uppercase tracking-widest mb-1">Mainnet Contract Address</div>
+                    <code className="text-sm font-mono text-white">0x51E2b4B89ab2dAC4Aca64DccB3BAebF6B846eF52</code>
+                  </div>
+                  <a href="https://celoscan.io/address/0x51E2b4B89ab2dAC4Aca64DccB3BAebF6B846eF52" target="_blank" rel="noreferrer" className="text-[#00E676] text-sm font-bold hover:underline">View on Explorer ↗</a>
                 </div>
               </div>
             </div>
