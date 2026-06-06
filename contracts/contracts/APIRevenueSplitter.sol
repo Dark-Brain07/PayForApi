@@ -37,3 +37,6 @@ contract APIRevenueSplitter is Ownable {
         ApiEndpoint storage api = apiEndpoints[endpointId];
         require(api.isActive, "API not active");
         
+        uint256 platformShare = (amount * platformFeePercentage) / 100;
+        uint256 creatorShare = amount - platformShare;
+
