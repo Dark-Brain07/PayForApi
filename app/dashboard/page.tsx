@@ -49,3 +49,4 @@ export default function DashboardPage() {
           <h2 className="text-2xl font-bold text-white mb-6">Your Registered Endpoints</h2>
           <div className="space-y-4">
             {apis.map((api, idx) => (
+              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/50 border border-[#1E293B] hover:border-[#334155] rounded-xl transition-all group">
