@@ -83,3 +83,4 @@ const data = await response.json();
 ## 📈 Creator Dashboard (List Your Own API)
 
 Pay For API is not just a consumer platform; it is a two-sided marketplace.
+Developers can register their own Web2 or Web3 endpoints via our Creator Dashboard.
