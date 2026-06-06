@@ -76,3 +76,4 @@ const client = new PayForApiClient({
 });
 
 // The fetch call automatically handles x402 invoice settlement in the background
+const response = await client.fetch('https://pay-for-api.com/api/weather');
