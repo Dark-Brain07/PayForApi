@@ -26,3 +26,5 @@ contract APIRevenueSplitter is Ownable {
     function registerApi(string memory endpointId) external {
         require(apiEndpoints[endpointId].creator == address(0), "Endpoint already registered");
         apiEndpoints[endpointId] = ApiEndpoint({
+            creator: msg.sender,
+            isActive: true,
