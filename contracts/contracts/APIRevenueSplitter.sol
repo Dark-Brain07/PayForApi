@@ -9,3 +9,5 @@ contract APIRevenueSplitter is Ownable {
     address public platformWallet;
 
     struct ApiEndpoint {
+        address creator;
+        bool isActive;
