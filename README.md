@@ -66,3 +66,5 @@ By providing an EVM-compatible private key, the SDK automatically handles `402 P
 ```bash
 npm install @pay-for-api/sdk
 ```
+
+### Usage Example
