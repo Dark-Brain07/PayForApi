@@ -86,3 +86,4 @@ Pay For API is not just a consumer platform; it is a two-sided marketplace.
 Developers can register their own Web2 or Web3 endpoints via our Creator Dashboard.
 
 ### How it Works:
+1. **Register**: Submit your endpoint URL and desired cUSD price per call.
