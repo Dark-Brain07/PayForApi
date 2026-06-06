@@ -81,3 +81,9 @@ export default function DashboardPage() {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-[#0F172A] border border-[#1E293B] rounded-2xl w-full max-w-md p-6 relative">
+            <button 
+              onClick={() => setModalOpen(false)}
+              className="absolute top-4 right-4 text-[#64748B] hover:text-white"
+            >
+              ✕
+            </button>
