@@ -104,3 +104,9 @@ export default function DashboardPage() {
                 <input type="number" step="0.001" className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" placeholder="0.005" />
               </div>
               <p className="text-xs text-[#64748B]">Platform fee: 10% per transaction automatically routed to Pay For API treasury.</p>
+              <button 
+                onClick={() => setModalOpen(false)}
+                className="w-full py-3 bg-brand-yellow text-black font-bold rounded-lg hover:bg-yellow-400 transition-all mt-4"
+              >
+                Register & Get x402 Wrapper
+              </button>
