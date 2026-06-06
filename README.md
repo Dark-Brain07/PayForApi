@@ -74,3 +74,5 @@ import { PayForApiClient } from '@pay-for-api/sdk';
 const client = new PayForApiClient({
   privateKey: process.env.CELO_PRIVATE_KEY
 });
+
+// The fetch call automatically handles x402 invoice settlement in the background
