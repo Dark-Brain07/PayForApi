@@ -52,3 +52,4 @@ export default function DashboardPage() {
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/50 border border-[#1E293B] hover:border-[#334155] rounded-xl transition-all group">
                 <div>
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                    {api.name}
