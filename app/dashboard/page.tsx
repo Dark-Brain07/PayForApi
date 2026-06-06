@@ -110,3 +110,10 @@ export default function DashboardPage() {
               >
                 Register & Get x402 Wrapper
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
