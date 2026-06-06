@@ -45,3 +45,5 @@ export default function DashboardPage() {
           </div>
         </div>
 
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-6">Your Registered Endpoints</h2>
