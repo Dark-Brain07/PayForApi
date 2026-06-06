@@ -77,3 +77,5 @@ export default function DashboardPage() {
         </div>
       </main>
 
+      {/* Modal */}
+      {isModalOpen && (
