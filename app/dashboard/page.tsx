@@ -95,3 +95,7 @@ export default function DashboardPage() {
                 <label className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
                 <input type="text" className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" placeholder="e.g. My Llama 3 Model" />
               </div>
+              <div>
+                <label className="block text-sm font-medium text-[#94A3B8] mb-1">Endpoint URL</label>
+                <input type="text" className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" placeholder="https://api.example.com/v1" />
+              </div>
