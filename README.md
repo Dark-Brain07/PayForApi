@@ -58,3 +58,5 @@ Built for the Celo Onchain Agents Hackathon (May 22 - June 15, 2026)
 
 
 ## 🛠️ Developer SDK (`@pay-for-api/sdk`)
+
+The Developer SDK allows autonomous agents to seamlessly interact with x402 endpoints.
