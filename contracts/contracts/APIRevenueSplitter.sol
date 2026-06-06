@@ -17,3 +17,5 @@ contract APIRevenueSplitter is Ownable {
     mapping(string => ApiEndpoint) public apiEndpoints;
 
     event ApiRegistered(string endpointId, address creator);
+    event PaymentProcessed(string endpointId, uint256 amount, uint256 creatorShare, uint256 platformShare);
+
