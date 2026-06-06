@@ -55,3 +55,6 @@ Built for the Celo Onchain Agents Hackathon (May 22 - June 15, 2026)
 - Track 1: Best Agent on Celo
 - Track 2: Most Onchain Activity  
 - Track 3: Highest 8004scan Rank
+
+
+## 🛠️ Developer SDK (`@pay-for-api/sdk`)
