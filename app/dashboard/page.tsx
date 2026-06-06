@@ -19,3 +19,4 @@ export default function DashboardPage() {
           <div>
             <h1 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
               Creator <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-600">Dashboard</span>
+            </h1>
