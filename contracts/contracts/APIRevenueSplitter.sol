@@ -34,3 +34,6 @@ contract APIRevenueSplitter is Ownable {
     }
 
     function payForApi(string memory endpointId, address tokenAddress, uint256 amount) external {
+        ApiEndpoint storage api = apiEndpoints[endpointId];
+        require(api.isActive, "API not active");
+        
