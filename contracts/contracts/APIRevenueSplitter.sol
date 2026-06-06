@@ -33,3 +33,4 @@ contract APIRevenueSplitter is Ownable {
         emit ApiRegistered(endpointId, msg.sender);
     }
 
+    function payForApi(string memory endpointId, address tokenAddress, uint256 amount) external {
