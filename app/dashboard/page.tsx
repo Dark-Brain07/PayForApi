@@ -87,3 +87,4 @@ export default function DashboardPage() {
             >
               ✕
             </button>
+            <h2 className="text-2xl font-bold text-white mb-2">Register API</h2>
