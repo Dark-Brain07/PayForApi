@@ -11,3 +11,6 @@ contract APIRevenueSplitter is Ownable {
     struct ApiEndpoint {
         address creator;
         bool isActive;
+        uint256 totalRevenue;
+    }
+
