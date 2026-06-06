@@ -88,3 +88,5 @@ export default function DashboardPage() {
               ✕
             </button>
             <h2 className="text-2xl font-bold text-white mb-2">Register API</h2>
+            <p className="text-[#94A3B8] text-sm mb-6">Enter your Web2 or Web3 API endpoint URL. Our smart contract will automatically wrap it with x402 payments.</p>
+            
