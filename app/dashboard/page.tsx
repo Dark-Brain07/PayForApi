@@ -53,3 +53,5 @@ export default function DashboardPage() {
                 <div>
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
                     {api.name}
+                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400 border border-green-500/20">ACTIVE</span>
+                  </h3>
