@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { ethers } from "ethers";
 import Header from "@/components/layout/Header";
+import { useWallet } from "@/components/wallet/WalletContext";
+import { CONTRACTS } from "@/lib/contracts";
 
 export default function DashboardPage() {
   const [apis, setApis] = useState<{name: string, endpoint: string, revenue: number}[]>([
@@ -9,6 +12,41 @@ export default function DashboardPage() {
     { name: "DeFi Sentiment Analyzer", endpoint: "defi-sense.io/analyze", revenue: 128.00 }
   ]);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [newApiName, setNewApiName] = useState("");
+  const [newApiEndpoint, setNewApiEndpoint] = useState("");
+  const [isRegistering, setIsRegistering] = useState(false);
+  const { address, isConnected } = useWallet();
+
+  const handleRegister = async () => {
+    if (!newApiName || !newApiEndpoint) return alert("Please fill all fields");
+    if (!isConnected || !address) return alert("Please connect your wallet first");
+
+    try {
+      setIsRegistering(true);
+      const provider = new ethers.BrowserProvider((window as any).ethereum);
+      const signer = await provider.getSigner();
+      
+      const contract = new ethers.Contract(
+        CONTRACTS.API_REVENUE_SPLITTER.address,
+        CONTRACTS.API_REVENUE_SPLITTER.abi,
+        signer
+      );
+
+      // We use the endpoint as the unique ID
+      const tx = await contract.registerApi(newApiEndpoint);
+      await tx.wait();
+      
+      setApis([...apis, { name: newApiName, endpoint: newApiEndpoint, revenue: 0 }]);
+      setModalOpen(false);
+      setNewApiName("");
+      setNewApiEndpoint("");
+    } catch (error: any) {
+      console.error(error);
+      alert(error.shortMessage || error.message || "Registration failed");
+    } finally {
+      setIsRegistering(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#020617] font-sans selection:bg-brand-yellow/30 selection:text-brand-yellow">
@@ -93,11 +131,23 @@ export default function DashboardPage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
-                <input type="text" className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" placeholder="e.g. My Llama 3 Model" />
+                <input 
+                  type="text" 
+                  value={newApiName}
+                  onChange={(e) => setNewApiName(e.target.value)}
+                  className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" 
+                  placeholder="e.g. My Llama 3 Model" 
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#94A3B8] mb-1">Endpoint URL</label>
-                <input type="text" className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" placeholder="https://api.example.com/v1" />
+                <input 
+                  type="text" 
+                  value={newApiEndpoint}
+                  onChange={(e) => setNewApiEndpoint(e.target.value)}
+                  className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" 
+                  placeholder="https://api.example.com/v1" 
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#94A3B8] mb-1">Price per Call (cUSD)</label>
@@ -105,10 +155,11 @@ export default function DashboardPage() {
               </div>
               <p className="text-xs text-[#64748B]">Platform fee: 10% per transaction automatically routed to Pay For API treasury.</p>
               <button 
-                onClick={() => setModalOpen(false)}
-                className="w-full py-3 bg-brand-yellow text-black font-bold rounded-lg hover:bg-yellow-400 transition-all mt-4"
+                onClick={handleRegister}
+                disabled={isRegistering}
+                className="w-full py-3 bg-brand-yellow text-black font-bold rounded-lg hover:bg-yellow-400 transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Register & Get x402 Wrapper
+                {isRegistering ? "Registering on Celo..." : "Register & Get x402 Wrapper"}
               </button>
             </div>
           </div>

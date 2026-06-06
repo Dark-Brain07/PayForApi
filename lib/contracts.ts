@@ -18,6 +18,14 @@ export const CONTRACTS = {
       "function lastClaimTime(address) external view returns (uint256)"
     ],
   },
+  API_REVENUE_SPLITTER: {
+    address: "0x5ac6de9FAe3f424C7f07C65283B8953108aa5C78",
+    abi: [
+      "function registerApi(string memory endpointId) external",
+      "function payForApi(string memory endpointId, address tokenAddress, uint256 amount) external",
+      "function apiEndpoints(string memory) external view returns (address creator, bool isActive, uint256 totalRevenue)"
+    ]
+  }
 } as const;
 
 export const CELO_MAINNET = {
