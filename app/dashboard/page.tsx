@@ -24,3 +24,4 @@ export default function DashboardPage() {
           </div>
           <button 
             onClick={() => setModalOpen(true)}
+            className="px-6 py-3 bg-brand-yellow text-black font-bold rounded-lg hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(250,204,21,0.3)] hover:scale-105"
