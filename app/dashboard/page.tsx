@@ -68,3 +68,8 @@ export default function DashboardPage() {
                 </div>
               </div>
             ))}
+            {apis.length === 0 && (
+              <div className="text-center py-12 border border-dashed border-[#1E293B] rounded-xl">
+                <p className="text-[#94A3B8]">You haven't registered any APIs yet.</p>
+              </div>
+            )}
