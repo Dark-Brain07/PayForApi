@@ -79,3 +79,5 @@ const client = new PayForApiClient({
 const response = await client.fetch('https://pay-for-api.com/api/weather');
 const data = await response.json();
 ```
+
+## 📈 Creator Dashboard (List Your Own API)
