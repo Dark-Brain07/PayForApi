@@ -8,3 +8,5 @@ export default function DashboardPage() {
     { name: "My Custom Weather Model", endpoint: "api.myweather.com/v1", revenue: 42.50 },
     { name: "DeFi Sentiment Analyzer", endpoint: "defi-sense.io/analyze", revenue: 128.00 }
   ]);
+  const [isModalOpen, setModalOpen] = useState(false);
+
