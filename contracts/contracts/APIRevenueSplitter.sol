@@ -23,3 +23,4 @@ contract APIRevenueSplitter is Ownable {
         platformWallet = _platformWallet;
     }
 
+    function registerApi(string memory endpointId) external {
