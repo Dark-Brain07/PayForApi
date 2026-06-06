@@ -65,3 +65,6 @@ export default function DashboardPage() {
                   <button className="text-sm text-[#94A3B8] hover:text-white transition-colors underline decoration-[#1E293B] hover:decoration-white underline-offset-4">
                     Settings
                   </button>
+                </div>
+              </div>
+            ))}
