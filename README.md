@@ -70,3 +70,7 @@ npm install @pay-for-api/sdk
 ### Usage Example
 ```typescript
 import { PayForApiClient } from '@pay-for-api/sdk';
+
+const client = new PayForApiClient({
+  privateKey: process.env.CELO_PRIVATE_KEY
+});
