@@ -92,3 +92,5 @@ Developers can register their own Web2 or Web3 endpoints via our Creator Dashboa
 
 ### Smart Contract Revenue Split
 Earnings are managed by the `APIRevenueSplitter.sol` contract.
+- **90%** routes to the API Creator instantly.
+- **10%** routes to the Pay For API Treasury to sustain infrastructure.
