@@ -68,3 +68,5 @@ npm install @pay-for-api/sdk
 ```
 
 ### Usage Example
+```typescript
+import { PayForApiClient } from '@pay-for-api/sdk';
