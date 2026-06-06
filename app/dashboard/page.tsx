@@ -48,3 +48,4 @@ export default function DashboardPage() {
         <div>
           <h2 className="text-2xl font-bold text-white mb-6">Your Registered Endpoints</h2>
           <div className="space-y-4">
+            {apis.map((api, idx) => (
