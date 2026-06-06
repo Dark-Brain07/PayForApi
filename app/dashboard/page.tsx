@@ -5,3 +5,4 @@ import Header from "@/components/layout/Header";
 
 export default function DashboardPage() {
   const [apis, setApis] = useState<{name: string, endpoint: string, revenue: number}[]>([
+    { name: "My Custom Weather Model", endpoint: "api.myweather.com/v1", revenue: 42.50 },
