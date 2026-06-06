@@ -22,3 +22,5 @@ export default function DashboardPage() {
             </h1>
             <p className="text-[#94A3B8] text-lg">Monetize your AI endpoints instantly on Celo.</p>
           </div>
+          <button 
+            onClick={() => setModalOpen(true)}
