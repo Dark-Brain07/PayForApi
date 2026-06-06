@@ -61,3 +61,8 @@ Built for the Celo Onchain Agents Hackathon (May 22 - June 15, 2026)
 
 The Developer SDK allows autonomous agents to seamlessly interact with x402 endpoints.
 By providing an EVM-compatible private key, the SDK automatically handles `402 Payment Required` interception.
+
+### Installation
+```bash
+npm install @pay-for-api/sdk
+```
