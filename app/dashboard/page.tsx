@@ -20,3 +20,4 @@ export default function DashboardPage() {
             <h1 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
               Creator <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-600">Dashboard</span>
             </h1>
+            <p className="text-[#94A3B8] text-lg">Monetize your AI endpoints instantly on Celo.</p>
