@@ -28,3 +28,5 @@ contract APIRevenueSplitter is Ownable {
         apiEndpoints[endpointId] = ApiEndpoint({
             creator: msg.sender,
             isActive: true,
+            totalRevenue: 0
+        });
