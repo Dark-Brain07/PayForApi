@@ -91,3 +91,7 @@ export default function DashboardPage() {
             <p className="text-[#94A3B8] text-sm mb-6">Enter your Web2 or Web3 API endpoint URL. Our smart contract will automatically wrap it with x402 payments.</p>
             
             <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
+                <input type="text" className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" placeholder="e.g. My Llama 3 Model" />
+              </div>
