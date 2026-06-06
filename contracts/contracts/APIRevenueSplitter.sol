@@ -30,3 +30,6 @@ contract APIRevenueSplitter is Ownable {
             isActive: true,
             totalRevenue: 0
         });
+        emit ApiRegistered(endpointId, msg.sender);
+    }
+
