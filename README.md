@@ -87,3 +87,4 @@ Developers can register their own Web2 or Web3 endpoints via our Creator Dashboa
 
 ### How it Works:
 1. **Register**: Submit your endpoint URL and desired cUSD price per call.
+2. **Wrap**: Our platform provides a reverse-proxy x402 wrapper.
