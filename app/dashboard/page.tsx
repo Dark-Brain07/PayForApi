@@ -40,3 +40,4 @@ export default function DashboardPage() {
             <p className="text-3xl font-black text-white">2</p>
           </div>
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
+            <h3 className="text-[#94A3B8] font-medium mb-1">Total Calls</h3>
