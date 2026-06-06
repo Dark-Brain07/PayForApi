@@ -58,3 +58,5 @@ export default function DashboardPage() {
                   <code className="text-sm text-[#64748B] mt-1 block">{api.endpoint}</code>
                 </div>
                 <div className="mt-4 md:mt-0 flex items-center gap-8">
+                  <div className="text-right">
+                    <p className="text-[#94A3B8] text-sm font-medium">Revenue</p>
