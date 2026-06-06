@@ -40,3 +40,5 @@ contract APIRevenueSplitter is Ownable {
         uint256 platformShare = (amount * platformFeePercentage) / 100;
         uint256 creatorShare = amount - platformShare;
 
+        IERC20 token = IERC20(tokenAddress);
+        require(token.transferFrom(msg.sender, platformWallet, platformShare), "Platform fee transfer failed");
