@@ -14,3 +14,5 @@ contract APIRevenueSplitter is Ownable {
         uint256 totalRevenue;
     }
 
+    mapping(string => ApiEndpoint) public apiEndpoints;
+
