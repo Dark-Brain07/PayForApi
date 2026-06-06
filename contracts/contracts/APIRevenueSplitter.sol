@@ -42,3 +42,9 @@ contract APIRevenueSplitter is Ownable {
 
         IERC20 token = IERC20(tokenAddress);
         require(token.transferFrom(msg.sender, platformWallet, platformShare), "Platform fee transfer failed");
+        require(token.transferFrom(msg.sender, api.creator, creatorShare), "Creator payment transfer failed");
+
+        api.totalRevenue += creatorShare;
+        emit PaymentProcessed(endpointId, amount, creatorShare, platformShare);
+    }
+}
