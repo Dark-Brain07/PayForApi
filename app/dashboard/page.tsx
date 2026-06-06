@@ -73,3 +73,7 @@ export default function DashboardPage() {
                 <p className="text-[#94A3B8]">You haven't registered any APIs yet.</p>
               </div>
             )}
+          </div>
+        </div>
+      </main>
+
