@@ -8,3 +8,4 @@ contract APIRevenueSplitter is Ownable {
     uint256 public platformFeePercentage = 10; // 10%
     address public platformWallet;
 
+    struct ApiEndpoint {
