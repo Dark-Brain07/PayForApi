@@ -1,16 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Header from "@/components/layout/Header";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { CONTRACTS } from "@/lib/contracts";
 
 export default function DashboardPage() {
-  const [apis, setApis] = useState<{name: string, endpoint: string, revenue: number}[]>([
-    { name: "My Custom Weather Model", endpoint: "api.myweather.com/v1", revenue: 42.50 },
-    { name: "DeFi Sentiment Analyzer", endpoint: "defi-sense.io/analyze", revenue: 128.00 }
-  ]);
+  const [apis, setApis] = useState<{name: string, endpoint: string, revenue: number}[]>([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [newApiName, setNewApiName] = useState("");
   const [newApiEndpoint, setNewApiEndpoint] = useState("");
@@ -48,11 +45,56 @@ export default function DashboardPage() {
     }
   };
 
+  useEffect(() => {
+    const fetchRealEndpoints = async () => {
+      if (!isConnected || !address || typeof window === "undefined" || !(window as any).ethereum) return;
+      
+      try {
+        const provider = new ethers.BrowserProvider((window as any).ethereum);
+        const contract = new ethers.Contract(
+          CONTRACTS.API_REVENUE_SPLITTER.address,
+          CONTRACTS.API_REVENUE_SPLITTER.abi,
+          provider
+        );
+
+        // Fetch all ApiRegistered events where the creator is the connected address
+        const filter = contract.filters.ApiRegistered(null, address);
+        const events = await contract.queryFilter(filter);
+
+        const fetchedApis = [];
+        let totalRev = 0;
+
+        for (const event of events) {
+          const endpointId = event.args?.[0]; // string memory endpointId
+          if (endpointId) {
+            const apiData = await contract.apiEndpoints(endpointId);
+            const rawRevenue = apiData.totalRevenue;
+            const revenueFormatted = Number(ethers.formatUnits(rawRevenue, 18));
+            totalRev += revenueFormatted;
+            
+            fetchedApis.push({
+              name: `Endpoint (${endpointId.substring(0, 15)}...)`, // Or derive name differently if we store it
+              endpoint: endpointId,
+              revenue: revenueFormatted
+            });
+          }
+        }
+        
+        setApis(fetchedApis);
+      } catch (error) {
+        console.error("Error fetching endpoints:", error);
+      }
+    };
+
+    fetchRealEndpoints();
+  }, [isConnected, address]);
+
+  const totalRevenue = apis.reduce((sum, api) => sum + api.revenue, 0);
+
   return (
     <div className="min-h-screen bg-[#020617] font-sans selection:bg-brand-yellow/30 selection:text-brand-yellow">
-      <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-32">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-16">
         <div className="flex justify-between items-end mb-8 border-b border-[#1E293B] pb-6">
           <div>
             <h1 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
@@ -71,11 +113,11 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Total Revenue</h3>
-            <p className="text-3xl font-black text-white">$170.50 <span className="text-sm font-normal text-[#64748B]">cUSD</span></p>
+            <p className="text-3xl font-black text-white">${totalRevenue.toFixed(2)} <span className="text-sm font-normal text-[#64748B]">cUSD</span></p>
           </div>
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Active Endpoints</h3>
-            <p className="text-3xl font-black text-white">2</p>
+            <p className="text-3xl font-black text-white">{apis.length}</p>
           </div>
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Total Calls</h3>

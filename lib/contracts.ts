@@ -23,7 +23,8 @@ export const CONTRACTS = {
     abi: [
       "function registerApi(string memory endpointId) external",
       "function payForApi(string memory endpointId, address tokenAddress, uint256 amount) external",
-      "function apiEndpoints(string memory) external view returns (address creator, bool isActive, uint256 totalRevenue)"
+      "function apiEndpoints(string memory) external view returns (address creator, bool isActive, uint256 totalRevenue)",
+      "event ApiRegistered(string endpointId, address creator)"
     ]
   }
 } as const;
