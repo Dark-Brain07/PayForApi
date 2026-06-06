@@ -18,3 +18,4 @@ export default function DashboardPage() {
         <div className="flex justify-between items-end mb-8 border-b border-[#1E293B] pb-6">
           <div>
             <h1 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
+              Creator <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-600">Dashboard</span>
