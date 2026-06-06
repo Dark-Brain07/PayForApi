@@ -91,3 +91,4 @@ Developers can register their own Web2 or Web3 endpoints via our Creator Dashboa
 3. **Earn**: Every successful call routes payment directly to your Celo wallet.
 
 ### Smart Contract Revenue Split
+Earnings are managed by the `APIRevenueSplitter.sol` contract.
