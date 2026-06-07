@@ -12,6 +12,7 @@ export default function DashboardPage() {
   const [newApiName, setNewApiName] = useState("");
   const [newApiEndpoint, setNewApiEndpoint] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
+  const [selectedSettingsApi, setSelectedSettingsApi] = useState<{name: string, endpoint: string, revenue: number} | null>(null);
   const { address, isConnected } = useWallet();
 
   const handleRegister = async () => {
@@ -142,7 +143,10 @@ export default function DashboardPage() {
                     <p className="text-[#94A3B8] text-sm font-medium">Revenue</p>
                     <p className="text-brand-yellow font-bold">${api.revenue.toFixed(2)} cUSD</p>
                   </div>
-                  <button className="text-sm text-[#94A3B8] hover:text-white transition-colors underline decoration-[#1E293B] hover:decoration-white underline-offset-4">
+                  <button 
+                    onClick={() => setSelectedSettingsApi(api)}
+                    className="text-sm text-[#94A3B8] hover:text-white transition-colors underline decoration-[#1E293B] hover:decoration-white underline-offset-4"
+                  >
                     Settings
                   </button>
                 </div>
@@ -203,6 +207,66 @@ export default function DashboardPage() {
               >
                 {isRegistering ? "Registering on Celo..." : "Register & Get x402 Wrapper"}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Settings Modal */}
+      {selectedSettingsApi && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#0F172A] border border-[#1E293B] rounded-2xl w-full max-w-md p-6 relative">
+            <button 
+              onClick={() => setSelectedSettingsApi(null)}
+              className="absolute top-4 right-4 text-[#64748B] hover:text-white"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold text-white mb-2">Endpoint Settings</h2>
+            <p className="text-[#94A3B8] text-sm mb-6">Manage your API endpoint configuration.</p>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
+                <input 
+                  type="text" 
+                  value={selectedSettingsApi.name}
+                  disabled
+                  className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white opacity-70 cursor-not-allowed" 
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#94A3B8] mb-1">Endpoint URL</label>
+                <input 
+                  type="text" 
+                  value={selectedSettingsApi.endpoint}
+                  disabled
+                  className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white opacity-70 cursor-not-allowed" 
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#94A3B8] mb-1">Withdrawal Available</label>
+                <div className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-brand-yellow font-bold">
+                  ${selectedSettingsApi.revenue.toFixed(2)} cUSD
+                </div>
+              </div>
+              <p className="text-xs text-brand-yellow mt-2 border border-brand-yellow/30 bg-brand-yellow/10 p-2 rounded">
+                Note: Updating endpoint configuration and withdrawals will be enabled via smart contract upgrade in V2.
+              </p>
+              <div className="flex gap-3 mt-6">
+                <button 
+                  onClick={() => setSelectedSettingsApi(null)}
+                  className="w-full py-3 bg-[#1E293B] hover:bg-[#334155] text-white font-bold rounded-lg transition-all"
+                >
+                  Close
+                </button>
+                <button 
+                  disabled
+                  className="w-full py-3 bg-red-500/10 text-red-500 border border-red-500/20 font-bold rounded-lg opacity-50 cursor-not-allowed"
+                >
+                  Deactivate
+                </button>
+              </div>
             </div>
           </div>
         </div>
