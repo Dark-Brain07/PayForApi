@@ -13,6 +13,7 @@ export default function DashboardPage() {
   const [newApiEndpoint, setNewApiEndpoint] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
   const [selectedSettingsApi, setSelectedSettingsApi] = useState<{name: string, endpoint: string, revenue: number} | null>(null);
+  const [deletedApis, setDeletedApis] = useState<{name: string, endpoint: string, revenue: number}[]>([]);
   const { address, isConnected } = useWallet();
 
   const handleRegister = async () => {
@@ -67,8 +68,9 @@ export default function DashboardPage() {
         const filter = contract.filters.ApiRegistered();
         const events = await contract.queryFilter(filter, fromBlock, "latest");
 
+        const deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]");
         const fetchedApis: {name: string, endpoint: string, revenue: number}[] = [];
-        let totalRev = 0;
+        const fetchedDeletedApis: {name: string, endpoint: string, revenue: number}[] = [];
 
         for (const event of events) {
           const endpointId = event.args?.[0];
@@ -78,19 +80,27 @@ export default function DashboardPage() {
             const apiData = await contract.apiEndpoints(endpointId);
             const rawRevenue = apiData.totalRevenue;
             const revenueFormatted = Number(ethers.formatUnits(rawRevenue, 18));
-            totalRev += revenueFormatted;
             
-            if (!fetchedApis.find(a => a.endpoint === endpointId)) {
-              fetchedApis.push({
-                name: `Endpoint (${endpointId.substring(0, 20)}...)`,
-                endpoint: endpointId,
-                revenue: revenueFormatted
-              });
+            const apiObj = {
+              name: `Endpoint (${endpointId.substring(0, 20)}...)`,
+              endpoint: endpointId,
+              revenue: revenueFormatted
+            };
+            
+            if (deletedIds.includes(endpointId)) {
+              if (!fetchedDeletedApis.find(a => a.endpoint === endpointId)) {
+                fetchedDeletedApis.push(apiObj);
+              }
+            } else {
+              if (!fetchedApis.find(a => a.endpoint === endpointId)) {
+                fetchedApis.push(apiObj);
+              }
             }
           }
         }
         
         setApis(fetchedApis);
+        setDeletedApis(fetchedDeletedApis);
       } catch (error) {
         console.error("Error fetching endpoints:", error);
       }
@@ -99,7 +109,7 @@ export default function DashboardPage() {
     fetchRealEndpoints();
   }, [isConnected, address]);
 
-  const totalRevenue = apis.reduce((sum, api) => sum + api.revenue, 0);
+  const totalRevenue = [...apis, ...deletedApis].reduce((sum, api) => sum + api.revenue, 0);
 
   return (
     <div className="min-h-screen bg-black font-sans selection:bg-brand-yellow/30 selection:text-brand-yellow">
@@ -168,6 +178,39 @@ export default function DashboardPage() {
             )}
           </div>
         </div>
+
+        {deletedApis.filter(api => api.revenue > 0).length > 0 && (
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-[#64748B] mb-6 flex items-center gap-2">
+               Archived Endpoints (With Balance)
+            </h2>
+            <div className="space-y-4 opacity-75">
+              {deletedApis.filter(api => api.revenue > 0).map((api, idx) => (
+                <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/30 border border-[#1E293B] border-dashed rounded-xl group">
+                  <div>
+                    <h3 className="text-lg font-bold text-[#94A3B8] flex items-center gap-2">
+                      {api.name}
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#1E293B] text-[#64748B] border border-[#334155]">DELETED</span>
+                    </h3>
+                    <code className="text-sm text-[#475569] mt-1 block">{api.endpoint}</code>
+                  </div>
+                  <div className="mt-4 md:mt-0 flex items-center gap-8">
+                    <div className="text-right">
+                      <p className="text-[#64748B] text-sm font-medium">Pending Withdrawal</p>
+                      <p className="text-brand-yellow font-bold">${api.revenue.toFixed(2)} cUSD</p>
+                    </div>
+                    <button 
+                      onClick={() => alert("Withdrawals will be enabled via smart contract upgrade in V2.")}
+                      className="text-sm px-4 py-2 bg-brand-yellow/10 text-brand-yellow hover:bg-brand-yellow/20 rounded-lg transition-colors font-bold border border-brand-yellow/30"
+                    >
+                      Withdraw
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Modal */}
@@ -270,10 +313,20 @@ export default function DashboardPage() {
                   Close
                 </button>
                 <button 
-                  disabled
-                  className="w-full py-3 bg-red-500/10 text-red-500 border border-red-500/20 font-bold rounded-lg opacity-50 cursor-not-allowed"
+                  onClick={() => {
+                    if (!address) return;
+                    const deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]");
+                    if (!deletedIds.includes(selectedSettingsApi.endpoint)) {
+                        deletedIds.push(selectedSettingsApi.endpoint);
+                        localStorage.setItem(`deleted_endpoints_${address}`, JSON.stringify(deletedIds));
+                    }
+                    setApis(apis.filter(a => a.endpoint !== selectedSettingsApi.endpoint));
+                    setDeletedApis([...deletedApis, selectedSettingsApi]);
+                    setSelectedSettingsApi(null);
+                  }}
+                  className="w-full py-3 bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 font-bold rounded-lg transition-all"
                 >
-                  Deactivate
+                  Delete Endpoint
                 </button>
               </div>
             </div>
