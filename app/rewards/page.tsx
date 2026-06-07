@@ -155,7 +155,7 @@ export default function Rewards() {
   }
 
   return (
-    <div className="flex flex-col w-full min-h-screen pt-16">
+    <div className="flex flex-col w-full min-h-screen pt-16 bg-black">
       <section className="py-16 px-4 max-w-7xl mx-auto w-full">
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-black mb-4 text-white font-sans tracking-tight">Rewards & Ecosystem</h1>
