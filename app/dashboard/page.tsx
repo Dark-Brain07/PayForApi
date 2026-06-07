@@ -48,7 +48,10 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const fetchRealEndpoints = async () => {
-      if (!isConnected || !address || typeof window === "undefined" || !(window as any).ethereum) return;
+      if (!isConnected || !address || typeof window === "undefined" || !(window as any).ethereum) {
+        setApis([]);
+        return;
+      }
       
       try {
         const provider = new ethers.BrowserProvider((window as any).ethereum);
@@ -58,26 +61,32 @@ export default function DashboardPage() {
           provider
         );
 
-        // Fetch all ApiRegistered events where the creator is the connected address
-        const filter = contract.filters.ApiRegistered(null, address);
-        const events = await contract.queryFilter(filter);
+        // Fetch events. Since creator isn't indexed in ABI, we must filter locally.
+        const currentBlock = await provider.getBlockNumber();
+        const fromBlock = Math.max(0, currentBlock - 2000000);
+        const filter = contract.filters.ApiRegistered();
+        const events = await contract.queryFilter(filter, fromBlock, "latest");
 
-        const fetchedApis = [];
+        const fetchedApis: {name: string, endpoint: string, revenue: number}[] = [];
         let totalRev = 0;
 
         for (const event of events) {
-          const endpointId = event.args?.[0]; // string memory endpointId
-          if (endpointId) {
+          const endpointId = event.args?.[0];
+          const creator = event.args?.[1];
+          
+          if (creator && creator.toLowerCase() === address.toLowerCase() && endpointId) {
             const apiData = await contract.apiEndpoints(endpointId);
             const rawRevenue = apiData.totalRevenue;
             const revenueFormatted = Number(ethers.formatUnits(rawRevenue, 18));
             totalRev += revenueFormatted;
             
-            fetchedApis.push({
-              name: `Endpoint (${endpointId.substring(0, 15)}...)`, // Or derive name differently if we store it
-              endpoint: endpointId,
-              revenue: revenueFormatted
-            });
+            if (!fetchedApis.find(a => a.endpoint === endpointId)) {
+              fetchedApis.push({
+                name: `Endpoint (${endpointId.substring(0, 20)}...)`,
+                endpoint: endpointId,
+                revenue: revenueFormatted
+              });
+            }
           }
         }
         
