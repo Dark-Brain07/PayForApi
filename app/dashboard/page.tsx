@@ -92,7 +92,7 @@ export default function DashboardPage() {
   const totalRevenue = apis.reduce((sum, api) => sum + api.revenue, 0);
 
   return (
-    <div className="min-h-screen bg-[#020617] font-sans selection:bg-brand-yellow/30 selection:text-brand-yellow">
+    <div className="min-h-screen bg-black font-sans selection:bg-brand-yellow/30 selection:text-brand-yellow">
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-16">
         <div className="flex justify-between items-end mb-8 border-b border-[#1E293B] pb-6">
