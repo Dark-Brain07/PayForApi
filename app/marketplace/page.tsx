@@ -47,7 +47,6 @@ export default function Marketplace() {
         
         <div className="mt-20 text-center border-t border-[#1E293B] pt-12 relative max-w-4xl mx-auto">
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#0B0E14] px-6 py-2 rounded-full border border-[#1E293B] shadow-lg flex items-center gap-3">
-             <span className="w-2.5 h-2.5 rounded-full bg-brand-yellow animate-pulse shadow-[0_0_8px_rgba(245,197,24,0.6)]"></span>
              <span className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em]">Ecosystem Expansion</span>
           </div>
           <h2 className="text-3xl font-black text-white mb-4 tracking-tight">More Web3 & AI APIs Are Coming Soon</h2>
