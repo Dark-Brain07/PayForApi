@@ -1,44 +1,16 @@
-/**
- * Server middleware & utility: corsMiddleware
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Corsmiddleware {
-  private static instance: Corsmiddleware;
-  private isInitialized: boolean = false;
-
-  private constructor() {
-    // Private constructor for Singleton pattern
+export class CorsMiddleware {
+  private static instance: CorsMiddleware;
+  private allowedOrigins = ['http://localhost:3000', 'https://example.com'];
+  private constructor() {}
+  public static getInstance(): CorsMiddleware {
+    if (!CorsMiddleware.instance) CorsMiddleware.instance = new CorsMiddleware();
+    return CorsMiddleware.instance;
   }
-
-  public static getInstance(): Corsmiddleware {
-    if (!Corsmiddleware.instance) {
-      Corsmiddleware.instance = new Corsmiddleware();
+  public getHeaders(origin: string) {
+    if (this.allowedOrigins.includes(origin)) {
+      return { 'Access-Control-Allow-Origin': origin, 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE' };
     }
-    return Corsmiddleware.instance;
-  }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Corsmiddleware] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in corsMiddleware`);
-    }
+    return {};
   }
 }
-
-export const corsMiddlewareInstance = Corsmiddleware.getInstance();
+export const corsMiddlewareInstance = CorsMiddleware.getInstance();

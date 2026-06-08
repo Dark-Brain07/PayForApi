@@ -1,44 +1,13 @@
-/**
- * Server middleware & utility: emailSender
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Emailsender {
-  private static instance: Emailsender;
-  private isInitialized: boolean = false;
-
-  private constructor() {
-    // Private constructor for Singleton pattern
+export class EmailSender {
+  private static instance: EmailSender;
+  private constructor() {}
+  public static getInstance(): EmailSender {
+    if (!EmailSender.instance) EmailSender.instance = new EmailSender();
+    return EmailSender.instance;
   }
-
-  public static getInstance(): Emailsender {
-    if (!Emailsender.instance) {
-      Emailsender.instance = new Emailsender();
-    }
-    return Emailsender.instance;
-  }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Emailsender] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in emailSender`);
-    }
+  public async send(to: string, subject: string, body: string): Promise<boolean> {
+    console.log(`Sending email to ${to}: ${subject}`);
+    return new Promise(resolve => setTimeout(() => resolve(true), 500));
   }
 }
-
-export const emailSenderInstance = Emailsender.getInstance();
+export const emailSenderInstance = EmailSender.getInstance();

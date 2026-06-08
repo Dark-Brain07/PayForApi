@@ -1,44 +1,33 @@
-/**
- * Server middleware & utility: rateLimiter
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Ratelimiter {
-  private static instance: Ratelimiter;
-  private isInitialized: boolean = false;
+const requestCounts = new Map<string, { count: number; resetAt: number }>();
 
-  private constructor() {
-    // Private constructor for Singleton pattern
+export class RateLimiter {
+  private static instance: RateLimiter;
+  private windowMs: number;
+  private maxRequests: number;
+
+  private constructor(windowMs = 60_000, maxRequests = 100) {
+    this.windowMs = windowMs;
+    this.maxRequests = maxRequests;
   }
 
-  public static getInstance(): Ratelimiter {
-    if (!Ratelimiter.instance) {
-      Ratelimiter.instance = new Ratelimiter();
+  public static getInstance(): RateLimiter {
+    if (!RateLimiter.instance) RateLimiter.instance = new RateLimiter();
+    return RateLimiter.instance;
+  }
+
+  public check(key: string): { allowed: boolean; remaining: number; resetAt: number } {
+    const now = Date.now();
+    const entry = requestCounts.get(key);
+
+    if (!entry || now > entry.resetAt) {
+      requestCounts.set(key, { count: 1, resetAt: now + this.windowMs });
+      return { allowed: true, remaining: this.maxRequests - 1, resetAt: now + this.windowMs };
     }
-    return Ratelimiter.instance;
-  }
 
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Ratelimiter] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in rateLimiter`);
-    }
+    entry.count++;
+    const allowed = entry.count <= this.maxRequests;
+    return { allowed, remaining: Math.max(0, this.maxRequests - entry.count), resetAt: entry.resetAt };
   }
 }
 
-export const rateLimiterInstance = Ratelimiter.getInstance();
+export const rateLimiterInstance = RateLimiter.getInstance();

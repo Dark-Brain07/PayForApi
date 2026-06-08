@@ -1,44 +1,17 @@
-/**
- * Server middleware & utility: jwtUtils
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Jwtutils {
-  private static instance: Jwtutils;
-  private isInitialized: boolean = false;
-
-  private constructor() {
-    // Private constructor for Singleton pattern
+import { createHmac } from 'crypto';
+export class JwtUtils {
+  private static instance: JwtUtils;
+  private secret = 'SUPER_SECRET_KEY';
+  private constructor() {}
+  public static getInstance(): JwtUtils {
+    if (!JwtUtils.instance) JwtUtils.instance = new JwtUtils();
+    return JwtUtils.instance;
   }
-
-  public static getInstance(): Jwtutils {
-    if (!Jwtutils.instance) {
-      Jwtutils.instance = new Jwtutils();
-    }
-    return Jwtutils.instance;
-  }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Jwtutils] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in jwtUtils`);
-    }
+  public sign(payload: any): string {
+    const header = Buffer.from(JSON.stringify({ alg: 'HS256', typ: 'JWT' })).toString('base64');
+    const body = Buffer.from(JSON.stringify(payload)).toString('base64');
+    const signature = createHmac('sha256', this.secret).update(header + '.' + body).digest('base64');
+    return `${header}.${body}.${signature}`;
   }
 }
-
-export const jwtUtilsInstance = Jwtutils.getInstance();
+export const jwtUtilsInstance = JwtUtils.getInstance();

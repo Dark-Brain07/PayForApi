@@ -1,44 +1,16 @@
-/**
- * Server middleware & utility: passwordHasher
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Passwordhasher {
-  private static instance: Passwordhasher;
-  private isInitialized: boolean = false;
-
-  private constructor() {
-    // Private constructor for Singleton pattern
+import { createHash } from 'crypto';
+export class PasswordHasher {
+  private static instance: PasswordHasher;
+  private constructor() {}
+  public static getInstance(): PasswordHasher {
+    if (!PasswordHasher.instance) PasswordHasher.instance = new PasswordHasher();
+    return PasswordHasher.instance;
   }
-
-  public static getInstance(): Passwordhasher {
-    if (!Passwordhasher.instance) {
-      Passwordhasher.instance = new Passwordhasher();
-    }
-    return Passwordhasher.instance;
+  public hash(password: string): string {
+    return createHash('sha256').update(password + 'salt').digest('hex');
   }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Passwordhasher] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in passwordHasher`);
-    }
+  public verify(password: string, hash: string): boolean {
+    return this.hash(password) === hash;
   }
 }
-
-export const passwordHasherInstance = Passwordhasher.getInstance();
+export const passwordHasherInstance = PasswordHasher.getInstance();

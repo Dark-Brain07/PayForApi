@@ -1,44 +1,21 @@
-/**
- * Server middleware & utility: csvParser
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Csvparser {
-  private static instance: Csvparser;
-  private isInitialized: boolean = false;
-
-  private constructor() {
-    // Private constructor for Singleton pattern
+export class CsvParser {
+  private static instance: CsvParser;
+  private constructor() {}
+  public static getInstance(): CsvParser {
+    if (!CsvParser.instance) CsvParser.instance = new CsvParser();
+    return CsvParser.instance;
   }
-
-  public static getInstance(): Csvparser {
-    if (!Csvparser.instance) {
-      Csvparser.instance = new Csvparser();
-    }
-    return Csvparser.instance;
-  }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Csvparser] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in csvParser`);
-    }
+  public parse(csv: string): Record<string, string>[] {
+    const lines = csv.split('\n').map(l => l.trim()).filter(l => l);
+    if (lines.length < 2) return [];
+    const headers = lines[0].split(',');
+    return lines.slice(1).map(line => {
+      const values = line.split(',');
+      return headers.reduce((obj, header, index) => {
+        obj[header] = values[index] || '';
+        return obj;
+      }, {} as Record<string, string>);
+    });
   }
 }
-
-export const csvParserInstance = Csvparser.getInstance();
+export const csvParserInstance = CsvParser.getInstance();

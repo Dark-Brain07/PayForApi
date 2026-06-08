@@ -1,44 +1,16 @@
-/**
- * Server middleware & utility: cryptoUtils
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Cryptoutils {
-  private static instance: Cryptoutils;
-  private isInitialized: boolean = false;
-
-  private constructor() {
-    // Private constructor for Singleton pattern
+import { createHash, randomBytes } from 'crypto';
+export class CryptoUtils {
+  private static instance: CryptoUtils;
+  private constructor() {}
+  public static getInstance(): CryptoUtils {
+    if (!CryptoUtils.instance) CryptoUtils.instance = new CryptoUtils();
+    return CryptoUtils.instance;
   }
-
-  public static getInstance(): Cryptoutils {
-    if (!Cryptoutils.instance) {
-      Cryptoutils.instance = new Cryptoutils();
-    }
-    return Cryptoutils.instance;
+  public hash(data: string): string {
+    return createHash('sha256').update(data).digest('hex');
   }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Cryptoutils] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in cryptoUtils`);
-    }
+  public generateRandomToken(bytes: number = 32): string {
+    return randomBytes(bytes).toString('hex');
   }
 }
-
-export const cryptoUtilsInstance = Cryptoutils.getInstance();
+export const cryptoUtilsInstance = CryptoUtils.getInstance();

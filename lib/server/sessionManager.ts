@@ -1,44 +1,20 @@
-/**
- * Server middleware & utility: sessionManager
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Sessionmanager {
-  private static instance: Sessionmanager;
-  private isInitialized: boolean = false;
-
+export class SessionManager {
+  private static instance: SessionManager;
+  private sessions: Map<string, any>;
   private constructor() {
-    // Private constructor for Singleton pattern
+    this.sessions = new Map();
   }
-
-  public static getInstance(): Sessionmanager {
-    if (!Sessionmanager.instance) {
-      Sessionmanager.instance = new Sessionmanager();
-    }
-    return Sessionmanager.instance;
+  public static getInstance(): SessionManager {
+    if (!SessionManager.instance) SessionManager.instance = new SessionManager();
+    return SessionManager.instance;
   }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
+  public createSession(userId: string) {
+    const sessionId = Math.random().toString(36).substring(2);
+    this.sessions.set(sessionId, { userId, createdAt: Date.now() });
+    return sessionId;
   }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Sessionmanager] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in sessionManager`);
-    }
+  public getSession(sessionId: string) {
+    return this.sessions.get(sessionId);
   }
 }
-
-export const sessionManagerInstance = Sessionmanager.getInstance();
+export const sessionManagerInstance = SessionManager.getInstance();

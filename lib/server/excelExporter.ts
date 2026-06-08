@@ -1,44 +1,14 @@
-/**
- * Server middleware & utility: excelExporter
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Excelexporter {
-  private static instance: Excelexporter;
-  private isInitialized: boolean = false;
-
-  private constructor() {
-    // Private constructor for Singleton pattern
+export class ExcelExporter {
+  private static instance: ExcelExporter;
+  private constructor() {}
+  public static getInstance(): ExcelExporter {
+    if (!ExcelExporter.instance) ExcelExporter.instance = new ExcelExporter();
+    return ExcelExporter.instance;
   }
-
-  public static getInstance(): Excelexporter {
-    if (!Excelexporter.instance) {
-      Excelexporter.instance = new Excelexporter();
-    }
-    return Excelexporter.instance;
-  }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Excelexporter] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in excelExporter`);
-    }
+  public export(data: any[]): Buffer {
+    // Dummy export
+    const csv = data.map(row => Object.values(row).join(',')).join('\n');
+    return Buffer.from(csv, 'utf-8');
   }
 }
-
-export const excelExporterInstance = Excelexporter.getInstance();
+export const excelExporterInstance = ExcelExporter.getInstance();

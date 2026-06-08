@@ -1,44 +1,12 @@
-/**
- * Server middleware & utility: responseValidator
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Responsevalidator {
-  private static instance: Responsevalidator;
-  private isInitialized: boolean = false;
-
-  private constructor() {
-    // Private constructor for Singleton pattern
+export class ResponseValidator {
+  private static instance: ResponseValidator;
+  private constructor() {}
+  public static getInstance(): ResponseValidator {
+    if (!ResponseValidator.instance) ResponseValidator.instance = new ResponseValidator();
+    return ResponseValidator.instance;
   }
-
-  public static getInstance(): Responsevalidator {
-    if (!Responsevalidator.instance) {
-      Responsevalidator.instance = new Responsevalidator();
-    }
-    return Responsevalidator.instance;
-  }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Responsevalidator] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in responseValidator`);
-    }
+  public validate(response: any): boolean {
+    return response && typeof response === 'object' && 'success' in response;
   }
 }
-
-export const responseValidatorInstance = Responsevalidator.getInstance();
+export const responseValidatorInstance = ResponseValidator.getInstance();

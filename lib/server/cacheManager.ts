@@ -1,44 +1,24 @@
-/**
- * Server middleware & utility: cacheManager
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Cachemanager {
-  private static instance: Cachemanager;
-  private isInitialized: boolean = false;
-
+export class CacheManager {
+  private static instance: CacheManager;
+  private cache: Map<string, { value: any; expiry: number }>;
   private constructor() {
-    // Private constructor for Singleton pattern
+    this.cache = new Map();
   }
-
-  public static getInstance(): Cachemanager {
-    if (!Cachemanager.instance) {
-      Cachemanager.instance = new Cachemanager();
+  public static getInstance(): CacheManager {
+    if (!CacheManager.instance) CacheManager.instance = new CacheManager();
+    return CacheManager.instance;
+  }
+  public set(key: string, value: any, ttlMs: number = 60000) {
+    this.cache.set(key, { value, expiry: Date.now() + ttlMs });
+  }
+  public get(key: string) {
+    const item = this.cache.get(key);
+    if (!item) return null;
+    if (Date.now() > item.expiry) {
+      this.cache.delete(key);
+      return null;
     }
-    return Cachemanager.instance;
-  }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Cachemanager] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in cacheManager`);
-    }
+    return item.value;
   }
 }
-
-export const cacheManagerInstance = Cachemanager.getInstance();
+export const cacheManagerInstance = CacheManager.getInstance();

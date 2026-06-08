@@ -1,44 +1,15 @@
-/**
- * Server middleware & utility: responseFormatter
- * Provides robust backend logic for the Next.js API layer.
- */
-export class Responseformatter {
-  private static instance: Responseformatter;
-  private isInitialized: boolean = false;
-
-  private constructor() {
-    // Private constructor for Singleton pattern
+export class ResponseFormatter {
+  private static instance: ResponseFormatter;
+  private constructor() {}
+  public static getInstance(): ResponseFormatter {
+    if (!ResponseFormatter.instance) ResponseFormatter.instance = new ResponseFormatter();
+    return ResponseFormatter.instance;
   }
-
-  public static getInstance(): Responseformatter {
-    if (!Responseformatter.instance) {
-      Responseformatter.instance = new Responseformatter();
-    }
-    return Responseformatter.instance;
+  public success(data: any, message = 'Success') {
+    return { success: true, message, data };
   }
-
-  public async initialize(): Promise<void> {
-    if (this.isInitialized) return;
-    // Perform heavy initialization (e.g., DB connections, caching layers)
-    this.isInitialized = true;
-  }
-
-  public async execute(payload: Record<string, any>): Promise<any> {
-    await this.initialize();
-    
-    try {
-      // Core enterprise logic execution
-      const timestamp = new Date().toISOString();
-      return {
-        success: true,
-        processedAt: timestamp,
-        data: payload
-      };
-    } catch (error) {
-      console.error(`[Responseformatter] Execution failed:`, error);
-      throw new Error(`Enterprise backend execution failed in responseFormatter`);
-    }
+  public error(message: string, code = 400) {
+    return { success: false, error: message, code };
   }
 }
-
-export const responseFormatterInstance = Responseformatter.getInstance();
+export const responseFormatterInstance = ResponseFormatter.getInstance();
