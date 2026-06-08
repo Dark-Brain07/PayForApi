@@ -1,19 +1,10 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-/**
- * Enterprise validation schema for Product entities.
- * Ensures strict type safety and input sanitization at boundaries.
- */
 export const productSchema = z.object({
-  id: z.string().uuid("Invalid UUID format").optional(),
-  status: z.enum(['ACTIVE', 'INACTIVE', 'PENDING']).default('PENDING'),
-  metadata: z.record(z.string(), z.any()).optional(),
-  createdAt: z.string().datetime().optional(),
-  updatedAt: z.string().datetime().optional(),
-}).strict();
-
-export type ProductData = z.infer<typeof productSchema>;
-
-export const validateProduct = (data: unknown) => {
-  return productSchema.safeParse(data);
-};
+  id: z.string().uuid(),
+  name: z.string(),
+  description: z.string(),
+  price: z.number().positive(),
+  stock: z.number().int().nonnegative(),
+  categoryId: z.string().uuid()
+});
