@@ -1,34 +1,20 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-/**
- * Professional useKeyPress hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useKeyPress<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useKeyPress(targetKey: string): boolean {
+  const [keyPressed, setKeyPressed] = useState(false);
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
+    const downHandler = ({ key }: KeyboardEvent) => {
+      if (key === targetKey) setKeyPressed(true);
     };
-
+    const upHandler = ({ key }: KeyboardEvent) => {
+      if (key === targetKey) setKeyPressed(false);
+    };
+    window.addEventListener('keydown', downHandler);
+    window.addEventListener('keyup', upHandler);
     return () => {
-      isMounted.current = false;
-      // Cleanup phase
+      window.removeEventListener('keydown', downHandler);
+      window.removeEventListener('keyup', upHandler);
     };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+  }, [targetKey]);
+  return keyPressed;
 }
-
-export default useKeyPress;

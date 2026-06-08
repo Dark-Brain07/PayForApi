@@ -1,34 +1,22 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 
-/**
- * Professional useStep hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useStep<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
-  useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
-    return () => {
-      isMounted.current = false;
-      // Cleanup phase
-    };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+export function useStep(maxStep: number) {
+  const [currentStep, setCurrentStep] = useState(1);
+  const canGoToNextStep = currentStep < maxStep;
+  const canGoToPrevStep = currentStep > 1;
+  const setStep = useCallback((step: number | ((step: number) => number)) => {
+    setCurrentStep(prev => {
+      const nextStep = typeof step === 'function' ? step(prev) : step;
+      if (nextStep >= 1 && nextStep <= maxStep) return nextStep;
+      return prev;
+    });
+  }, [maxStep]);
+  const goToNextStep = useCallback(() => {
+    if (canGoToNextStep) setCurrentStep(step => step + 1);
+  }, [canGoToNextStep]);
+  const goToPrevStep = useCallback(() => {
+    if (canGoToPrevStep) setCurrentStep(step => step - 1);
+  }, [canGoToPrevStep]);
+  const reset = useCallback(() => setCurrentStep(1), []);
+  return { currentStep, goToNextStep, goToPrevStep, canGoToNextStep, canGoToPrevStep, setStep, reset };
 }
-
-export default useStep;

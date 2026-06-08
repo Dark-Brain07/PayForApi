@@ -1,34 +1,38 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-/**
- * Professional useScript hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useScript<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useScript(src: string) {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>(src ? 'loading' : 'idle');
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
+    if (!src) {
+      setStatus('idle');
+      return;
+    }
+    let script = document.querySelector(`script[src="${src}"]`) as HTMLScriptElement;
+    if (!script) {
+      script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      script.setAttribute('data-status', 'loading');
+      document.body.appendChild(script);
+      const setAttributeFromEvent = (event: Event) => {
+        script.setAttribute('data-status', event.type === 'load' ? 'ready' : 'error');
+      };
+      script.addEventListener('load', setAttributeFromEvent);
+      script.addEventListener('error', setAttributeFromEvent);
+    } else {
+      setStatus(script.getAttribute('data-status') as any);
+    }
+    const setStateFromEvent = (event: Event) => {
+      setStatus(event.type === 'load' ? 'ready' : 'error');
+    };
+    script.addEventListener('load', setStateFromEvent);
+    script.addEventListener('error', setStateFromEvent);
+    return () => {
+      if (script) {
+        script.removeEventListener('load', setStateFromEvent);
+        script.removeEventListener('error', setStateFromEvent);
       }
     };
-
-    return () => {
-      isMounted.current = false;
-      // Cleanup phase
-    };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+  }, [src]);
+  return status;
 }
-
-export default useScript;

@@ -1,34 +1,18 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-/**
- * Professional useGeolocation hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useGeolocation<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useGeolocation() {
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
-    return () => {
-      isMounted.current = false;
-      // Cleanup phase
-    };
+    if (!navigator.geolocation) {
+      setError('Geolocation not supported');
+      return;
+    }
+    const watcher = navigator.geolocation.watchPosition(
+      pos => setLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+      err => setError(err.message)
+    );
+    return () => navigator.geolocation.clearWatch(watcher);
   }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+  return { location, error };
 }
-
-export default useGeolocation;

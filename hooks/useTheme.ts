@@ -1,34 +1,11 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-/**
- * Professional useTheme hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useTheme<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useTheme(defaultTheme = 'light') {
+  const [theme, setTheme] = useState(defaultTheme);
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
-    return () => {
-      isMounted.current = false;
-      // Cleanup phase
-    };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+    const root = window.document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+  }, [theme]);
+  return [theme, setTheme] as const;
 }
-
-export default useTheme;

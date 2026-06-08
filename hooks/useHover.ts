@@ -1,34 +1,19 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-/**
- * Professional useHover hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useHover<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useHover<T extends HTMLElement>() {
+  const [isHovered, setIsHovered] = useState(false);
+  const ref = useRef<T>(null);
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
+    const node = ref.current;
+    if (!node) return;
+    const enter = () => setIsHovered(true);
+    const leave = () => setIsHovered(false);
+    node.addEventListener('mouseenter', enter);
+    node.addEventListener('mouseleave', leave);
     return () => {
-      isMounted.current = false;
-      // Cleanup phase
+      node.removeEventListener('mouseenter', enter);
+      node.removeEventListener('mouseleave', leave);
     };
   }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+  return [ref, isHovered] as const;
 }
-
-export default useHover;

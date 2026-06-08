@@ -1,34 +1,19 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useEffect, RefObject } from 'react';
 
-/**
- * Professional useOnClickOutside hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useOnClickOutside<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
+  ref: RefObject<T>,
+  handler: (event: MouseEvent | TouchEvent) => void
+) {
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
+    const listener = (event: MouseEvent | TouchEvent) => {
+      if (!ref.current || ref.current.contains(event.target as Node)) return;
+      handler(event);
     };
-
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
     return () => {
-      isMounted.current = false;
-      // Cleanup phase
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
     };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+  }, [ref, handler]);
 }
-
-export default useOnClickOutside;

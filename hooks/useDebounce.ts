@@ -1,34 +1,14 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-/**
- * Professional useDebounce hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useDebounce<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
     return () => {
-      isMounted.current = false;
-      // Cleanup phase
+      clearTimeout(handler);
     };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+  }, [value, delay]);
+  return debouncedValue;
 }
-
-export default useDebounce;

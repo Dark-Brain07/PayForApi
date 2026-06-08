@@ -1,34 +1,14 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 
-/**
- * Professional useHistory hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useHistory<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
-  useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
-    return () => {
-      isMounted.current = false;
-      // Cleanup phase
-    };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+export function useHistory<T>(initialState: T) {
+  const [history, setHistory] = useState<T[]>([initialState]);
+  const [pointer, setPointer] = useState(0);
+  const current = history[pointer];
+  const set = useCallback((newState: T) => {
+    setHistory(prev => [...prev.slice(0, pointer + 1), newState]);
+    setPointer(prev => prev + 1);
+  }, [pointer]);
+  const undo = useCallback(() => setPointer(prev => Math.max(0, prev - 1)), []);
+  const redo = useCallback(() => setPointer(prev => Math.min(history.length - 1, prev + 1)), [history.length]);
+  return { state: current, set, undo, redo, history, pointer };
 }
-
-export default useHistory;

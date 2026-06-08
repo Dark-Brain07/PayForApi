@@ -1,34 +1,9 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-/**
- * Professional usePrevious hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function usePrevious<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function usePrevious<T>(value: T): T | undefined {
+  const ref = useRef<T>();
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
-    return () => {
-      isMounted.current = false;
-      // Cleanup phase
-    };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+    ref.current = value;
+  }, [value]);
+  return ref.current;
 }
-
-export default usePrevious;

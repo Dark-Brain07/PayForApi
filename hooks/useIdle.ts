@@ -1,34 +1,20 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-/**
- * Professional useIdle hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useIdle<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useIdle(ms: number = 60000) {
+  const [isIdle, setIsIdle] = useState(false);
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
+    let timeout = setTimeout(() => setIsIdle(true), ms);
+    const handleActivity = () => {
+      setIsIdle(false);
+      clearTimeout(timeout);
+      timeout = setTimeout(() => setIsIdle(true), ms);
     };
-
+    const events = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
+    events.forEach(event => document.addEventListener(event, handleActivity));
     return () => {
-      isMounted.current = false;
-      // Cleanup phase
+      events.forEach(event => document.removeEventListener(event, handleActivity));
+      clearTimeout(timeout);
     };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+  }, [ms]);
+  return isIdle;
 }
-
-export default useIdle;

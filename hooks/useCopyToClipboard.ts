@@ -1,34 +1,21 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState } from 'react';
 
-/**
- * Professional useCopyToClipboard hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useCopyToClipboard<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
-  useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
-    return () => {
-      isMounted.current = false;
-      // Cleanup phase
-    };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+export function useCopyToClipboard() {
+  const [copiedText, setCopiedText] = useState<string | null>(null);
+  const copy = async (text: string) => {
+    if (!navigator?.clipboard) {
+      console.warn('Clipboard not supported');
+      return false;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedText(text);
+      return true;
+    } catch (error) {
+      console.warn('Copy failed', error);
+      setCopiedText(null);
+      return false;
+    }
+  };
+  return [copiedText, copy] as const;
 }
-
-export default useCopyToClipboard;

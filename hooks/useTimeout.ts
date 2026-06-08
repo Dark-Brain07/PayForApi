@@ -1,34 +1,14 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-/**
- * Professional useTimeout hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useTimeout<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useTimeout(callback: () => void, delay: number | null) {
+  const savedCallback = useRef(callback);
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
-    return () => {
-      isMounted.current = false;
-      // Cleanup phase
-    };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+    savedCallback.current = callback;
+  }, [callback]);
+  useEffect(() => {
+    if (delay !== null) {
+      const id = setTimeout(() => savedCallback.current(), delay);
+      return () => clearTimeout(id);
+    }
+  }, [delay]);
 }
-
-export default useTimeout;

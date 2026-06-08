@@ -1,34 +1,17 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useEffect, useState, useRef, RefObject } from 'react';
 
-/**
- * Professional useIntersectionObserver hook
- * Optimizes performance and memory usage by managing lifecycle efficiently.
- */
-export function useIntersectionObserver<T>(initialValue?: T) {
-  const [value, setValue] = useState<T | undefined>(initialValue);
-  const isMounted = useRef(false);
-
+export function useIntersectionObserver(ref: RefObject<Element>, options?: IntersectionObserverInit) {
+  const [isIntersecting, setIsIntersecting] = useState(false);
   useEffect(() => {
-    isMounted.current = true;
-    
-    // Core logic initialization
-    const handleStateChange = () => {
-      if (isMounted.current) {
-        // Safe state update logic
-      }
-    };
-
+    const target = ref.current;
+    if (!target) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting);
+    }, options);
+    observer.observe(target);
     return () => {
-      isMounted.current = false;
-      // Cleanup phase
+      observer.unobserve(target);
     };
-  }, []);
-
-  const updateValue = useCallback((newValue: T) => {
-    setValue(newValue);
-  }, []);
-
-  return { value, updateValue, isMounted: isMounted.current };
+  }, [ref, options]);
+  return isIntersecting;
 }
-
-export default useIntersectionObserver;
