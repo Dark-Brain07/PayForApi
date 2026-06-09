@@ -211,3 +211,7 @@ The client retries the request, including the transaction hash in the X-Payment-
 ### 6. MiniPay Integration Guide
 
 MiniPay is an ultra-lightweight wallet built into the Opera Mini browser, designed for users in emerging markets.
+
+#### 6.1 Auto-Detection
+
+Our platform uses window.ethereum.isMiniPay to seamlessly detect the wallet and bypass standard connection modals.
