@@ -146,3 +146,8 @@ This contract implements the ERC20 standard with additional minting logic for da
 #### 3.2 APIRevenueSplitter.sol
 
 Handles the 90/10 split between API creators and the platform treasury.
+
+Run the deployment script using Hardhat:
+`ash
+npx hardhat run scripts/deploy.ts --network celo
+`
