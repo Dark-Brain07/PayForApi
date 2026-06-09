@@ -179,3 +179,7 @@ Returns the top 10 global news headlines. Price: 0.002 cUSD.
 #### 4.4 GET /api/crypto
 
 Fetches live prices for major cryptocurrencies including BTC, ETH, and CELO. Price: 0.001 cUSD.
+
+#### 4.5 POST /api/summary
+
+Accepts a long text payload and returns a concise AI-generated summary. Price: 0.005 cUSD.
