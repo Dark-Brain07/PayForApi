@@ -199,7 +199,7 @@ export default function DashboardPage() {
                   <div>
                     <h3 className="text-lg font-bold text-[#94A3B8] flex items-center gap-2">
                       {api.name}
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#1E293B] text-[#64748B] border border-[#334155]">DELETED</span>
+                      <span aria-label="Deleted Status" className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#1E293B] text-[#64748B] border border-[#334155]">DELETED</span>
                     </h3>
                     <code className="text-sm text-[#475569] mt-1 block">{api.endpoint}</code>
                   </div>
