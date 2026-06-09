@@ -106,3 +106,7 @@ The platform follows a highly modular architecture separating the frontend, back
 #### 1.1 Frontend Stack
 
 Built with Next.js 15 App Router, React 19, and Tailwind CSS v4 for a highly responsive, glass-morphic UI.
+
+#### 1.2 Wallet & Provider Integration
+
+We utilize ethers.js v6 for provider interactions, specifically auto-detecting the MiniPay injected provider via window.ethereum.isMiniPay.
