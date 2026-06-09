@@ -130,3 +130,5 @@ Before running the project locally, you must configure a series of environment v
 - OPENAI_API_KEY: Required for the Premium AI Chat endpoint.
 
 - GEMINI_API_KEY: Required for the AI Summary and AI Translate endpoints.
+
+- WEATHER_API_KEY: Sourced from OpenWeatherMap for real-time meteorological data.
