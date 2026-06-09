@@ -102,3 +102,7 @@ Welcome to the deep-dive documentation for Pay For API.
 ### 1. Architecture Overview
 
 The platform follows a highly modular architecture separating the frontend, backend middleware, and Celo smart contracts.
+
+#### 1.1 Frontend Stack
+
+Built with Next.js 15 App Router, React 19, and Tailwind CSS v4 for a highly responsive, glass-morphic UI.
