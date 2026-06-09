@@ -187,3 +187,7 @@ Accepts a long text payload and returns a concise AI-generated summary. Price: 0
 #### 4.6 POST /api/translate
 
 Accepts text and a target language code. Returns translated text. Price: 0.003 cUSD.
+
+### 5. x402 Protocol Deep Dive
+
+The x402 protocol is the backbone of Pay For API's monetization strategy.
