@@ -163,3 +163,7 @@ npx hardhat verify --network celo <DEPLOYED_CONTRACT_ADDRESS>
 ### 4. API Endpoint Reference
 
 Detailed specifications for each premium endpoint offered on the marketplace.
+
+#### 4.1 POST /api/chat
+
+Accepts a user message and returns an AI-generated response. Requires a 	xHash proving a 0.005 cUSD payment.
