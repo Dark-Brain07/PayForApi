@@ -203,3 +203,7 @@ Along with the 402 status, the server provides an invoice containing the require
 #### 5.3 Payment Settlement
 
 The client's wallet processes the payment on the Celo network and obtains a transaction hash.
+
+#### 5.4 Transaction Validation
+
+The client retries the request, including the transaction hash in the X-Payment-Hash header. The server verifies this hash on-chain before serving the data.
