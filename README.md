@@ -118,3 +118,7 @@ All smart contracts are written in Solidity 0.8.24 and compiled using Hardhat. T
 #### 1.4 x402 Middleware
 
 Our Next.js API routes are protected by custom x402 middleware that intercepts requests and validates on-chain payment hashes.
+
+### 2. Environment Setup & Configuration
+
+Before running the project locally, you must configure a series of environment variables.
