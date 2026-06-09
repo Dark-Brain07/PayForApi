@@ -98,3 +98,7 @@ Earnings are managed by the `APIRevenueSplitter.sol` contract.
 ## 📚 Comprehensive Developer Guide
 
 Welcome to the deep-dive documentation for Pay For API.
+
+### 1. Architecture Overview
+
+The platform follows a highly modular architecture separating the frontend, backend middleware, and Celo smart contracts.
