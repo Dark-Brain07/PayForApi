@@ -5,7 +5,7 @@ import { useState, useRef, useEffect, RefObject } from "react";
  * Tracks whether an element is currently focused.
  * Returns [ref, isFocused].
  */
-export function useFocus<T extends HTMLElement>(): [RefObject<T>, boolean] {
+export function useFocus<T extends HTMLElement>(): [RefObject<T | null>, boolean] {
   const ref = useRef<T>(null);
   const [focused, setFocused] = useState(false);
 

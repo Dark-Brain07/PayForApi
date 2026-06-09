@@ -5,7 +5,7 @@ import { CELO_MAINNET } from "@/lib/contracts";
 
 export const dynamic = 'force-dynamic';
 
-const getHandler = async (req: NextRequest) => {
+const getHandler = async (req: NextRequest): Promise<NextResponse<any>> => {
   const { searchParams } = new URL(req.url);
   const text = searchParams.get('text') || 'Example text to summarize';
   const apiKey = process.env.GEMINI_API_KEY;

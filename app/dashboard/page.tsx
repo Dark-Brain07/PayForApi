@@ -73,8 +73,9 @@ export default function DashboardPage() {
         const fetchedDeletedApis: {name: string, endpoint: string, revenue: number}[] = [];
 
         for (const event of events) {
-          const endpointId = event.args?.[0];
-          const creator = event.args?.[1];
+          const eventObj = event as any;
+          const endpointId = eventObj.args?.[0];
+          const creator = eventObj.args?.[1];
           
           if (creator && creator.toLowerCase() === address.toLowerCase() && endpointId) {
             const apiData = await contract.apiEndpoints(endpointId);
