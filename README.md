@@ -215,3 +215,7 @@ MiniPay is an ultra-lightweight wallet built into the Opera Mini browser, design
 #### 6.1 Auto-Detection
 
 Our platform uses window.ethereum.isMiniPay to seamlessly detect the wallet and bypass standard connection modals.
+
+#### 6.2 Gas Abstraction (FeeCurrency)
+
+All transactions are formatted to use cUSD as the eeCurrency, ensuring users don't need native CELO to pay for gas.
