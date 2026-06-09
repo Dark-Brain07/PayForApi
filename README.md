@@ -142,3 +142,7 @@ To deploy the contracts to the Celo network, ensure your wallet is funded with C
 #### 3.1 APICredits.sol
 
 This contract implements the ERC20 standard with additional minting logic for daily rewards and streaks.
+
+#### 3.2 APIRevenueSplitter.sol
+
+Handles the 90/10 split between API creators and the platform treasury.
