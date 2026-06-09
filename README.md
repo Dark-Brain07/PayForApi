@@ -267,3 +267,7 @@ We are constantly iterating and expanding the capabilities of Pay For API.
 #### 9.1 Multi-Chain Expansion
 
 While Celo is our native home, we plan to support x402 payments on Base, Optimism, and Arbitrum.
+
+#### 9.2 Decentralized RPC Integrations
+
+Integrating with decentralized infrastructure providers to ensure 100% uptime for our middleware gateways.
