@@ -134,3 +134,7 @@ Before running the project locally, you must configure a series of environment v
 - WEATHER_API_KEY: Sourced from OpenWeatherMap for real-time meteorological data.
 
 - NEWS_API_KEY: Used to fetch global news headlines for the News API endpoint.
+
+### 3. Smart Contract Deployment Guide
+
+To deploy the contracts to the Celo network, ensure your wallet is funded with CELO for gas.
