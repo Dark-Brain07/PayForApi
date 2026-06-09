@@ -243,3 +243,7 @@ All user inputs, especially for AI prompts and database queries, are strictly sa
 #### 7.4 Smart Contract Audits
 
 The APICredits and APIRevenueSplitter contracts have undergone internal review, though external audits are recommended before high-volume mainnet usage.
+
+### 8. Creator Dashboard Overview
+
+The Creator Dashboard empowers developers to monetize their own endpoints on our platform.
