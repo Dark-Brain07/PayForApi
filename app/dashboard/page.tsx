@@ -228,6 +228,7 @@ export default function DashboardPage() {
           <div className="bg-[#0F172A] border border-[#1E293B] rounded-2xl w-full max-w-md p-6 relative">
             <button 
               onClick={() => setModalOpen(false)}
+              aria-label="Close modal"
               className="absolute top-4 right-4 text-[#64748B] hover:text-white"
             >
               ✕
