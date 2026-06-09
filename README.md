@@ -110,3 +110,7 @@ Built with Next.js 15 App Router, React 19, and Tailwind CSS v4 for a highly res
 #### 1.2 Wallet & Provider Integration
 
 We utilize ethers.js v6 for provider interactions, specifically auto-detecting the MiniPay injected provider via window.ethereum.isMiniPay.
+
+#### 1.3 Smart Contracts
+
+All smart contracts are written in Solidity 0.8.24 and compiled using Hardhat. They handle API revenue splits and APIC token logic.
