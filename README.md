@@ -227,3 +227,7 @@ MiniPay strictly requires Legacy (Type 0) or EIP-1559 (Type 2) transactions. We 
 ### 7. Security Best Practices
 
 Maintaining the integrity of the marketplace and protecting user funds is paramount.
+
+#### 7.1 Rate Limiting
+
+All API endpoints are protected by IP-based rate limiting to prevent abuse and DDoS attacks.
