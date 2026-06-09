@@ -151,3 +151,7 @@ Run the deployment script using Hardhat:
 `ash
 npx hardhat run scripts/deploy.ts --network celo
 `
+
+#### 3.3 Contract Verification
+
+Verify your deployed contracts on CeloScan using the @nomicfoundation/hardhat-verify plugin.
