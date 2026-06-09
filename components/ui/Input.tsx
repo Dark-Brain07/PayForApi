@@ -1,30 +1,26 @@
 import React from 'react';
 
-export interface InputProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
-  isDisabled?: boolean;
 }
 
 /**
  * Enterprise-grade Input component for the design system.
- * Supports multiple variants, sizes, and accessibility standards.
  */
 export const Input: React.FC<InputProps> = ({ 
-  children, 
   variant = 'default', 
   size = 'md', 
-  isDisabled = false, 
   className = '', 
   ...props 
 }) => {
-  const baseStyles = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50";
+  const baseStyles = "flex w-full rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
   
   const variantStyles = {
-    default: "bg-primary text-primary-foreground hover:bg-primary/90",
-    primary: "bg-blue-600 text-white hover:bg-blue-700",
-    outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-    ghost: "hover:bg-accent hover:text-accent-foreground"
+    default: "bg-background text-foreground border border-input",
+    primary: "bg-blue-50 text-blue-900 border border-blue-200",
+    outline: "border-2 border-input bg-transparent",
+    ghost: "bg-transparent border-transparent hover:bg-accent"
   };
 
   const sizeStyles = {
@@ -34,14 +30,10 @@ export const Input: React.FC<InputProps> = ({
   };
   
   return (
-    <div 
+    <input 
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
-      aria-disabled={isDisabled}
-      data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
-    >
-      {children}
-    </div>
+    />
   );
 };
 
