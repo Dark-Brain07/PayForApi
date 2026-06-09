@@ -126,3 +126,5 @@ Before running the project locally, you must configure a series of environment v
 - NEXT_PUBLIC_RPC_URL: The Celo Mainnet RPC URL used for public data reading.
 
 - PRIVATE_KEY: The deployer's private key used for smart contract deployments and backend admin transactions.
+
+- OPENAI_API_KEY: Required for the Premium AI Chat endpoint.
