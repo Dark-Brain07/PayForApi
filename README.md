@@ -251,3 +251,7 @@ The Creator Dashboard empowers developers to monetize their own endpoints on our
 #### 8.1 Endpoint Registration
 
 Creators provide their endpoint URL, metadata, and set a custom cUSD price.
+
+#### 8.2 Gateway Routing
+
+Pay For API acts as a reverse proxy, enforcing x402 payments before routing the request to the creator's server.
