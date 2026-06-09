@@ -82,7 +82,7 @@ export default function DashboardPage() {
         const fetchedDeletedApis: ApiEndpointData[] = [];
 
         for (const event of events) {
-          const eventObj = event as any;
+          const eventObj = event as { args?: string[] };
           const endpointId = eventObj.args?.[0];
           const creator = eventObj.args?.[1];
           
@@ -213,6 +213,8 @@ export default function DashboardPage() {
                       <p className="text-brand-yellow font-bold">${api.revenue.toFixed(2)} cUSD</p>
                     </div>
                     <button 
+                      type="button"
+                      aria-label="Withdraw funds"
                       onClick={() => alert("Withdrawals will be enabled via smart contract upgrade in V2.")}
                       className="text-sm px-4 py-2 bg-brand-yellow/10 text-brand-yellow hover:bg-brand-yellow/20 rounded-lg transition-colors font-bold border border-brand-yellow/30"
                     >
