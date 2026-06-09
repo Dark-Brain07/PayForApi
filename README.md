@@ -235,3 +235,7 @@ All API endpoints are protected by IP-based rate limiting to prevent abuse and D
 #### 7.2 Double-Spend Prevention
 
 The backend maintains a registry of processed transaction hashes to ensure a single payment cannot be used multiple times.
+
+#### 7.3 Input Sanitization
+
+All user inputs, especially for AI prompts and database queries, are strictly sanitized to prevent injection attacks.
