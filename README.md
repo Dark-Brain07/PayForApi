@@ -175,3 +175,7 @@ Requires a lat and lon query parameter. Returns current weather data. Price: 0.0
 #### 4.3 GET /api/news
 
 Returns the top 10 global news headlines. Price: 0.002 cUSD.
+
+#### 4.4 GET /api/crypto
+
+Fetches live prices for major cryptocurrencies including BTC, ETH, and CELO. Price: 0.001 cUSD.
