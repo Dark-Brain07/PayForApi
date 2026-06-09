@@ -132,3 +132,5 @@ Before running the project locally, you must configure a series of environment v
 - GEMINI_API_KEY: Required for the AI Summary and AI Translate endpoints.
 
 - WEATHER_API_KEY: Sourced from OpenWeatherMap for real-time meteorological data.
+
+- NEWS_API_KEY: Used to fetch global news headlines for the News API endpoint.
