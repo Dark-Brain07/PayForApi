@@ -41,7 +41,7 @@ export default function Header() {
           setCusdBalance(Number(ethers.formatUnits(cusdBal, 18)).toFixed(2));
           setApicBalance(Number(ethers.formatUnits(apicBal, 18)).toFixed(2));
         } catch (error) {
-          console.error("Failed to fetch balances", error);
+          // Silent catch for background fetching
         }
       }
     };
@@ -57,14 +57,14 @@ export default function Header() {
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3">
-              <img src="/logo.png" alt="Pay For API Logo" className="w-20 h-20 object-contain drop-shadow-xl" />
+              <img src="/logo.png" alt="Pay For API Logo" width={80} height={80} className="w-20 h-20 object-contain drop-shadow-xl" />
               <span className="font-bold text-xl text-white">
                 Pay For <span className="text-brand-yellow">API</span>
               </span>
             </Link>
           </div>
           
-          <nav className="hidden md:flex space-x-8 items-center">
+          <nav aria-label="Main Navigation" className="hidden md:flex space-x-8 items-center">
             <Link href="/marketplace" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
               Marketplace
             </Link>
@@ -90,7 +90,7 @@ export default function Header() {
 
           <div className="flex items-center space-x-2 sm:space-x-4">
             {isMiniPay && (
-              <span className="hidden md:inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-brand-yellow/10 text-brand-yellow border border-brand-yellow/20">
+              <span title="MiniPay Wallet" className="hidden md:inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-brand-yellow/10 text-brand-yellow border border-brand-yellow/20">
                 MiniPay
               </span>
             )}
@@ -109,7 +109,7 @@ export default function Header() {
                       <span className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-wider">APIC</span>
                     </div>
                   </div>
-                  <Link href="/explorer" className="w-full text-center py-1 bg-brand-yellow/10 hover:bg-brand-yellow/20 text-brand-yellow border border-brand-yellow/30 rounded-lg text-[11px] font-bold transition-all shadow-[0_0_5px_rgba(245,197,24,0.1)] hover:shadow-[0_0_10px_rgba(245,197,24,0.2)]">
+                  <Link href="/explorer" aria-label="Donate to Pay For API" className="w-full text-center py-1 bg-brand-yellow/10 hover:bg-brand-yellow/20 text-brand-yellow border border-brand-yellow/30 rounded-lg text-[11px] font-bold transition-all shadow-[0_0_5px_rgba(245,197,24,0.1)] hover:shadow-[0_0_10px_rgba(245,197,24,0.2)]">
                     💖 Donate Us
                   </Link>
                 </div>
@@ -120,6 +120,7 @@ export default function Header() {
                 </div>
                 {!isMiniPay && (
                   <button 
+                    type="button"
                     onClick={disconnect}
                     className="bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 px-2 py-2 sm:px-3 rounded-lg transition-colors text-xs sm:text-sm font-bold"
                   >
@@ -130,6 +131,7 @@ export default function Header() {
               </div>
             ) : (
               <button 
+                type="button"
                 onClick={connect}
                 className="btn-primary px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base"
               >
@@ -139,10 +141,13 @@ export default function Header() {
 
             {/* Mobile Menu Hamburger */}
             <button 
+              type="button"
+              aria-label="Mobile Menu"
+              aria-expanded={isMobileMenuOpen}
               className="md:hidden text-[#94A3B8] hover:text-white transition-colors ml-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg aria-hidden="true" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 ) : (
