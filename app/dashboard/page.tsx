@@ -238,7 +238,7 @@ export default function DashboardPage() {
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
+                <label htmlFor="new-api-name" className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
                 <input 
                   id="new-api-name"
                   type="text" 
