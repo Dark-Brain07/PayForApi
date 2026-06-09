@@ -247,3 +247,7 @@ The APICredits and APIRevenueSplitter contracts have undergone internal review, 
 ### 8. Creator Dashboard Overview
 
 The Creator Dashboard empowers developers to monetize their own endpoints on our platform.
+
+#### 8.1 Endpoint Registration
+
+Creators provide their endpoint URL, metadata, and set a custom cUSD price.
