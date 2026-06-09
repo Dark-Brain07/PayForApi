@@ -255,3 +255,7 @@ Creators provide their endpoint URL, metadata, and set a custom cUSD price.
 #### 8.2 Gateway Routing
 
 Pay For API acts as a reverse proxy, enforcing x402 payments before routing the request to the creator's server.
+
+#### 8.3 Analytics & Earnings
+
+Creators can track their total calls, revenue generated, and withdraw their 90% share directly to their Celo wallet.
