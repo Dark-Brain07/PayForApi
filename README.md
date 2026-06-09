@@ -124,3 +124,5 @@ Our Next.js API routes are protected by custom x402 middleware that intercepts r
 Before running the project locally, you must configure a series of environment variables.
 
 - NEXT_PUBLIC_RPC_URL: The Celo Mainnet RPC URL used for public data reading.
+
+- PRIVATE_KEY: The deployer's private key used for smart contract deployments and backend admin transactions.
