@@ -138,3 +138,7 @@ Before running the project locally, you must configure a series of environment v
 ### 3. Smart Contract Deployment Guide
 
 To deploy the contracts to the Celo network, ensure your wallet is funded with CELO for gas.
+
+#### 3.1 APICredits.sol
+
+This contract implements the ERC20 standard with additional minting logic for daily rewards and streaks.
