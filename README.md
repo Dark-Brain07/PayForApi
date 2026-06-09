@@ -271,3 +271,7 @@ While Celo is our native home, we plan to support x402 payments on Base, Optimis
 #### 9.2 Decentralized RPC Integrations
 
 Integrating with decentralized infrastructure providers to ensure 100% uptime for our middleware gateways.
+
+#### 9.3 Subscription NFTs
+
+Introducing optional NFT-based monthly passes for users who prefer bulk access over pay-per-call.
