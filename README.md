@@ -114,3 +114,7 @@ We utilize ethers.js v6 for provider interactions, specifically auto-detecting t
 #### 1.3 Smart Contracts
 
 All smart contracts are written in Solidity 0.8.24 and compiled using Hardhat. They handle API revenue splits and APIC token logic.
+
+#### 1.4 x402 Middleware
+
+Our Next.js API routes are protected by custom x402 middleware that intercepts requests and validates on-chain payment hashes.
