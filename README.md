@@ -263,3 +263,7 @@ Creators can track their total calls, revenue generated, and withdraw their 90% 
 ### 9. Future Roadmap
 
 We are constantly iterating and expanding the capabilities of Pay For API.
+
+#### 9.1 Multi-Chain Expansion
+
+While Celo is our native home, we plan to support x402 payments on Base, Optimism, and Arbitrum.
