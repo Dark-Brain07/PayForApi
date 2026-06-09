@@ -259,3 +259,7 @@ Pay For API acts as a reverse proxy, enforcing x402 payments before routing the 
 #### 8.3 Analytics & Earnings
 
 Creators can track their total calls, revenue generated, and withdraw their 90% share directly to their Celo wallet.
+
+### 9. Future Roadmap
+
+We are constantly iterating and expanding the capabilities of Pay For API.
