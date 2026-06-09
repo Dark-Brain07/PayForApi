@@ -275,3 +275,7 @@ Integrating with decentralized infrastructure providers to ensure 100% uptime fo
 #### 9.3 Subscription NFTs
 
 Introducing optional NFT-based monthly passes for users who prefer bulk access over pay-per-call.
+
+#### 9.4 Enterprise SDK
+
+A robust, enterprise-grade SDK with built-in retry logic, caching, and fallback providers for high-availability systems.
