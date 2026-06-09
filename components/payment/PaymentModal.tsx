@@ -58,9 +58,10 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
         
         onSuccess(receipt.hash, selectedToken);
       }
-    } catch (err: any) {
-      console.error(err);
-      let errorMessage = err?.reason || err?.message || "Payment failed. Please try again.";
+    } catch (error: unknown) {
+      console.error(error);
+      const err = error as Record<string, unknown>;
+      let errorMessage = (err?.reason as string) || (err?.message as string) || "Payment failed. Please try again.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
         errorMessage = "Transaction failed: Insufficient balance. Please top up your wallet.";
       }
@@ -97,9 +98,10 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
         
         onSuccess(receipt.hash, "APIC");
       }
-    } catch (err: any) {
-      console.error(err);
-      let errorMessage = err?.reason || err?.message || "Credit payment failed. Please try again.";
+    } catch (error: unknown) {
+      console.error(error);
+      const err = error as Record<string, unknown>;
+      let errorMessage = (err?.reason as string) || (err?.message as string) || "Credit payment failed. Please try again.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
         errorMessage = "Transaction failed: Insufficient APIC balance. Please top up your credits.";
       }
@@ -111,10 +113,10 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" className="bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
         <div className="p-6 border-b border-brand-border flex justify-between items-center shrink-0">
-          <h2 className="text-xl font-bold text-white">Select Payment Method</h2>
-          <button onClick={onClose} className="text-text-secondary hover:text-white transition-colors">
+          <h2 id="payment-modal-title" className="text-xl font-bold text-white">Select Payment Method</h2>
+          <button type="button" aria-label="Close modal" onClick={onClose} className="text-text-secondary hover:text-white transition-colors">
             ✕
           </button>
         </div>
@@ -136,6 +138,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
         
         <div className="p-6 border-t border-brand-border bg-brand-elevated space-y-3 shrink-0">
           <button 
+            type="button"
             onClick={handlePay}
             disabled={isProcessing}
             className="w-full btn-primary py-4 text-lg flex justify-center items-center space-x-2"
@@ -152,6 +155,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
           
           {priceCredits && (
             <button 
+              type="button"
               onClick={handlePayCredits}
               disabled={isProcessing}
               className="w-full bg-brand-yellow/10 border border-brand-yellow/30 hover:bg-brand-yellow/20 text-brand-yellow font-bold py-4 rounded-xl transition-colors text-lg flex justify-center items-center space-x-2"
