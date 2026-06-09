@@ -167,3 +167,7 @@ Detailed specifications for each premium endpoint offered on the marketplace.
 #### 4.1 POST /api/chat
 
 Accepts a user message and returns an AI-generated response. Requires a 	xHash proving a 0.005 cUSD payment.
+
+#### 4.2 GET /api/weather
+
+Requires a lat and lon query parameter. Returns current weather data. Price: 0.001 cUSD.
