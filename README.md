@@ -207,3 +207,7 @@ The client's wallet processes the payment on the Celo network and obtains a tran
 #### 5.4 Transaction Validation
 
 The client retries the request, including the transaction hash in the X-Payment-Hash header. The server verifies this hash on-chain before serving the data.
+
+### 6. MiniPay Integration Guide
+
+MiniPay is an ultra-lightweight wallet built into the Opera Mini browser, designed for users in emerging markets.
