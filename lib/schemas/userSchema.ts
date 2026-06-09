@@ -1,9 +1,16 @@
 import { z } from "zod";
 
 export const userSchema = z.object({
-  id: z.string().uuid(),
-  email: z.string().email(),
-  username: z.string().min(3),
-  createdAt: z.date(),
-  isActive: z.boolean().default(true)
-});
+  id: z.string().uuid().optional(),
+  walletAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
+  ens: z.string().optional(),
+  email: z.string().email().optional(),
+  role: z.enum(["user", "creator", "admin"]).default("user"),
+  isMiniPay: z.boolean().default(false),
+  createdAt: z.string().datetime().optional(),
+  updatedAt: z.string().datetime().optional(),
+}).strict();
+
+export type UserData = z.infer<typeof userSchema>;
+export const validateUser = (data: unknown) => userSchema.safeParse(data);
+export const parseUserOrThrow = (data: unknown): UserData => userSchema.parse(data);
