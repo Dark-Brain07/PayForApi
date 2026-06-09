@@ -128,3 +128,5 @@ Before running the project locally, you must configure a series of environment v
 - PRIVATE_KEY: The deployer's private key used for smart contract deployments and backend admin transactions.
 
 - OPENAI_API_KEY: Required for the Premium AI Chat endpoint.
+
+- GEMINI_API_KEY: Required for the AI Summary and AI Translate endpoints.
