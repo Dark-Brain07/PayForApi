@@ -195,3 +195,7 @@ The x402 protocol is the backbone of Pay For API's monetization strategy.
 #### 5.1 HTTP 402 Payment Required
 
 When a client accesses a premium endpoint without a valid payment, the server returns an HTTP 402 status code.
+
+#### 5.2 Invoice Generation
+
+Along with the 402 status, the server provides an invoice containing the required token address, amount, and recipient.
