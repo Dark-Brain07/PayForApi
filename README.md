@@ -279,3 +279,7 @@ Introducing optional NFT-based monthly passes for users who prefer bulk access o
 #### 9.4 Enterprise SDK
 
 A robust, enterprise-grade SDK with built-in retry logic, caching, and fallback providers for high-availability systems.
+
+### 10. Conclusion
+
+Thank you for building with Pay For API. For support, please open an issue on our GitHub repository or reach out to the core team.
