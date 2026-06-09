@@ -77,7 +77,12 @@ export default function DashboardPage() {
         const filter = contract.filters.ApiRegistered();
         const events = await contract.queryFilter(filter, fromBlock, "latest");
 
-        const deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]");
+        let deletedIds: string[] = [];
+        try {
+          deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]");
+        } catch (e) {
+          console.warn("Failed to parse local storage cache");
+        }
         const fetchedApis: ApiEndpointData[] = [];
         const fetchedDeletedApis: ApiEndpointData[] = [];
 
@@ -185,7 +190,7 @@ export default function DashboardPage() {
               </div>
             ))}
             {apis.length === 0 && (
-              <div className="text-center py-12 border border-dashed border-[#1E293B] rounded-xl">
+              <div aria-live="polite" className="text-center py-12 border border-dashed border-[#1E293B] rounded-xl">
                 <p className="text-[#94A3B8]">You haven't registered any APIs yet.</p>
               </div>
             )}
@@ -342,7 +347,8 @@ export default function DashboardPage() {
                 <button 
                   onClick={() => {
                     if (!address) return;
-                    const deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]");
+                    let deletedIds: string[] = [];
+                    try { deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]"); } catch (e) {}
                     if (!deletedIds.includes(selectedSettingsApi.endpoint)) {
                         deletedIds.push(selectedSettingsApi.endpoint);
                         localStorage.setItem(`deleted_endpoints_${address}`, JSON.stringify(deletedIds));
