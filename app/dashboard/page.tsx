@@ -240,6 +240,7 @@ export default function DashboardPage() {
               <div>
                 <label className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
                 <input 
+                  id="new-api-name"
                   type="text" 
                   value={newApiName}
                   onChange={(e) => setNewApiName(e.target.value)}
@@ -250,6 +251,7 @@ export default function DashboardPage() {
               <div>
                 <label className="block text-sm font-medium text-[#94A3B8] mb-1">Endpoint URL</label>
                 <input 
+                  id="new-api-endpoint"
                   type="text" 
                   value={newApiEndpoint}
                   onChange={(e) => setNewApiEndpoint(e.target.value)}
