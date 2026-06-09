@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isDisabled?: boolean;
@@ -34,14 +34,14 @@ export const Button: React.FC<ButtonProps> = ({
   };
   
   return (
-    <div 
+    <button 
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
-      aria-disabled={isDisabled}
+      disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
       {children}
-    </div>
+    </button>
   );
 };
 
