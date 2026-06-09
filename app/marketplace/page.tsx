@@ -26,10 +26,7 @@ export default function Marketplace() {
       <section className="py-16 px-4 max-w-7xl mx-auto w-full">
         <div className="mb-16 text-center relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-yellow/10 rounded-[100%] blur-[120px] -z-10 pointer-events-none"></div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-green/10 border border-brand-green/20 mb-6">
-            <div className="w-2 h-2 rounded-full bg-brand-green animate-pulse"></div>
-            <span className="text-brand-green text-xs font-bold tracking-wider uppercase">Network Status: Operational</span>
-          </div>
+
           <h1 className="text-5xl md:text-6xl font-black mb-6 text-white font-sans tracking-tight">API <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-200">Marketplace</span></h1>
           <p className="text-[#94A3B8] text-lg md:text-xl max-w-2xl mx-auto font-medium">Sub-cent micropayments seamlessly enabled by x402 on Celo. No subscriptions, just pure utility.</p>
         </div>
