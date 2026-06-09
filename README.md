@@ -199,3 +199,7 @@ When a client accesses a premium endpoint without a valid payment, the server re
 #### 5.2 Invoice Generation
 
 Along with the 402 status, the server provides an invoice containing the required token address, amount, and recipient.
+
+#### 5.3 Payment Settlement
+
+The client's wallet processes the payment on the Celo network and obtains a transaction hash.
