@@ -239,3 +239,7 @@ The backend maintains a registry of processed transaction hashes to ensure a sin
 #### 7.3 Input Sanitization
 
 All user inputs, especially for AI prompts and database queries, are strictly sanitized to prevent injection attacks.
+
+#### 7.4 Smart Contract Audits
+
+The APICredits and APIRevenueSplitter contracts have undergone internal review, though external audits are recommended before high-volume mainnet usage.
