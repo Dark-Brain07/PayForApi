@@ -45,9 +45,10 @@ export default function DashboardPage() {
       setModalOpen(false);
       setNewApiName("");
       setNewApiEndpoint("");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error);
-      alert(error.shortMessage || error.message || "Registration failed");
+      const err = error as Record<string, unknown>;
+      alert((err?.shortMessage as string) || (err?.message as string) || "Registration failed");
     } finally {
       setIsRegistering(false);
     }
