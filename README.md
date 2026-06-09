@@ -191,3 +191,7 @@ Accepts text and a target language code. Returns translated text. Price: 0.003 c
 ### 5. x402 Protocol Deep Dive
 
 The x402 protocol is the backbone of Pay For API's monetization strategy.
+
+#### 5.1 HTTP 402 Payment Required
+
+When a client accesses a premium endpoint without a valid payment, the server returns an HTTP 402 status code.
