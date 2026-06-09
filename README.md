@@ -159,3 +159,7 @@ Verify your deployed contracts on CeloScan using the @nomicfoundation/hardhat-ve
 `ash
 npx hardhat verify --network celo <DEPLOYED_CONTRACT_ADDRESS>
 `
+
+### 4. API Endpoint Reference
+
+Detailed specifications for each premium endpoint offered on the marketplace.
