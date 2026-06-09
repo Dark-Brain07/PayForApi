@@ -6,14 +6,20 @@ import Header from "@/components/layout/Header";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { CONTRACTS } from "@/lib/contracts";
 
+export interface ApiEndpointData {
+  name: string;
+  endpoint: string;
+  revenue: number;
+}
+
 export default function DashboardPage() {
-  const [apis, setApis] = useState<{name: string, endpoint: string, revenue: number}[]>([]);
+  const [apis, setApis] = useState<ApiEndpointData[]>([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [newApiName, setNewApiName] = useState("");
   const [newApiEndpoint, setNewApiEndpoint] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
-  const [selectedSettingsApi, setSelectedSettingsApi] = useState<{name: string, endpoint: string, revenue: number} | null>(null);
-  const [deletedApis, setDeletedApis] = useState<{name: string, endpoint: string, revenue: number}[]>([]);
+  const [selectedSettingsApi, setSelectedSettingsApi] = useState<ApiEndpointData | null>(null);
+  const [deletedApis, setDeletedApis] = useState<ApiEndpointData[]>([]);
   const { address, isConnected } = useWallet();
 
   const handleRegister = async () => {
@@ -69,8 +75,8 @@ export default function DashboardPage() {
         const events = await contract.queryFilter(filter, fromBlock, "latest");
 
         const deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]");
-        const fetchedApis: {name: string, endpoint: string, revenue: number}[] = [];
-        const fetchedDeletedApis: {name: string, endpoint: string, revenue: number}[] = [];
+        const fetchedApis: ApiEndpointData[] = [];
+        const fetchedDeletedApis: ApiEndpointData[] = [];
 
         for (const event of events) {
           const eventObj = event as any;
