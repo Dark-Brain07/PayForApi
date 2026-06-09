@@ -223,3 +223,7 @@ All transactions are formatted to use cUSD as the eeCurrency, ensuring users do
 #### 6.3 Transaction Formatting
 
 MiniPay strictly requires Legacy (Type 0) or EIP-1559 (Type 2) transactions. We ensure all ethers.js transactions are correctly populated.
+
+### 7. Security Best Practices
+
+Maintaining the integrity of the marketplace and protecting user funds is paramount.
