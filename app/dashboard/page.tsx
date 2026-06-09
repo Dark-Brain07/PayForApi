@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { ethers } from "ethers";
 import Header from "@/components/layout/Header";
 import { useWallet } from "@/components/wallet/WalletContext";
@@ -119,7 +119,9 @@ export default function DashboardPage() {
     fetchRealEndpoints();
   }, [isConnected, address]);
 
-  const totalRevenue = [...apis, ...deletedApis].reduce((sum, api) => sum + api.revenue, 0);
+  const totalRevenue = useMemo(() => {
+    return [...apis, ...deletedApis].reduce((sum, api) => sum + api.revenue, 0);
+  }, [apis, deletedApis]);
 
   return (
     <div className="min-h-screen bg-black font-sans selection:bg-brand-yellow/30 selection:text-brand-yellow">
