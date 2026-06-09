@@ -183,3 +183,7 @@ Fetches live prices for major cryptocurrencies including BTC, ETH, and CELO. Pri
 #### 4.5 POST /api/summary
 
 Accepts a long text payload and returns a concise AI-generated summary. Price: 0.005 cUSD.
+
+#### 4.6 POST /api/translate
+
+Accepts text and a target language code. Returns translated text. Price: 0.003 cUSD.
