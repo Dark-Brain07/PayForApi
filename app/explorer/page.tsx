@@ -20,7 +20,8 @@ export default function Explorer() {
     async function fetchStats() {
       try {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
-        const receiverAddress = "0xfd4960F33670f3477ebe817B184dd59fC4961437"; // Master Merchant Wallet
+        const MASTER_MERCHANT_WALLET = "0xfd4960F33670f3477ebe817B184dd59fC4961437"; // Master Merchant Wallet
+        const receiverAddress = MASTER_MERCHANT_WALLET;
 
         const erc20Abi = ["function balanceOf(address) view returns (uint256)"];
         const cusdContract = new ethers.Contract(CELO_STABLECOINS.cUSD.address, erc20Abi, provider);
