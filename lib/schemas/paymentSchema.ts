@@ -8,7 +8,7 @@ export const paymentSchema = z.object({
   to:   z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   amount: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
   token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"]),
-  endpoint: z.string().min(1).url("Must be a valid endpoint URL"),
+  endpoint: z.string().min(1).max(2048).url("Must be a valid endpoint URL"),
   chainId: z.number().int().default(42220),
   blockNumber: z.number().int().positive().optional(),
   status: z.enum(["pending", "confirmed", "failed"]).default("pending"),
