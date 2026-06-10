@@ -125,7 +125,7 @@ export default function DashboardPage() {
     fetchRealEndpoints();
   }, [isConnected, address]);
 
-  const totalRevenue = useMemo(() => {
+  const totalRevenue = useMemo<number>(() => {
     return [...apis, ...deletedApis].reduce((sum, api) => sum + api.revenue, 0);
   }, [apis, deletedApis]);
 
