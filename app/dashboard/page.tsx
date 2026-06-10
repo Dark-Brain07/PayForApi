@@ -177,7 +177,12 @@ export default function DashboardPage() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold text-white mb-6">Your Registered Endpoints</h2>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-white">Your Registered Endpoints</h2>
+            <button onClick={() => window.location.reload()} className="text-sm text-[#94A3B8] hover:text-white flex items-center gap-1 transition-colors">
+              <span>↻</span> Refresh
+            </button>
+          </div>
           <div className="space-y-4">
             {apis.map((api, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/50 border border-[#1E293B] hover:border-[#334155] rounded-xl transition-all group">
