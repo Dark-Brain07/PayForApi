@@ -94,8 +94,8 @@ export default function Marketplace() {
             });
             const data = await res.json();
             setApiResult(JSON.stringify(data, null, 2));
-          } catch (e: any) {
-            setApiResult("Error: " + e.message);
+          } catch (e: unknown) {
+            setApiResult("Error: " + (e instanceof Error ? e.message : String(e)));
           } finally {
             setIsCalling(false);
           }
