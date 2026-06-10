@@ -50,7 +50,8 @@ export default function Explorer() {
     async function fetchLeaderboard() {
       try {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
-        const donationWallet = "0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476";
+        const ECOSYSTEM_DONATION_WALLET = "0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476";
+        const donationWallet = ECOSYSTEM_DONATION_WALLET;
         
         const erc20Abi = ["event Transfer(address indexed from, address indexed to, uint256 value)"];
         const cusdContract = new ethers.Contract(CELO_STABLECOINS.cUSD.address, erc20Abi, provider);
