@@ -92,7 +92,12 @@ export default function Marketplace() {
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(payload)
             });
-            const data = await res.json();
+            let data;
+            try {
+              data = await res.json();
+            } catch {
+              data = { error: "Failed to parse API response" };
+            }
             setApiResult(JSON.stringify(data, null, 2));
           } catch (e: unknown) {
             setApiResult("Error: " + (e instanceof Error ? e.message : String(e)));
