@@ -60,8 +60,8 @@ export default function DashboardPage() {
       setNewApiPrice("");
     } catch (error: unknown) {
       console.error(error);
-      const err = error as Record<string, unknown>;
-      alert((err?.shortMessage as string) || (err?.message as string) || "Registration failed");
+      const registrationError = error as Record<string, unknown>;
+      alert((registrationError?.shortMessage as string) || (registrationError?.message as string) || "Registration failed");
     } finally {
       setIsRegistering(false);
     }
