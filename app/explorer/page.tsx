@@ -14,6 +14,7 @@ export default function Explorer() {
   const [topDonors, setTopDonors] = useState<DonorInfo[]>([]);
   const [loading, setLoading] = useState(true);
   const [leaderboardLoading, setLeaderboardLoading] = useState(true);
+  const [leaderboardError, setLeaderboardError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchStats() {
@@ -81,6 +82,7 @@ export default function Explorer() {
         setTopDonors(sortedDonors);
       } catch (error) {
         console.error("Error fetching leaderboard from RPC", error);
+        setLeaderboardError("Failed to load leaderboard");
       } finally {
         setLeaderboardLoading(false);
       }
@@ -184,6 +186,10 @@ export default function Explorer() {
                         <span className="w-2 h-2 rounded-full bg-brand-green"></span> Loading real-time blockchain data...
                       </span>
                     </td>
+                  </tr>
+                ) : leaderboardError ? (
+                  <tr>
+                    <td colSpan={3} className="py-12 text-center text-red-500">{leaderboardError}</td>
                   </tr>
                 ) : topDonors.length === 0 ? (
                   <tr>
