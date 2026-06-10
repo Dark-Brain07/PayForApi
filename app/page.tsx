@@ -115,7 +115,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12 flex justify-center opacity-0 animate-[fadeIn_1s_ease-out_1s_forwards]">
-          <Link href="/marketplace" className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-black transition-all duration-300 bg-brand-yellow rounded-xl hover:bg-brand-yellow/90 hover:scale-105 hover:shadow-[0_0_30px_rgba(245,197,24,0.4)] overflow-hidden">
+          <Link prefetch={true} href="/marketplace" className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-black transition-all duration-300 bg-brand-yellow rounded-xl hover:bg-brand-yellow/90 hover:scale-105 hover:shadow-[0_0_30px_rgba(245,197,24,0.4)] overflow-hidden">
             <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
             <span className="relative flex items-center gap-2 text-lg">
               Explore API Marketplace
