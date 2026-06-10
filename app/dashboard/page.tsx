@@ -86,8 +86,9 @@ export default function DashboardPage() {
         const fetchedApis: ApiEndpointData[] = [];
         const fetchedDeletedApis: ApiEndpointData[] = [];
 
+        interface RegisteredEvent { args?: string[] }
         for (const event of events) {
-          const eventObj = event as { args?: string[] };
+          const eventObj = event as RegisteredEvent;
           const endpointId = eventObj.args?.[0];
           const creator = eventObj.args?.[1];
           
