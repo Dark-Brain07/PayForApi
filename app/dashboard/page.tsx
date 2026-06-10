@@ -16,6 +16,7 @@ export interface ApiEndpointData {
 
 export default function DashboardPage() {
   const [apis, setApis] = useState<ApiEndpointData[]>([]);
+  const [loadingEndpoints, setLoadingEndpoints] = useState(true);
   const [isModalOpen, setModalOpen] = useState(false);
   const [newApiName, setNewApiName] = useState("");
   const [newApiEndpoint, setNewApiEndpoint] = useState("");
@@ -69,8 +70,10 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const fetchRealEndpoints = async (): Promise<void> => {
+      setLoadingEndpoints(true);
       if (!isConnected || !address || typeof window === "undefined" || !(window as any).ethereum) {
         setApis([]);
+        setLoadingEndpoints(false);
         return;
       }
       
@@ -131,6 +134,8 @@ export default function DashboardPage() {
         setDeletedApis(fetchedDeletedApis);
       } catch (error) {
         console.error("Error fetching endpoints:", error);
+      } finally {
+        setLoadingEndpoints(false);
       }
     };
 
@@ -168,7 +173,7 @@ export default function DashboardPage() {
           </div>
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Active Endpoints</h3>
-            <p className="text-3xl font-black text-white">{apis.length}</p>
+            <p className="text-3xl font-black text-white">{loadingEndpoints ? <span className="animate-pulse opacity-50">...</span> : apis.length}</p>
           </div>
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Total Calls</h3>
