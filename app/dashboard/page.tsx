@@ -301,7 +301,7 @@ export default function DashboardPage() {
                 <input 
                   id="new-api-price"
                   type="number" 
-                  step="0.001" 
+                  step="any" 
                   min="0.001"
                   value={newApiPrice}
                   onChange={(e) => setNewApiPrice(e.target.value)}
