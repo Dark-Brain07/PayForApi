@@ -256,6 +256,7 @@ export default function DashboardPage() {
                   type="text" 
                   value={newApiName}
                   maxLength={50}
+                  autoComplete="off"
                   onChange={(e) => setNewApiName(e.target.value)}
                   className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" 
                   placeholder="e.g. My Llama 3 Model" 
