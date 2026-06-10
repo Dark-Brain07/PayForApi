@@ -66,31 +66,31 @@ export default function Marketplace() {
           setIsCalling(true);
           try {
             const { id, values } = product!;
-            let payload: any = { txHash, walletAddress: address || "0x0000000000000000000000000000000000000000" };
+            let apiRequestBody: any = { txHash, walletAddress: address || "0x0000000000000000000000000000000000000000" };
             let endpoint = "";
             
             if (id === 0) {
               endpoint = "/api/weather";
-              payload.city = values[0] || "Dhaka";
+              apiRequestBody.city = values[0] || "Dhaka";
             } else if (id === 1) {
               endpoint = "/api/news";
-              payload.category = values[0] || "technology";
+              apiRequestBody.category = values[0] || "technology";
             } else if (id === 2) {
               endpoint = "/api/crypto";
-              payload.ids = values[0] || "bitcoin,ethereum,usd-coin";
+              apiRequestBody.ids = values[0] || "bitcoin,ethereum,usd-coin";
             } else if (id === 3) {
               endpoint = "/api/summary";
-              payload.text = values[0] || "Web3 protocols enable ownership...";
+              apiRequestBody.text = values[0] || "Web3 protocols enable ownership...";
             } else if (id === 4) {
               endpoint = "/api/translate";
-              payload.text = values[0] || "Hello, the future is agentic.";
-              payload.language = values[1] || "Spanish";
+              apiRequestBody.text = values[0] || "Hello, the future is agentic.";
+              apiRequestBody.language = values[1] || "Spanish";
             }
             
             const res = await fetch(endpoint, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload)
+              body: JSON.stringify(apiRequestBody)
             });
             let data;
             try {
