@@ -4,30 +4,30 @@ import { CELO_STABLECOINS } from "@/lib/stablecoins";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { useState, useEffect } from "react";
 
+const TERMINAL_BOOT_LOGS = [
+  "> Initialize Celo Network...",
+  "> Loading ERC-8004 Agent...",
+  "> Loading MiniPay x x402 for payment...",
+  "> Authenticating node connection...",
+  "> Loading currencies: [cUSD, cEUR, cKES, cBRL, cGHS, cCOP, PUSO] ... OK",
+  "> Checking API Integrations... OK",
+  "> SUCCESS: All systems operational."
+];
+
 function InteractiveTerminal() {
   const [bootLogs, setBootLogs] = useState<string[]>([]);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const logs = [
-      "> Initialize Celo Network...",
-      "> Loading ERC-8004 Agent...",
-      "> Loading MiniPay x x402 for payment...",
-      "> Authenticating node connection...",
-      "> Loading currencies: [cUSD, cEUR, cKES, cBRL, cGHS, cCOP, PUSO] ... OK",
-      "> Checking API Integrations... OK",
-      "> SUCCESS: All systems operational."
-    ];
-    
     let currentIndex = 0;
     const interval = setInterval(() => {
-      if (currentIndex < logs.length) {
-        const currentLog = logs[currentIndex];
+      if (currentIndex < TERMINAL_BOOT_LOGS.length) {
+        const currentLog = TERMINAL_BOOT_LOGS[currentIndex];
         setBootLogs(prev => [...prev, currentLog]);
       }
       
       currentIndex++;
-      if (currentIndex >= logs.length) {
+      if (currentIndex >= TERMINAL_BOOT_LOGS.length) {
         clearInterval(interval);
         setTimeout(() => setIsReady(true), 400);
       }
