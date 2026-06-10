@@ -58,7 +58,7 @@ export default function Explorer() {
         const fromBlock = Math.max(0, currentBlock - 2000000);
         
         const filter = cusdContract.filters.Transfer(null, donationWallet);
-        const events = await cusdContract.queryFilter(filter, fromBlock, "latest");
+        const events = (await cusdContract.queryFilter(filter, fromBlock, "latest")) || [];
         
         const donations: Record<string, number> = {};
         
