@@ -6,13 +6,13 @@ import { ethers } from "ethers";
 import { CONTRACTS } from "@/lib/contracts";
 import { CELO_STABLECOINS } from "@/lib/stablecoins";
 
+const truncateAddress = (addr: string) => {
+  return `${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}`;
+};
+
 export default function Header() {
   const { address, isConnected, connect, disconnect, isMiniPay } = useWallet();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const truncateAddress = (addr: string) => {
-    return `${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}`;
-  };
 
   const [cusdBalance, setCusdBalance] = useState<string>("0.00");
   const [apicBalance, setApicBalance] = useState<string>("0.00");
