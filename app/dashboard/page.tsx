@@ -6,6 +6,8 @@ import Header from "@/components/layout/Header";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { CONTRACTS } from "@/lib/contracts";
 
+const INPUT_CLASSES = "w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors";
+
 export interface ApiEndpointData {
   name: string;
   endpoint: string;
@@ -268,7 +270,7 @@ export default function DashboardPage() {
                   maxLength={50}
                   autoComplete="off"
                   onChange={(e) => setNewApiName(e.target.value)}
-                  className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" 
+                  className={INPUT_CLASSES} 
                   placeholder="e.g. My Llama 3 Model" 
                 />
               </div>
@@ -280,7 +282,7 @@ export default function DashboardPage() {
                   value={newApiEndpoint}
                   maxLength={255}
                   onChange={(e) => setNewApiEndpoint(e.target.value)}
-                  className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" 
+                  className={INPUT_CLASSES} 
                   placeholder="https://api.example.com/v1" 
                 />
               </div>
