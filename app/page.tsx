@@ -88,6 +88,7 @@ export default function Home() {
         
         <div 
           onClick={() => window.location.href = '/marketplace'}
+          aria-label="Enter marketplace"
           className="max-w-4xl mx-auto bg-[#0a0a0a] border border-[#222] rounded-xl shadow-[0_0_50px_rgba(0,255,0,0.1)] overflow-hidden cursor-pointer group hover:border-brand-green/50 transition-all duration-300 relative"
         >
           {/* Terminal Header */}
