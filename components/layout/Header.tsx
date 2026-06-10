@@ -35,11 +35,15 @@ export default function Header() {
             provider
           );
 
-          const cusdBal = await cusdContract.balanceOf(address);
-          const apicBal = await apicContract.balanceOf(address);
+          try {
+            const cusdBal = await cusdContract.balanceOf(address);
+            setCusdBalance(Number(ethers.formatUnits(cusdBal, 18)).toFixed(2));
+          } catch (e) { console.warn("Failed cusd"); }
 
-          setCusdBalance(Number(ethers.formatUnits(cusdBal, 18)).toFixed(2));
-          setApicBalance(Number(ethers.formatUnits(apicBal, 18)).toFixed(2));
+          try {
+            const apicBal = await apicContract.balanceOf(address);
+            setApicBalance(Number(ethers.formatUnits(apicBal, 18)).toFixed(2));
+          } catch (e) { console.warn("Failed apic"); }
         } catch (error) {
           // Silent catch for background fetching
         }
