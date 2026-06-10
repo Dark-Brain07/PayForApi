@@ -192,7 +192,7 @@ export default function Explorer() {
                         {idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : <span className="text-[#94A3B8] text-sm font-mono">#{idx + 1}</span>}
                       </td>
                       <td className="py-4 px-6">
-                        <a href={`https://celoscan.io/address/${donor.address}`} target="_blank" rel="noreferrer" className="text-[#94A3B8] font-mono text-sm group-hover:text-white transition-colors">
+                        <a href={`https://celoscan.io/address/${donor.address}`} target="_blank" rel="noreferrer" title={donor.address} className="text-[#94A3B8] font-mono text-sm group-hover:text-white transition-colors">
                           {truncateAddress(donor.address)}
                         </a>
                       </td>
