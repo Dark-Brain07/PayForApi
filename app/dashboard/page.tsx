@@ -27,6 +27,11 @@ export default function DashboardPage() {
     if (!newApiName || !newApiEndpoint) return alert("Please fill all fields");
     if (!isConnected || !address) return alert("Please connect your wallet first");
 
+    if (typeof window === "undefined" || !(window as any).ethereum) {
+      alert("No Web3 wallet detected");
+      return;
+    }
+
     try {
       setIsRegistering(true);
       const provider = new ethers.BrowserProvider((window as any).ethereum);
