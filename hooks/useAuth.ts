@@ -63,7 +63,7 @@ export function useAuth(): AuthState & {
     } catch (err) {
       setState((s) => ({
         ...s,
-        error: (err as Error).message,
+        error: err instanceof Error ? err.message : String(err),
         isConnecting: false,
       }));
       return null;
