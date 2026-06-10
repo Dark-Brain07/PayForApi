@@ -169,7 +169,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Total Revenue</h3>
-            <p className="text-3xl font-black text-white">${totalRevenue.toFixed(2)} <span className="text-sm font-normal text-[#64748B]">cUSD</span></p>
+            <p className="text-3xl font-black text-white">${totalRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span className="text-sm font-normal text-[#64748B]">cUSD</span></p>
           </div>
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Active Endpoints</h3>
