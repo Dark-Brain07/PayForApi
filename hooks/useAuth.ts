@@ -37,6 +37,7 @@ export function useAuth(): AuthState & {
     }
   }, []);
 
+  /** Prompt user to connect their EVM wallet */
   const connect = useCallback(async (): Promise<string | null> => {
     if (typeof window === "undefined" || !window.ethereum) {
       setState((s) => ({ ...s, error: "No wallet detected" }));
@@ -70,6 +71,7 @@ export function useAuth(): AuthState & {
     }
   }, []);
 
+  /** Clear current wallet session state */
   const disconnect = useCallback(() => {
     setState({
       address: null,
