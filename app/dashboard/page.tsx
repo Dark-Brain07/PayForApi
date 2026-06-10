@@ -267,6 +267,7 @@ export default function DashboardPage() {
                   id="new-api-endpoint"
                   type="text" 
                   value={newApiEndpoint}
+                  maxLength={255}
                   onChange={(e) => setNewApiEndpoint(e.target.value)}
                   className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" 
                   placeholder="https://api.example.com/v1" 
