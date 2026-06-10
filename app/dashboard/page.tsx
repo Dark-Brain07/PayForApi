@@ -43,9 +43,13 @@ export default function DashboardPage() {
         signer
       );
 
-      // We use the endpoint as the unique ID
-      const tx = await contract.registerApi(newApiEndpoint);
-      await tx.wait();
+      let tx;
+      try {
+        tx = await contract.registerApi(newApiEndpoint);
+        await tx.wait();
+      } catch (txErr: any) {
+        throw new Error(txErr.shortMessage || "Transaction rejected or failed");
+      }
       
       setApis([...apis, { name: newApiName, endpoint: newApiEndpoint, revenue: 0 }]);
       setModalOpen(false);
