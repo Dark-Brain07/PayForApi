@@ -104,7 +104,7 @@ export default function DashboardPage() {
           
           if (creator && creator.toLowerCase() === address.toLowerCase() && endpointId) {
             const apiData = await contract.apiEndpoints(endpointId);
-            const rawRevenue = apiData.totalRevenue;
+            const rawRevenue = apiData.totalRevenue || 0n;
             const revenueFormatted = Number(ethers.formatUnits(rawRevenue, 18));
             
             const apiObj = {
