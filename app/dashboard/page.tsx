@@ -57,7 +57,7 @@ export default function DashboardPage() {
   };
 
   useEffect(() => {
-    const fetchRealEndpoints = async () => {
+    const fetchRealEndpoints = async (): Promise<void> => {
       if (!isConnected || !address || typeof window === "undefined" || !(window as any).ethereum) {
         setApis([]);
         return;
