@@ -302,6 +302,7 @@ export default function DashboardPage() {
                   id="new-api-price"
                   type="number" 
                   step="0.001" 
+                  min="0.001"
                   value={newApiPrice}
                   onChange={(e) => setNewApiPrice(e.target.value)}
                   className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" 
