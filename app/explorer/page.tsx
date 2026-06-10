@@ -23,7 +23,8 @@ export default function Explorer() {
         const MASTER_MERCHANT_WALLET = "0xfd4960F33670f3477ebe817B184dd59fC4961437"; // Master Merchant Wallet
         const receiverAddress = MASTER_MERCHANT_WALLET;
 
-        const erc20Abi = ["function balanceOf(address) view returns (uint256)"];
+        const ERC20_BALANCE_ABI = ["function balanceOf(address) view returns (uint256)"];
+        const erc20Abi = ERC20_BALANCE_ABI;
         const cusdContract = new ethers.Contract(CELO_STABLECOINS.cUSD.address, erc20Abi, provider);
         const apicContract = new ethers.Contract(CONTRACTS.API_CREDITS.address, erc20Abi, provider);
 
