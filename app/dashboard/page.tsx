@@ -196,7 +196,7 @@ export default function DashboardPage() {
                     {api.name}
                     <span aria-label="Active Status" title="Active Endpoint" className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400 border border-green-500/20">ACTIVE</span>
                   </h3>
-                  <code title={api.endpoint} className="text-sm text-[#64748B] mt-1 block">{api.endpoint}</code>
+                  <code title={api.endpoint} className="text-sm text-[#64748B] mt-1 block">{api.endpoint.length > 20 ? `${api.endpoint.slice(0, 8)}...${api.endpoint.slice(-8)}` : api.endpoint}</code>
                 </div>
                 <div className="mt-4 md:mt-0 flex items-center gap-8">
                   <div className="text-right">
@@ -233,7 +233,7 @@ export default function DashboardPage() {
                       {api.name}
                       <span aria-label="Deleted Status" title="Deleted Endpoint" className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#1E293B] text-[#64748B] border border-[#334155]">DELETED</span>
                     </h3>
-                    <code title={api.endpoint} className="text-sm text-[#475569] mt-1 block">{api.endpoint}</code>
+                    <code title={api.endpoint} className="text-sm text-[#475569] mt-1 block">{api.endpoint.length > 20 ? `${api.endpoint.slice(0, 8)}...${api.endpoint.slice(-8)}` : api.endpoint}</code>
                   </div>
                   <div className="mt-4 md:mt-0 flex items-center gap-8">
                     <div className="text-right">
