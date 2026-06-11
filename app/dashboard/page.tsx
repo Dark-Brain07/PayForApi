@@ -105,10 +105,10 @@ export default function DashboardPage() {
         const deletedCacheKey = `deleted_endpoints_${address}`;
         let deletedIds: string[] = [];
         try {
-          deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]");
+          deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
         } catch (e) {
           console.warn("Failed to parse local storage cache");
-          localStorage.removeItem(`deleted_endpoints_${address}`);
+          localStorage.removeItem(deletedCacheKey);
         }
         const fetchedApis: ApiEndpointData[] = [];
         const fetchedDeletedApis: ApiEndpointData[] = [];
