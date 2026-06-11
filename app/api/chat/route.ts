@@ -4,7 +4,8 @@ import { CELO_MAINNET } from "@/lib/contracts";
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, walletAddress, txHash, localTime } = await request.json();
+    const body: { message?: string; walletAddress?: string; txHash?: string; localTime?: string } = await request.json();
+    const { message, walletAddress, txHash, localTime } = body;
 
     if (!message || !walletAddress || !txHash) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
