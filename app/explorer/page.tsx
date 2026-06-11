@@ -150,6 +150,7 @@ export default function Explorer() {
                 0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476
               </div>
               <button 
+                aria-label="Copy Master Wallet Address"
                 className="bg-brand-yellow/10 border border-brand-yellow/40 hover:bg-brand-yellow/20 text-brand-yellow px-6 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(245,197,24,0.15)] hover:shadow-[0_0_20px_rgba(245,197,24,0.3)] whitespace-nowrap w-full xl:w-auto shrink-0"
                 onClick={(e) => {
                   navigator.clipboard.writeText("0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476");
