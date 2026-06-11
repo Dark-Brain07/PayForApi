@@ -52,8 +52,8 @@ export default function ChatPage() {
       let txHash = "0x0000000000000000000000000000000000000000"; // fallback if missing
       
       // Execute background transaction without modal popup
-      if (typeof window !== "undefined" && (window as any).ethereum) {
-        const provider = new ethers.BrowserProvider((window as any).ethereum);
+      if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: any }).ethereum) {
+        const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
         const requestId = ethers.id(Date.now().toString() + Math.random().toString());
         
         let tokenAddress, amountToPay;
@@ -104,7 +104,7 @@ export default function ChatPage() {
         role: "ai", 
         content: data.response || "Error: No response generated." 
       }]);
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error(e);
       let errorMessage = e?.reason || e?.message || "Payment failed or cancelled.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
@@ -135,7 +135,7 @@ export default function ChatPage() {
           <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Payment Token</div>
           <select 
             value={paymentToken} 
-            onChange={(e) => setPaymentToken(e.target.value as any)}
+            onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
             className="w-full bg-[#0F141C] border border-[#1E293B] text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:border-brand-yellow appearance-none cursor-pointer text-center font-bold"
             style={{ backgroundImage: "url('data:image/svg+xml;charset=US-ASCII,<svg width=\"12\" height=\"8\" viewBox=\"0 0 12 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1 1.5L6 6.5L11 1.5\" stroke=\"%2394A3B8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>')", backgroundRepeat: "no-repeat", backgroundPosition: "right 1rem center", backgroundSize: "12px" }}
           >
