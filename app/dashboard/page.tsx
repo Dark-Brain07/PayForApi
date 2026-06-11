@@ -102,6 +102,7 @@ export default function DashboardPage() {
         const filter = contract.filters.ApiRegistered();
         const events = await contract.queryFilter(filter, fromBlock, "latest");
 
+        const deletedCacheKey = `deleted_endpoints_${address}`;
         let deletedIds: string[] = [];
         try {
           deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]");
