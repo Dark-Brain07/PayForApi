@@ -67,10 +67,10 @@ export function useAuth(): AuthState & {
         isConnecting: false,
       }));
       return address;
-    } catch (err) {
+    } catch (err: any) {
       setState((s) => ({
         ...s,
-        error: err instanceof Error ? err.message : String(err),
+        error: err?.code === 4001 ? "User rejected connection" : (err instanceof Error ? err.message : String(err)),
         isConnecting: false,
       }));
       return null;
