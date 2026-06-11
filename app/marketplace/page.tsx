@@ -33,7 +33,13 @@ export default function Marketplace() {
         
         <div className="columns-1 md:columns-2 gap-6 space-y-6">
           {API_PRODUCTS.map((api) => (
-            <div key={api.id} className="break-inside-avoid">
+            <div key={api.id} className="break-inside-avoid relative">
+              {isCalling && lastApiId === api.id && (
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
+                  <div className="w-10 h-10 border-4 border-brand-yellow border-t-transparent rounded-full animate-spin mb-3"></div>
+                  <span className="text-brand-yellow font-bold text-sm animate-pulse">Processing...</span>
+                </div>
+              )}
               <APICard 
                 {...api}
                 onTryIt={(id, name, values, priceCredits) => setSelectedProduct({id, name, values, priceCredits})}
