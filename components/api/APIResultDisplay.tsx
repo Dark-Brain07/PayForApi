@@ -96,7 +96,7 @@ export default function APIResultDisplay({ apiId, data }: { apiId: number, data:
           <div key={coin} className="p-6 bg-gradient-to-b from-[#0F172A] to-[#020617] rounded-xl border border-[#00E676]/30 flex flex-col items-center justify-center transform hover:-translate-y-1 transition-transform shadow-lg relative overflow-hidden">
             <div className="absolute top-0 right-0 w-16 h-16 bg-[#00E676] opacity-10 rounded-full -mr-8 -mt-8 blur-xl"></div>
             <div className="text-gray-400 uppercase tracking-widest text-[10px] font-black mb-3 z-10">{coin}</div>
-            <div className="text-3xl font-black text-[#00E676] z-10 tracking-tight">${info.usd?.toLocaleString()}</div>
+            <div className="text-3xl font-black text-[#00E676] z-10 tracking-tight">${info.usd?.toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4})}</div>
           </div>
         ))}
       </div>
