@@ -39,7 +39,12 @@ export default function DashboardPage() {
     try {
       setIsRegistering(true);
       const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
-      const signer = await provider.getSigner();
+      let signer;
+      try {
+        signer = await provider.getSigner();
+      } catch (err) {
+        throw new Error("Failed to get wallet signer. Please ensure your wallet is unlocked.");
+      }
       
       const contract = new ethers.Contract(
         CONTRACTS.API_REVENUE_SPLITTER.address,
