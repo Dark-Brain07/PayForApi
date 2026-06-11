@@ -31,7 +31,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
 
   if (!isOpen) return null;
 
-  const handlePay = async () => {
+  const handlePay = async (): Promise<void> => {
     if (!address) {
       setError("Please connect your wallet first.");
       return;
@@ -73,7 +73,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
     }
   };
 
-  const handlePayCredits = async () => {
+  const handlePayCredits = async (): Promise<void> => {
     if (!address) {
       setError("Please connect your wallet first.");
       return;
