@@ -91,7 +91,8 @@ export function useAuth(): AuthState & {
 
   const switchToCelo = useCallback(async () => {
     if (!window.ethereum) return;
-    await (window.ethereum as { request: (args: { method: string; params?: unknown[] }) => Promise<unknown> }).request({
+    const eth = window.ethereum as EthereumProvider;
+    await eth.request({
       method: "wallet_switchEthereumChain",
       params: [{ chainId: `0x${CELO_CHAIN_ID.toString(16)}` }],
     });
