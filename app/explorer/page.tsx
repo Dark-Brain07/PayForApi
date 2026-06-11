@@ -65,8 +65,9 @@ export default function Explorer() {
         
         const donations: Record<string, number> = {};
         
+        interface TransferLog { args: { from: string; value: bigint } }
         events.forEach((event: unknown) => {
-          const log = event as { args: { from: string; value: bigint } };
+          const log = event as TransferLog;
           const from = log.args.from;
           const amount = Number(ethers.formatUnits(log.args.value, 18));
           
