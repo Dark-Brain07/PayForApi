@@ -5,10 +5,10 @@ export class Logger {
     if (!Logger.instance) Logger.instance = new Logger();
     return Logger.instance;
   }
-  public info(message: string, ...meta: any[]) {
+  public info(message: string, ...meta: unknown[]) {
     console.log(`[INFO] ${new Date().toISOString()}: ${message}`, ...meta);
   }
-  public error(message: string, ...meta: any[]) {
+  public error(message: string, ...meta: unknown[]) {
     console.error(`[ERROR] ${new Date().toISOString()}: ${message}`, ...meta);
   }
 }
