@@ -20,9 +20,9 @@ export default function Rewards() {
   const MAX_SUPPLY = 100000;
 
   const fetchStats = async () => {
-    if (!address || typeof window === "undefined" || !(window as any).ethereum) return;
+    if (!address || typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: any }).ethereum) return;
     try {
-      const provider = new ethers.BrowserProvider((window as any).ethereum);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
       
       const creditsContract = new ethers.Contract(
         CONTRACTS.API_CREDITS.address,
@@ -104,7 +104,7 @@ export default function Rewards() {
     setSuccess(null);
     setIsClaiming(true);
     try {
-      const provider = new ethers.BrowserProvider((window as any).ethereum);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(
         CONTRACTS.API_CREDITS.address,
@@ -115,7 +115,7 @@ export default function Rewards() {
       await tx.wait();
       setSuccess("Successfully claimed your API credits!");
       fetchStats();
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.reason || err.message || "Failed to claim credits.");
     } finally {
       setIsClaiming(false);
@@ -128,7 +128,7 @@ export default function Rewards() {
     setSuccess(null);
     setIsMinting(true);
     try {
-      const provider = new ethers.BrowserProvider((window as any).ethereum);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(
         CONTRACTS.COMMUNITY_NFT.address,
@@ -139,7 +139,7 @@ export default function Rewards() {
       await tx.wait();
       setSuccess("Successfully minted your Community NFT!");
       fetchStats();
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.reason || err.message || "Failed to mint NFT.");
     } finally {
       setIsMinting(false);
