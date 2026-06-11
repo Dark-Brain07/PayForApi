@@ -116,7 +116,7 @@ export default function Explorer() {
           </div>
           <h3 className="text-[#94A3B8] text-sm font-bold uppercase tracking-wider mb-4 relative z-10">Total Network Revenue (cUSD)</h3>
           <p className="text-6xl font-black text-[#00E676] drop-shadow-[0_0_15px_rgba(0,230,118,0.4)] relative z-10 flex items-baseline justify-center gap-2">
-            {loading ? <span className="animate-pulse">...</span> : stats.revenueCusd}
+            {loading ? <span aria-live="polite" className="animate-pulse">...</span> : stats.revenueCusd}
             <span className="text-xl text-[#00E676]/70">cUSD</span>
           </p>
         </div>
@@ -128,7 +128,7 @@ export default function Explorer() {
           </div>
           <h3 className="text-[#94A3B8] text-sm font-bold uppercase tracking-wider mb-4 relative z-10">Total Network Revenue (APIC)</h3>
           <p className="text-6xl font-black text-[#F5C518] drop-shadow-[0_0_15px_rgba(245,197,24,0.4)] relative z-10 flex items-baseline justify-center gap-2">
-            {loading ? <span className="animate-pulse">...</span> : stats.revenueApic}
+            {loading ? <span aria-live="polite" className="animate-pulse">...</span> : stats.revenueApic}
             <span className="text-xl text-[#F5C518]/70">APIC</span>
           </p>
         </div>
