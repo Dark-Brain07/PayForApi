@@ -114,7 +114,12 @@ export default function DashboardPage() {
           const creator = eventObj.args?.[1];
           
           if (creator && creator.toLowerCase() === address.toLowerCase() && endpointId) {
-            const apiData = await contract.apiEndpoints(endpointId);
+            let apiData;
+            try {
+              apiData = await contract.apiEndpoints(endpointId);
+            } catch (err) {
+              continue;
+            }
             const rawRevenue = apiData.totalRevenue || 0n;
             const revenueFormatted = Number(ethers.formatUnits(rawRevenue, 18));
             
