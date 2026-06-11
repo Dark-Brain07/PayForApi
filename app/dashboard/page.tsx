@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import Header from "@/components/layout/Header";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { CONTRACTS } from "@/lib/contracts";
+import Input from "@/components/ui/Input";
 
 const INPUT_CLASSES = "w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors";
 
@@ -284,7 +285,7 @@ export default function DashboardPage() {
             <div className="space-y-4">
               <div>
                 <label htmlFor="new-api-name" className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
-                <input 
+                <Input 
                   id="new-api-name"
                   type="text" 
                   value={newApiName}
@@ -407,8 +408,3 @@ export default function DashboardPage() {
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
-}
