@@ -43,7 +43,7 @@ export default function Header() {
           try {
             const apicBal = await apicContract.balanceOf(address);
             setApicBalance(Number(ethers.formatUnits(apicBal, 18)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}));
-          } catch (e) { /* ignore silently on background loop */ }
+          } catch (e) { setApicBalance("0.00"); }
         } catch (error) {
           // Silent catch for background fetching
         }
