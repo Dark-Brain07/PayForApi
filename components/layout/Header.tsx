@@ -60,7 +60,7 @@ export default function Header() {
       <div className="w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" aria-label="Pay For API Home" className="flex items-center space-x-3">
               <img src="/logo.png" alt="Pay For API Logo" width={80} height={80} className="w-20 h-20 object-contain drop-shadow-xl" />
               <span className="font-bold text-xl text-white">
                 Pay For <span className="text-brand-yellow">API</span>
