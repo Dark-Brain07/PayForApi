@@ -151,7 +151,7 @@ export default function DashboardPage() {
         setApis(fetchedApis);
         setDeletedApis(fetchedDeletedApis);
       } catch (error) {
-        console.error("Error fetching endpoints:", error);
+        // Silent fallback
       } finally {
         setLoadingEndpoints(false);
       }
