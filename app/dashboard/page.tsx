@@ -108,7 +108,6 @@ export default function DashboardPage() {
         try {
           deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
         } catch (e) {
-          console.warn("Failed to parse local storage cache");
           localStorage.removeItem(deletedCacheKey);
         }
         const fetchedApis: ApiEndpointData[] = [];
