@@ -24,9 +24,9 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [miniPayAddress]);
 
   const connect = async () => {
-    if (typeof window !== "undefined" && (window as any).ethereum) {
+    if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: any }).ethereum) {
       try {
-        const accounts = await (window as any).ethereum.request({
+        const accounts = await (window as Window & typeof globalThis & { ethereum?: any }).ethereum.request({
           method: "eth_requestAccounts",
         });
         if (accounts.length > 0) {
