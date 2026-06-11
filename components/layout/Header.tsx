@@ -104,7 +104,7 @@ export default function Header() {
                 {/* Balances & Donate Display */}
                 <div className="hidden lg:flex flex-col items-center gap-1.5">
                   <div className="flex items-center space-x-2 bg-[#0B0E14] border border-[#1E293B] rounded-xl p-1 shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
-                    <div className="flex items-center px-2 py-1 bg-gradient-to-r from-[#00E676]/10 to-transparent rounded-lg border border-[#00E676]/20 transition-all hover:border-[#00E676]/40">
+                    <div title="cUSD Balance" className="flex items-center px-2 py-1 bg-gradient-to-r from-[#00E676]/10 to-transparent rounded-lg border border-[#00E676]/20 transition-all hover:border-[#00E676]/40">
                       <span className="text-[#00E676] font-black text-xs mr-1 drop-shadow-[0_0_8px_rgba(0,230,118,0.5)]">{cusdBalance}</span>
                       <span className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-wider">cUSD</span>
                     </div>
