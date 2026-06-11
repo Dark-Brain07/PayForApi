@@ -89,7 +89,8 @@ export default function DashboardPage() {
       }
       
       try {
-        const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
+        const getProvider = () => new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
+        const provider = getProvider();
         const contract = new ethers.Contract(
           CONTRACTS.API_REVENUE_SPLITTER.address,
           CONTRACTS.API_REVENUE_SPLITTER.abi,
