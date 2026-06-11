@@ -31,7 +31,7 @@ export default function Explorer() {
         let apicBal: bigint = 0n;
         try {
           cusdBal = await cusdContract.balanceOf(receiverAddress).catch(() => 0n);
-          apicBal = await apicContract.balanceOf(receiverAddress);
+          apicBal = await apicContract.balanceOf(receiverAddress).catch(() => 0n);
         } catch (e) {
           console.warn("Could not fetch balances, using 0");
         }
