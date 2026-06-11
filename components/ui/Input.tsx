@@ -1,6 +1,6 @@
-import React from 'react';
+import { InputHTMLAttributes, forwardRef } from 'react';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
 }
@@ -8,12 +8,12 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 /**
  * Enterprise-grade Input component for the design system.
  */
-export const Input: React.FC<InputProps> = ({ 
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ 
   variant = 'default', 
   size = 'md', 
   className = '', 
   ...props 
-}) => {
+}, ref) => {
   const baseStyles = "flex w-full rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
   
   const variantStyles = {
@@ -31,10 +31,11 @@ export const Input: React.FC<InputProps> = ({
   
   return (
     <input 
+      ref={ref}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       {...props}
     />
   );
-};
+});
 
 export default Input;
