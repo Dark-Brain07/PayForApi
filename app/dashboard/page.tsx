@@ -26,7 +26,7 @@ export default function DashboardPage() {
   const [deletedApis, setDeletedApis] = useState<ApiEndpointData[]>([]);
   const { address, isConnected } = useWallet();
 
-  const handleRegister = async () => {
+  const handleRegister = async (): Promise<void> => {
     if (!newApiName || !newApiEndpoint) return alert("Please fill all fields");
     if (!isConnected || !address) return alert("Please connect your wallet first");
 
