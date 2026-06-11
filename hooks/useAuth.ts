@@ -1,6 +1,11 @@
 "use client";
 import { useState, useCallback, useEffect } from "react";
 
+export interface EthereumProvider {
+  isMiniPay?: boolean;
+  request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
+}
+
 export interface AuthState {
   address: string | null;
   isConnected: boolean;
