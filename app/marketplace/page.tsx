@@ -100,9 +100,12 @@ export default function Marketplace() {
             });
             let data;
             try {
+              if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+              }
               data = await res.json();
-            } catch {
-              data = { error: "Failed to parse API response" };
+            } catch (err: unknown) {
+              data = { error: err instanceof Error ? err.message : "Failed to parse API response" };
             }
             setApiResult(JSON.stringify(data, null, 2));
           } catch (e: unknown) {
