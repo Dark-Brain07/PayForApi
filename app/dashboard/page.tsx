@@ -397,17 +397,18 @@ export default function DashboardPage() {
                 <button 
                   onClick={() => {
                     if (!address) return;
+                    const deletedCacheKey = `deleted_endpoints_${address}`;
                     let deletedIds: string[] = [];
                     try { 
-                      deletedIds = JSON.parse(localStorage.getItem(`deleted_endpoints_${address}`) || "[]"); 
+                      deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]"); 
                     } catch (e) {
                       console.error("Failed to parse cached deleted endpoints:", e);
-                      localStorage.removeItem(`deleted_endpoints_${address}`);
+                      localStorage.removeItem(deletedCacheKey);
                       deletedIds = [];
                     }
                     if (!deletedIds.includes(selectedSettingsApi.endpoint)) {
                         deletedIds.push(selectedSettingsApi.endpoint);
-                        localStorage.setItem(`deleted_endpoints_${address}`, JSON.stringify(deletedIds));
+                        localStorage.setItem(deletedCacheKey, JSON.stringify(deletedIds));
                     }
                     setApis(apis.filter(a => a.endpoint !== selectedSettingsApi.endpoint));
                     setDeletedApis([...deletedApis, selectedSettingsApi]);
