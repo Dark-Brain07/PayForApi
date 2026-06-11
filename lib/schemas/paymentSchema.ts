@@ -3,7 +3,7 @@ import { z } from "zod";
 /** x402 micropayment on Celo */
 export const paymentSchema = z.object({
   id: z.string().uuid("Invalid UUID format").optional(),
-  txHash: z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash"),
+  txHash: z.string().length(66).regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash"),
   from: z.string().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   to:   z.string().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   amount: z.string().min(1, "Amount is required").regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
