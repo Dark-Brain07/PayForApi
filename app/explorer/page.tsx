@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import { CONTRACTS, CELO_MAINNET } from "@/lib/contracts";
+import { CONTRACTS, CELO_MAINNET, MASTER_MERCHANT_WALLET } from "@/lib/contracts";
 import { CELO_STABLECOINS } from "@/lib/stablecoins";
 
 interface DonorInfo {
@@ -20,7 +20,6 @@ export default function Explorer() {
     async function fetchStats() {
       try {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
-        const MASTER_MERCHANT_WALLET = "0xfd4960F33670f3477ebe817B184dd59fC4961437"; // Master Merchant Wallet
         const receiverAddress = MASTER_MERCHANT_WALLET;
 
         const ERC20_BALANCE_ABI = ["function balanceOf(address) view returns (uint256)"];

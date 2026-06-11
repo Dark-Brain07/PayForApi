@@ -35,3 +35,5 @@ export const CELO_MAINNET = {
   name: "Celo Mainnet",
   blockscout: "https://celo.blockscout.com",
 } as const;
+
+export const MASTER_MERCHANT_WALLET = "0xfd4960F33670f3477ebe817B184dd59fC4961437";
