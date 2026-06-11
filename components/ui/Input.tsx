@@ -3,6 +3,7 @@ import { InputHTMLAttributes, forwardRef } from 'react';
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
+  error?: boolean;
 }
 
 /**
