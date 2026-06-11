@@ -38,7 +38,7 @@ export default function Header() {
           try {
             const cusdBal = await cusdContract.balanceOf(address);
             setCusdBalance(Number(ethers.formatUnits(cusdBal, 18)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}));
-          } catch (e) { /* ignore silently on background loop */ }
+          } catch (e) { setCusdBalance("0.00"); }
 
           try {
             const apicBal = await apicContract.balanceOf(address);
