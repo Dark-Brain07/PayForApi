@@ -189,7 +189,7 @@ export default function DashboardPage() {
             </button>
           </div>
           <div className="space-y-4">
-            {apis.map((api, idx) => (
+            {apis?.map((api, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/50 border border-[#1E293B] hover:border-[#334155] rounded-xl transition-all group">
                 <div>
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
@@ -212,7 +212,7 @@ export default function DashboardPage() {
                 </div>
               </div>
             ))}
-            {apis.length === 0 && (
+            {(!apis || apis.length === 0) && (
               <div aria-live="polite" className="text-center py-12 border border-dashed border-[#1E293B] rounded-xl">
                 <p className="text-[#94A3B8]">You haven't registered any APIs yet.</p>
               </div>
