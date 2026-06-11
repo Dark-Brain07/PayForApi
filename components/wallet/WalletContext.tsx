@@ -29,7 +29,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         const accounts = await (window as Window & typeof globalThis & { ethereum?: any }).ethereum.request({
           method: "eth_requestAccounts",
         });
-        if (accounts.length > 0) {
+        if (accounts && accounts.length > 0) {
           setAddress(accounts[0]);
         }
       } catch (error) {
