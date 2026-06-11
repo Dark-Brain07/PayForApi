@@ -136,6 +136,7 @@ export default function Header() {
             ) : (
               <button 
                 type="button"
+                aria-label="Connect Wallet"
                 onClick={connect}
                 className="btn-primary px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base"
               >
