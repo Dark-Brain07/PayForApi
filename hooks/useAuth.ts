@@ -16,6 +16,7 @@ export interface AuthState {
 }
 
 const CELO_CHAIN_ID = 42220;
+const CELO_CHAIN_HEX = `0x${CELO_CHAIN_ID.toString(16)}`;
 
 /**
  * Generic EVM wallet auth hook. Auto-detects MiniPay.
@@ -95,7 +96,7 @@ export function useAuth(): AuthState & {
       const eth = window.ethereum as EthereumProvider;
       await eth.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: `0x${CELO_CHAIN_ID.toString(16)}` }],
+        params: [{ chainId: CELO_CHAIN_HEX }],
       });
     } catch (err) {
       setState((s) => ({ ...s, error: "Failed to switch to Celo network" }));
