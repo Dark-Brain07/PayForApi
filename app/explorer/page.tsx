@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import { CONTRACTS, CELO_MAINNET, MASTER_MERCHANT_WALLET } from "@/lib/contracts";
+import { CONTRACTS, CELO_MAINNET, MASTER_MERCHANT_WALLET, ECOSYSTEM_DONATION_WALLET } from "@/lib/contracts";
 import { CELO_STABLECOINS } from "@/lib/stablecoins";
 
 interface DonorInfo {
@@ -51,7 +51,6 @@ export default function Explorer() {
     async function fetchLeaderboard() {
       try {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
-        const ECOSYSTEM_DONATION_WALLET = "0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476";
         const donationWallet = ECOSYSTEM_DONATION_WALLET;
         
         const erc20Abi = ["event Transfer(address indexed from, address indexed to, uint256 value)"];
