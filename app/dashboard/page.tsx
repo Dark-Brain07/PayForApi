@@ -298,7 +298,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <label htmlFor="new-api-endpoint" className="block text-sm font-medium text-[#94A3B8] mb-1">Endpoint URL</label>
-                <input 
+                <Input 
                   id="new-api-endpoint"
                   type="text" 
                   value={newApiEndpoint}
