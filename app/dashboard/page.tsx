@@ -62,7 +62,12 @@ export default function DashboardPage() {
     } catch (error: unknown) {
       console.error(error);
       const registrationError = error as Record<string, unknown>;
-      alert((registrationError?.shortMessage as string) || (registrationError?.message as string) || "Registration failed");
+      const msg = (registrationError?.shortMessage as string) || (registrationError?.message as string) || "Registration failed";
+      if (msg.includes("EndpointAlreadyRegistered") || msg.includes("already registered")) {
+        alert("Registration failed: This endpoint is already registered.");
+      } else {
+        alert(msg);
+      }
     } finally {
       setIsRegistering(false);
     }
