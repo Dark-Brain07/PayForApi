@@ -392,6 +392,7 @@ export default function DashboardPage() {
                     } catch (e) {
                       console.error("Failed to parse cached deleted endpoints:", e);
                       localStorage.removeItem(`deleted_endpoints_${address}`);
+                      deletedIds = [];
                     }
                     if (!deletedIds.includes(selectedSettingsApi.endpoint)) {
                         deletedIds.push(selectedSettingsApi.endpoint);
