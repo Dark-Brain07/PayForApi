@@ -35,6 +35,8 @@ export const Modal: React.FC<ModalProps> = ({
   
   return (
     <div 
+      role="dialog"
+      aria-modal="true"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
