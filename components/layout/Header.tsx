@@ -167,7 +167,7 @@ export default function Header() {
 
         {/* Mobile Navigation Panel */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-[#1E293B] py-4 pb-6 absolute left-0 right-0 bg-brand-black shadow-2xl px-4 z-40">
+          <div id="mobile-menu-panel" className="md:hidden border-t border-[#1E293B] py-4 pb-6 absolute left-0 right-0 bg-brand-black shadow-2xl px-4 z-40">
             <nav className="flex flex-col space-y-4">
               <Link href="/marketplace" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
                 Marketplace
