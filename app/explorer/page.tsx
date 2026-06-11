@@ -84,9 +84,9 @@ export default function Explorer() {
           .slice(0, 10);
           
         setTopDonors(sortedDonors);
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error fetching leaderboard from RPC", error);
-        setLeaderboardError("Failed to load leaderboard");
+        setLeaderboardError(error?.message?.includes("network") ? "Network error: Failed to connect to Celo" : "Failed to load leaderboard");
       } finally {
         setLeaderboardLoading(false);
       }
