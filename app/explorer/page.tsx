@@ -33,7 +33,7 @@ export default function Explorer() {
           cusdBal = await cusdContract.balanceOf(receiverAddress).catch(() => 0n);
           apicBal = await apicContract.balanceOf(receiverAddress).catch(() => 0n);
         } catch (e) {
-          console.warn("Could not fetch balances, using 0");
+          // Silent fallback
         }
 
         setStats({ 
