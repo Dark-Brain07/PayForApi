@@ -85,7 +85,6 @@ export default function Explorer() {
           
         setTopDonors(sortedDonors);
       } catch (error: any) {
-        console.error("Error fetching leaderboard from RPC", error);
         setLeaderboardError(error?.message?.includes("network") ? "Network error: Failed to connect to Celo" : "Failed to load leaderboard");
       } finally {
         setLeaderboardLoading(false);
