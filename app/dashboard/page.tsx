@@ -396,6 +396,7 @@ export default function DashboardPage() {
                   Close
                 </button>
                 <button 
+                  title="Permanent Action"
                   onClick={() => {
                     if (!address) return;
                     const deletedCacheKey = `deleted_endpoints_${address}`;
