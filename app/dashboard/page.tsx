@@ -310,7 +310,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <label htmlFor="new-api-price" className="block text-sm font-medium text-[#94A3B8] mb-1">Price per Call (cUSD)</label>
-                <input 
+                <Input 
                   id="new-api-price"
                   type="number" 
                   step="any" 
