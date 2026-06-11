@@ -65,9 +65,10 @@ export default function Explorer() {
         
         const donations: Record<string, number> = {};
         
-        events.forEach((event: any) => {
-          const from = event.args.from;
-          const amount = Number(ethers.formatUnits(event.args.value, 18));
+        events.forEach((event: unknown) => {
+          const log = event as { args: { from: string; value: bigint } };
+          const from = log.args.from;
+          const amount = Number(ethers.formatUnits(log.args.value, 18));
           
           if (donations[from]) {
             donations[from] += amount;
