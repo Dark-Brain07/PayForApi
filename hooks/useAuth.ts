@@ -91,11 +91,15 @@ export function useAuth(): AuthState & {
 
   const switchToCelo = useCallback(async () => {
     if (!window.ethereum) return;
-    const eth = window.ethereum as EthereumProvider;
-    await eth.request({
-      method: "wallet_switchEthereumChain",
-      params: [{ chainId: `0x${CELO_CHAIN_ID.toString(16)}` }],
-    });
+    try {
+      const eth = window.ethereum as EthereumProvider;
+      await eth.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: `0x${CELO_CHAIN_ID.toString(16)}` }],
+      });
+    } catch (err) {
+      setState((s) => ({ ...s, error: "Failed to switch to Celo network" }));
+    }
   }, []);
 
   return { ...state, connect, disconnect, switchToCelo };
