@@ -45,10 +45,10 @@ export function useAuth(): AuthState & {
     }
     setState((s) => ({ ...s, isConnecting: true, error: null }));
     try {
-      const accounts = (await (window.ethereum as { request: any }).request({
+      const accounts = (await (window.ethereum as { request: (args: { method: string; params?: unknown[] }) => Promise<unknown> }).request({
         method: "eth_requestAccounts",
       })) as string[];
-      const chainHex = (await (window.ethereum as { request: any }).request({
+      const chainHex = (await (window.ethereum as { request: (args: { method: string; params?: unknown[] }) => Promise<unknown> }).request({
         method: "eth_chainId",
       })) as string;
       const chainId = parseInt(chainHex, 16);
@@ -85,7 +85,7 @@ export function useAuth(): AuthState & {
 
   const switchToCelo = useCallback(async () => {
     if (!window.ethereum) return;
-    await (window.ethereum as { request: any }).request({
+    await (window.ethereum as { request: (args: { method: string; params?: unknown[] }) => Promise<unknown> }).request({
       method: "wallet_switchEthereumChain",
       params: [{ chainId: `0x${CELO_CHAIN_ID.toString(16)}` }],
     });
