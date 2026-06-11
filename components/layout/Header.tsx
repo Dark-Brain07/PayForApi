@@ -149,6 +149,7 @@ export default function Header() {
             <button 
               type="button"
               aria-label="Mobile Menu"
+              aria-controls="mobile-menu-panel"
               aria-expanded={isMobileMenuOpen}
               className="md:hidden text-[#94A3B8] hover:text-white transition-colors ml-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
