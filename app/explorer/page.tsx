@@ -27,8 +27,8 @@ export default function Explorer() {
         const cusdContract = new ethers.Contract(CELO_STABLECOINS.cUSD.address, erc20Abi, provider);
         const apicContract = new ethers.Contract(CONTRACTS.API_CREDITS.address, erc20Abi, provider);
 
-        let cusdBal = 0n;
-        let apicBal = 0n;
+        let cusdBal: bigint = 0n;
+        let apicBal: bigint = 0n;
         try {
           cusdBal = await cusdContract.balanceOf(receiverAddress);
           apicBal = await apicContract.balanceOf(receiverAddress);
