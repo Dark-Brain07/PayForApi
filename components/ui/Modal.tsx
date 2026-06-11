@@ -39,7 +39,7 @@ export const Modal: React.FC<ModalProps> = ({
       aria-modal="true"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       aria-disabled={isDisabled}
-      data-state={isDisabled ? 'disabled' : 'active'}
+      data-state={isDisabled ? 'disabled' : 'open'}
       {...props}
     >
       {children}
