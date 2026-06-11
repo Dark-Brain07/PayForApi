@@ -108,7 +108,7 @@ export default function Header() {
                       <span className="text-[#00E676] font-black text-xs mr-1 drop-shadow-[0_0_8px_rgba(0,230,118,0.5)]">{cusdBalance}</span>
                       <span className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-wider">cUSD</span>
                     </div>
-                    <div className="flex items-center px-2 py-1 bg-gradient-to-r from-[#F5C518]/10 to-transparent rounded-lg border border-[#F5C518]/20 transition-all hover:border-[#F5C518]/40">
+                    <div title="APIC Balance" className="flex items-center px-2 py-1 bg-gradient-to-r from-[#F5C518]/10 to-transparent rounded-lg border border-[#F5C518]/20 transition-all hover:border-[#F5C518]/40">
                       <span className="text-[#F5C518] font-black text-xs mr-1 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">{apicBalance}</span>
                       <span className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-wider">APIC</span>
                     </div>
