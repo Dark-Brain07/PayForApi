@@ -57,6 +57,8 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
         );
         
         onSuccess(receipt.hash, selectedToken);
+      } else {
+        throw new Error("No web3 wallet detected. Please install a wallet.");
       }
     } catch (error: unknown) {
       console.error(error);
@@ -97,6 +99,8 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
         );
         
         onSuccess(receipt.hash, "APIC");
+      } else {
+        throw new Error("No web3 wallet detected. Please install a wallet.");
       }
     } catch (error: unknown) {
       console.error(error);
