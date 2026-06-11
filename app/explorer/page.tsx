@@ -194,14 +194,14 @@ export default function Explorer() {
                   <tr>
                     <td colSpan={3} className="py-12 text-center text-red-500">{leaderboardError}</td>
                   </tr>
-                ) : topDonors.length === 0 ? (
+                ) : !topDonors || topDonors.length === 0 ? (
                   <tr>
                     <td colSpan={3} className="py-12 text-center text-[#94A3B8]">
                       Be the first to donate and claim the #1 spot!
                     </td>
                   </tr>
                 ) : (
-                  topDonors.map((donor, idx) => (
+                  topDonors?.map((donor, idx) => (
                     <tr key={idx} className="hover:bg-[#1E293B]/50 transition-colors group">
                       <td className="py-4 px-6 text-white font-bold text-lg">
                         {idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : <span className="text-[#94A3B8] text-sm font-mono">#{idx + 1}</span>}
