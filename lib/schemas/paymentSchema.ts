@@ -5,7 +5,7 @@ export const paymentSchema = z.object({
   id: z.string().uuid("Invalid UUID format").optional(),
   txHash: z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash"),
   from: z.string().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
-  to:   z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
+  to:   z.string().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   amount: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
   token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"], { required_error: "Token is required" }),
   endpoint: z.string().min(1).max(2048).url("Must be a valid endpoint URL"),
