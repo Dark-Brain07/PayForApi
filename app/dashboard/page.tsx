@@ -56,8 +56,9 @@ export default function DashboardPage() {
       try {
         tx = await contract.registerApi(newApiEndpoint);
         await tx.wait();
-      } catch (txErr: any) {
-        throw new Error(txErr.shortMessage || "Transaction rejected or failed");
+      } catch (txErr: unknown) {
+        const err = txErr as { shortMessage?: string; message?: string };
+        throw new Error(err.shortMessage || err.message || "Transaction rejected or failed");
       }
       
       setApis([...apis, { name: newApiName, endpoint: newApiEndpoint, revenue: 0 }]);
