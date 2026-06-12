@@ -4,6 +4,8 @@ import APICard from "@/components/api/APICard";
 import PaymentModal from "@/components/payment/PaymentModal";
 import APIResultDisplay from "@/components/api/APIResultDisplay";
 import { useWallet } from "@/components/wallet/WalletContext";
+import { ethers } from "ethers";
+import { CONTRACTS, CELO_MAINNET } from "@/lib/contracts";
 
 const API_PRODUCTS = [
   { id: 0, name: "Weather Info", priceUsd: "$0.001 cUSD/call", priceCredits: 10, description: "Real-time global weather parameters.", inputs: ["Dhaka"] },
@@ -19,6 +21,46 @@ export default function Marketplace() {
   const [apiResult, setApiResult] = useState<string | null>(null);
   const [lastApiId, setLastApiId] = useState<number | null>(null);
   const [isCalling, setIsCalling] = useState(false);
+  const [communityApis, setCommunityApis] = useState<any[]>([]);
+
+  // Fetch Community APIs from the blockchain
+  useState(() => {
+    async function fetchCommunityApis() {
+      try {
+        const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
+        const contract = new ethers.Contract(CONTRACTS.API_REVENUE_SPLITTER.address, CONTRACTS.API_REVENUE_SPLITTER.abi, provider);
+        const currentBlock = await provider.getBlockNumber();
+        const fromBlock = Math.max(0, currentBlock - 2000000);
+        const filter = contract.filters.ApiRegistered();
+        const events = await contract.queryFilter(filter, fromBlock, "latest");
+        
+        const uniqueApis = new Map();
+        interface ContractEvent { args?: string[] }
+        for (const event of events) {
+          const eventObj = event as ContractEvent;
+          const endpointId = eventObj.args?.[0];
+          const creator = eventObj.args?.[1];
+          if (endpointId && creator) {
+             uniqueApis.set(endpointId, { 
+               id: uniqueApis.size + 100, 
+               name: `Community API: ${endpointId.substring(0, 15)}...`, 
+               endpoint: endpointId, 
+               priceUsd: "$0.005 cUSD/call", 
+               priceCredits: 50, 
+               description: `Custom endpoint provided by ${creator.substring(0, 8)}...`, 
+               inputs: ["param1"] 
+             });
+          }
+        }
+        setCommunityApis(Array.from(uniqueApis.values()));
+      } catch (err) {
+        console.error("Failed to load community APIs", err);
+      }
+    }
+    fetchCommunityApis();
+  });
+
+  // const ALL_PRODUCTS = [...API_PRODUCTS, ...communityApis]; // Not needed anymore
 
   return (
     <div className="flex flex-col w-full min-h-screen pt-16 bg-black">
@@ -31,6 +73,7 @@ export default function Marketplace() {
           <p className="text-[#94A3B8] text-lg md:text-xl max-w-2xl mx-auto font-medium">Sub-cent micropayments seamlessly enabled by x402 on Celo. No subscriptions, just pure utility.</p>
         </div>
         
+        <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4">Core Platform APIs</h2>
         <div className="columns-1 md:columns-2 gap-6 space-y-6">
           {API_PRODUCTS.map((api) => (
             <div key={api.id} className="break-inside-avoid relative">
@@ -47,6 +90,31 @@ export default function Marketplace() {
             </div>
           ))}
         </div>
+
+        {communityApis.length > 0 && (
+          <div className="mt-16">
+            <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4 flex items-center gap-3">
+              <span className="bg-[#1E293B] text-brand-yellow px-3 py-1 rounded-full text-xs uppercase tracking-widest font-black">New</span>
+              Community Creator APIs
+            </h2>
+            <div className="columns-1 md:columns-2 gap-6 space-y-6">
+              {communityApis.map((api) => (
+                <div key={api.id} className="break-inside-avoid relative">
+                  {isCalling && lastApiId === api.id && (
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
+                      <div className="w-10 h-10 border-4 border-[#00E676] border-t-transparent rounded-full animate-spin mb-3"></div>
+                      <span className="text-[#00E676] font-bold text-sm animate-pulse">Processing...</span>
+                    </div>
+                  )}
+                  <APICard 
+                    {...api}
+                    onTryIt={(id, name, values, priceCredits) => setSelectedProduct({id, name, values, priceCredits})}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         
         <div className="mt-20 text-center border-t border-[#1E293B] pt-12 relative max-w-4xl mx-auto">
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#0B0E14] px-6 py-2 rounded-full border border-[#1E293B] shadow-lg flex items-center gap-3">
@@ -91,6 +159,9 @@ export default function Marketplace() {
               endpoint = "/api/translate";
               apiRequestBody.text = values[0] || "Hello, the future is agentic.";
               apiRequestBody.language = values[1] || "Spanish";
+            } else if (id >= 100) {
+              endpoint = "/api/proxy";
+              apiRequestBody.endpoint = communityApis.find(a => a.id === id)?.endpoint;
             }
             
             const res = await fetch(endpoint, {
