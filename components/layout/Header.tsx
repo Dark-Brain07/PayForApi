@@ -5,6 +5,7 @@ import { useWallet } from "@/components/wallet/WalletContext";
 import { ethers } from "ethers";
 import { CONTRACTS } from "@/lib/contracts";
 import { CELO_STABLECOINS } from "@/lib/stablecoins";
+import { EthereumProvider } from "@/hooks/useAuth";
 
 const truncateAddress = (addr: string) => {
   return `${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}`;
@@ -19,9 +20,9 @@ export default function Header() {
 
   useEffect(() => {
     const fetchBalances = async () => {
-      if (isConnected && address && typeof window !== "undefined" && (window as any).ethereum) {
+      if (isConnected && address && typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
         try {
-          const provider = new ethers.BrowserProvider((window as any).ethereum);
+          const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum!);
           
           const cusdContract = new ethers.Contract(
             CELO_STABLECOINS.cUSD.address,
