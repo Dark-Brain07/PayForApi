@@ -8,7 +8,7 @@ import { CELO_STABLECOINS } from "@/lib/stablecoins";
 import { EthereumProvider } from "@/hooks/useAuth";
 
 const truncateAddress = (addr: string) => {
-  return `${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}`;
+  return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 };
 
 export default function Header() {
