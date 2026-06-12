@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Transaction not found" }, { status: 402 });
     }
 
-    console.log(`Verified payment tx: ${txHash} for user ${walletAddress}`);
+    // Removed console.log for security/privacy
 
     const freemodelUrl = "https://api.freemodel.dev/v1/chat/completions";
     const apiKey = process.env.FREEMODEL_API_KEY;
@@ -44,7 +44,8 @@ export async function POST(request: NextRequest) {
       }),
     });
 
-    const data = await aiResponse.json();
+    interface AIResponse { choices?: { message?: { content?: string } }[]; usage?: { total_tokens?: number } }
+    const data = (await aiResponse.json()) as AIResponse;
     
     return NextResponse.json({
       response: data.choices?.[0]?.message?.content || "No response generated.",
@@ -53,7 +54,7 @@ export async function POST(request: NextRequest) {
       tokensUsed: data.usage?.total_tokens || 0,
     });
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
