@@ -10,7 +10,7 @@ export const paymentSchema = z.object({
   token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"], { required_error: "Token is required" }),
   endpoint: z.string().trim().min(1).max(2048).url("Must be a valid endpoint URL"),
   chainId: z.number().int().describe("The EVM chain ID").default(42220),
-  blockNumber: z.number().int().positive().optional(),
+  blockNumber: z.number().int().nonnegative("Block number must be 0 or greater").optional(),
   status: z.enum(["pending", "confirmed", "failed"]).default("pending"),
   createdAt: z.string().datetime().optional(),
 }).strict();
