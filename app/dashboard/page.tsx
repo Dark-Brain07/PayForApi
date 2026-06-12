@@ -53,7 +53,7 @@ export default function DashboardPage() {
         signer
       );
 
-      let tx;
+      let tx: ethers.ContractTransactionResponse;
       try {
         tx = await contract.registerApi(newApiEndpoint);
         await tx.wait();
