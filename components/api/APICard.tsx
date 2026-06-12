@@ -58,6 +58,7 @@ export default function APICard({ id, name, priceUsd, priceCredits, description,
           return isLongText ? (
               <textarea
                 key={idx}
+                aria-label={`Input for ${placeholder}`}
                 placeholder={placeholder}
                 value={values[idx] || ""}
                 onChange={(e) => {
@@ -74,6 +75,7 @@ export default function APICard({ id, name, priceUsd, priceCredits, description,
               <input 
                 key={idx}
                 type="text" 
+                aria-label={`Input for ${placeholder}`}
                 placeholder={placeholder}
                 value={values[idx] || ""}
                 onChange={(e) => {
