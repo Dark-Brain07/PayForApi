@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { useMiniPay } from "@/hooks/useMiniPay";
+import { EthereumProvider } from "@/hooks/useAuth";
 
 interface WalletContextType {
   address: string | null;
@@ -24,13 +25,14 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [miniPayAddress]);
 
   const connect = async () => {
-    if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: any }).ethereum) {
+    if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
       try {
-        const accounts = await (window as Window & typeof globalThis & { ethereum?: any }).ethereum.request({
+        const accounts = await (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum!.request({
           method: "eth_requestAccounts",
         });
-        if (accounts && accounts.length > 0) {
-          setAddress(accounts[0]);
+        const accountsList = accounts as string[];
+        if (accountsList && accountsList.length > 0) {
+          setAddress(accountsList[0]);
         }
       } catch (error) {
         console.error("Failed to connect wallet", error);
