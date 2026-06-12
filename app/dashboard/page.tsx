@@ -6,6 +6,7 @@ import Header from "@/components/layout/Header";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { CONTRACTS } from "@/lib/contracts";
 import Input from "@/components/ui/Input";
+import { EthereumProvider } from "@/hooks/useAuth";
 
 const INPUT_CLASSES = "w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors";
 
@@ -31,14 +32,14 @@ export default function DashboardPage() {
     if (!newApiName || !newApiEndpoint) return alert("Please fill all fields");
     if (!isConnected || !address) return alert("Connection Error: Please connect your Web3 wallet first to register an API.");
 
-    if (typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: any }).ethereum) {
+    if (typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
       alert("No Web3 wallet detected");
       return;
     }
 
     try {
       setIsRegistering(true);
-      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum);
       let signer;
       try {
         signer = await provider.getSigner();
@@ -83,14 +84,14 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchRealEndpoints = async (): Promise<void> => {
       setLoadingEndpoints(true);
-      if (!isConnected || !address || typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: any }).ethereum) {
+      if (!isConnected || !address || typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
         setApis([]);
         setLoadingEndpoints(false);
         return;
       }
       
       try {
-        const getProvider = () => new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
+        const getProvider = () => new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum);
         const provider = getProvider();
         const contract = new ethers.Contract(
           CONTRACTS.API_REVENUE_SPLITTER.address,
