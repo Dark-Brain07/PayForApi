@@ -85,8 +85,8 @@ export default function Explorer() {
           .slice(0, 10);
           
         setTopDonors(sortedDonors);
-      } catch (error: any) {
-        setLeaderboardError(error?.message?.includes("network") ? "Network error: Failed to connect to Celo" : "Failed to load leaderboard");
+      } catch (error: unknown) {
+        setLeaderboardError((error as Error)?.message?.includes("network") ? "Network error: Failed to connect to Celo" : "Failed to load leaderboard");
       } finally {
         setLeaderboardLoading(false);
       }
