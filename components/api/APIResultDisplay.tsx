@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function APIResultDisplay({ apiId, data }: { apiId: number, data: any }) {
+export default function APIResultDisplay({ apiId, data }: { apiId: number, data: Record<string, any> | null }) {
   if (!data) return null;
   
   if (data.error || (data.cod && String(data.cod) !== "200")) {
