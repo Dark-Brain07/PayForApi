@@ -303,6 +303,7 @@ export default function DashboardPage() {
                   type="text" 
                   value={newApiName}
                   maxLength={50}
+                  autoFocus
                   autoComplete="off"
                   onChange={(e) => setNewApiName(e.target.value)}
                   className={INPUT_CLASSES} 
