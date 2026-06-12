@@ -7,6 +7,7 @@ import { ethers } from "ethers";
 import { processPayment } from "@/lib/payment";
 
 import { CONTRACTS } from "@/lib/contracts";
+import { EthereumProvider } from "@/hooks/useAuth";
 
 interface PaymentModalProps {
   isOpen: boolean;
@@ -41,8 +42,8 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
     setError(null);
     
     try {
-      if (typeof window !== "undefined" && (window as any).ethereum) {
-        const provider = new ethers.BrowserProvider((window as any).ethereum);
+      if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
+        const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum!);
         const token = CELO_STABLECOINS[selectedToken];
         const requestId = ethers.id(Date.now().toString() + Math.random().toString());
         
@@ -84,8 +85,8 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
     setError(null);
     
     try {
-      if (typeof window !== "undefined" && (window as any).ethereum) {
-        const provider = new ethers.BrowserProvider((window as any).ethereum);
+      if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
+        const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum!);
         const requestId = ethers.id(Date.now().toString() + Math.random().toString());
         
         const receipt = await processPayment(
