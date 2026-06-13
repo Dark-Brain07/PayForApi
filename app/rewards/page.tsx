@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useWallet } from "@/components/wallet/WalletContext";
+import { EthereumProvider } from "@/hooks/useAuth";
 import { ethers } from "ethers";
 import { CONTRACTS } from "@/lib/contracts";
 
@@ -20,9 +21,9 @@ export default function Rewards() {
   const MAX_SUPPLY = 100000;
 
   const fetchStats = async () => {
-    if (!address || typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: any }).ethereum) return;
+    if (!address || typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) return;
     try {
-      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as any);
       
       const creditsContract = new ethers.Contract(
         CONTRACTS.API_CREDITS.address,
@@ -104,7 +105,7 @@ export default function Rewards() {
     setSuccess(null);
     setIsClaiming(true);
     try {
-      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as any);
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(
         CONTRACTS.API_CREDITS.address,
@@ -128,7 +129,7 @@ export default function Rewards() {
     setSuccess(null);
     setIsMinting(true);
     try {
-      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as any);
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(
         CONTRACTS.COMMUNITY_NFT.address,
