@@ -1,6 +1,11 @@
+export interface SessionData {
+  userId: string;
+  createdAt: number;
+}
+
 export class SessionManager {
   private static instance: SessionManager;
-  private sessions: Map<string, any>;
+  private sessions: Map<string, SessionData>;
   private constructor() {
     this.sessions = new Map();
   }
