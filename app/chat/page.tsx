@@ -56,7 +56,7 @@ export default function ChatPage() {
       
       // Execute background transaction without modal popup
       if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
-        const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as any);
+        const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as unknown as ethers.Eip1193Provider);
         const requestId = ethers.id(Date.now().toString() + Math.random().toString());
         
         let tokenAddress, amountToPay;
