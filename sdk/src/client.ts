@@ -2,6 +2,8 @@ import { x402Client, x402HTTPClient } from '@x402/core/client';
 import { registerExactEvmScheme } from '@x402/evm/exact/client';
 import { privateKeyToAccount } from 'viem/accounts';
 
+const HTTP_STATUS_PAYMENT_REQUIRED = 402;
+
 export interface PayForApiClientOptions {
   privateKey: string;
   rpcUrl?: string; // e.g. https://alfajores-forno.celo-testnet.org
@@ -40,7 +42,7 @@ export class PayForApiClient {
       // We will perform the first fetch, if it's 402, x402HttpClient handles payment.
       
       let response = await fetch(url, init);
-      if (response.status === 402) {
+      if (response.status === HTTP_STATUS_PAYMENT_REQUIRED) {
          console.log(`[PayForApiClient] 402 Payment Required at ${url}. Automatically resolving...`);
          
          const authHeader = response.headers.get('WWW-Authenticate');
