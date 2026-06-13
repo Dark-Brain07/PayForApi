@@ -32,6 +32,7 @@ export default function Marketplace() {
   const [lastApiId, setLastApiId] = useState<number | null>(null);
   const [isCalling, setIsCalling] = useState(false);
   const [communityApis, setCommunityApis] = useState<CommunityApi[]>([]);
+  const [isLoadingCommunity, setIsLoadingCommunity] = useState(true);
 
   // Fetch Community APIs from the blockchain
   useState(() => {
@@ -65,6 +66,8 @@ export default function Marketplace() {
         setCommunityApis(Array.from(uniqueApis.values()));
       } catch (err) {
         console.error("Failed to load community APIs", err);
+      } finally {
+        setIsLoadingCommunity(false);
       }
     }
     fetchCommunityApis();
@@ -108,8 +111,13 @@ export default function Marketplace() {
               Community Creator APIs
             </h2>
             <div className="columns-1 md:columns-2 gap-6 space-y-6">
-              {communityApis.map((api) => (
-                <div key={api.id} className="break-inside-avoid relative">
+              {isLoadingCommunity ? (
+                Array.from({ length: 4 }).map((_, i) => (
+                  <div key={`skel-${i}`} className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-2xl h-48 animate-pulse"></div>
+                ))
+              ) : (
+                communityApis.map((api) => (
+                  <div key={api.id} className="break-inside-avoid relative">
                   {isCalling && lastApiId === api.id && (
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
                       <div className="w-10 h-10 border-4 border-[#00E676] border-t-transparent rounded-full animate-spin mb-3"></div>
@@ -121,7 +129,7 @@ export default function Marketplace() {
                     onTryIt={(id, name, values, priceCredits) => setSelectedProduct({id, name, values, priceCredits})}
                   />
                 </div>
-              ))}
+              )))}
             </div>
           </div>
         )}
