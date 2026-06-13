@@ -400,6 +400,7 @@ export default function DashboardPage() {
                   Close
                 </button>
                 <button 
+                  aria-label="Delete endpoint"
                   title="Permanent Action"
                   onClick={() => {
                     if (!address) return;
