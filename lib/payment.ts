@@ -1,6 +1,10 @@
 import { CONTRACTS } from "./contracts";
 import { ethers } from "ethers";
 
+interface CeloTransactionRequest extends ethers.TransactionRequest {
+  feeCurrency?: string;
+}
+
 export async function processPayment(
   provider: ethers.BrowserProvider,
   tokenAddress: string,
@@ -24,7 +28,7 @@ export async function processPayment(
   
   const parsedAmount = ethers.parseUnits(amount, decimals);
 
-  const overrides: any = {};
+  const overrides: CeloTransactionRequest = {};
   
   if (isMiniPay) {
     // MiniPay best practices: use legacy tx type and let MiniPay handle fee abstraction automatically
