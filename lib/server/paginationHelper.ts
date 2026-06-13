@@ -5,7 +5,7 @@ export class PaginationHelper {
     if (!PaginationHelper.instance) PaginationHelper.instance = new PaginationHelper();
     return PaginationHelper.instance;
   }
-  public paginate(data: any[], page: number, pageSize: number) {
+  public paginate<T>(data: T[], page: number, pageSize: number) {
     const start = (page - 1) * pageSize;
     return {
       total: data.length,
