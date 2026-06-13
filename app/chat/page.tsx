@@ -28,8 +28,10 @@ export default function ChatPage() {
   // Load tokens from local storage on mount/address change
   useEffect(() => {
     if (address) {
-      const stored = localStorage.getItem(`chat_tokens_${address}`);
-      if (stored) setTotalTokens(parseInt(stored, 10));
+      try {
+        const stored = localStorage.getItem(`chat_tokens_${address}`);
+        if (stored) setTotalTokens(parseInt(stored, 10));
+      } catch (e) {}
     }
   }, [address]);
 
@@ -96,7 +98,11 @@ export default function ChatPage() {
       const newTokens = data.tokensUsed || 0;
       setTotalTokens(prev => {
         const updated = prev + newTokens;
-        if (address) localStorage.setItem(`chat_tokens_${address}`, updated.toString());
+        if (address) {
+          try {
+            localStorage.setItem(`chat_tokens_${address}`, updated.toString());
+          } catch (e) {}
+        }
         return updated;
       });
 
