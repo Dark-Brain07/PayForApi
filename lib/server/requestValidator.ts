@@ -5,7 +5,7 @@ export class RequestValidator {
     if (!RequestValidator.instance) RequestValidator.instance = new RequestValidator();
     return RequestValidator.instance;
   }
-  public validate(payload: any, schema: any): boolean {
+  public validate(payload: unknown, schema: { parse: (val: unknown) => unknown }): boolean {
     try {
       schema.parse(payload);
       return true;
