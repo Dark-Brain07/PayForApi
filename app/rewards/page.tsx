@@ -23,7 +23,7 @@ export default function Rewards() {
   const fetchStats = async () => {
     if (!address || typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) return;
     try {
-      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as any);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as unknown as ethers.Eip1193Provider);
       
       const creditsContract = new ethers.Contract(
         CONTRACTS.API_CREDITS.address,
@@ -105,7 +105,7 @@ export default function Rewards() {
     setSuccess(null);
     setIsClaiming(true);
     try {
-      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as any);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as unknown as ethers.Eip1193Provider);
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(
         CONTRACTS.API_CREDITS.address,
@@ -129,7 +129,7 @@ export default function Rewards() {
     setSuccess(null);
     setIsMinting(true);
     try {
-      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as any);
+      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as unknown as ethers.Eip1193Provider);
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(
         CONTRACTS.COMMUNITY_NFT.address,
