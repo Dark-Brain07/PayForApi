@@ -89,6 +89,7 @@ export default function APICard({ id, name, priceUsd, priceCredits, description,
         })}
         <button 
           onClick={() => onTryIt(id, name, values, priceCredits)}
+          aria-haspopup="dialog"
           className="w-full sm:w-auto bg-gradient-to-b from-[#FDE047] to-[#F5C518] text-black font-black text-sm px-8 py-3 rounded-xl shadow-[0_0_15px_rgba(245,197,24,0.3)] hover:shadow-[0_0_25px_rgba(245,197,24,0.5)] hover:-translate-y-0.5 transition-all whitespace-nowrap flex items-center justify-center gap-2 shrink-0"
         >
           Call API <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
