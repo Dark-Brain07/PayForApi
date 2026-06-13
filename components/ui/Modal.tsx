@@ -4,6 +4,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isDisabled?: boolean;
+  isOpen?: boolean;
 }
 
 /**
