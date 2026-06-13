@@ -5,7 +5,7 @@ export class ResponseFormatter {
     if (!ResponseFormatter.instance) ResponseFormatter.instance = new ResponseFormatter();
     return ResponseFormatter.instance;
   }
-  public success(data: any, message = 'Success') {
+  public success<T>(data: T, message = 'Success') {
     return { success: true, message, data };
   }
   public error(message: string, code = 400) {
