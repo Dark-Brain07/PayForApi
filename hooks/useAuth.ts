@@ -101,7 +101,27 @@ export function useAuth(): AuthState & {
         method: "wallet_switchEthereumChain",
         params: [{ chainId: CELO_CHAIN_HEX }],
       });
-    } catch (err) {
+    } catch (err: unknown) {
+      const isProviderError = (e: unknown): e is { code: number } => typeof e === 'object' && e !== null && 'code' in e;
+      if (isProviderError(err) && err.code === 4902) {
+        try {
+          const eth = window.ethereum as EthereumProvider;
+          await eth.request({
+            method: "wallet_addEthereumChain",
+            params: [{
+              chainId: CELO_CHAIN_HEX,
+              chainName: "Celo Mainnet",
+              rpcUrls: ["https://forno.celo.org"],
+              nativeCurrency: { name: "CELO", symbol: "CELO", decimals: 18 },
+              blockExplorerUrls: ["https://celoscan.io/"]
+            }]
+          });
+          return;
+        } catch (addErr) {
+          setState((s) => ({ ...s, error: "Failed to add Celo network" }));
+          return;
+        }
+      }
       setState((s) => ({ ...s, error: "Failed to switch to Celo network" }));
     }
   }, []);
