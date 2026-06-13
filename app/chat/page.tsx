@@ -238,7 +238,7 @@ export default function ChatPage() {
             className="bg-gradient-to-b from-[#FDE047] to-[#F5C518] hover:brightness-110 text-black font-bold px-5 py-3 sm:px-8 sm:py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(245,197,24,0.3)] flex items-center gap-2 shrink-0"
           >
             <span>Send</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </button>
         </div>
       </div>
