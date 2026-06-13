@@ -4,17 +4,10 @@ import Link from "next/link";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { useState, useEffect } from "react";
 
-const TERMINAL_BOOT_LOGS = [
-  "> Initialize Celo Network...",
-  "> Loading ERC-8004 Agent...",
-  "> Loading MiniPay x x402 for payment...",
-  "> Authenticating node connection...",
-  "> Loading currencies: [cUSD, cEUR, cKES, cBRL, cGHS, cCOP, PUSO] ... OK",
-  "> Checking API Integrations... OK",
-  "> SUCCESS: All systems operational."
-];
-
+import { useRouter } from "next/navigation";
+import { TERMINAL_BOOT_LOGS } from "@/lib/constants";
 function InteractiveTerminal() {
+  const router = useRouter();
   const [bootLogs, setBootLogs] = useState<string[]>([]);
   const [isReady, setIsReady] = useState(false);
 
@@ -40,7 +33,7 @@ function InteractiveTerminal() {
     if (isReady) {
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Enter') {
-          window.location.href = '/marketplace';
+          router.push('/marketplace');
         }
       };
       window.addEventListener('keydown', handleKeyDown);
@@ -73,6 +66,7 @@ function InteractiveTerminal() {
 }
 
 export default function Home() {
+  const router = useRouter();
   const { isMiniPay } = useWallet();
 
   return (
@@ -87,7 +81,7 @@ export default function Home() {
         )}
         
         <div 
-          onClick={() => window.location.href = '/marketplace'}
+          onClick={() => router.push('/marketplace')}
           aria-label="Enter marketplace"
           role="button"
           tabIndex={0}
