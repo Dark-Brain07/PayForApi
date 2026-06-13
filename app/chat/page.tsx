@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { useWallet } from "@/components/wallet/WalletContext";
+import { EthereumProvider } from "@/hooks/useAuth";
 import { ethers } from "ethers";
 import { processPayment } from "@/lib/payment";
 import { CELO_STABLECOINS, StablecoinKey } from "@/lib/stablecoins";
@@ -52,8 +53,8 @@ export default function ChatPage() {
       let txHash = "0x0000000000000000000000000000000000000000"; // fallback if missing
       
       // Execute background transaction without modal popup
-      if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: any }).ethereum) {
-        const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: any }).ethereum);
+      if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
+        const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as any);
         const requestId = ethers.id(Date.now().toString() + Math.random().toString());
         
         let tokenAddress, amountToPay;
