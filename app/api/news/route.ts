@@ -24,7 +24,6 @@ const getHandler = async (req: NextRequest) => {
     cache: 'no-store'
   });
   const json = await data.json();
-  console.log("NEWS API RESPONSE:", JSON.stringify(json).substring(0, 200));
   if (json.status === 'error') {
     return NextResponse.json({ error: json.message });
   }
