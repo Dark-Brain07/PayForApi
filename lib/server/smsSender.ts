@@ -1,3 +1,4 @@
+import { loggerInstance } from './logger';
 export class SmsSender {
   private static instance: SmsSender;
   private constructor() {}
@@ -6,7 +7,7 @@ export class SmsSender {
     return SmsSender.instance;
   }
   public async send(phone: string, text: string): Promise<boolean> {
-    console.log(`Sending SMS to ${phone}: ${text}`);
+    loggerInstance.info(`Sending SMS to ${phone}: ${text}`);
     return true;
   }
 }
