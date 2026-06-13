@@ -5,9 +5,15 @@ export class Logger {
     if (!Logger.instance) Logger.instance = new Logger();
     return Logger.instance;
   }
+  /**
+   * Logs an informational message with an ISO timestamp.
+   */
   public info(message: string, ...meta: unknown[]) {
     console.log(`[INFO] ${new Date().toISOString()}: ${message}`, ...meta);
   }
+  /**
+   * Logs an error message with an ISO timestamp.
+   */
   public error(message: string, ...meta: unknown[]) {
     console.error(`[ERROR] ${new Date().toISOString()}: ${message}`, ...meta);
   }
