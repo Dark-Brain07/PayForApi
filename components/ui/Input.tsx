@@ -35,6 +35,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
     <input 
       ref={ref}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${error ? 'border-red-500 focus-visible:ring-red-500' : ''} ${className}`}
+      aria-invalid={error ? 'true' : 'false'}
       {...props}
     />
   );
