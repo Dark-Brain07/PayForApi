@@ -99,7 +99,7 @@ export default function Explorer() {
   }, []);
 
   const truncateAddress = (addr: string) => {
-    return `${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}`;
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
   };
 
   return (
