@@ -5,5 +5,5 @@ export const logSchema = z.object({
   level: z.enum(["info", "warn", "error", "debug"]),
   message: z.string(),
   timestamp: z.date(),
-  meta: z.record(z.any()).optional()
+  meta: z.record(z.unknown()).optional()
 });
