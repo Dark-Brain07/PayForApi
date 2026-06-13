@@ -208,11 +208,11 @@ export default function Marketplace() {
       {/* Result Modal */}
       {(isCalling || apiResult) && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
-          <div className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 w-full max-w-2xl shadow-2xl relative flex flex-col max-h-[90vh]">
+          <div role="dialog" aria-modal="true" aria-labelledby="result-modal-title" className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 w-full max-w-2xl shadow-2xl relative flex flex-col max-h-[90vh]">
             
             {/* Header */}
             <div className="flex justify-between items-center mb-6 shrink-0">
-              <h3 className="text-xl font-bold text-white">
+              <h3 id="result-modal-title" className="text-xl font-bold text-white">
                 {isCalling ? "Verifying Payment..." : "API Response"}
               </h3>
               {!isCalling && (
