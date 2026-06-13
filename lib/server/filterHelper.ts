@@ -5,7 +5,7 @@ export class FilterHelper {
     if (!FilterHelper.instance) FilterHelper.instance = new FilterHelper();
     return FilterHelper.instance;
   }
-  public applyFilter(data: any[], criteria: Record<string, any>): any[] {
+  public applyFilter<T extends Record<string, unknown>>(data: T[], criteria: Record<string, unknown>): T[] {
     return data.filter(item => {
       return Object.entries(criteria).every(([key, val]) => item[key] === val);
     });
