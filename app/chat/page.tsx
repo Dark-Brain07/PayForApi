@@ -156,7 +156,7 @@ export default function ChatPage() {
         {/* Token Stats Widget */}
         <div className="flex flex-col items-center justify-center p-6 bg-[#0A0D12] border border-[#1E293B] rounded-2xl shadow-2xl">
           <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em] mb-4 text-center">Wallet Tokens Used</div>
-          <div className="text-4xl font-black text-brand-yellow mb-2 drop-shadow-[0_0_15px_rgba(245,197,24,0.4)]">
+          <div aria-live="polite" className="text-4xl font-black text-brand-yellow mb-2 drop-shadow-[0_0_15px_rgba(245,197,24,0.4)]">
             {totalTokens.toLocaleString()}
           </div>
           <div className="text-text-secondary text-sm text-center">Total AI tokens consumed by your connected address</div>
