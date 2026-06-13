@@ -73,7 +73,7 @@ export default function Marketplace() {
     fetchCommunityApis();
   });
 
-  // const ALL_PRODUCTS = [...API_PRODUCTS, ...communityApis]; // Not needed anymore
+
 
   return (
     <div className="flex flex-col w-full min-h-screen pt-16 bg-black">
