@@ -2,6 +2,8 @@
 
 > Pay-per-call AI APIs using Celo stablecoins. No subscriptions. No credit cards. Just pay what you use.
 
+**🌐 Live Website:** [payforapi.online](https://www.payforapi.online) | **🎥 Demo Video:** [YouTube](https://www.youtube.com/watch?v=JephKF0PMVA)
+
 [![MiniPay](https://img.shields.io/badge/MiniPay-Compatible-brightgreen.svg)](https://docs.celo.org/developer/build-on-minipay/overview)
 [![Celo](https://img.shields.io/badge/Celo-Mainnet-yellow.svg)](https://celo.org)
 [![x402](https://img.shields.io/badge/x402-Enabled-blue.svg)](https://x402.org)
@@ -275,6 +277,188 @@ Integrating with decentralized infrastructure providers to ensure 100% uptime fo
 #### 9.3 Subscription NFTs
 
 Introducing optional NFT-based monthly passes for users who prefer bulk access over pay-per-call.
+- **10%** routes to the Pay For API Treasury to sustain infrastructure.
+
+## 📚 Comprehensive Developer Guide
+
+Welcome to the deep-dive documentation for Pay For API.
+
+### 1. Architecture Overview
+
+The platform follows a highly modular architecture separating the frontend, backend middleware, and Celo smart contracts.
+
+#### 1.1 Frontend Stack
+
+Built with Next.js 15 App Router, React 19, and Tailwind CSS v4 for a highly responsive, glass-morphic UI.
+
+#### 1.2 Wallet & Provider Integration
+
+We utilize ethers.js v6 for provider interactions, specifically auto-detecting the MiniPay injected provider via window.ethereum.isMiniPay.
+
+#### 1.3 Smart Contracts
+
+All smart contracts are written in Solidity 0.8.24 and compiled using Hardhat. They handle API revenue splits and APIC token logic.
+
+#### 1.4 x402 Middleware
+
+Our Next.js API routes are protected by custom x402 middleware that intercepts requests and validates on-chain payment hashes.
+
+### 2. Environment Setup & Configuration
+
+Before running the project locally, you must configure a series of environment variables.
+
+- NEXT_PUBLIC_RPC_URL: The Celo Mainnet RPC URL used for public data reading.
+
+- PRIVATE_KEY: The deployer's private key used for smart contract deployments and backend admin transactions.
+
+- OPENAI_API_KEY: Required for the Premium AI Chat endpoint.
+
+- GEMINI_API_KEY: Required for the AI Summary and AI Translate endpoints.
+
+- WEATHER_API_KEY: Sourced from OpenWeatherMap for real-time meteorological data.
+
+- NEWS_API_KEY: Used to fetch global news headlines for the News API endpoint.
+
+### 3. Smart Contract Deployment Guide
+
+To deploy the contracts to the Celo network, ensure your wallet is funded with CELO for gas.
+
+#### 3.1 APICredits.sol
+
+This contract implements the ERC20 standard with additional minting logic for daily rewards and streaks.
+
+#### 3.2 APIRevenueSplitter.sol
+
+Handles the 90/10 split between API creators and the platform treasury.
+
+Run the deployment script using Hardhat:
+` ash
+npx hardhat run scripts/deploy.ts --network celo
+`
+
+#### 3.3 Contract Verification
+
+Verify your deployed contracts on CeloScan using the @nomicfoundation/hardhat-verify plugin.
+
+` ash
+npx hardhat verify --network celo <DEPLOYED_CONTRACT_ADDRESS>
+`
+
+### 4. API Endpoint Reference
+
+Detailed specifications for each premium endpoint offered on the marketplace.
+
+#### 4.1 POST /api/chat
+
+Accepts a user message and returns an AI-generated response. Requires a 	xHash proving a 0.005 cUSD payment.
+
+#### 4.2 GET /api/weather
+
+Requires a lat and lon query parameter. Returns current weather data. Price: 0.001 cUSD.
+
+#### 4.3 GET /api/news
+
+Returns the top 10 global news headlines. Price: 0.002 cUSD.
+
+#### 4.4 GET /api/crypto
+
+Fetches live prices for major cryptocurrencies including BTC, ETH, and CELO. Price: 0.001 cUSD.
+
+#### 4.5 POST /api/summary
+
+Accepts a long text payload and returns a concise AI-generated summary. Price: 0.005 cUSD.
+
+#### 4.6 POST /api/translate
+
+Accepts text and a target language code. Returns translated text. Price: 0.003 cUSD.
+
+### 5. x402 Protocol Deep Dive
+
+The x402 protocol is the backbone of Pay For API's monetization strategy.
+
+#### 5.1 HTTP 402 Payment Required
+
+When a client accesses a premium endpoint without a valid payment, the server returns an HTTP 402 status code.
+
+#### 5.2 Invoice Generation
+
+Along with the 402 status, the server provides an invoice containing the required token address, amount, and recipient.
+
+#### 5.3 Payment Settlement
+
+The client's wallet processes the payment on the Celo network and obtains a transaction hash.
+
+#### 5.4 Transaction Validation
+
+The client retries the request, including the transaction hash in the X-Payment-Hash header. The server verifies this hash on-chain before serving the data.
+
+### 6. MiniPay Integration Guide
+
+MiniPay is an ultra-lightweight wallet built into the Opera Mini browser, designed for users in emerging markets.
+
+#### 6.1 Auto-Detection
+
+Our platform uses window.ethereum.isMiniPay to seamlessly detect the wallet and bypass standard connection modals.
+
+#### 6.2 Gas Abstraction (FeeCurrency)
+
+All transactions are formatted to use cUSD as the eeCurrency, ensuring users don't need native CELO to pay for gas.
+
+#### 6.3 Transaction Formatting
+
+MiniPay strictly requires Legacy (Type 0) or EIP-1559 (Type 2) transactions. We ensure all ethers.js transactions are correctly populated.
+
+### 7. Security Best Practices
+
+Maintaining the integrity of the marketplace and protecting user funds is paramount.
+
+#### 7.1 Rate Limiting
+
+All API endpoints are protected by IP-based rate limiting to prevent abuse and DDoS attacks.
+
+#### 7.2 Double-Spend Prevention
+
+The backend maintains a registry of processed transaction hashes to ensure a single payment cannot be used multiple times.
+
+#### 7.3 Input Sanitization
+
+All user inputs, especially for AI prompts and database queries, are strictly sanitized to prevent injection attacks.
+
+#### 7.4 Smart Contract Audits
+
+The APICredits and APIRevenueSplitter contracts have undergone internal review, though external audits are recommended before high-volume mainnet usage.
+
+### 8. Creator Dashboard Overview
+
+The Creator Dashboard empowers developers to monetize their own endpoints on our platform.
+
+#### 8.1 Endpoint Registration
+
+Creators provide their endpoint URL, metadata, and set a custom cUSD price.
+
+#### 8.2 Gateway Routing
+
+Pay For API acts as a reverse proxy, enforcing x402 payments before routing the request to the creator's server.
+
+#### 8.3 Analytics & Earnings
+
+Creators can track their total calls, revenue generated, and withdraw their 90% share directly to their Celo wallet.
+
+### 9. Future Roadmap
+
+We are constantly iterating and expanding the capabilities of Pay For API.
+
+#### 9.1 Multi-Chain Expansion
+
+While Celo is our native home, we plan to support x402 payments on Base, Optimism, and Arbitrum.
+
+#### 9.2 Decentralized RPC Integrations
+
+Integrating with decentralized infrastructure providers to ensure 100% uptime for our middleware gateways.
+
+#### 9.3 Subscription NFTs
+
+Introducing optional NFT-based monthly passes for users who prefer bulk access over pay-per-call.
 
 #### 9.4 Enterprise SDK
 
@@ -283,3 +467,13 @@ A robust, enterprise-grade SDK with built-in retry logic, caching, and fallback 
 ### 10. Conclusion
 
 Thank you for building with Pay For API. For support, please open an issue on our GitHub repository or reach out to the core team.
+
+## 🛡️ Hackathon Verification Proof
+
+**ERC-8004 Registry Link:** [8004scan.io/agents/celo/9197](https://8004scan.io/agents/celo/9197)
+
+**Self Agent ID Verification Status:**
+I attempted to verify my agent using Self Agent ID, but I could not complete the process because my passport does not have an NFC chip. I also tried the manual verification process multiple times, but every time it showed "Your submission has been declined". 
+
+Please see the screenshot proof of the decline message here:
+[Self Agent ID Declined Screenshot (Google Drive)](https://drive.google.com/file/d/1AVVfT_L3lB3g2DLYyh7pp3fQjE-5u3sl/view?usp=sharing)
