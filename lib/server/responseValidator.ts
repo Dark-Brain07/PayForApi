@@ -5,8 +5,8 @@ export class ResponseValidator {
     if (!ResponseValidator.instance) ResponseValidator.instance = new ResponseValidator();
     return ResponseValidator.instance;
   }
-  public validate(response: any): boolean {
-    return response && typeof response === 'object' && 'success' in response;
+  public validate(response: unknown): boolean {
+    return response !== null && typeof response === 'object' && 'success' in response;
   }
 }
 export const responseValidatorInstance = ResponseValidator.getInstance();
