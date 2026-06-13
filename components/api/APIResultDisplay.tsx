@@ -1,6 +1,20 @@
 import React from 'react';
 
-export default function APIResultDisplay({ apiId, data }: { apiId: number, data: Record<string, any> | null }) {
+export type ApiData = {
+  error?: string;
+  cod?: string | number;
+  message?: string;
+  name?: string;
+  sys?: { country?: string };
+  main?: { temp?: number; humidity?: number; pressure?: number };
+  weather?: { description?: string; main?: string }[];
+  wind?: { speed?: number };
+  articles?: { source?: { name: string }, url?: string, title: string, description?: string }[];
+  summary?: string;
+  translation?: string;
+} & Record<string, unknown>;
+
+export default function APIResultDisplay({ apiId, data }: { apiId: number, data: ApiData | null }) {
   if (!data) return null;
   
   if (data.error || (data.cod && String(data.cod) !== "200")) {
