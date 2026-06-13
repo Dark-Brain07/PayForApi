@@ -69,10 +69,10 @@ export function useAuth(): AuthState & {
       }));
       return address;
     } catch (err: unknown) {
-      const errorObj = err as { code?: number };
+      const isProviderError = (e: unknown): e is { code: number } => typeof e === 'object' && e !== null && 'code' in e;
       setState((s) => ({
         ...s,
-        error: errorObj?.code === 4001 ? "User rejected connection" : (err instanceof Error ? err.message : String(err)),
+        error: isProviderError(err) && err.code === 4001 ? "User rejected connection" : (err instanceof Error ? err.message : String(err)),
         isConnecting: false,
       }));
       return null;
