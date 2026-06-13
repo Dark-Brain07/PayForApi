@@ -353,7 +353,7 @@ export default function DashboardPage() {
       {/* Settings Modal */}
       {selectedSettingsApi && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div role="dialog" aria-modal="true" className="bg-[#0F172A] border border-[#1E293B] rounded-2xl w-full max-w-md p-6 relative">
+          <div role="dialog" aria-modal="true" aria-labelledby="settings-modal-title" className="bg-[#0F172A] border border-[#1E293B] rounded-2xl w-full max-w-md p-6 relative">
             <button 
               onClick={() => setSelectedSettingsApi(null)}
               aria-label="Close settings"
@@ -361,7 +361,7 @@ export default function DashboardPage() {
             >
               ✕
             </button>
-            <h2 className="text-2xl font-bold text-white mb-2">Endpoint Settings</h2>
+            <h2 id="settings-modal-title" className="text-2xl font-bold text-white mb-2">Endpoint Settings</h2>
             <p className="text-[#94A3B8] text-sm mb-6">Manage your API endpoint configuration.</p>
             
             <div className="space-y-4">
