@@ -1,6 +1,16 @@
 "use client";
 import { useState } from "react";
 import APICard from "@/components/api/APICard";
+
+export interface CommunityApi {
+  id: number;
+  name: string;
+  endpoint: string;
+  priceUsd: string;
+  priceCredits: number;
+  description: string;
+  inputs: string[];
+}
 import PaymentModal from "@/components/payment/PaymentModal";
 import APIResultDisplay from "@/components/api/APIResultDisplay";
 import { useWallet } from "@/components/wallet/WalletContext";
@@ -21,7 +31,7 @@ export default function Marketplace() {
   const [apiResult, setApiResult] = useState<string | null>(null);
   const [lastApiId, setLastApiId] = useState<number | null>(null);
   const [isCalling, setIsCalling] = useState(false);
-  const [communityApis, setCommunityApis] = useState<any[]>([]);
+  const [communityApis, setCommunityApis] = useState<CommunityApi[]>([]);
 
   // Fetch Community APIs from the blockchain
   useState(() => {
