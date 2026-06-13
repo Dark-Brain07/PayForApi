@@ -13,6 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Pay For API — AI APIs on Celo",
   description: "Pay-per-call AI APIs using Celo stablecoins. No subscriptions. Pay only what you use.",
+  keywords: ["Celo", "Web3", "API", "Pay-per-call", "Stablecoin", "AI"],
   manifest: "/manifest.json",
 };
 
