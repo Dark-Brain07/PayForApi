@@ -19,7 +19,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Transaction not found" }, { status: 402 });
     }
 
-    // Removed console.log for security/privacy
 
     const freemodelUrl = "https://api.freemodel.dev/v1/chat/completions";
     const apiKey = process.env.FREEMODEL_API_KEY;
