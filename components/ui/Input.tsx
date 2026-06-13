@@ -13,6 +13,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
   variant = 'default', 
   size = 'md', 
   className = '', 
+  error = false,
   ...props 
 }, ref: React.Ref<HTMLInputElement>) => {
   const baseStyles = "flex w-full rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
