@@ -184,7 +184,7 @@ export default function ChatPage() {
               <div className="text-sm font-bold mb-1 text-text-secondary flex justify-between items-center">
                 <span>{msg.role === "user" ? "You" : "AI Assistant"}</span>
                 {msg.txHash && (
-                  <a href={`https://celoscan.io/tx/${msg.txHash}`} target="_blank" rel="noreferrer" className="text-xs text-brand-yellow hover:underline ml-4">
+                  <a href={`https://celoscan.io/tx/${msg.txHash}`} target="_blank" rel="noreferrer" title={msg.txHash} className="text-xs text-brand-yellow hover:underline ml-4">
                     View Tx ↗
                   </a>
                 )}
