@@ -1,3 +1,4 @@
+import { loggerInstance } from './logger';
 export class EmailSender {
   private static instance: EmailSender;
   private constructor() {}
@@ -6,7 +7,7 @@ export class EmailSender {
     return EmailSender.instance;
   }
   public async send(to: string, subject: string, body: string): Promise<boolean> {
-    console.log(`Sending email to ${to}: ${subject}`);
+    loggerInstance.info(`Sending email to ${to}: ${subject}`);
     return new Promise(resolve => setTimeout(() => resolve(true), 500));
   }
 }
