@@ -20,7 +20,7 @@ export function useScript(src: string) {
       script.addEventListener('load', setAttributeFromEvent);
       script.addEventListener('error', setAttributeFromEvent);
     } else {
-      setStatus(script.getAttribute('data-status') as any);
+      setStatus(script.getAttribute('data-status') as 'idle' | 'loading' | 'ready' | 'error');
     }
     const setStateFromEvent = (event: Event) => {
       setStatus(event.type === 'load' ? 'ready' : 'error');
