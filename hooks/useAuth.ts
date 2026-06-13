@@ -55,9 +55,11 @@ export function useAuth(): AuthState & {
       const accounts = (await eth.request({
         method: "eth_requestAccounts",
       })) as string[];
+      if (!accounts || accounts.length === 0) throw new Error("No accounts found");
       const chainHex = (await eth.request({
         method: "eth_chainId",
       })) as string;
+      if (!chainHex) throw new Error("Invalid chain ID returned");
       const chainId = parseInt(chainHex, 16);
       const address = accounts[0];
       setState((s) => ({
