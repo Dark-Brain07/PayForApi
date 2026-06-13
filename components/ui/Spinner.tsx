@@ -38,6 +38,8 @@ export const Spinner: React.FC<SpinnerProps> = ({
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
+      role="status"
+      aria-live="polite"
       {...props}
     >
       {children}
