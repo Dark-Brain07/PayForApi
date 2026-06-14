@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the select */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the select */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the select is disabled */
   isDisabled?: boolean;
 }
 
