@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the tabs */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the tabs */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the tabs are disabled */
   isDisabled?: boolean;
 }
 
