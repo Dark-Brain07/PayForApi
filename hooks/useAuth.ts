@@ -6,6 +6,9 @@ export interface EthereumProvider {
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
 }
 
+/**
+ * Represents the current authentication state of the wallet session.
+ */
 export interface AuthState {
   address: string | null;
   isConnected: boolean;
