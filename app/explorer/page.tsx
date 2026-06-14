@@ -103,7 +103,8 @@ export default function Explorer() {
 
     fetchStats();
     fetchLeaderboard();
-    const interval = setInterval(fetchStats, 15000);
+    const POLL_INTERVAL_MS = 15000;
+    const interval = setInterval(fetchStats, POLL_INTERVAL_MS);
     return () => clearInterval(interval);
   }, []);
 
