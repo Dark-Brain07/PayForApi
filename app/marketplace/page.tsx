@@ -35,7 +35,7 @@ export default function Marketplace() {
   const [isLoadingCommunity, setIsLoadingCommunity] = useState(true);
 
   // Fetch Community APIs from the blockchain
-  useState(() => {
+  useEffect(() => {
     async function fetchCommunityApis() {
       try {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
@@ -71,7 +71,7 @@ export default function Marketplace() {
       }
     }
     fetchCommunityApis();
-  });
+  }, []);
 
 
 
@@ -91,7 +91,7 @@ export default function Marketplace() {
           {API_PRODUCTS.map((api) => (
             <div key={api.id} className="break-inside-avoid relative">
               {isCalling && lastApiId === api.id && (
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
+                <div aria-hidden="true" className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
                   <div className="w-10 h-10 border-4 border-brand-yellow border-t-transparent rounded-full animate-spin mb-3"></div>
                   <span className="text-brand-yellow font-bold text-sm animate-pulse">Processing...</span>
                 </div>
@@ -113,13 +113,13 @@ export default function Marketplace() {
             <div className="columns-1 md:columns-2 gap-6 space-y-6">
               {isLoadingCommunity ? (
                 Array.from({ length: 4 }).map((_, i) => (
-                  <div key={`skel-${i}`} className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-2xl h-48 animate-pulse"></div>
+                  <div key={`skel-${i}`} role="status" aria-label="Loading API" className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-2xl h-48 animate-pulse"></div>
                 ))
               ) : (
                 communityApis.map((api) => (
                   <div key={api.id} className="break-inside-avoid relative">
                   {isCalling && lastApiId === api.id && (
-                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
+                    <div aria-hidden="true" className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
                       <div className="w-10 h-10 border-4 border-[#00E676] border-t-transparent rounded-full animate-spin mb-3"></div>
                       <span className="text-[#00E676] font-bold text-sm animate-pulse">Processing...</span>
                     </div>
@@ -216,14 +216,14 @@ export default function Marketplace() {
                 {isCalling ? "Verifying Payment..." : "API Response"}
               </h3>
               {!isCalling && (
-                <button onClick={() => setApiResult(null)} className="text-gray-500 hover:text-white transition-colors">
+                <button aria-label="Close modal" onClick={() => setApiResult(null)} className="text-gray-500 hover:text-white transition-colors">
                   ✕
                 </button>
               )}
             </div>
             
             {isCalling ? (
-              <div className="flex flex-col items-center justify-center py-12 shrink-0">
+              <div aria-busy="true" aria-live="polite" className="flex flex-col items-center justify-center py-12 shrink-0">
                 <div className="w-12 h-12 border-4 border-brand-yellow border-t-transparent rounded-full animate-spin mb-4"></div>
                 <div className="text-brand-yellow animate-pulse font-bold">Executing API via Smart Contract...</div>
               </div>
