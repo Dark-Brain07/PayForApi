@@ -132,6 +132,7 @@ export default function ChatPage() {
 
   return (
     <div className="fixed inset-0 top-[76px] bottom-0 flex flex-col items-center justify-center p-4 overflow-hidden z-30">
+      <title>Agentic Chat | PayForAPI</title>
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
       
