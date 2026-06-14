@@ -179,7 +179,7 @@ export default function ChatPage() {
           Agentic Chat
         </h1>
         <div className="text-sm text-text-secondary bg-brand-elevated px-3 py-1 rounded-full border border-brand-border">
-          Cost: $0.005 cUSD / message
+          Cost: {paymentToken === "APIC" ? "20 APIC" : "$0.005"} / message
         </div>
       </div>
 
