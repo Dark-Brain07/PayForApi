@@ -7,6 +7,7 @@ import { processPayment } from "@/lib/payment";
 import { CELO_STABLECOINS, StablecoinKey } from "@/lib/stablecoins";
 import { CONTRACTS } from "@/lib/contracts";
 
+/** Represents a chat message in the UI */
 interface Message {
   id: string;
   role: "user" | "ai";
