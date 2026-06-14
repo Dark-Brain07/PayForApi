@@ -71,6 +71,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full">
+      <title>PayForAPI - Celo Web3 API Monetization</title>
       {/* Terminal Hero Section */}
       <section className="pt-20 pb-24 px-4 max-w-5xl mx-auto w-full text-center">
         {isMiniPay && (
