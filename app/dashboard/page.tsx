@@ -105,7 +105,12 @@ export default function DashboardPage() {
         const BLOCKS_TO_QUERY = 2000000;
         const fromBlock = Math.max(0, currentBlock - BLOCKS_TO_QUERY);
         const filter = contract.filters.ApiRegistered();
-        const events = await contract.queryFilter(filter, fromBlock, "latest");
+        let events = [];
+        try {
+          events = await contract.queryFilter(filter, fromBlock, "latest");
+        } catch (e) {
+          console.error("Failed to query API registrations", e);
+        }
 
         const deletedCacheKey = `deleted_endpoints_${address}`;
         let deletedIds: string[] = [];
