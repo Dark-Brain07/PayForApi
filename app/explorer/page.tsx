@@ -150,7 +150,7 @@ export default function Explorer() {
               Love using Pay For API? Help us keep building and making the application even better! Your generous donations directly fund advanced AI integrations, faster nodes, and continuous upgrades.
             </p>
             <div className="flex flex-col xl:flex-row justify-center items-center gap-4 w-full">
-              <div className="bg-[#050505] border border-[#1E293B] px-3 sm:px-4 py-3 rounded-xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] text-[#00E676] font-mono text-xs sm:text-sm truncate w-full max-w-sm text-center">
+              <div className="bg-[#050505] border border-[#1E293B] px-3 sm:px-4 py-3 rounded-xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] text-[#00E676] font-mono text-xs sm:text-sm truncate w-full max-w-sm text-center" title="0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476">
                 0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476
               </div>
               <button 
