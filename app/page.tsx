@@ -69,6 +69,8 @@ export default function Home() {
   const router = useRouter();
   const { isMiniPay } = useWallet();
 
+  const handleEnterMarketplace = () => router.push('/marketplace');
+
   return (
     <div className="flex flex-col w-full">
       <title>PayForAPI - Celo Web3 API Monetization</title>
@@ -82,7 +84,7 @@ export default function Home() {
         )}
         
         <div 
-          onClick={() => router.push('/marketplace')}
+          onClick={handleEnterMarketplace}
           aria-label="Interactive Terminal"
           role="button"
           tabIndex={0}
