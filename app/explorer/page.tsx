@@ -18,7 +18,7 @@ export default function Explorer() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    async function fetchStats() {
+    async function fetchStats(): Promise<void> {
       try {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
         const receiverAddress = MASTER_MERCHANT_WALLET;
@@ -49,7 +49,7 @@ export default function Explorer() {
       }
     }
 
-    async function fetchLeaderboard() {
+    async function fetchLeaderboard(): Promise<void> {
       try {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
         const donationWallet = ECOSYSTEM_DONATION_WALLET;
