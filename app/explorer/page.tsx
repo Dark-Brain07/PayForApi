@@ -64,7 +64,8 @@ export default function Explorer() {
         
         // Query last ~2 million blocks (about 1 month of Celo blocks)
         const currentBlock = await provider.getBlockNumber();
-        const fromBlock = Math.max(0, currentBlock - 2000000);
+        const BLOCKS_TO_QUERY = 2000000;
+        const fromBlock = Math.max(0, currentBlock - BLOCKS_TO_QUERY);
         
         const filter = cusdContract.filters.Transfer(null, donationWallet);
         const events = (await cusdContract.queryFilter(filter, fromBlock, "latest")) || [];
