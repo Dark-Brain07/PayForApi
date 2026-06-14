@@ -112,7 +112,7 @@ export default function DashboardPage() {
           console.error("Failed to query API registrations", e);
         }
 
-        const deletedCacheKey = `deleted_endpoints_${address}`;
+        const deletedCacheKey = `deleted_endpoints_global`;
         let deletedIds: string[] = [];
         try {
           deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
@@ -253,47 +253,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {deletedApis.length > 0 && (
-          <div className="mt-12">
-            <h2 className="text-2xl font-bold text-[#64748B] mb-6 flex items-center gap-2">
-               Archived Endpoints (With Balance)
-            </h2>
-            <div className="space-y-4 opacity-75">
-              {deletedApis.filter(api => api.revenue > 0).length === 0 ? (
-                <div className="text-center py-8 border border-dashed border-[#1E293B] rounded-xl text-[#94A3B8]">
-                  <span className="block text-2xl mb-2 opacity-50" aria-hidden="true">📭</span>
-                  No archived endpoints with remaining balance.
-                </div>
-              ) : (
-                deletedApis.filter(api => api.revenue > 0).map((api, idx) => (
-                  <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/30 border border-[#1E293B] border-dashed rounded-xl group">
-                    <div>
-                      <h3 className="text-lg font-bold text-[#94A3B8] flex items-center gap-2">
-                        {api.name}
-                        <span aria-label="Deleted Status" title="Deleted Endpoint" className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#1E293B] text-[#64748B] border border-[#334155]">DELETED</span>
-                      </h3>
-                      <code title={api.endpoint} className="text-sm text-[#475569] mt-1 block">{api.endpoint.length > 20 ? `${api.endpoint.slice(0, 8)}...${api.endpoint.slice(-8)}` : api.endpoint}</code>
-                    </div>
-                    <div className="mt-4 md:mt-0 flex items-center gap-8">
-                      <div className="text-right">
-                        <p className="text-[#64748B] text-sm font-medium">Pending Withdrawal</p>
-                        <p className="text-brand-yellow font-bold">${api.revenue.toFixed(2)} cUSD</p>
-                      </div>
-                      <button 
-                        type="button"
-                        aria-label="Withdraw funds"
-                        onClick={() => alert("Withdrawals will be enabled via smart contract upgrade in V2.")}
-                        className="text-sm px-4 py-2 bg-brand-yellow/10 text-brand-yellow hover:bg-brand-yellow/20 rounded-lg transition-colors font-bold border border-brand-yellow/30"
-                      >
-                        Withdraw
-                      </button>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-        )}
+        {/* Archived Endpoints section removed as requested */}
       </main>
 
       {/* Modal */}
@@ -427,7 +387,7 @@ export default function DashboardPage() {
                   title="Permanent Action"
                   onClick={() => {
                     if (!address) return;
-                    const deletedCacheKey = `deleted_endpoints_${address}`;
+                    const deletedCacheKey = `deleted_endpoints_global`;
                     let deletedIds: string[] = [];
                     try { 
                       deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]"); 
