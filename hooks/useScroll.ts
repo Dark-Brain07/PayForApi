@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 
 interface ScrollState {
+  /** Current horizontal scroll position in pixels */
   scrollX: number;
   scrollY: number;
   direction: "up" | "down" | null;
