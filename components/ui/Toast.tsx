@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the toast */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the toast */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the toast is disabled */
   isDisabled?: boolean;
 }
 
