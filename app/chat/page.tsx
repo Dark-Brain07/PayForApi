@@ -94,6 +94,7 @@ export default function ChatPage() {
         })
       });
       
+      if (!res.ok) throw new Error(`Server returned ${res.status}`);
       const data = await res.json();
       
       const newTokens = data.tokensUsed || 0;
