@@ -1,8 +1,10 @@
+"use client";
 import { useState, useEffect } from 'react';
 
 export function useTheme(defaultTheme = 'light') {
   const [theme, setTheme] = useState(defaultTheme);
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const root = window.document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
