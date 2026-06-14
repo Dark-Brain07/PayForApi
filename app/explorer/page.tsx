@@ -105,6 +105,7 @@ export default function Explorer() {
 
   return (
     <div className="w-full min-h-screen bg-black py-12 flex flex-col pt-16"><div className="max-w-7xl mx-auto px-4 w-full">
+      <title>Network Explorer | PayForAPI</title>
       <div className="flex justify-between items-center mb-12">
         <h1 className="text-4xl font-black text-white tracking-tight">Network Explorer</h1>
       </div>
