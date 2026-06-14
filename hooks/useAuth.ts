@@ -97,7 +97,7 @@ export function useAuth(): AuthState & {
   }, []);
 
   const switchToCelo = useCallback(async (): Promise<void> => {
-    if (!window.ethereum) return;
+    if (typeof window === "undefined" || !window.ethereum) return;
     try {
       const eth = window.ethereum as EthereumProvider;
       await eth.request({
