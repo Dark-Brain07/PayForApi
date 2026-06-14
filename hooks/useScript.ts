@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from 'react';
 
 export function useScript(src: string) {
@@ -24,6 +25,9 @@ export function useScript(src: string) {
     }
     const setStateFromEvent = (event: Event) => {
       setStatus(event.type === 'load' ? 'ready' : 'error');
+      if (event.type === 'error' && script.parentNode) {
+        script.remove();
+      }
     };
     script.addEventListener('load', setStateFromEvent);
     script.addEventListener('error', setStateFromEvent);
