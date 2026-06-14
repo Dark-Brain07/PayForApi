@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the slider */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the slider */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the slider is disabled */
   isDisabled?: boolean;
 }
 
