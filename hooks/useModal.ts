@@ -2,6 +2,7 @@
 import { useState, useCallback, useEffect } from "react";
 
 interface UseModalReturn {
+  /** Whether the modal is currently open */
   isOpen: boolean;
   open: () => void;
   close: () => void;
