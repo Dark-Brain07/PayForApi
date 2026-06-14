@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface CheckboxProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** The visual variant of the checkbox */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** The size of the checkbox */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the checkbox is disabled */
   isDisabled?: boolean;
 }
 
