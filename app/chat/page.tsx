@@ -193,11 +193,16 @@ export default function ChatPage() {
             }`}>
               <div className="text-sm font-bold mb-1 text-text-secondary flex justify-between items-center">
                 <span>{msg.role === "user" ? "You" : "AI Assistant"}</span>
-                {msg.txHash && (
-                  <a href={`https://celoscan.io/tx/${msg.txHash}`} target="_blank" rel="noreferrer" title={msg.txHash} className="text-xs text-brand-yellow hover:underline ml-4">
-                    View Tx ↗
-                  </a>
-                )}
+                <div className="flex gap-3">
+                  {msg.role === "ai" && (
+                    <button onClick={() => navigator.clipboard.writeText(msg.content)} className="text-xs text-[#94A3B8] hover:text-white" title="Copy Message">Copy</button>
+                  )}
+                  {msg.txHash && (
+                    <a href={`https://celoscan.io/tx/${msg.txHash}`} target="_blank" rel="noreferrer" title={msg.txHash} className="text-xs text-brand-yellow hover:underline">
+                      View Tx ↗
+                    </a>
+                  )}
+                </div>
               </div>
               <div className="whitespace-pre-wrap leading-relaxed text-sm sm:text-base">
                 {msg.content}
