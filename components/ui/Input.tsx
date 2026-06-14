@@ -1,6 +1,10 @@
 import { InputHTMLAttributes, forwardRef } from 'react';
 
+/**
+ * Props for the Input component
+ */
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  id?: string;
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   error?: boolean;
