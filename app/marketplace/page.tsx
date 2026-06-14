@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import APICard from "@/components/api/APICard";
 
 export interface CommunityApi {
