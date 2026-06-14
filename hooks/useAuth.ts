@@ -93,7 +93,7 @@ export function useAuth(): AuthState & {
     });
   }, []);
 
-  const switchToCelo = useCallback(async () => {
+  const switchToCelo = useCallback(async (): Promise<void> => {
     if (!window.ethereum) return;
     try {
       const eth = window.ethereum as EthereumProvider;
