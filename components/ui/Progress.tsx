@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the progress bar */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the progress bar */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the progress bar is disabled */
   isDisabled?: boolean;
 }
 
