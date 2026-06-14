@@ -8,7 +8,10 @@ export function useFetch<T>(url: string) {
     let isMounted = true;
     setLoading(true);
     fetch(url)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
       .then(data => { if (isMounted) setData(data); })
       .catch(err => { if (isMounted) setError(err); })
       .finally(() => { if (isMounted) setLoading(false); });
