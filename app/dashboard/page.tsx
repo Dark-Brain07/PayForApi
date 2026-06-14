@@ -337,6 +337,10 @@ export default function DashboardPage() {
                   min="0.001"
                   value={newApiPrice}
                   onChange={(e) => setNewApiPrice(e.target.value)}
+                  onBlur={(e) => {
+                    const val = parseFloat(e.target.value);
+                    if (!isNaN(val)) setNewApiPrice(val.toFixed(4));
+                  }}
                   className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors" 
                   placeholder="0.005" 
                 />
