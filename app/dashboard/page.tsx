@@ -176,6 +176,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-black font-sans selection:bg-brand-yellow/30 selection:text-brand-yellow">
       <title>Creator Dashboard | PayForAPI</title>
+      <meta name="description" content="Manage your registered API endpoints and track revenue." />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-16">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8 border-b border-[#1E293B] pb-6">
           <div>
