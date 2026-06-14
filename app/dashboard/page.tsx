@@ -351,7 +351,7 @@ export default function DashboardPage() {
               <p className="text-xs text-[#64748B]">Platform fee: 10% per transaction automatically routed to Pay For API treasury.</p>
               <button 
                 onClick={handleRegister}
-                disabled={isRegistering || !newApiName || !newApiEndpoint}
+                disabled={isRegistering || !newApiName || !newApiEndpoint || !newApiPrice}
                 aria-busy={isRegistering}
                 className="w-full py-3 bg-brand-yellow text-black font-bold rounded-lg hover:bg-yellow-400 transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
