@@ -179,6 +179,8 @@ export default function DashboardPage() {
           <button 
             type="button"
             onClick={() => setModalOpen(true)}
+            aria-haspopup="dialog"
+            aria-expanded={isModalOpen}
             className="px-6 py-3 bg-brand-yellow text-black font-bold rounded-lg hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(250,204,21,0.3)] hover:scale-105"
           >
             + Register New API
@@ -192,7 +194,7 @@ export default function DashboardPage() {
           </div>
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Active Endpoints</h3>
-            <p className="text-3xl font-black text-white">{loadingEndpoints ? <span aria-live="polite" className="animate-pulse opacity-50">...</span> : apis.length}</p>
+            <p className="text-3xl font-black text-white">{loadingEndpoints ? <span role="status" aria-busy="true" aria-live="polite" className="animate-pulse opacity-50">...</span> : apis.length}</p>
           </div>
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Total Calls</h3>
@@ -232,7 +234,7 @@ export default function DashboardPage() {
               </div>
             ))}
             {(!apis || apis.length === 0) && (
-              <div aria-live="polite" className="text-center py-16 border border-dashed border-[#1E293B] rounded-xl flex flex-col items-center justify-center">
+              <div role="status" aria-live="polite" className="text-center py-16 border border-dashed border-[#1E293B] rounded-xl flex flex-col items-center justify-center">
                 <svg className="w-12 h-12 text-[#334155] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                 <p className="text-[#94A3B8] font-medium">You haven't registered any APIs yet.</p>
                 <p className="text-[#64748B] text-sm mt-1">Click the register button to get started.</p>
@@ -341,6 +343,7 @@ export default function DashboardPage() {
               <button 
                 onClick={handleRegister}
                 disabled={isRegistering || !newApiName || !newApiEndpoint}
+                aria-busy={isRegistering}
                 className="w-full py-3 bg-brand-yellow text-black font-bold rounded-lg hover:bg-yellow-400 transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isRegistering ? "Registering on Celo..." : "Register & Get x402 Wrapper"}
@@ -395,6 +398,7 @@ export default function DashboardPage() {
               <div className="flex gap-3 mt-6">
                 <button 
                   onClick={() => setSelectedSettingsApi(null)}
+                  aria-label="Close settings modal"
                   className="w-full py-3 bg-[#1E293B] hover:bg-[#334155] text-white font-bold rounded-lg transition-all"
                 >
                   Close
