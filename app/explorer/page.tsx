@@ -199,8 +199,11 @@ export default function Explorer() {
                   </tr>
                 ) : !topDonors || topDonors.length === 0 ? (
                   <tr>
-                    <td colSpan={3} className="py-12 text-center text-[#94A3B8]">
-                      Be the first to donate and claim the #1 spot!
+                    <td colSpan={3} className="py-16 text-center">
+                      <div className="flex flex-col items-center justify-center space-y-3">
+                        <span className="text-4xl" aria-hidden="true">🌟</span>
+                        <p className="text-[#94A3B8] font-medium">Be the first to donate and claim the #1 spot!</p>
+                      </div>
                     </td>
                   </tr>
                 ) : (
