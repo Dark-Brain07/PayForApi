@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the popover */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the popover */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the popover is disabled */
   isDisabled?: boolean;
 }
 
