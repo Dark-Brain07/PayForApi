@@ -36,7 +36,7 @@ export const Alert: React.FC<AlertProps> = ({
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       {...props}
     >
-      {children}
+      {children || <span>Important alert message.</span>}
     </div>
   );
 };
