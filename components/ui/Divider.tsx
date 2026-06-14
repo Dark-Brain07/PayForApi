@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the divider */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the divider */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the divider is disabled */
   isDisabled?: boolean;
 }
 
