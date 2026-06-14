@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface RadioProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the radio */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the radio */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the radio is disabled */
   isDisabled?: boolean;
 }
 
