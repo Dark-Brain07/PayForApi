@@ -297,6 +297,7 @@ export default function DashboardPage() {
             <button 
               onClick={() => setModalOpen(false)}
               aria-label="Close modal"
+              title="Close modal"
               className="absolute top-4 right-4 text-[#64748B] hover:text-white"
             >
               ✕
@@ -323,7 +324,8 @@ export default function DashboardPage() {
                 <label htmlFor="new-api-endpoint" className="block text-sm font-medium text-[#94A3B8] mb-1">Endpoint URL</label>
                 <Input 
                   id="new-api-endpoint"
-                  type="text" 
+                  type="url" 
+                  autoComplete="url"
                   value={newApiEndpoint}
                   maxLength={255}
                   onChange={(e) => setNewApiEndpoint(e.target.value)}
@@ -369,6 +371,7 @@ export default function DashboardPage() {
             <button 
               onClick={() => setSelectedSettingsApi(null)}
               aria-label="Close settings"
+              title="Close settings"
               className="absolute top-4 right-4 text-[#64748B] hover:text-white"
             >
               ✕
@@ -413,6 +416,7 @@ export default function DashboardPage() {
                   Close
                 </button>
                 <button 
+                  type="button"
                   aria-label="Delete endpoint"
                   title="Permanent Action"
                   onClick={() => {
