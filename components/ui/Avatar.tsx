@@ -40,7 +40,7 @@ export const Avatar: React.FC<AvatarProps> = ({
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
-      {children}
+      {children || <div className="w-full h-full bg-gradient-to-br from-brand-green/20 to-brand-yellow/20 rounded-md"></div>}
     </div>
   );
 };
