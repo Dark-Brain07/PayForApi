@@ -420,7 +420,11 @@ export default function DashboardPage() {
                     }
                     if (!deletedIds.includes(selectedSettingsApi.endpoint)) {
                         deletedIds.push(selectedSettingsApi.endpoint);
-                        localStorage.setItem(deletedCacheKey, JSON.stringify(deletedIds));
+                        try {
+                          localStorage.setItem(deletedCacheKey, JSON.stringify(deletedIds));
+                        } catch (e) {
+                          console.error("Storage error", e);
+                        }
                     }
                     setApis(apis.filter(a => a.endpoint !== selectedSettingsApi.endpoint));
                     setDeletedApis([...deletedApis, selectedSettingsApi]);
