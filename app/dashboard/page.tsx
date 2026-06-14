@@ -125,6 +125,7 @@ export default function DashboardPage() {
             let apiData;
             try {
               apiData = await contract.apiEndpoints(endpointId);
+              if (!apiData) continue;
             } catch (err) {
               continue;
             }
