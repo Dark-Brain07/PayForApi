@@ -314,7 +314,7 @@ export default function DashboardPage() {
                   value={newApiName}
                   maxLength={50}
                   autoFocus
-                  autoComplete="off"
+                  autoComplete="name"
                   onChange={(e) => setNewApiName(e.target.value)}
                   className={INPUT_CLASSES} 
                   placeholder="e.g. My Llama 3 Model" 
