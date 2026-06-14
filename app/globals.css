@@ -30,6 +30,10 @@
   --error: #FF4444;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--text-primary);
   background: var(--bg-primary);
