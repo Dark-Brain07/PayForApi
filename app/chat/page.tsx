@@ -202,7 +202,7 @@ export default function ChatPage() {
                     <button onClick={() => navigator.clipboard.writeText(msg.content)} className="text-xs text-[#94A3B8] hover:text-white" title="Copy Message">Copy</button>
                   )}
                   {msg.txHash && (
-                    <a href={`https://celoscan.io/tx/${msg.txHash}`} target="_blank" rel="noreferrer" title={msg.txHash} className="text-xs text-brand-yellow hover:underline">
+                    <a href={`https://celoscan.io/tx/${msg.txHash}`} target="_blank" rel="noopener noreferrer" title={msg.txHash} className="text-xs text-brand-yellow hover:underline">
                       View Tx ↗
                     </a>
                   )}
