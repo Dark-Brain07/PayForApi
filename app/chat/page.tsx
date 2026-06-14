@@ -246,6 +246,7 @@ export default function ChatPage() {
           <button 
             onClick={handleSendClick}
             disabled={!input.trim() || isTyping}
+            aria-label="Send Message"
             className="bg-gradient-to-b from-[#FDE047] to-[#F5C518] hover:brightness-110 text-black font-bold px-5 py-3 sm:px-8 sm:py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(245,197,24,0.3)] flex items-center gap-2 shrink-0"
           >
             <span>Send</span>
