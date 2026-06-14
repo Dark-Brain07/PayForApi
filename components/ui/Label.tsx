@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface LabelProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the label */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the label */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the label is disabled */
   isDisabled?: boolean;
 }
 
