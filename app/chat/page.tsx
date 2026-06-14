@@ -31,7 +31,9 @@ export default function ChatPage() {
       try {
         const stored = localStorage.getItem(`chat_tokens_${address}`);
         if (stored) setTotalTokens(parseInt(stored, 10));
-      } catch (e) {}
+      } catch (e) {
+        console.error("Storage error", e);
+      }
     }
   }, [address]);
 
