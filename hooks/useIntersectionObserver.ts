@@ -1,5 +1,10 @@
 import { useEffect, useState, useRef, RefObject } from 'react';
 
+/**
+ * Tracks the intersection of an element with the viewport.
+ * @param ref React ref object
+ * @param options Intersection observer options
+ */
 export function useIntersectionObserver(ref: RefObject<Element>, options?: IntersectionObserverInit) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   useEffect(() => {
