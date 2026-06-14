@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface BreadcrumbsProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the breadcrumbs */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the breadcrumbs */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the breadcrumbs are disabled */
   isDisabled?: boolean;
 }
 
