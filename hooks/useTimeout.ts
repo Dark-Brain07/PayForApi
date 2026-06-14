@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef } from 'react';
 
 export function useTimeout(callback: () => void, delay: number | null) {
