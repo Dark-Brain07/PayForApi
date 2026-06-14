@@ -214,8 +214,8 @@ export default function DashboardPage() {
             {apis?.map((api, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/50 border border-[#1E293B] hover:border-[#334155] rounded-xl transition-all group">
                 <div>
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                    {api.name}
+                  <h3 className="text-lg font-bold text-white flex items-center gap-2" title={api.name}>
+                    {api.name.length > 20 ? `${api.name.slice(0, 17)}...` : api.name}
                     <span aria-label="Active Status" title="Active Endpoint" className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400 border border-green-500/20">ACTIVE</span>
                   </h3>
                   <code title={api.endpoint} className="text-sm text-[#64748B] mt-1 block">{api.endpoint.length > 20 ? `${api.endpoint.slice(0, 8)}...${api.endpoint.slice(-8)}` : api.endpoint}</code>
