@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface SwitchProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the switch */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the switch */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the switch is disabled */
   isDisabled?: boolean;
 }
 
