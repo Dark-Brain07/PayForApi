@@ -9,6 +9,12 @@ interface DonorInfo {
   amount: number;
 }
 
+const ERC20_BALANCE_ABI = ["function balanceOf(address) view returns (uint256)"];
+
+const truncateAddress = (addr: string) => {
+  return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
+};
+
 export default function Explorer() {
   const [stats, setStats] = useState({ revenueCusd: "0.00", revenueApic: "0.00" });
   const [topDonors, setTopDonors] = useState<DonorInfo[]>([]);
@@ -23,7 +29,6 @@ export default function Explorer() {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
         const receiverAddress = MASTER_MERCHANT_WALLET;
 
-        const ERC20_BALANCE_ABI = ["function balanceOf(address) view returns (uint256)"];
         const erc20Abi = ERC20_BALANCE_ABI;
         const cusdContract = new ethers.Contract(CELO_STABLECOINS.cUSD.address, erc20Abi, provider);
         const apicContract = new ethers.Contract(CONTRACTS.API_CREDITS.address, erc20Abi, provider);
@@ -97,10 +102,6 @@ export default function Explorer() {
     const interval = setInterval(fetchStats, 15000);
     return () => clearInterval(interval);
   }, []);
-
-  const truncateAddress = (addr: string) => {
-    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
-  };
 
   return (
     <div className="w-full min-h-screen bg-black py-12 flex flex-col pt-16"><div className="max-w-7xl mx-auto px-4 w-full">
