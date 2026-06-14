@@ -254,6 +254,7 @@ export default function DashboardPage() {
             <div className="space-y-4 opacity-75">
               {deletedApis.filter(api => api.revenue > 0).length === 0 ? (
                 <div className="text-center py-8 border border-dashed border-[#1E293B] rounded-xl text-[#94A3B8]">
+                  <span className="block text-2xl mb-2 opacity-50" aria-hidden="true">📭</span>
                   No archived endpoints with remaining balance.
                 </div>
               ) : (
