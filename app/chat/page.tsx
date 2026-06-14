@@ -147,6 +147,7 @@ export default function ChatPage() {
           <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Payment Token</div>
           <select 
             value={paymentToken} 
+            disabled={isTyping}
             title="Select payment token. Platform fee applies."
             onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
             className="w-full bg-[#0F141C] border border-[#1E293B] text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:border-brand-yellow appearance-none cursor-pointer text-center font-bold"
