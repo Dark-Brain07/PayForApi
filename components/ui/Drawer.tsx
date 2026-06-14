@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface DrawerProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the drawer */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the drawer */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the drawer is disabled */
   isDisabled?: boolean;
 }
 
