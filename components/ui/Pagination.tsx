@@ -1,8 +1,11 @@
 import React from 'react';
 
 export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Visual variant of the pagination */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  /** Size of the pagination */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the pagination is disabled */
   isDisabled?: boolean;
 }
 
