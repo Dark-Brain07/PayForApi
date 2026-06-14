@@ -49,7 +49,7 @@ export default function ChatPage() {
       return;
     }
     
-    const userMessage = input;
+    const userMessage = input.trim();
     setInput(""); // clear input immediately to feel responsive
     setIsTyping(true);
 
