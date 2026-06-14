@@ -1,5 +1,9 @@
 import { useRef, useEffect, useCallback } from 'react';
 
+/**
+ * Returns a callback that safely checks if the component is still mounted.
+ * Useful for preventing state updates on unmounted components after async operations.
+ */
 export function useIsMounted() {
   const isMounted = useRef(false);
   useEffect(() => {
