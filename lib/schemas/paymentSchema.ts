@@ -3,16 +3,16 @@ import { CELO_MAINNET } from "../contracts";
 
 /** x402 micropayment on Celo */
 export const paymentSchema = z.object({
-  id: z.string().uuid("Invalid UUID format").optional(),
+  id: z.string().trim().uuid("Invalid UUID format").optional(),
   txHash: z.string().length(66).regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash"),
   from: z.string().trim().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   to:   z.string().trim().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   amount: z.string().min(1, "Amount is required").regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
   token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"], { required_error: "Token is required" }),
-  endpoint: z.string().trim().min(1).max(2048).url("Must be a valid endpoint URL"),
+  endpoint: z.string().trim().min(1).max(255).url("Must be a valid endpoint URL"),
   chainId: z.number().int().describe("The EVM chain ID").default(CELO_MAINNET.chainId),
   blockNumber: z.number().int().nonnegative("Block number must be 0 or greater").optional(),
-  status: z.enum(["pending", "confirmed", "failed"]).default("pending"),
+  status: z.enum(["pending", "confirmed", "failed"]).optional().default("pending"),
   createdAt: z.string().datetime().optional(),
 }).strict();
 
