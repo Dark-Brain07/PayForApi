@@ -18,6 +18,9 @@ const truncateAddress = (addr: string) => {
   return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 };
 
+/**
+ * Network explorer view showing total ecosystem revenue and top donors.
+ */
 export default function Explorer() {
   const [stats, setStats] = useState({ revenueCusd: "0.00", revenueApic: "0.00" });
   const [topDonors, setTopDonors] = useState<DonorInfo[]>([]);
