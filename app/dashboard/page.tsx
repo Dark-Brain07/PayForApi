@@ -304,6 +304,7 @@ export default function DashboardPage() {
                   value={newApiEndpoint}
                   maxLength={255}
                   onChange={(e) => setNewApiEndpoint(e.target.value)}
+                  onBlur={() => setNewApiEndpoint(prev => prev.trim())}
                   className={INPUT_CLASSES} 
                   placeholder="https://api.example.com/v1" 
                 />
