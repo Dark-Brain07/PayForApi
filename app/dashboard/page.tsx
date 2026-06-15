@@ -239,7 +239,7 @@ export default function DashboardPage() {
                 <div className="mt-4 md:mt-0 flex items-center gap-8">
                   <div className="text-right">
                     <p className="text-[#94A3B8] text-sm font-medium">Revenue</p>
-                    <p className="text-brand-yellow font-bold">${api.revenue.toFixed(2)} cUSD</p>
+                    <p className="text-brand-yellow font-bold">${api.revenue.toFixed(4)} cUSD</p>
                   </div>
                   <button 
                     onClick={() => setSelectedSettingsApi(api)}
