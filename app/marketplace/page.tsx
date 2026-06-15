@@ -126,13 +126,15 @@ export default function Marketplace() {
             <span className="bg-[#1E293B] text-brand-yellow px-3 py-1 rounded-full text-xs uppercase tracking-widest font-black">New</span>
             Community Creator APIs
           </h2>
-          <div className="columns-1 md:columns-2 gap-6 space-y-6">
-            {isLoadingCommunity ? (
-              Array.from({ length: 4 }).map((_, i) => (
+          {isLoadingCommunity ? (
+            <div className="columns-1 md:columns-2 gap-6 space-y-6">
+              {Array.from({ length: 4 }).map((_, i) => (
                 <div key={`skel-${i}`} role="status" aria-label="Loading API" className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-2xl h-48 animate-pulse"></div>
-              ))
-            ) : communityApis.length > 0 ? (
-              communityApis.map((api) => (
+              ))}
+            </div>
+          ) : communityApis.length > 0 ? (
+            <div className="columns-1 md:columns-2 gap-6 space-y-6">
+              {communityApis.map((api) => (
                 <div key={api.id} className="break-inside-avoid relative">
                   {isCalling && lastApiId === api.id && (
                     <div aria-hidden="true" className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
@@ -145,15 +147,29 @@ export default function Marketplace() {
                     onTryIt={(id, name, values, priceCredits) => setSelectedProduct({id, name, values, priceCredits})}
                   />
                 </div>
-              ))
-            ) : (
-              <div className="col-span-1 md:col-span-2 text-center py-12 border border-dashed border-[#1E293B] rounded-2xl text-[#64748B]">
-                <span className="block text-3xl mb-2 opacity-50">🌱</span>
-                <p className="font-medium text-[#94A3B8]">No community APIs available yet.</p>
-                <p className="text-sm mt-1">Be the first to register your API endpoint on the Creator Dashboard!</p>
+              ))}
+            </div>
+          ) : (
+            <div className="w-full relative overflow-hidden text-center py-20 px-6 border border-[#1E293B] bg-gradient-to-b from-[#0F172A] to-[#0B0E14] rounded-2xl flex flex-col items-center justify-center group transition-all duration-300 hover:border-[#334155] shadow-lg">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-yellow/5 rounded-full blur-3xl group-hover:bg-brand-yellow/10 transition-colors duration-500"></div>
+              
+              <div className="relative z-10 w-20 h-20 bg-black/40 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-2xl transform group-hover:-translate-y-2 group-hover:scale-105 transition-all duration-300">
+                <span className="block text-4xl">🌱</span>
               </div>
-            )}
-          </div>
+              
+              <h3 className="relative z-10 font-bold text-white text-2xl mb-3 tracking-tight">Ecosystem is waiting</h3>
+              <p className="relative z-10 text-[#94A3B8] text-lg max-w-lg mx-auto mb-8 leading-relaxed">
+                No community APIs are available yet. Be the first visionary to register your endpoint on the Creator Dashboard and start monetizing.
+              </p>
+              
+              <a href="/creator" className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-brand-yellow/10 hover:bg-brand-yellow/20 border border-brand-yellow/20 rounded-xl text-brand-yellow font-bold transition-all duration-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.15)]">
+                Launch Creator Dashboard
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+          )}
         </div>
         
         <div className="mt-20 text-center border-t border-[#1E293B] pt-12 relative max-w-4xl mx-auto">
