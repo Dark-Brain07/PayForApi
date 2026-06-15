@@ -228,7 +228,7 @@ export default function Explorer() {
                         </a>
                       </td>
                       <td className="py-4 px-6 text-right">
-                        <span className="text-[#F5C518] font-black">${donor.amount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+                        <span className="text-[#F5C518] font-black">${donor.amount.toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4})}</span>
                       </td>
                     </tr>
                   ))
