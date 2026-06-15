@@ -136,7 +136,7 @@ export default function DashboardPage() {
           const endpointId = eventObj.args?.[0];
           const creator = eventObj.args?.[1];
           
-          if (creator && creator.toLowerCase() === address.toLowerCase() && endpointId) {
+          if (creator && address && creator.toLowerCase() === address.toLowerCase() && endpointId) {
             let apiData;
             try {
               apiData = await contract.apiEndpoints(endpointId);
