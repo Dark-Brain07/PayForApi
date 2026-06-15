@@ -49,7 +49,16 @@ export default function Marketplace() {
         let deletedIds: string[] = [];
         try {
           if (typeof window !== "undefined") {
-            deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
+            const globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
+            // Check legacy local cache if user is connected
+            let localIds: string[] = [];
+            for (let i = 0; i < localStorage.length; i++) {
+              const key = localStorage.key(i);
+              if (key && key.startsWith("deleted_endpoints_0x")) {
+                localIds = [...localIds, ...JSON.parse(localStorage.getItem(key) || "[]")];
+              }
+            }
+            deletedIds = [...new Set([...globalIds, ...localIds])];
           }
         } catch (e) {}
 

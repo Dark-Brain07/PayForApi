@@ -115,7 +115,15 @@ export default function DashboardPage() {
         const deletedCacheKey = `deleted_endpoints_global`;
         let deletedIds: string[] = [];
         try {
-          deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
+          const globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
+          let localIds: string[] = [];
+          for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key && key.startsWith("deleted_endpoints_0x")) {
+              localIds = [...localIds, ...JSON.parse(localStorage.getItem(key) || "[]")];
+            }
+          }
+          deletedIds = [...new Set([...globalIds, ...localIds])];
         } catch (e) {
           localStorage.removeItem(deletedCacheKey);
         }
