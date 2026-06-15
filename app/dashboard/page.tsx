@@ -397,6 +397,7 @@ export default function DashboardPage() {
                   title="Permanent Action"
                   onClick={() => {
                     if (!address) return;
+                    if (!window.confirm("Are you sure you want to permanently delete this endpoint?")) return;
                     const deletedCacheKey = `deleted_endpoints_global`;
                     let deletedIds: string[] = [];
                     try { 
