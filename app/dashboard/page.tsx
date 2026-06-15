@@ -290,6 +290,7 @@ export default function DashboardPage() {
                   autoFocus
                   autoComplete="name"
                   onChange={(e) => setNewApiName(e.target.value)}
+                  onBlur={() => setNewApiName(prev => prev.trim())}
                   className={INPUT_CLASSES} 
                   placeholder="e.g. My Llama 3 Model" 
                 />
