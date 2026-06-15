@@ -121,20 +121,19 @@ export default function Marketplace() {
           ))}
         </div>
 
-        {communityApis.length > 0 && (
-          <div className="mt-16">
-            <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4 flex items-center gap-3">
-              <span className="bg-[#1E293B] text-brand-yellow px-3 py-1 rounded-full text-xs uppercase tracking-widest font-black">New</span>
-              Community Creator APIs
-            </h2>
-            <div className="columns-1 md:columns-2 gap-6 space-y-6">
-              {isLoadingCommunity ? (
-                Array.from({ length: 4 }).map((_, i) => (
-                  <div key={`skel-${i}`} role="status" aria-label="Loading API" className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-2xl h-48 animate-pulse"></div>
-                ))
-              ) : (
-                communityApis.map((api) => (
-                  <div key={api.id} className="break-inside-avoid relative">
+        <div className="mt-16">
+          <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4 flex items-center gap-3">
+            <span className="bg-[#1E293B] text-brand-yellow px-3 py-1 rounded-full text-xs uppercase tracking-widest font-black">New</span>
+            Community Creator APIs
+          </h2>
+          <div className="columns-1 md:columns-2 gap-6 space-y-6">
+            {isLoadingCommunity ? (
+              Array.from({ length: 4 }).map((_, i) => (
+                <div key={`skel-${i}`} role="status" aria-label="Loading API" className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-2xl h-48 animate-pulse"></div>
+              ))
+            ) : communityApis.length > 0 ? (
+              communityApis.map((api) => (
+                <div key={api.id} className="break-inside-avoid relative">
                   {isCalling && lastApiId === api.id && (
                     <div aria-hidden="true" className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
                       <div className="w-10 h-10 border-4 border-[#00E676] border-t-transparent rounded-full animate-spin mb-3"></div>
@@ -146,10 +145,16 @@ export default function Marketplace() {
                     onTryIt={(id, name, values, priceCredits) => setSelectedProduct({id, name, values, priceCredits})}
                   />
                 </div>
-              )))}
-            </div>
+              ))
+            ) : (
+              <div className="col-span-1 md:col-span-2 text-center py-12 border border-dashed border-[#1E293B] rounded-2xl text-[#64748B]">
+                <span className="block text-3xl mb-2 opacity-50">🌱</span>
+                <p className="font-medium text-[#94A3B8]">No community APIs available yet.</p>
+                <p className="text-sm mt-1">Be the first to register your API endpoint on the Creator Dashboard!</p>
+              </div>
+            )}
           </div>
-        )}
+        </div>
         
         <div className="mt-20 text-center border-t border-[#1E293B] pt-12 relative max-w-4xl mx-auto">
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#0B0E14] px-6 py-2 rounded-full border border-[#1E293B] shadow-lg flex items-center gap-3">
