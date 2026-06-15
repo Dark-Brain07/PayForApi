@@ -377,7 +377,7 @@ export default function DashboardPage() {
               <div>
                 <label className="block text-sm font-medium text-[#94A3B8] mb-1">Withdrawal Available</label>
                 <div className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-brand-yellow font-bold">
-                  ${selectedSettingsApi.revenue.toFixed(2)} cUSD
+                  ${selectedSettingsApi.revenue.toFixed(4)} cUSD
                 </div>
               </div>
               <p className="text-xs text-brand-yellow mt-2 border border-brand-yellow/30 bg-brand-yellow/10 p-2 rounded">
