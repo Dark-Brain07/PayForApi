@@ -17,6 +17,9 @@ export interface ApiEndpointData {
   revenue: number;
 }
 
+/**
+ * Main dashboard view for API creators to manage endpoints and track revenue.
+ */
 export default function DashboardPage() {
   const [apis, setApis] = useState<ApiEndpointData[]>([]);
   const [loadingEndpoints, setLoadingEndpoints] = useState(true);
