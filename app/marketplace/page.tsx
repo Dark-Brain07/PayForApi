@@ -45,13 +45,21 @@ export default function Marketplace() {
         const filter = contract.filters.ApiRegistered();
         const events = await contract.queryFilter(filter, fromBlock, "latest");
         
+        const deletedCacheKey = `deleted_endpoints_global`;
+        let deletedIds: string[] = [];
+        try {
+          if (typeof window !== "undefined") {
+            deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
+          }
+        } catch (e) {}
+
         const uniqueApis = new Map();
         interface ContractEvent { args?: string[] }
         for (const event of events) {
           const eventObj = event as ContractEvent;
           const endpointId = eventObj.args?.[0];
           const creator = eventObj.args?.[1];
-          if (endpointId && creator) {
+          if (endpointId && creator && !deletedIds.includes(endpointId)) {
              uniqueApis.set(endpointId, { 
                id: uniqueApis.size + 100, 
                name: `Community API: ${endpointId.substring(0, 15)}...`, 
