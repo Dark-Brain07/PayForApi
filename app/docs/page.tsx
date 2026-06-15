@@ -212,10 +212,10 @@ Content-Type: application/json
                 <p className="text-base text-[#94A3B8] mb-6 relative z-10 leading-relaxed">Our immutable core registry contract stores all available API endpoints, their dynamic cUSD/APIC prices, and their required schemas completely on-chain, creating a trustless source of truth for all agents.</p>
                 <div className="bg-[#050505] border border-[#1E293B] rounded-xl p-4 flex items-center justify-between relative z-10">
                   <div>
-                    <div className="text-[10px] font-black text-[#64748B] uppercase tracking-widest mb-1">Mainnet Contract Address</div>
-                    <code className="text-sm font-mono text-white">0x51E2b4B89ab2dAC4Aca64DccB3BAebF6B846eF52</code>
+                    <div className="text-[10px] font-black text-[#64748B] uppercase tracking-widest mb-1">Mainnet Agent Wallet</div>
+                    <code className="text-sm font-mono text-white">0x5a8d4Bf8989c65e3964E8e6cD82FC585EbC1fF7a</code>
                   </div>
-                  <a href="https://celoscan.io/address/0x51E2b4B89ab2dAC4Aca64DccB3BAebF6B846eF52" target="_blank" rel="noreferrer" className="text-[#00E676] text-sm font-bold hover:underline">View on Explorer ↗</a>
+                  <a href="https://celoscan.io/address/0x5a8d4Bf8989c65e3964E8e6cD82FC585EbC1fF7a" target="_blank" rel="noreferrer" className="text-[#00E676] text-sm font-bold hover:underline">View on Explorer ↗</a>
                 </div>
               </div>
             </div>
