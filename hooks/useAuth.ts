@@ -40,7 +40,7 @@ export function useAuth(): AuthState & {
   });
 
   // Detect MiniPay on mount
-  useEffect(() => {
+  useEffect((): void | (() => void) => {
     if (typeof window !== "undefined" && window.ethereum?.isMiniPay) {
       setState((s) => ({ ...s, isMiniPay: true }));
     }
@@ -63,7 +63,7 @@ export function useAuth(): AuthState & {
         method: "eth_chainId",
       })) as string;
       if (!chainHex) throw new Error("Invalid chain ID returned");
-      const chainId = parseInt(chainHex, 16);
+      const chainId = Number(chainHex);
       const address = accounts[0];
       setState((s) => ({
         ...s,
@@ -96,6 +96,7 @@ export function useAuth(): AuthState & {
     });
   }, []);
 
+  /** Switch the user's wallet to the Celo network, adding it if necessary */
   const switchToCelo = useCallback(async (): Promise<void> => {
     if (typeof window === "undefined" || !window.ethereum) return;
     try {
