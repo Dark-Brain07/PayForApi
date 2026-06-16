@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Props for the Toast component
+ */
 export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Visual variant of the toast */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
@@ -38,6 +41,8 @@ export const Toast: React.FC<ToastProps> = ({
   
   return (
     <div 
+      role="alert"
+      aria-live="assertive"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
