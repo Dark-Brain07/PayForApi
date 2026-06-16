@@ -1,6 +1,9 @@
 import React from 'react';
 
-export interface LabelProps extends React.HTMLAttributes<HTMLDivElement> {
+/**
+ * Props for the Label component
+ */
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   /** Visual variant of the label */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   /** Size of the label */
