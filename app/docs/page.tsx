@@ -58,6 +58,7 @@ export default function Docs() {
         {/* Mobile Navigation Dropdown */}
         <div className="md:hidden mb-8">
           <select 
+            aria-label="Documentation Navigation"
             value={activeTab}
             onChange={(e) => setActiveTab(e.target.value)}
             className="w-full bg-[#0F141C] border border-[#1E293B] text-white text-sm font-bold rounded-xl px-4 py-3 focus:outline-none focus:border-brand-yellow appearance-none"
