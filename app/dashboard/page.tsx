@@ -360,8 +360,9 @@ export default function DashboardPage() {
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
+                <label htmlFor="settings-api-name" className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
                 <Input 
+                  id="settings-api-name"
                   type="text" 
                   value={selectedSettingsApi.name}
                   disabled
@@ -369,8 +370,9 @@ export default function DashboardPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#94A3B8] mb-1">Endpoint URL</label>
+                <label htmlFor="settings-api-endpoint" className="block text-sm font-medium text-[#94A3B8] mb-1">Endpoint URL</label>
                 <Input 
+                  id="settings-api-endpoint"
                   type="text" 
                   value={selectedSettingsApi.endpoint}
                   disabled
