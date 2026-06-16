@@ -168,6 +168,7 @@ export default function Explorer() {
                   try {
                     navigator.clipboard.writeText("0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476");
                     setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
                   } catch (e) {
                     console.error("Clipboard permission denied");
                   }
