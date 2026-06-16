@@ -68,6 +68,9 @@ function InteractiveTerminal() {
   );
 }
 
+/**
+ * Landing page featuring an interactive terminal hero section.
+ */
 export default function Home() {
   const router = useRouter();
   const { isMiniPay } = useWallet();
