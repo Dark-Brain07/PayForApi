@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Props for the Divider component
+ */
 export interface DividerProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Visual variant of the divider */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
