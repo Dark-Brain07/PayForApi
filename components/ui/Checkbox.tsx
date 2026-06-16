@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Props for the Checkbox component
+ */
 export interface CheckboxProps extends React.HTMLAttributes<HTMLDivElement> {
   /** The visual variant of the checkbox */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
