@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Props for the Tabs component
+ */
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Visual variant of the tabs */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
@@ -38,6 +41,7 @@ export const Tabs: React.FC<TabsProps> = ({
   
   return (
     <div 
+      role="tablist"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
