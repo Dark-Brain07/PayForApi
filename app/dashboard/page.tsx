@@ -10,6 +10,11 @@ import { EthereumProvider } from "@/hooks/useAuth";
 /** Shared styling classes for text inputs in the dashboard. */
 const INPUT_CLASSES = "w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-brand-yellow transition-colors";
 
+export interface TransactionError {
+  shortMessage?: string;
+  message?: string;
+}
+
 export interface ApiEndpointData {
   name: string;
   endpoint: string;
@@ -61,7 +66,7 @@ export default function DashboardPage() {
         tx = await contract.registerApi(newApiEndpoint);
         await tx.wait();
       } catch (txErr: unknown) {
-        const err = txErr as { shortMessage?: string; message?: string };
+        const err = txErr as TransactionError;
         throw new Error(err.shortMessage || err.message || "Transaction rejected or failed");
       }
       
