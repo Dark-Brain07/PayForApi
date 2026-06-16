@@ -15,6 +15,9 @@ interface Message {
   txHash?: string;
 }
 
+/**
+ * Interactive chat interface to test AI agents using x402 micropayments.
+ */
 export default function ChatPage() {
   const { address } = useWallet();
   const [messages, setMessages] = useState<Message[]>([
