@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Props for the Tooltip component
+ */
 export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
@@ -36,6 +39,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   
   return (
     <div 
+      role="tooltip"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
