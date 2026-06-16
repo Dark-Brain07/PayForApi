@@ -11,7 +11,7 @@ export default function Docs() {
     <div className="relative group rounded-xl overflow-hidden bg-[#050505] border border-[#1E293B] shadow-inner my-6">
       <div className="flex justify-between items-center px-4 py-2 bg-[#0F141C] border-b border-[#1E293B]">
         <span className="text-xs font-mono text-[#94A3B8]">{language.toUpperCase()}</span>
-        <button className="text-xs text-[#94A3B8] hover:text-white transition-colors">Copy</button>
+        <button aria-label="Copy code block" className="text-xs text-[#94A3B8] hover:text-white transition-colors">Copy</button>
       </div>
       <pre className="p-4 overflow-x-auto text-sm font-mono text-[#E2E8F0] whitespace-pre-wrap">
         <code>{code}</code>
