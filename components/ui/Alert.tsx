@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Props for the Alert component
+ */
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
