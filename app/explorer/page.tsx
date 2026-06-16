@@ -9,7 +9,7 @@ interface DonorInfo {
   amount: number;
 }
 
-const ERC20_BALANCE_ABI = ["function balanceOf(address) view returns (uint256)"];
+const ERC20_BALANCE_ABI = ["function balanceOf(address) view returns (uint256)"] as const;
 
 /**
  * Shortens an EVM address to the format 0x1234...abcd
