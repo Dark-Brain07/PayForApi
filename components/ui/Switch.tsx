@@ -1,6 +1,9 @@
 import React from 'react';
 
-export interface SwitchProps extends React.HTMLAttributes<HTMLDivElement> {
+/**
+ * Props for the Switch component
+ */
+export interface SwitchProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Visual variant of the switch */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   /** Size of the switch */
@@ -37,14 +40,17 @@ export const Switch: React.FC<SwitchProps> = ({
   };
   
   return (
-    <div 
+    <button 
+      role="switch"
+      type="button"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      disabled={isDisabled}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
       {children}
-    </div>
+    </button>
   );
 };
 
