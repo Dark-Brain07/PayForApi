@@ -78,7 +78,7 @@ export default function Home() {
   const handleEnterMarketplace = () => router.push('/marketplace');
 
   return (
-    <div className="flex flex-col w-full">
+    <main className="flex flex-col w-full">
       <title>PayForAPI - Celo Web3 API Monetization</title>
       <meta name="description" content="Monetize your AI endpoints instantly on Celo via x402 micropayments." />
       {/* Terminal Hero Section */}
@@ -131,6 +131,6 @@ export default function Home() {
         </div>
       </section>
 
-    </div>
+    </main>
   );
 }
