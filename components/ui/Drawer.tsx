@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Props for the Drawer component
+ */
 export interface DrawerProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Visual variant of the drawer */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
