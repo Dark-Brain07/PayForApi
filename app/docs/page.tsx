@@ -1,6 +1,9 @@
 "use client";
 import React, { useState } from 'react';
 
+/**
+ * Documentation page explaining the protocol architecture and integration details.
+ */
 export default function Docs() {
   const [activeTab, setActiveTab] = useState("intro");
 
