@@ -77,6 +77,10 @@ export default function Header() {
               <span>AI Chat</span>
               <span className="px-2 py-0.5 bg-gradient-to-r from-brand-yellow to-[#FDE047] text-black text-[9px] font-black uppercase tracking-wider rounded-md shadow-[0_0_12px_rgba(245,197,24,0.6)]">New Released</span>
             </Link>
+            <Link href="/image" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2 font-semibold">
+              <span>Image Gen</span>
+              <span className="px-2 py-0.5 bg-gradient-to-r from-green-400 to-[#FDE047] text-black text-[9px] font-black uppercase tracking-wider rounded-md shadow-[0_0_12px_rgba(74,222,128,0.6)]">New</span>
+            </Link>
             <Link href="/rewards" className="text-brand-yellow/90 hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block font-bold drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">
               Rewards
             </Link>
@@ -176,6 +180,10 @@ export default function Header() {
               <Link href="/chat" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-semibold text-lg p-2 rounded-lg hover:bg-white/5 flex items-center justify-between">
                 <span>AI Chat</span>
                 <span className="px-2 py-1 bg-gradient-to-r from-brand-yellow/20 to-transparent text-brand-yellow text-[10px] font-black uppercase tracking-wider rounded border border-brand-yellow/30 shadow-[0_0_8px_rgba(245,197,24,0.3)]">New Released</span>
+              </Link>
+              <Link href="/image" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-semibold text-lg p-2 rounded-lg hover:bg-white/5 flex items-center justify-between">
+                <span>Image Gen</span>
+                <span className="px-2 py-1 bg-gradient-to-r from-green-400/20 to-transparent text-green-400 text-[10px] font-black uppercase tracking-wider rounded border border-green-400/30 shadow-[0_0_8px_rgba(74,222,128,0.3)]">New</span>
               </Link>
               <Link href="/rewards" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">
                 Rewards

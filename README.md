@@ -30,6 +30,7 @@
 | Crypto Pulse | /api/crypto | 0.001 cUSD |
 | AI Summary | /api/summary | 0.005 cUSD |
 | AI Translate | /api/translate | 0.003 cUSD |
+| Image Gen | /api/image | 0.01 cUSD |
 
 ## 📱 MiniPay Integration
 
