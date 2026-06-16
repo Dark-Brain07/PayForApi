@@ -148,6 +148,7 @@ export default function ChatPage() {
         <div className="flex flex-col p-5 bg-[#0A0D12] border border-[#1E293B] rounded-2xl shadow-2xl">
           <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Payment Token</div>
           <select 
+            aria-label="Payment Token"
             value={paymentToken} 
             disabled={isTyping}
             title="Select payment token. Platform fee applies."
