@@ -20,6 +20,8 @@ export interface AuthState {
 
 const CELO_CHAIN_ID = 42220;
 const CELO_CHAIN_HEX = `0x${CELO_CHAIN_ID.toString(16)}`;
+const USER_REJECTED_CODE = 4001;
+const CHAIN_MISSING_CODE = 4902;
 
 /**
  * Generic EVM wallet auth hook. Auto-detects MiniPay.
@@ -77,7 +79,7 @@ export function useAuth(): AuthState & {
       const isProviderError = (e: unknown): e is { code: number } => typeof e === 'object' && e !== null && 'code' in e;
       setState((s) => ({
         ...s,
-        error: isProviderError(err) && err.code === 4001 ? "User rejected connection" : (err instanceof Error ? err.message : String(err)),
+        error: isProviderError(err) && err.code === USER_REJECTED_CODE ? "User rejected connection" : (err instanceof Error ? err.message : String(err)),
         isConnecting: false,
       }));
       return null;
@@ -107,7 +109,7 @@ export function useAuth(): AuthState & {
       });
     } catch (err: unknown) {
       const isProviderError = (e: unknown): e is { code: number } => typeof e === 'object' && e !== null && 'code' in e;
-      if (isProviderError(err) && err.code === 4902) {
+      if (isProviderError(err) && err.code === CHAIN_MISSING_CODE) {
         try {
           const eth = window.ethereum as EthereumProvider;
           await eth.request({
