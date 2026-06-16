@@ -2,7 +2,7 @@
 
 > Pay-per-call AI APIs using Celo stablecoins. No subscriptions. No credit cards. Just pay what you use.
 
-**🌐 Live Website:** [payforapi.online](https://www.payforapi.online) | **🎥 Demo Video:** [YouTube](https://youtu.be/cDjsIa3TtF0) | **🏆 Karma Profile:** [KarmaHQ](https://www.karmahq.xyz/project/pay-for-api)
+**🌐 Live Website:** [payforapi.online](https://www.payforapi.online) | **🎥 Demo Video:** [YouTube](https://youtu.be/cDjsIa3TtF0) | **🏆 Karma Profile:** [KarmaHQ](https://www.karmahq.xyz/project/pay-for-api) | **🌟 Talent Protocol:** [Talent.app](https://talent.app/~/projects/1d58de31-04ed-450c-867f-6f2b685b2b1a)
 
 [![MiniPay](https://img.shields.io/badge/MiniPay-Compatible-brightgreen.svg)](https://docs.celo.org/developer/build-on-minipay/overview)
 [![Celo](https://img.shields.io/badge/Celo-Mainnet-yellow.svg)](https://celo.org)
