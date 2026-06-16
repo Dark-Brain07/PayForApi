@@ -201,7 +201,13 @@ export default function ChatPage() {
                 <span>{msg.role === "user" ? "You" : "AI Assistant"}</span>
                 <div className="flex gap-3">
                   {msg.role === "ai" && (
-                    <button aria-label="Copy Message" onClick={() => navigator.clipboard.writeText(msg.content)} className="text-xs text-[#94A3B8] hover:text-white" title="Copy Message">Copy</button>
+                    <button aria-label="Copy Message" onClick={() => {
+                      try {
+                        navigator.clipboard.writeText(msg.content);
+                      } catch (e) {
+                        console.error("Clipboard permission denied");
+                      }
+                    }} className="text-xs text-[#94A3B8] hover:text-white" title="Copy Message">Copy</button>
                   )}
                   {msg.txHash && (
                     <a href={`https://celoscan.io/tx/${msg.txHash}`} target="_blank" rel="noopener noreferrer" title={msg.txHash} className="text-xs text-brand-yellow hover:underline">
