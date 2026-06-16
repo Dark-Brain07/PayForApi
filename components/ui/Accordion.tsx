@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Props for the Accordion component
+ */
 export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsElement> {
   /** The summary or title of the accordion */
   summary: React.ReactNode;
