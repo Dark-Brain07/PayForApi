@@ -138,7 +138,7 @@ export default function ChatPage() {
 
 
   return (
-    <div className="fixed inset-0 top-[76px] bottom-0 flex flex-col items-center justify-center p-4 overflow-hidden z-30">
+    <main className="fixed inset-0 top-[76px] bottom-0 flex flex-col items-center justify-center p-4 overflow-hidden z-30">
       <title>Agentic Chat | PayForAPI</title>
       <meta name="description" content="Test your Celo Web3 micropayments via an interactive AI agent." />
       {/* Background glow */}
@@ -270,6 +270,6 @@ export default function ChatPage() {
 
 
       </div>
-    </div>
+    </main>
   );
 }
