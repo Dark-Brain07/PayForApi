@@ -40,14 +40,14 @@ export const Label: React.FC<LabelProps> = ({
   };
   
   return (
-    <div 
+    <label 
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
       {children}
-    </div>
+    </label>
   );
 };
 
