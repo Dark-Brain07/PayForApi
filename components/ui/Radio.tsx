@@ -1,6 +1,9 @@
 import React from 'react';
 
-export interface RadioProps extends React.HTMLAttributes<HTMLDivElement> {
+/**
+ * Props for the Radio component
+ */
+export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /** Visual variant of the radio */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   /** Size of the radio */
@@ -37,14 +40,14 @@ export const Radio: React.FC<RadioProps> = ({
   };
   
   return (
-    <div 
+    <input 
+      type="radio"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      disabled={isDisabled}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
-    >
-      {children}
-    </div>
+    />
   );
 };
 
