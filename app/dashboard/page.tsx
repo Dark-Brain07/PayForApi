@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { ethers } from "ethers";
-import Header from "@/components/layout/Header";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { CONTRACTS } from "@/lib/contracts";
 import Input from "@/components/ui/Input";
