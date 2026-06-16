@@ -1,6 +1,9 @@
 import React from 'react';
 
-export interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
+/**
+ * Props for the Select component
+ */
+export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   /** Visual variant of the select */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   /** Size of the select */
@@ -37,14 +40,15 @@ export const Select: React.FC<SelectProps> = ({
   };
   
   return (
-    <div 
+    <select 
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      disabled={isDisabled}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
       {children}
-    </div>
+    </select>
   );
 };
 
