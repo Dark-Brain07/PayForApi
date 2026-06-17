@@ -264,6 +264,7 @@ export default function DashboardPage() {
                   <button 
                     onClick={() => setSelectedSettingsApi(api)}
                     aria-label={`Settings for ${api.name}`}
+                    title={`Configure ${api.name}`}
                     className="text-sm text-[#94A3B8] hover:text-white transition-colors underline decoration-[#1E293B] hover:decoration-white underline-offset-4"
                   >
                     Settings
