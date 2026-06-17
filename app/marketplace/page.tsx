@@ -49,7 +49,8 @@ export default function Marketplace() {
         let deletedIds: string[] = [];
         try {
           if (typeof window !== "undefined") {
-            const globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
+            let globalIds: string[] = [];
+            try { globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]"); } catch (e) { localStorage.removeItem(deletedCacheKey); }
             // Check legacy local cache if user is connected
             let localIds: string[] = [];
             for (let i = 0; i < localStorage.length; i++) {
