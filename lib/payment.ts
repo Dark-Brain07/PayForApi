@@ -1,4 +1,3 @@
-import { CONTRACTS } from "./contracts";
 import { ethers } from "ethers";
 
 interface CeloTransactionRequest extends ethers.TransactionRequest {
