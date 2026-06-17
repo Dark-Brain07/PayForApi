@@ -109,8 +109,7 @@ export default function DashboardPage() {
 
         // Fetch events. Since creator isn't indexed in ABI, we must filter locally.
         const currentBlock = await provider.getBlockNumber();
-        const BLOCKS_TO_QUERY = 2000000;
-        const fromBlock = Math.max(0, currentBlock - BLOCKS_TO_QUERY);
+        const fromBlock = Math.max(0, currentBlock - 2000000);
         const filter = contract.filters.ApiRegistered();
         let events = [];
         try {
