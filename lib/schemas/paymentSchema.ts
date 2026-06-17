@@ -17,5 +17,6 @@ export const paymentSchema = z.object({
 }).strict();
 
 export type PaymentData = z.infer<typeof paymentSchema>;
+/** Validates payment data without throwing, returning a safe parsed object */
 export const validatePayment = (data: unknown) => paymentSchema.safeParse(data);
 export const parsePaymentOrThrow = (data: unknown): PaymentData => paymentSchema.parse(data);
