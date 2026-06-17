@@ -17,7 +17,7 @@ export interface TransactionError {
 
 type WindowWithEthereum = Window & typeof globalThis & { ethereum?: EthereumProvider };
 
-import { BLOCKS_TO_QUERY } from "@/lib/constants";
+import { BLOCKS_TO_QUERY, CACHE_KEYS } from "@/lib/constants";
 
 export interface ApiEndpointData {
   name: string;
@@ -131,7 +131,7 @@ export default function DashboardPage() {
           console.error("Failed to query API registrations", e);
         }
 
-        const deletedCacheKey = `deleted_endpoints_global`;
+        const deletedCacheKey = CACHE_KEYS.DELETED_ENDPOINTS;
         let deletedIds: string[] = [];
         if (typeof window !== "undefined") {
           try {
@@ -440,7 +440,7 @@ export default function DashboardPage() {
                   onClick={() => {
                     if (!address) return;
                     if (!window.confirm("Are you sure you want to permanently delete this endpoint?")) return;
-                    const deletedCacheKey = `deleted_endpoints_global`;
+                    const deletedCacheKey = CACHE_KEYS.DELETED_ENDPOINTS;
                     let deletedIds: string[] = [];
                     try { 
                       deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]"); 

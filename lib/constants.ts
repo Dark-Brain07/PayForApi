@@ -9,3 +9,7 @@ export const TERMINAL_BOOT_LOGS = [
 ];
 
 export const BLOCKS_TO_QUERY = 2000000;
+
+export const CACHE_KEYS = {
+  DELETED_ENDPOINTS: "deleted_endpoints_global"
+};

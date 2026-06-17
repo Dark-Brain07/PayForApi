@@ -31,7 +31,7 @@ import { useWallet } from "@/components/wallet/WalletContext";
 import { ethers } from "ethers";
 import { CONTRACTS, CELO_MAINNET } from "@/lib/contracts";
 import { API_PRODUCTS } from "@/lib/data";
-import { BLOCKS_TO_QUERY } from "@/lib/constants";
+import { BLOCKS_TO_QUERY, CACHE_KEYS } from "@/lib/constants";
 
 export default function Marketplace() {
   const { address } = useWallet();
@@ -56,7 +56,7 @@ export default function Marketplace() {
         const filter = contract.filters.ApiRegistered();
         const events = await contract.queryFilter(filter, fromBlock, "latest");
         
-        const deletedCacheKey = `deleted_endpoints_global`;
+        const deletedCacheKey = CACHE_KEYS.DELETED_ENDPOINTS;
         let deletedIds: string[] = [];
         try {
           if (typeof window !== "undefined") {
