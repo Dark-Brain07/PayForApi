@@ -3,7 +3,7 @@ import { CELO_MAINNET } from "../contracts";
 
 /** x402 micropayment on Celo */
 export const paymentSchema = z.object({
-  id: z.string().trim().uuid("Invalid UUID format").max(100).optional(),
+  id: z.string().trim().uuid("Invalid UUID format").min(36).max(50).optional(),
   txHash: z.string().length(66).regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash"),
   from: z.string().trim().toLowerCase().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   to:   z.string().trim().toLowerCase().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
