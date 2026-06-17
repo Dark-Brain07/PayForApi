@@ -41,7 +41,7 @@ export default function DashboardPage() {
   const { address, isConnected } = useWallet();
 
   const handleRegister = async (): Promise<void> => {
-    if (!newApiName || !newApiEndpoint) return alert("Please fill all fields");
+    if (!newApiName.trim() || !newApiEndpoint.trim()) return alert("Please fill all fields with valid text");
     if (!isConnected || !address) return alert("Connection Error: Please connect your Web3 wallet first to register an API.");
 
     if (typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
