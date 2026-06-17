@@ -42,6 +42,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
       ref={ref}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${error ? 'border-red-500 focus-visible:ring-red-500' : ''} ${className}`}
       aria-invalid={error ? 'true' : 'false'}
+      aria-describedby={error && props.id ? `${props.id}-error` : props['aria-describedby']}
       {...props}
     />
   );
