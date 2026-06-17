@@ -212,6 +212,7 @@ export default function Marketplace() {
         productName={selectedProduct?.name ?? ""}
         priceCredits={selectedProduct?.priceCredits}
         onSuccess={async (txHash, token) => {
+          if (isCalling) return;
           const product = selectedProduct;
           setLastApiId(product!.id);
           setSelectedProduct(null);
