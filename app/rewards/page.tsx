@@ -183,7 +183,7 @@ export default function Rewards() {
         </div>
 
         {/* Streak Progress Chart */}
-        <div className="mb-12 max-w-4xl mx-auto bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-8 relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden">
+        <div aria-live="polite" className="mb-12 max-w-4xl mx-auto bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-8 relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden">
           <h3 className="text-xl font-bold text-white mb-8 text-center uppercase tracking-widest text-[#94A3B8]">Mega Bonus Progress Tracker</h3>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             {[1, 2, 3, 4, 5, 6, 7].map((day) => {
