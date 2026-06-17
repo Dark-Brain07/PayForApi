@@ -9,6 +9,7 @@ import { processPayment } from "@/lib/payment";
 import { CONTRACTS } from "@/lib/contracts";
 import { EthereumProvider } from "@/hooks/useAuth";
 
+/** Props for the PaymentModal component handling x402 transactions */
 interface PaymentModalProps {
   isOpen: boolean;
   onClose: () => void;
