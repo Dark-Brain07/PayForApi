@@ -15,6 +15,8 @@ export interface TransactionError {
   message?: string;
 }
 
+const BLOCKS_TO_QUERY = 2000000;
+
 export interface ApiEndpointData {
   name: string;
   endpoint: string;
@@ -109,7 +111,7 @@ export default function DashboardPage() {
 
         // Fetch events. Since creator isn't indexed in ABI, we must filter locally.
         const currentBlock = await provider.getBlockNumber();
-        const fromBlock = Math.max(0, currentBlock - 2000000);
+        const fromBlock = Math.max(0, currentBlock - BLOCKS_TO_QUERY);
         const filter = contract.filters.ApiRegistered();
         let events = [];
         try {
