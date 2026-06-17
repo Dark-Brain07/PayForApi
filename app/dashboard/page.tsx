@@ -129,7 +129,11 @@ export default function DashboardPage() {
             for (let i = 0; i < localStorage.length; i++) {
               const key = localStorage.key(i);
               if (key && key.startsWith("deleted_endpoints_0x")) {
-                localIds = [...localIds, ...JSON.parse(localStorage.getItem(key) || "[]")];
+                try {
+                  localIds = [...localIds, ...JSON.parse(localStorage.getItem(key) || "[]")];
+                } catch (e) {
+                  localStorage.removeItem(key);
+                }
               }
             }
             deletedIds = [...new Set([...globalIds, ...localIds])];
