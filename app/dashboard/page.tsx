@@ -155,7 +155,12 @@ export default function DashboardPage() {
               continue;
             }
             const rawRevenue = apiData.totalRevenue || 0n;
-            const revenueFormatted = Number(ethers.formatUnits(rawRevenue, 18));
+            let revenueFormatted = 0;
+            try {
+              revenueFormatted = Number(ethers.formatUnits(rawRevenue, 18));
+            } catch (err) {
+              console.error("Format error", err);
+            }
             
             const apiObj = {
               name: `Endpoint (${endpointId.substring(0, 20)}...)`,
