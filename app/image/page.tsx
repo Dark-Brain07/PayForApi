@@ -18,7 +18,7 @@ interface ImageItem {
 
 function LoadingMasterpiece() {
   return (
-    <div className="flex flex-col items-center justify-center gap-6 w-full py-12">
+    <div aria-live="polite" aria-busy="true" className="flex flex-col items-center justify-center gap-6 w-full py-12">
       <div className="relative flex items-center justify-center w-28 h-28">
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 via-green-300 to-yellow-400 animate-spin blur-xl opacity-60"></div>
         <div className="absolute inset-1 rounded-full bg-[#0F141C] flex items-center justify-center z-10 shadow-inner">
