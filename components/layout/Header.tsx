@@ -98,7 +98,7 @@ export default function Header() {
             )}
           </nav>
 
-          <div className="flex items-center space-x-2 sm:space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4" aria-live="polite">
             {isMiniPay && (
               <span title="MiniPay Wallet" className="hidden md:inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-brand-yellow/10 text-brand-yellow border border-brand-yellow/20">
                 MiniPay
