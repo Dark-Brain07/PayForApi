@@ -2,13 +2,21 @@
 
 import { useState } from "react";
 
+/** Props for configuring an individual API Marketplace card */
 interface APICardProps {
+  /** Unique identifier for the API endpoint */
   id: number;
+  /** Display name of the API */
   name: string;
+  /** Formatted string displaying the cost per call in USD (e.g., "$0.001 cUSD/call") */
   priceUsd: string;
+  /** Optional credit cost for the API (if using offchain credits) */
   priceCredits?: number;
+  /** Brief explanation of what the API does */
   description: string;
+  /** Array of placeholder strings for required input parameters */
   inputs: string[];
+  /** Callback fired when the user clicks 'Call API', passing the filled input values */
   onTryIt: (id: number, name: string, values: string[], priceCredits?: number) => void;
 }
 
