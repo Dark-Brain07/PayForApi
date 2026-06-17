@@ -15,6 +15,8 @@ export interface TransactionError {
   message?: string;
 }
 
+type WindowWithEthereum = Window & typeof globalThis & { ethereum?: EthereumProvider };
+
 const BLOCKS_TO_QUERY = 2000000;
 
 export interface ApiEndpointData {
@@ -42,14 +44,14 @@ export default function DashboardPage() {
     if (!newApiName || !newApiEndpoint) return alert("Please fill all fields");
     if (!isConnected || !address) return alert("Connection Error: Please connect your Web3 wallet first to register an API.");
 
-    if (typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
+    if (typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
       alert("No Web3 wallet detected");
       return;
     }
 
     try {
       setIsRegistering(true);
-      const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum);
+      const provider = new ethers.BrowserProvider((window as WindowWithEthereum).ethereum);
       let signer;
       try {
         signer = await provider.getSigner();
@@ -101,7 +103,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchRealEndpoints = async (): Promise<void> => {
       setLoadingEndpoints(true);
-      if (!isConnected || !address || typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
+      if (!isConnected || !address || typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
         setApis([]);
         setLoadingEndpoints(false);
         return;
