@@ -24,7 +24,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     }
   }, [miniPayAddress]);
 
-  const connect = async () => {
+  const connect = async (): Promise<void> => {
     if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
       try {
         const accounts = await (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum!.request({
