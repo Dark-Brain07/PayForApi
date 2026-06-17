@@ -7,3 +7,5 @@ export const TERMINAL_BOOT_LOGS = [
   "> Checking API Integrations... OK",
   "> SUCCESS: All systems operational."
 ];
+
+export const BLOCKS_TO_QUERY = 2000000;

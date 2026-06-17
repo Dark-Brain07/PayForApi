@@ -17,7 +17,7 @@ export interface TransactionError {
 
 type WindowWithEthereum = Window & typeof globalThis & { ethereum?: EthereumProvider };
 
-const BLOCKS_TO_QUERY = 2000000;
+import { BLOCKS_TO_QUERY } from "@/lib/constants";
 
 export interface ApiEndpointData {
   name: string;

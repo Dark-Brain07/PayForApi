@@ -31,6 +31,7 @@ import { useWallet } from "@/components/wallet/WalletContext";
 import { ethers } from "ethers";
 import { CONTRACTS, CELO_MAINNET } from "@/lib/contracts";
 import { API_PRODUCTS } from "@/lib/data";
+import { BLOCKS_TO_QUERY } from "@/lib/constants";
 
 export default function Marketplace() {
   const { address } = useWallet();
@@ -51,7 +52,7 @@ export default function Marketplace() {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
         const contract = new ethers.Contract(CONTRACTS.API_REVENUE_SPLITTER.address, CONTRACTS.API_REVENUE_SPLITTER.abi, provider);
         const currentBlock = await provider.getBlockNumber();
-        const fromBlock = Math.max(0, currentBlock - 2000000);
+        const fromBlock = Math.max(0, currentBlock - BLOCKS_TO_QUERY);
         const filter = contract.filters.ApiRegistered();
         const events = await contract.queryFilter(filter, fromBlock, "latest");
         
