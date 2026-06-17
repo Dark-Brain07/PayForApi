@@ -102,6 +102,7 @@ export default function DashboardPage() {
   };
 
   useEffect(() => {
+    let isMounted = true;
     const fetchRealEndpoints = async (): Promise<void> => {
       setLoadingEndpoints(true);
       if (!isConnected || !address || !ethers.isAddress(address) || typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
@@ -195,16 +196,19 @@ export default function DashboardPage() {
           }
         }
         
-        setApis(fetchedApis);
-        setDeletedApis(fetchedDeletedApis);
+        if (isMounted) {
+          setApis(fetchedApis);
+          setDeletedApis(fetchedDeletedApis);
+        }
       } catch (error) {
         // Silent fallback
       } finally {
-        setLoadingEndpoints(false);
+        if (isMounted) setLoadingEndpoints(false);
       }
     };
 
     fetchRealEndpoints();
+    return () => { isMounted = false; };
   }, [isConnected, address]);
 
   const totalRevenue = useMemo<number>(() => {
