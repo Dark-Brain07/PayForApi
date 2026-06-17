@@ -124,7 +124,8 @@ export default function DashboardPage() {
         let deletedIds: string[] = [];
         if (typeof window !== "undefined") {
           try {
-            const globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]");
+            let globalIds: string[] = [];
+            try { globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]"); } catch (e) { localStorage.removeItem(deletedCacheKey); }
             let localIds: string[] = [];
             for (let i = 0; i < localStorage.length; i++) {
               const key = localStorage.key(i);
