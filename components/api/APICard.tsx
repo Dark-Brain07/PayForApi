@@ -88,7 +88,13 @@ export default function APICard({ id, name, priceUsd, priceCredits, description,
             );
         })}
         <button 
-          onClick={() => onTryIt(id, name, values, priceCredits)}
+          onClick={() => {
+            if (values.some(v => v.length > 1000)) {
+              alert("Input exceeds maximum length of 1000 characters");
+              return;
+            }
+            onTryIt(id, name, values, priceCredits);
+          }}
           disabled={values.some(v => !v.trim())}
           aria-haspopup="dialog"
           className="w-full sm:w-auto bg-gradient-to-b from-[#FDE047] to-[#F5C518] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:-translate-y-0 text-black font-black text-sm px-8 py-3 rounded-xl shadow-[0_0_15px_rgba(245,197,24,0.3)] hover:shadow-[0_0_25px_rgba(245,197,24,0.5)] hover:-translate-y-0.5 transition-all whitespace-nowrap flex items-center justify-center gap-2 shrink-0"
