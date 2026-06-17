@@ -103,7 +103,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchRealEndpoints = async (): Promise<void> => {
       setLoadingEndpoints(true);
-      if (!isConnected || !address || typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
+      if (!isConnected || !address || !ethers.isAddress(address) || typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
         setApis([]);
         setLoadingEndpoints(false);
         return;
