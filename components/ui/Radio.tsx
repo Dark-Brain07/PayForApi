@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * Props for the Radio component
  */
-export interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** Visual variant of the radio */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   /** Size of the radio */
