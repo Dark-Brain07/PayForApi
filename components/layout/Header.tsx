@@ -214,7 +214,7 @@ export default function Header() {
                      <span className="text-[#94A3B8] font-bold text-sm">APIC</span>
                    </div>
                 </div>
-                <Link href="/explorer" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-center py-3 bg-brand-yellow/10 text-brand-yellow border border-brand-yellow/30 rounded-xl font-black shadow-[0_0_15px_rgba(245,197,24,0.15)] flex items-center justify-center gap-2">
+                <Link href="/explorer" onClick={() => setIsMobileMenuOpen(false)} aria-label="Donate to Pay For API" className="w-full text-center py-3 bg-brand-yellow/10 text-brand-yellow border border-brand-yellow/30 rounded-xl font-black shadow-[0_0_15px_rgba(245,197,24,0.15)] flex items-center justify-center gap-2">
                   <span>💖</span> Donate Us
                 </Link>
               </div>
