@@ -79,8 +79,15 @@ export default function DashboardPage() {
       setNewApiPrice("");
     } catch (error: unknown) {
       console.error(error);
-      const registrationError = error as Record<string, unknown>;
-      const msg = (registrationError?.shortMessage as string) || (registrationError?.message as string) || "Registration failed";
+      let msg = "Registration failed";
+      if (error instanceof Error) {
+        msg = error.message;
+      } else if (typeof error === "object" && error !== null) {
+        const errObj = error as Record<string, unknown>;
+        msg = (errObj.shortMessage as string) || (errObj.message as string) || msg;
+      } else if (typeof error === "string") {
+        msg = error;
+      }
       if (msg.includes("EndpointAlreadyRegistered") || msg.includes("already registered")) {
         alert("Registration failed: This endpoint is already registered.");
       } else {
