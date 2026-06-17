@@ -19,7 +19,7 @@ export default function APIResultDisplay({ apiId, data }: { apiId: number, data:
   
   if (data.error || (data.cod && String(data.cod) !== "200")) {
     const errorMsg = data.error || data.message || `API Error (Code: ${data.cod})`;
-    return <div className="text-red-500 font-bold p-4 bg-red-500/10 rounded-xl border border-red-500/20">{errorMsg}</div>;
+    return <div role="alert" aria-live="assertive" className="text-red-500 font-bold p-4 bg-red-500/10 rounded-xl border border-red-500/20">{errorMsg}</div>;
   }
 
   // Weather
