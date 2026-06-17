@@ -254,7 +254,8 @@ export default function Marketplace() {
             let data;
             try {
               if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
+                const text = await res.text().catch(() => "");
+                throw new Error(`HTTP error ${res.status}: ${text || res.statusText}`);
               }
               data = await res.json();
             } catch (err: unknown) {
