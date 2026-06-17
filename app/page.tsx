@@ -25,7 +25,7 @@ function InteractiveTerminal() {
       currentIndex++;
       if (currentIndex >= TERMINAL_BOOT_LOGS.length) {
         clearInterval(interval);
-        setTimeout(() => setIsReady(true), 400);
+        setIsReady(true);
       }
     }, 150); 
 
