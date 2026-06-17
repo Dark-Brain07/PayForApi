@@ -301,7 +301,7 @@ export default function Marketplace() {
                       try {
                         return JSON.parse(apiResult || "{}");
                       } catch {
-                        return { error: apiResult };
+                        return { error: "Failed to parse API response. The endpoint returned invalid JSON." };
                       }
                     })()
                   } 
