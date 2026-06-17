@@ -238,7 +238,7 @@ export default function Rewards() {
             
             <div className="bg-brand-elevated border border-brand-border rounded-2xl p-6 w-full mb-8">
               <span className="block text-sm text-text-secondary mb-1">Your APIC Balance</span>
-              <span className="text-4xl font-black text-brand-yellow">{isConnected ? Number(balance).toFixed(4) : "0.0000"}</span>
+              <span className="text-4xl font-black text-brand-yellow">{isConnected ? Number(balance).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) : "0.0000"}</span>
             </div>
 
             <button 
