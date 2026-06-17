@@ -173,7 +173,7 @@ export default function DashboardPage() {
             const rawRevenue = apiData.totalRevenue || 0n;
             let revenueFormatted = 0;
             try {
-              revenueFormatted = Number(ethers.formatUnits(rawRevenue, 18));
+              revenueFormatted = Number(ethers.formatEther(rawRevenue));
             } catch (err) {
               console.error("Format error", err);
             }
