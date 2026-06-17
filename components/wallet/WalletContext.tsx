@@ -34,8 +34,12 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         if (accountsList && accountsList.length > 0) {
           setAddress(accountsList[0]);
         }
-      } catch (error) {
-        console.error("Failed to connect wallet", error);
+      } catch (error: any) {
+        if (error?.code === 4001) {
+          console.warn("User rejected connection request");
+        } else {
+          console.error("Failed to connect wallet", error);
+        }
       }
     } else {
       console.error("Please install MetaMask or use MiniPay!");
