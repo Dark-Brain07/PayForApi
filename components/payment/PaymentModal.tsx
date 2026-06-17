@@ -130,7 +130,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
         <div className="p-6 flex-grow overflow-y-auto">
           <div className="mb-6 flex justify-between items-center bg-brand-elevated p-4 rounded-xl border border-brand-border text-sm">
             <span className="text-text-secondary">API Product:</span>
-            <span className="font-bold text-white">{productName}</span>
+            <span className="font-bold text-white" title={productName}>{productName}</span>
           </div>
           
           <TokenSelector selectedToken={selectedToken} onSelect={setSelectedToken} />
