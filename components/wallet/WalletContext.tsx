@@ -38,7 +38,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         console.error("Failed to connect wallet", error);
       }
     } else {
-      alert("Please install MetaMask or use MiniPay!");
+      console.error("Please install MetaMask or use MiniPay!");
     }
   };
 
