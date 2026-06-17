@@ -36,16 +36,17 @@ export default function DashboardPage() {
   const [newApiEndpoint, setNewApiEndpoint] = useState("");
   const [newApiPrice, setNewApiPrice] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [selectedSettingsApi, setSelectedSettingsApi] = useState<ApiEndpointData | null>(null);
   const [deletedApis, setDeletedApis] = useState<ApiEndpointData[]>([]);
   const { address, isConnected } = useWallet();
 
   const handleRegister = async (): Promise<void> => {
-    if (!newApiName.trim() || !newApiEndpoint.trim()) return alert("Please fill all fields with valid text");
-    if (!isConnected || !address) return alert("Connection Error: Please connect your Web3 wallet first to register an API.");
-
+    setErrorMsg("");
+    if (!newApiName.trim() || !newApiEndpoint.trim()) { setErrorMsg("Please fill all fields with valid text"); return; }
+    if (!isConnected || !address) { setErrorMsg("Please connect your Web3 wallet first to register an API."); return; }
     if (typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
-      alert("No Web3 wallet detected");
+      setErrorMsg("No Web3 wallet detected");
       return;
     }
 
@@ -91,9 +92,9 @@ export default function DashboardPage() {
         msg = error;
       }
       if (msg.includes("EndpointAlreadyRegistered") || msg.includes("already registered")) {
-        alert("Registration failed: This endpoint is already registered.");
+        setErrorMsg("Registration failed: This endpoint is already registered.");
       } else {
-        alert(msg);
+        setErrorMsg(msg);
       }
     } finally {
       setIsRegistering(false);
@@ -311,6 +312,7 @@ export default function DashboardPage() {
             </button>
             <h2 id="register-modal-title" className="text-2xl font-bold text-white mb-2">Register API</h2>
             <p className="text-[#94A3B8] text-sm mb-6">Enter your Web2 or Web3 API endpoint URL. Our smart contract will automatically wrap it with x402 payments.</p>
+            {errorMsg && <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">{errorMsg}</div>}
             
             <div className="space-y-4">
               <div>
