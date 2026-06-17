@@ -11,6 +11,9 @@ interface DonorInfo {
 
 const ERC20_BALANCE_ABI = ["function balanceOf(address) view returns (uint256)"] as const;
 
+const STATS_POLL_INTERVAL_MS = 15000;
+const BLOCKS_TO_QUERY = 2000000;
+
 /**
  * Shortens an EVM address to the format 0x1234...abcd
  */
@@ -70,7 +73,6 @@ export default function Explorer() {
         
         // Query last ~2 million blocks (about 1 month of Celo blocks)
         const currentBlock = await provider.getBlockNumber();
-        const BLOCKS_TO_QUERY = 2000000;
         const fromBlock = Math.max(0, currentBlock - BLOCKS_TO_QUERY);
         
         const filter = cusdContract.filters.Transfer(null, donationWallet);
@@ -106,8 +108,7 @@ export default function Explorer() {
 
     fetchStats();
     fetchLeaderboard();
-    const POLL_INTERVAL_MS = 15000;
-    const interval = setInterval(fetchStats, POLL_INTERVAL_MS);
+    const interval = setInterval(fetchStats, STATS_POLL_INTERVAL_MS);
     return () => clearInterval(interval);
   }, []);
 
