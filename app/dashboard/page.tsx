@@ -177,7 +177,7 @@ export default function DashboardPage() {
             }
             
             const apiObj = {
-              name: `Endpoint (${endpointId.substring(0, 20)}...)`,
+              name: `Endpoint (${endpointId.slice(0, 6)}...${endpointId.slice(-4)})`,
               endpoint: endpointId,
               revenue: revenueFormatted
             };
