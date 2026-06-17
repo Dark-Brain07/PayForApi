@@ -179,7 +179,7 @@ export default function Marketplace() {
                 <span className="block text-4xl">🌱</span>
               </div>
               
-              <h3 className="relative z-10 font-bold text-white text-2xl mb-3 tracking-tight">Ecosystem is waiting</h3>
+              <h3 className="relative z-10 font-bold text-white text-2xl mb-3 tracking-tight">No community APIs found</h3>
               <p className="relative z-10 text-[#94A3B8] text-lg max-w-lg mx-auto mb-8 leading-relaxed">
                 No community APIs are available yet. Be the first visionary to register your endpoint on the Creator Dashboard and start monetizing.
               </p>
