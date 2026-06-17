@@ -158,15 +158,15 @@ export default function Explorer() {
               Love using Pay For API? Help us keep building and making the application even better! Your generous donations directly fund advanced AI integrations, faster nodes, and continuous upgrades.
             </p>
             <div className="flex flex-col xl:flex-row justify-center items-center gap-4 w-full">
-              <div className="bg-[#050505] border border-[#1E293B] px-3 sm:px-4 py-3 rounded-xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] text-[#00E676] font-mono text-xs sm:text-sm truncate w-full max-w-sm text-center" title="0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476">
-                0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476
+              <div className="bg-[#050505] border border-[#1E293B] px-3 sm:px-4 py-3 rounded-xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] text-[#00E676] font-mono text-xs sm:text-sm truncate w-full max-w-sm text-center" title={MASTER_MERCHANT_WALLET}>
+                {MASTER_MERCHANT_WALLET}
               </div>
               <button 
                 aria-label="Copy Master Wallet Address"
                 className="bg-brand-yellow/10 border border-brand-yellow/40 hover:bg-brand-yellow/20 text-brand-yellow px-6 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(245,197,24,0.15)] hover:shadow-[0_0_20px_rgba(245,197,24,0.3)] whitespace-nowrap w-full xl:w-auto shrink-0"
                 onClick={() => {
                   try {
-                    navigator.clipboard.writeText("0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476");
+                    navigator.clipboard.writeText(MASTER_MERCHANT_WALLET);
                     setCopied(true);
                     setTimeout(() => setCopied(false), 2000);
                   } catch (e) {
