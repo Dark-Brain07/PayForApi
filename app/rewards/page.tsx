@@ -243,6 +243,7 @@ export default function Rewards() {
 
             <button 
               onClick={handleClaim} 
+              aria-label="Claim Daily API Credits Faucet"
               disabled={isClaiming || !isConnected || timeRemaining !== null}
               className={`w-full py-4 text-lg font-bold rounded-xl transition-all ${
                 timeRemaining !== null 
