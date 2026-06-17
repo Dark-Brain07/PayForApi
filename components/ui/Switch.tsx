@@ -46,6 +46,7 @@ export const Switch: React.FC<SwitchProps> = ({
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       disabled={isDisabled}
       aria-disabled={isDisabled}
+      aria-checked={props['aria-checked'] || false}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
