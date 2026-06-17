@@ -11,6 +11,13 @@ export interface CommunityApi {
   description: string;
   inputs: string[];
 }
+
+export interface ApiRequestPayload {
+  txHash: string;
+  walletAddress: string;
+  [key: string]: unknown;
+}
+
 import PaymentModal from "@/components/payment/PaymentModal";
 import APIResultDisplay from "@/components/api/APIResultDisplay";
 import { useWallet } from "@/components/wallet/WalletContext";
@@ -201,7 +208,7 @@ export default function Marketplace() {
           setIsCalling(true);
           try {
             const { id, values } = product!;
-            let apiRequestBody: Record<string, unknown> = { txHash, walletAddress: address || "0x0000000000000000000000000000000000000000" };
+            let apiRequestBody: ApiRequestPayload = { txHash, walletAddress: address || "0x0000000000000000000000000000000000000000" };
             let endpoint = "";
             
             if (id === 0) {
