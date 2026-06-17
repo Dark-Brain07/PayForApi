@@ -42,6 +42,7 @@ export const Button: React.FC<ButtonProps> = ({
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       disabled={isDisabled}
       aria-disabled={isDisabled}
+      aria-busy={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
