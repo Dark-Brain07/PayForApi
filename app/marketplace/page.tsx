@@ -259,7 +259,7 @@ export default function Marketplace() {
                 {isCalling ? "Verifying Payment..." : "API Response"}
               </h3>
               {!isCalling && (
-                <button aria-label="Close modal" onClick={() => setApiResult(null)} className="text-gray-500 hover:text-white transition-colors">
+                <button aria-label="Close modal" title="Close" onClick={() => setApiResult(null)} className="text-gray-500 hover:text-white transition-colors">
                   ✕
                 </button>
               )}
