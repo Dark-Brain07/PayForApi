@@ -251,7 +251,7 @@ export default function DashboardPage() {
         <div>
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-white">Your Registered Endpoints</h2>
-            <button aria-label="Refresh endpoints" onClick={() => window.location.reload()} disabled={loadingEndpoints} className="text-sm text-[#94A3B8] hover:text-white flex items-center gap-1 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            <button aria-label="Refresh endpoints" aria-busy={loadingEndpoints} onClick={() => window.location.reload()} disabled={loadingEndpoints} className="text-sm text-[#94A3B8] hover:text-white flex items-center gap-1 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
               <span aria-hidden="true">↻</span> Refresh
             </button>
           </div>
