@@ -113,6 +113,8 @@ export default function Marketplace() {
 
   return (
     <div className="flex flex-col w-full min-h-screen pt-16 bg-black">
+      <title>API Marketplace | PayForAPI</title>
+      <meta name="description" content="Discover and integrate decentralized Web3 APIs with x402 micropayments on Celo." />
       {/* API Products Grid */}
       <section className="py-16 px-4 max-w-7xl mx-auto w-full">
         <div className="mb-16 text-center relative">
