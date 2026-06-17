@@ -208,7 +208,7 @@ export default function DashboardPage() {
   }, [isConnected, address]);
 
   const totalRevenue = useMemo<number>(() => {
-    return [...apis, ...deletedApis].reduce((sum, api) => sum + api.revenue, 0);
+    return [...(apis || []), ...(deletedApis || [])].reduce((sum, api) => sum + (api?.revenue || 0), 0);
   }, [apis, deletedApis]);
 
   return (
