@@ -47,6 +47,9 @@ export default function Marketplace() {
   const [isCalling, setIsCalling] = useState(false);
   const [communityApis, setCommunityApis] = useState<CommunityApi[]>([]);
   const [isLoadingCommunity, setIsLoadingCommunity] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => setIsMounted(true), []);
 
   // Fetch Community APIs from the blockchain
   useEffect(() => {
@@ -126,7 +129,9 @@ export default function Marketplace() {
         
         <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4">Core Platform APIs</h2>
         <div className="columns-1 md:columns-2 gap-6 space-y-6">
-          {API_PRODUCTS.map((api) => (
+          {!isMounted ? Array.from({ length: 4 }).map((_, i) => (
+            <div key={`core-skel-${i}`} className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-[24px] h-[320px] animate-pulse"></div>
+          )) : API_PRODUCTS.map((api) => (
             <div key={api.id} className="break-inside-avoid relative">
               {isCalling && lastApiId === api.id && (
                 <div aria-hidden="true" className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
