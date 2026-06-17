@@ -25,6 +25,8 @@ export interface SelectedProduct {
   priceCredits?: number;
 }
 
+const generateNumericId = (str: string) => Math.abs(str.split('').reduce((hash, char) => ((hash << 5) - hash) + char.charCodeAt(0), 0)) + 1000;
+
 import PaymentModal from "@/components/payment/PaymentModal";
 import APIResultDisplay from "@/components/api/APIResultDisplay";
 import { useWallet } from "@/components/wallet/WalletContext";
@@ -86,7 +88,7 @@ export default function Marketplace() {
           const creator = eventObj.args?.[1];
           if (endpointId && creator && !deletedIds.includes(endpointId)) {
              uniqueApis.set(endpointId, { 
-               id: uniqueApis.size + 100, 
+               id: generateNumericId(endpointId), 
                name: `Community API: ${endpointId.substring(0, 15)}...`, 
                endpoint: endpointId, 
                priceUsd: "$0.005 cUSD/call", 
