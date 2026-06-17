@@ -74,7 +74,7 @@ export default function Marketplace() {
           }
         } catch (e) {}
 
-        const uniqueApis = new Map();
+        const uniqueApis = new Map<string, CommunityApi>();
         interface ContractEvent { args?: string[] }
         for (const event of events) {
           const eventObj = event as ContractEvent;
