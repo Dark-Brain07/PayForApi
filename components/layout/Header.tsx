@@ -7,6 +7,7 @@ import { CONTRACTS } from "@/lib/contracts";
 import { CELO_STABLECOINS } from "@/lib/stablecoins";
 import { EthereumProvider } from "@/hooks/useAuth";
 
+/** Truncates an EVM address to a 6...4 character format */
 const truncateAddress = (addr: string) => {
   return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 };
