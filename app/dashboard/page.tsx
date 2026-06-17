@@ -268,7 +268,7 @@ export default function DashboardPage() {
             ))}
             {(!loadingEndpoints && (!apis || apis.length === 0)) && (
               <div role="status" aria-live="polite" className="text-center py-16 border border-dashed border-[#1E293B] rounded-xl flex flex-col items-center justify-center">
-                <svg className="w-12 h-12 text-[#334155] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                <svg aria-hidden="true" className="w-12 h-12 text-[#334155] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                 <p className="text-[#94A3B8] font-medium">You haven't registered any APIs yet.</p>
                 <p className="text-[#64748B] text-sm mt-1">Click the register button to get started.</p>
               </div>
