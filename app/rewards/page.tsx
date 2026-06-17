@@ -271,6 +271,7 @@ export default function Rewards() {
 
             <button 
               onClick={handleMint} 
+              aria-label="Mint Community NFT"
               disabled={isMinting || !isConnected}
               className="w-full bg-brand-green/10 border border-brand-green text-brand-green hover:bg-brand-green/20 font-bold px-4 py-4 rounded-lg transition-colors disabled:opacity-50 text-lg"
             >
