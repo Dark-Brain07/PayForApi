@@ -1,6 +1,10 @@
 "use client";
 import { useState, useCallback, useEffect } from "react";
 
+/**
+ * Interface representing the injected Web3 provider (window.ethereum).
+ * Includes custom extensions like isMiniPay.
+ */
 export interface EthereumProvider {
   isMiniPay?: boolean;
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
