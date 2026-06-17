@@ -6,7 +6,7 @@ export class EmailSender {
     if (!EmailSender.instance) EmailSender.instance = new EmailSender();
     return EmailSender.instance;
   }
-  public async send(to: string, subject: string, body: string): Promise<boolean> {
+  public async send(to: string, subject: string, _body: string): Promise<boolean> {
     loggerInstance.info(`Sending email to ${to}: ${subject}`);
     return new Promise(resolve => setTimeout(() => resolve(true), 500));
   }
