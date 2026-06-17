@@ -117,7 +117,8 @@ export default function Rewards() {
       setSuccess("Successfully claimed your API credits!");
       fetchStats();
     } catch (err: unknown) {
-      setError(err.reason || err.message || "Failed to claim credits.");
+      const e = err as Record<string, unknown>;
+      setError((e?.reason as string) || (e?.message as string) || "Failed to claim credits.");
     } finally {
       setIsClaiming(false);
     }
