@@ -18,6 +18,13 @@ export interface ApiRequestPayload {
   [key: string]: unknown;
 }
 
+export interface SelectedProduct {
+  id: number;
+  name: string;
+  values: string[];
+  priceCredits?: number;
+}
+
 import PaymentModal from "@/components/payment/PaymentModal";
 import APIResultDisplay from "@/components/api/APIResultDisplay";
 import { useWallet } from "@/components/wallet/WalletContext";
@@ -34,7 +41,7 @@ const API_PRODUCTS = [
 
 export default function Marketplace() {
   const { address } = useWallet();
-  const [selectedProduct, setSelectedProduct] = useState<{id: number, name: string, values: string[], priceCredits?: number} | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<SelectedProduct | null>(null);
   const [apiResult, setApiResult] = useState<string | null>(null);
   const [lastApiId, setLastApiId] = useState<number | null>(null);
   const [isCalling, setIsCalling] = useState(false);
