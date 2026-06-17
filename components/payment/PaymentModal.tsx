@@ -152,7 +152,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
             {isProcessing ? (
               <>
                 <span className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin"></span>
-                <span>Processing on Celo...</span>
+                <span aria-live="polite">Processing on Celo...</span>
               </>
             ) : (
               <span>Pay {CELO_STABLECOINS[selectedToken].pricePerCall} {CELO_STABLECOINS[selectedToken].symbol}</span>
@@ -169,7 +169,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
               {isProcessing ? (
                 <>
                   <span className="w-5 h-5 border-2 border-brand-yellow/20 border-t-brand-yellow rounded-full animate-spin"></span>
-                  <span>Processing Credits...</span>
+                  <span aria-live="polite">Processing Credits...</span>
                 </>
               ) : (
                 <span>Pay with {priceCredits} APIC</span>
