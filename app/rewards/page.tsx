@@ -142,7 +142,8 @@ export default function Rewards() {
       setSuccess("Successfully minted your Community NFT!");
       fetchStats();
     } catch (err: unknown) {
-      setError(err.reason || err.message || "Failed to mint NFT.");
+      const e = err as Record<string, unknown>;
+      setError((e?.reason as string) || (e?.message as string) || "Failed to mint NFT.");
     } finally {
       setIsMinting(false);
     }
