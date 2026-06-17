@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * Props for the Select component
  */
-export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
   /** Visual variant of the select */
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   /** Size of the select */
