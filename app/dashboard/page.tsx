@@ -372,7 +372,7 @@ export default function DashboardPage() {
                   type="text" 
                   value={selectedSettingsApi.name}
                   disabled
-                  className={`${INPUT_CLASSES} opacity-70 cursor-not-allowed`} 
+                  className={`${INPUT_CLASSES} opacity-70`} 
                 />
               </div>
               <div>
@@ -382,7 +382,7 @@ export default function DashboardPage() {
                   type="text" 
                   value={selectedSettingsApi.endpoint}
                   disabled
-                  className={`${INPUT_CLASSES} opacity-70 cursor-not-allowed`} 
+                  className={`${INPUT_CLASSES} opacity-70`} 
                 />
               </div>
               <div>
