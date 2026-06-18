@@ -21,7 +21,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
   variant = 'default', 
   size = 'md', 
   className = '', 
-  error = false,
+  error,
   ...props 
 }, ref: React.Ref<HTMLInputElement>) => {
   
@@ -41,8 +41,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
   return (
     <input 
       ref={ref}
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${error ? 'border-red-500 focus-visible:ring-red-500' : ''} ${className}`.trim()}
-      aria-invalid={error ? 'true' : 'false'}
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${!!error ? 'border-red-500 focus-visible:ring-red-500' : ''} ${className}`.trim()}
+      aria-invalid={!!error ? 'true' : 'false'}
       aria-required={props.required ? 'true' : undefined}
       aria-describedby={error && props.id ? `${props.id}-error` : props['aria-describedby']}
       {...props}
