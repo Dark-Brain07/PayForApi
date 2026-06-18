@@ -12,8 +12,11 @@ export default function TokenSelector({ selectedToken, onSelect }: TokenSelector
       {(Object.entries(CELO_STABLECOINS) as [StablecoinKey, typeof CELO_STABLECOINS[StablecoinKey]][]).map(([key, token]) => (
         <div 
           key={key}
+          role="button"
+          tabIndex={0}
           onClick={() => onSelect(key)}
-          className={`cursor-pointer border rounded-xl p-3 flex flex-col items-center justify-center space-y-2 transition-all ${
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(key); } }}
+          className={`cursor-pointer border rounded-xl p-3 flex flex-col items-center justify-center space-y-2 transition-all focus:outline-none focus:ring-2 focus:ring-brand-yellow ${
             selectedToken === key 
               ? "border-brand-yellow bg-brand-yellow/5" 
               : "border-brand-border bg-brand-card hover:border-brand-border/80 hover:bg-brand-elevated"
