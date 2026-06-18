@@ -5,6 +5,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isDisabled?: boolean;
+  isLoading?: boolean;
 }
 
 const BASE_BUTTON_CLASSES = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50";
@@ -18,6 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'default', 
   size = 'md', 
   isDisabled = false, 
+  isLoading = false,
   className = '', 
   ...props 
 }): React.JSX.Element => {
@@ -40,10 +42,10 @@ export const Button: React.FC<ButtonProps> = ({
     <button 
       type={props.type || "button"}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
-      disabled={isDisabled || props.disabled}
-      aria-disabled={isDisabled || props.disabled}
-      aria-busy={isDisabled}
-      data-state={isDisabled || props.disabled ? 'disabled' : 'active'}
+      disabled={isDisabled || props.disabled || isLoading}
+      aria-disabled={isDisabled || props.disabled || isLoading}
+      aria-busy={isLoading}
+      data-state={isDisabled || props.disabled || isLoading ? 'disabled' : 'active'}
       {...props}
     >
       {children}
