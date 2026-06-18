@@ -10,6 +10,10 @@ export interface EthereumProvider {
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
 }
 
+export interface ProviderRpcError extends Error {
+  code: number;
+}
+
 /**
  * Represents the current authentication state of the wallet session.
  */
