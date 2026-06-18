@@ -9,6 +9,8 @@ import { processPayment } from "@/lib/payment";
 import { CONTRACTS } from "@/lib/contracts";
 import { EthereumProvider } from "@/hooks/useAuth";
 
+const MODAL_CONTAINER_CLASSES = "bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]";
+
 /** Props for the PaymentModal component handling x402 transactions */
 interface PaymentModalProps {
   isOpen: boolean;
@@ -119,7 +121,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" className="bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" className={MODAL_CONTAINER_CLASSES}>
         <div className="p-6 border-b border-brand-border flex justify-between items-center shrink-0">
           <h2 id="payment-modal-title" className="text-xl font-bold text-white">Select Payment Method</h2>
           <button type="button" aria-label="Close modal" onClick={onClose} className="text-text-secondary hover:text-white transition-colors">
