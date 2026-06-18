@@ -90,7 +90,7 @@ export default function Marketplace() {
           if (endpointId && creator && !deletedIds.includes(endpointId)) {
              uniqueApis.set(endpointId, { 
                id: generateNumericId(endpointId), 
-               name: `Community API: ${escapeHTML(endpointId).substring(0, 15)}...`, 
+               name: `Community API: ${escapeHTML(endpointId).substring(0, 30)}...`, 
                endpoint: escapeHTML(endpointId), 
                priceUsd: "$0.005 cUSD/call", 
                priceCredits: 50, 
