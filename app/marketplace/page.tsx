@@ -25,7 +25,7 @@ export interface SelectedProduct {
   priceCredits?: number;
 }
 
-const generateNumericId = (str: string) => Math.abs(str.split('').reduce((hash, char) => ((hash << 5) - hash) + char.charCodeAt(0), 0)) + 1000;
+const generateNumericId = (str: string): number => Math.abs(str.split('').reduce((hash, char) => ((hash << 5) - hash) + char.charCodeAt(0), 0)) + 1000;
 const escapeHTML = (str: string) => str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 import PaymentModal from "@/components/payment/PaymentModal";
