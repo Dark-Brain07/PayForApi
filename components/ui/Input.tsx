@@ -24,14 +24,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
 }, ref: React.Ref<HTMLInputElement>) => {
   const baseStyles = "flex w-full rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
   
-  const variantStyles = {
+  const variantStyles: Record<string, string> = {
     default: "bg-background text-foreground border border-input",
     primary: "bg-blue-50 text-blue-900 border border-blue-200",
     outline: "border-2 border-input bg-transparent",
     ghost: "bg-transparent border-transparent hover:bg-accent"
   };
 
-  const sizeStyles = {
+  const sizeStyles: Record<string, string> = {
     sm: "h-9 px-3 text-sm",
     md: "h-10 px-4 py-2",
     lg: "h-11 px-8 rounded-md text-lg"
