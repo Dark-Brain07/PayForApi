@@ -59,6 +59,6 @@ export async function POST(request: NextRequest) {
 
   } catch (error: unknown) {
     console.error(error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: "Image generation failed. Please try again." }, { status: 500 });
   }
 }
