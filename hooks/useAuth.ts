@@ -84,7 +84,7 @@ export function useAuth(): AuthState & {
       }));
       return address;
     } catch (err: unknown) {
-      const isProviderError = (e: unknown): e is { code: number; message?: string } => typeof e === 'object' && e !== null && 'code' in e;
+      const isProviderError = (e: unknown): e is ProviderRpcError => typeof e === 'object' && e !== null && 'code' in e;
       setState((s) => ({
         ...s,
         error: isProviderError(err) && err.code === USER_REJECTED_CODE ? "User rejected connection" : (err instanceof Error ? err.message : String(err)),
@@ -116,7 +116,7 @@ export function useAuth(): AuthState & {
         params: [{ chainId: CELO_CHAIN_HEX }],
       });
     } catch (err: unknown) {
-      const isProviderError = (e: unknown): e is { code: number; message?: string } => typeof e === 'object' && e !== null && 'code' in e;
+      const isProviderError = (e: unknown): e is ProviderRpcError => typeof e === 'object' && e !== null && 'code' in e;
       if (isProviderError(err) && err.code === CHAIN_MISSING_CODE) {
         try {
           const eth = window.ethereum as EthereumProvider;
