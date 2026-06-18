@@ -437,6 +437,7 @@ export default function DashboardPage() {
               </p>
               <div className="flex gap-3 mt-6">
                 <button 
+                  type="button"
                   onClick={() => setSelectedSettingsApi(null)}
                   aria-label="Close settings modal"
                   className="w-full py-3 bg-[#1E293B] hover:bg-[#334155] text-white font-bold rounded-lg transition-all"
