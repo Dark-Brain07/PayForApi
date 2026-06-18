@@ -40,10 +40,10 @@ export const Button: React.FC<ButtonProps> = ({
     <button 
       type={props.type || "button"}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
-      disabled={isDisabled}
-      aria-disabled={isDisabled}
+      disabled={isDisabled || props.disabled}
+      aria-disabled={isDisabled || props.disabled}
       aria-busy={isDisabled}
-      data-state={isDisabled ? 'disabled' : 'active'}
+      data-state={isDisabled || props.disabled ? 'disabled' : 'active'}
       {...props}
     >
       {children}
