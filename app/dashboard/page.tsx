@@ -347,6 +347,7 @@ export default function DashboardPage() {
                   onBlur={() => setNewApiEndpoint(prev => prev.trim())}
                   className={INPUT_CLASSES} 
                   placeholder="https://api.example.com/v1" 
+                  required
                 />
               </div>
               <div>
