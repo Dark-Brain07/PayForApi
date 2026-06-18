@@ -332,6 +332,7 @@ export default function DashboardPage() {
                   onBlur={() => setNewApiName(prev => prev.trim())}
                   className={INPUT_CLASSES} 
                   placeholder="e.g. My Llama 3 Model" 
+                  required
                 />
               </div>
               <div>
