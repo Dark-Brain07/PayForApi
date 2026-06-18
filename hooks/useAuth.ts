@@ -28,8 +28,8 @@ export interface AuthState {
 
 const CELO_CHAIN_ID = 42220;
 const CELO_CHAIN_HEX = `0x${CELO_CHAIN_ID.toString(16)}`;
-const USER_REJECTED_CODE = 4001;
-const CHAIN_MISSING_CODE = 4902;
+export const USER_REJECTED_CODE = 4001;
+export const CHAIN_MISSING_CODE = 4902;
 
 /**
  * Generic EVM wallet auth hook. Auto-detects MiniPay.
