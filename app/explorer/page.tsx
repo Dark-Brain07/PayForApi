@@ -216,10 +216,10 @@ export default function Explorer() {
               <tbody className="divide-y divide-[#1E293B]">
                 {leaderboardLoading ? (
                   Array.from({ length: 5 }).map((_, i) => (
-                    <tr key={i} className="animate-pulse">
-                      <td className="py-4 px-6"><div className="h-6 w-6 bg-gradient-to-r from-[#1E293B] to-[#334155] rounded"></div></td>
-                      <td className="py-4 px-6"><div className="h-4 w-32 bg-gradient-to-r from-[#1E293B] to-[#334155] rounded"></div></td>
-                      <td className="py-4 px-6 flex justify-end"><div className="h-4 w-16 bg-gradient-to-r from-[#1E293B] to-[#334155] rounded"></div></td>
+                    <tr key={i} className="animate-pulse" aria-hidden="true">
+                      <td className="py-4 px-6"><div className="h-6 w-6 bg-gradient-to-r from-[#1E293B] to-[#334155] rounded"><span className="sr-only">Loading rank...</span></div></td>
+                      <td className="py-4 px-6"><div className="h-4 w-32 bg-gradient-to-r from-[#1E293B] to-[#334155] rounded"><span className="sr-only">Loading address...</span></div></td>
+                      <td className="py-4 px-6 flex justify-end"><div className="h-4 w-16 bg-gradient-to-r from-[#1E293B] to-[#334155] rounded"><span className="sr-only">Loading amount...</span></div></td>
                     </tr>
                   ))
                 ) : leaderboardError ? (
