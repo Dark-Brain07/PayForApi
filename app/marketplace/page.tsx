@@ -209,7 +209,7 @@ export default function Marketplace() {
         onClose={() => setSelectedProduct(null)}
         productId={selectedProduct?.id ?? 0}
         productName={(selectedProduct?.name && selectedProduct.name.length > 40) ? `${selectedProduct.name.slice(0, 37)}...` : selectedProduct?.name ?? ""}
-        priceCredits={selectedProduct?.priceCredits}
+        priceCredits={selectedProduct?.priceCredits ?? 0}
         onSuccess={async (txHash, token) => {
           if (isCalling) return;
           const product = selectedProduct;
