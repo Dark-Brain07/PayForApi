@@ -81,7 +81,7 @@ export default function Explorer() {
         const cusdContract = new ethers.Contract(CELO_STABLECOINS.cUSD.address, erc20Abi, provider);
         
         // Query last ~2 million blocks (about 1 month of Celo blocks)
-        const currentBlock = await provider.getBlockNumber();
+        const currentBlock = await provider.getBlockNumber().catch(() => 0);
         const fromBlock = Math.max(0, currentBlock - BLOCKS_TO_QUERY);
         
         const filter = cusdContract.filters.Transfer(null, donationWallet);
