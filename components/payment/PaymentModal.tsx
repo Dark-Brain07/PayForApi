@@ -10,6 +10,7 @@ import { CONTRACTS } from "@/lib/contracts";
 import { EthereumProvider } from "@/hooks/useAuth";
 
 const MODAL_CONTAINER_CLASSES = "bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]";
+const SPINNER_CLASSES = "w-5 h-5 border-2 rounded-full animate-spin";
 
 /** Props for the PaymentModal component handling x402 transactions */
 interface PaymentModalProps {
@@ -153,7 +154,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
           >
             {isProcessing ? (
               <>
-                <span className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin"></span>
+                <span className={`${SPINNER_CLASSES} border-black/20 border-t-black`}></span>
                 <span aria-live="polite">Processing on Celo...</span>
               </>
             ) : (
@@ -170,7 +171,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
             >
               {isProcessing ? (
                 <>
-                  <span className="w-5 h-5 border-2 border-brand-yellow/20 border-t-brand-yellow rounded-full animate-spin"></span>
+                  <span className={`${SPINNER_CLASSES} border-brand-yellow/20 border-t-brand-yellow`}></span>
                   <span aria-live="polite">Processing Credits...</span>
                 </>
               ) : (
