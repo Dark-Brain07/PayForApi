@@ -308,10 +308,7 @@ export default function Marketplace() {
             )}
             
             {!isCalling && (
-              <button 
-                onClick={() => setApiResult(null)}
-                className="w-full bg-[#1E293B] hover:bg-[#334155] text-white font-bold py-3 rounded-xl transition-colors border border-white/5 shrink-0 mt-2"
-              >
+              <button aria-label="Close API Result" onClick={() => { setApiResult(null); setLastApiId(null); }} className="w-full bg-[#1E293B] hover:bg-[#334155] text-white font-bold py-3 rounded-xl transition-colors border border-white/5 shrink-0 mt-2">
                 Done
               </button>
             )}
