@@ -99,7 +99,7 @@ export default function DashboardPage() {
       } else if (typeof error === "string") {
         msg = error;
       }
-      if (msg.includes("EndpointAlreadyRegistered") || msg.includes("already registered")) {
+      if (msg.toLowerCase().includes("endpointalreadyregistered") || msg.toLowerCase().includes("already registered")) {
         setErrorMsg("Registration failed: This endpoint is already registered.");
       } else {
         setErrorMsg(msg);
