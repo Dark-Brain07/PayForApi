@@ -109,8 +109,6 @@ export default function Marketplace() {
     fetchCommunityApis();
   }, []);
 
-
-
   return (
     <div className="flex flex-col w-full min-h-screen pt-16 bg-black">
       <title>API Marketplace | PayForAPI</title>
