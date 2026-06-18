@@ -39,7 +39,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button 
       type={props.type || "button"}
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       disabled={isDisabled}
       aria-disabled={isDisabled}
       aria-busy={isDisabled}
