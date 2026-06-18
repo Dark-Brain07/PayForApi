@@ -26,7 +26,7 @@ export const Accordion: React.FC<AccordionProps> = ({
         {summary}
       </summary>
       <div className="p-4 border-t border-input">
-        {children}
+        {children || <p className="text-muted-foreground">No content provided.</p>}
       </div>
     </details>
   );
