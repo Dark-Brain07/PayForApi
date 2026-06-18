@@ -51,9 +51,18 @@ export default function Explorer() {
           // Silent fallback
         }
 
+        let revenueCusdStr = "0.00";
+        let revenueApicStr = "0.00";
+        try {
+          revenueCusdStr = Number(ethers.formatUnits(cusdBal, 18)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+          revenueApicStr = Number(ethers.formatUnits(apicBal, 18)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        } catch (e) {
+          console.error("Format error", e);
+        }
+
         setStats({ 
-          revenueCusd: Number(ethers.formatUnits(cusdBal, 18)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}),
-          revenueApic: Number(ethers.formatUnits(apicBal, 18)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
+          revenueCusd: revenueCusdStr,
+          revenueApic: revenueApicStr
         });
       } catch (err) {
         console.error("Failed to fetch network revenue:", err);
