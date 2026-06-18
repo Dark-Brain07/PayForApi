@@ -139,7 +139,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
           <TokenSelector selectedToken={selectedToken} onSelect={setSelectedToken} />
           
           {error && (
-            <div className="mt-4 p-3 bg-error/10 border border-error/20 text-error rounded-lg text-sm text-center">
+            <div role="alert" className="mt-4 p-3 bg-error/10 border border-error/20 text-error rounded-lg text-sm text-center">
               {error}
             </div>
           )}
