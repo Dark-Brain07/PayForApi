@@ -375,8 +375,12 @@ export default function DashboardPage() {
                   value={newApiPrice}
                   onChange={(e) => setNewApiPrice(e.target.value)}
                   onBlur={(e) => {
-                    const val = parseFloat(e.target.value);
-                    if (!isNaN(val)) setNewApiPrice(val.toFixed(4));
+                    try {
+                      const val = parseFloat(e.target.value);
+                      if (!isNaN(val)) setNewApiPrice(val.toFixed(4));
+                    } catch (err) {
+                      // Silent on parsing error
+                    }
                   }}
                   className={INPUT_CLASSES} 
                   placeholder="0.005" 
