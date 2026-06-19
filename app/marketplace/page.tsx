@@ -298,7 +298,8 @@ export default function Marketplace() {
                   data={
                     (() => {
                       try {
-                        return JSON.parse(apiResult || "{}");
+                        const parsed = JSON.parse(apiResult || "{}");
+                        return Object.keys(parsed).length === 0 ? { message: "Empty response body" } : parsed;
                       } catch {
                         return { error: "Failed to parse API response. The endpoint returned invalid JSON." };
                       }
