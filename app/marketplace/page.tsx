@@ -65,7 +65,7 @@ export default function Marketplace() {
         try {
           if (typeof window !== "undefined") {
             let globalIds: string[] = [];
-            try { globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]"); } catch (e) { try { localStorage.removeItem(deletedCacheKey); } catch (err) { console.error(err); } }
+            try { globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]"); } catch (err) { localStorage.removeItem(deletedCacheKey); }
             // Check legacy local cache if user is connected
             let localIds: string[] = [];
             for (let i = 0; i < localStorage.length; i++) {
@@ -73,14 +73,16 @@ export default function Marketplace() {
               if (key && key.startsWith("deleted_endpoints_0x")) {
                 try {
                   localIds = [...localIds, ...JSON.parse(localStorage.getItem(key) || "[]")];
-                } catch (e) {
+                } catch (err) {
                   localStorage.removeItem(key);
                 }
               }
             }
             deletedIds = [...new Set([...globalIds, ...localIds])];
           }
-        } catch (e) {}
+        } catch (err) {
+          // Silent local storage ignore
+        }
 
         const uniqueApis = new Map<string, CommunityApi>();
         interface ContractEvent { args?: string[] }
