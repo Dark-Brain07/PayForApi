@@ -44,7 +44,7 @@ export default function GoodDollarIdentity() {
   };
 
   const handleClaim = async (): Promise<void> => {
-    if (!isVerified || !isConnected || !address) return;
+    if (!isVerified || !isConnected || !address || !ethers.isAddress(address)) return;
     
     setIsClaiming(true);
     
