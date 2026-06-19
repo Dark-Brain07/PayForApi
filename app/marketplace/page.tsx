@@ -171,7 +171,7 @@ export default function Marketplace() {
               ))}
             </div>
           ) : (
-            <div className="w-full relative overflow-hidden text-center py-20 px-6 border border-[#1E293B] bg-gradient-to-b from-[#0F172A] to-[#0B0E14] rounded-2xl flex flex-col items-center justify-center group transition-all duration-300 hover:border-[#334155] shadow-lg">
+            <div aria-live="polite" className="w-full relative overflow-hidden text-center py-20 px-6 border border-[#1E293B] bg-gradient-to-b from-[#0F172A] to-[#0B0E14] rounded-2xl flex flex-col items-center justify-center group transition-all duration-300 hover:border-[#334155] shadow-lg">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-yellow/5 rounded-full blur-3xl group-hover:bg-brand-yellow/10 transition-colors duration-500"></div>
               
               <div className="relative z-10 w-20 h-20 bg-black/40 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-2xl transform group-hover:-translate-y-2 group-hover:scale-105 transition-all duration-300">
