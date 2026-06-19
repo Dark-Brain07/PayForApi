@@ -151,13 +151,13 @@ export default function DashboardPage() {
               if (key && key.startsWith("deleted_endpoints_0x")) {
                 try {
                   localIds = [...localIds, ...JSON.parse(localStorage.getItem(key) || "[]")];
-                } catch (e) {
+                } catch (err) {
                   localStorage.removeItem(key);
                 }
               }
             }
             deletedIds = [...new Set([...globalIds, ...localIds])];
-          } catch (e) {
+          } catch (err) {
             localStorage.removeItem(deletedCacheKey);
           }
         }
