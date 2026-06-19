@@ -355,7 +355,11 @@ export default function DashboardPage() {
                   value={newApiEndpoint}
                   maxLength={255}
                   onChange={(e) => setNewApiEndpoint(e.target.value)}
-                  onBlur={() => setNewApiEndpoint(prev => prev.trim())}
+                  onBlur={() => {
+                    let val = newApiEndpoint.trim();
+                    if (val && !val.startsWith("http")) val = "https://" + val;
+                    setNewApiEndpoint(val);
+                  }}
                   className={INPUT_CLASSES} 
                   placeholder="https://api.example.com/v1" 
                   required
