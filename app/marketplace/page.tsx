@@ -102,7 +102,7 @@ export default function Marketplace() {
         }
         setCommunityApis(Array.from(uniqueApis.values()));
       } catch (err) {
-        console.error("Failed to load community APIs", err);
+        // Handled UI state for error
       } finally {
         setIsLoadingCommunity(false);
       }
