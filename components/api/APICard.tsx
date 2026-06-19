@@ -96,9 +96,11 @@ export default function APICard({ id, name, priceUsd, priceCredits, description,
             );
         })}
         <button 
+          type="button"
           onClick={() => {
-            if (values.some(v => v.length > 1000)) {
-              alert("Input exceeds maximum length of 1000 characters");
+            const MAX_INPUT_LENGTH = 1000;
+            if (values.some(v => v.length > MAX_INPUT_LENGTH)) {
+              alert(`Input exceeds maximum length of ${MAX_INPUT_LENGTH} characters`);
               return;
             }
             onTryIt(id, name, values, priceCredits);
