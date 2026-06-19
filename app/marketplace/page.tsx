@@ -261,8 +261,8 @@ export default function Marketplace() {
               data = { error: err instanceof Error ? err.message : "Failed to parse API response" };
             }
             setApiResult(JSON.stringify(data, null, 2));
-          } catch (e: unknown) {
-            setApiResult("Error: " + (e instanceof Error ? e.message : String(e)));
+          } catch (err: unknown) {
+            setApiResult("Error: " + (err instanceof Error ? err.message : "Unknown error"));
           } finally {
             setIsCalling(false);
           }
@@ -280,7 +280,7 @@ export default function Marketplace() {
                 {isCalling ? "Verifying Payment..." : "API Response"}
               </h3>
               {!isCalling && (
-                <button aria-label="Close modal" title="Close" onClick={() => setApiResult(null)} className="text-gray-500 hover:text-white transition-colors">
+                <button type="button" aria-label="Close modal" title="Close" onClick={() => setApiResult(null)} className="text-gray-500 hover:text-white transition-colors">
                   ✕
                 </button>
               )}
@@ -309,7 +309,7 @@ export default function Marketplace() {
             )}
             
             {!isCalling && (
-              <button aria-label="Close API Result" onClick={() => { setApiResult(null); setLastApiId(null); }} className="w-full bg-[#1E293B] hover:bg-[#334155] text-white font-bold py-3 rounded-xl transition-colors border border-white/5 shrink-0 mt-2">
+              <button type="button" aria-label="Close API Result" onClick={() => { setApiResult(null); setLastApiId(null); }} className="w-full bg-[#1E293B] hover:bg-[#334155] text-white font-bold py-3 rounded-xl transition-colors border border-white/5 shrink-0 mt-2">
                 Done
               </button>
             )}
