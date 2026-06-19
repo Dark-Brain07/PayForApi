@@ -398,6 +398,7 @@ export default function DashboardPage() {
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div role="dialog" aria-modal="true" aria-labelledby="settings-modal-title" className="bg-[#0F172A] border border-[#1E293B] rounded-2xl w-full max-w-md p-6 relative">
             <button 
+              type="button"
               onClick={() => setSelectedSettingsApi(null)}
               aria-label="Close settings"
               title="Close settings"
