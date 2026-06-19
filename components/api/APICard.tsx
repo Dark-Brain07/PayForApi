@@ -52,7 +52,7 @@ export default function APICard({ id, name, priceUsd, priceCredits, description,
           </div>
           {priceCredits && (
             <div className="bg-gradient-to-r from-[#F5C518]/10 to-transparent border border-[#F5C518]/30 text-brand-yellow px-3 py-1.5 rounded-xl text-[11px] font-black uppercase tracking-wider shadow-inner">
-              {priceCredits} APIC/call
+              {priceCredits.toLocaleString()} APIC/call
             </div>
           )}
         </div>
