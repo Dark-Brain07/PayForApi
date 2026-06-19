@@ -5,6 +5,8 @@ import { useWallet } from "@/components/wallet/WalletContext";
 import { ethers } from "ethers";
 import { CONTRACTS } from "@/lib/contracts";
 
+const DAILY_UBI_AMOUNT = 50;
+
 export default function GoodDollarIdentity() {
   const { address, isConnected } = useWallet();
   const [isVerified, setIsVerified] = useState(false);
@@ -62,7 +64,7 @@ export default function GoodDollarIdentity() {
         
         setCreditsClaimed(true);
         localStorage.setItem(`g$_claimed_${address}`, "true");
-        alert("Successfully claimed 50 APIC daily UBI credits on-chain!");
+        alert(`Successfully claimed ${DAILY_UBI_AMOUNT} APIC daily UBI credits on-chain!`);
       } else {
         alert("Web3 wallet not detected.");
       }
