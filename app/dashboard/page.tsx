@@ -90,7 +90,6 @@ export default function DashboardPage() {
       setNewApiEndpoint("");
       setNewApiPrice("");
     } catch (error: unknown) {
-      console.error(error);
       let msg = "Registration failed";
       if (error instanceof Error) {
         msg = error.message;
