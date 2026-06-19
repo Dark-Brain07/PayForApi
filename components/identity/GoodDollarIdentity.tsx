@@ -35,11 +35,10 @@ export default function GoodDollarIdentity() {
     setIsVerifying(true);
     
     // Simulate GoodDollar Identity SDK face-verification flow
-    setTimeout(() => {
-      setIsVerified(true);
-      setIsVerifying(false);
-      localStorage.setItem(`g$_verified_${address}`, "true");
-    }, 2000);
+    await Promise.resolve();
+    setIsVerified(true);
+    setIsVerifying(false);
+    localStorage.setItem(`g$_verified_${address}`, "true");
   };
 
   const handleClaim = async (): Promise<void> => {
