@@ -42,7 +42,7 @@ export const Radio: React.FC<RadioProps> = ({
   return (
     <input 
       type="radio"
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       disabled={isDisabled}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
