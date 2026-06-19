@@ -29,9 +29,9 @@ type WindowWithEthereum = Window & typeof globalThis & { ethereum?: EthereumProv
 import { BLOCKS_TO_QUERY, CACHE_KEYS } from "@/lib/constants";
 
 export interface ApiEndpointData {
-  name: string;
-  endpoint: string;
-  revenue: number;
+  readonly name: string;
+  readonly endpoint: string;
+  readonly revenue: number;
 }
 
 /**
