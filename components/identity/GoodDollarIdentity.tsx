@@ -102,7 +102,7 @@ export default function GoodDollarIdentity() {
             <button
               onClick={handleVerify}
               disabled={isVerifying || !isConnected}
-              className="px-6 py-3 bg-[#00E676] hover:bg-[#00C853] text-black font-black rounded-lg transition-all shadow-[0_0_15px_rgba(0,230,118,0.3)] hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 flex justify-center items-center gap-2"
+              className="px-6 py-3 bg-[#00E676] hover:bg-[#00C853] text-black font-black rounded-lg transition-all shadow-[0_0_15px_rgba(0,230,118,0.3)] hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex justify-center items-center gap-2"
             >
               {isVerifying ? (
                 <>
