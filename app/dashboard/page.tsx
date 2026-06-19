@@ -338,7 +338,7 @@ export default function DashboardPage() {
                   value={newApiName}
                   maxLength={50}
                   autoFocus
-                  autoComplete="name"
+                  autoComplete="off"
                   onChange={(e) => setNewApiName(e.target.value)}
                   onBlur={() => setNewApiName(prev => prev.trim())}
                   className={INPUT_CLASSES} 
@@ -409,15 +409,16 @@ export default function DashboardPage() {
             <p className="text-[#94A3B8] text-sm mb-6">Manage your API endpoint configuration.</p>
             
             <div className="space-y-4">
-              <div>
+              <div className="relative">
                 <label htmlFor="settings-api-name" className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
                 <Input 
                   id="settings-api-name"
                   type="text" 
                   value={selectedSettingsApi.name}
                   disabled
-                  className={`${INPUT_CLASSES} opacity-70`} 
+                  className={`${INPUT_CLASSES} opacity-70 pl-10`} 
                 />
+                <span className="absolute left-3 top-[38px] text-[#64748B]" aria-hidden="true">🔒</span>
               </div>
               <div>
                 <label htmlFor="settings-api-endpoint" className="block text-sm font-medium text-[#94A3B8] mb-1">Endpoint URL</label>
