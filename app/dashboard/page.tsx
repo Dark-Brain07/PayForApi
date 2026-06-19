@@ -6,6 +6,7 @@ import { useWallet } from "@/components/wallet/WalletContext";
 import { CONTRACTS } from "@/lib/contracts";
 import Input from "@/components/ui/Input";
 import { EthereumProvider } from "@/hooks/useAuth";
+import GoodDollarIdentity from "@/components/identity/GoodDollarIdentity";
 
 /** Shared styling classes for text inputs in the dashboard. */
 const INPUT_CLASSES = [
@@ -245,6 +246,8 @@ export default function DashboardPage() {
             + Register New API
           </button>
         </div>
+
+        <GoodDollarIdentity />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl transition-transform hover:scale-[1.02]">
