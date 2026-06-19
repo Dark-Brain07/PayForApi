@@ -148,7 +148,8 @@ export default function ImagePage() {
 
     } catch (e: unknown) {
       console.error(e);
-      let errorMessage = (e as any)?.reason || (e as any)?.message || "Payment failed or cancelled.";
+      const errObj = e as Record<string, any>;
+      let errorMessage = errObj?.reason || errObj?.message || "Payment failed or cancelled.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
         errorMessage = "Transaction failed: Insufficient balance.";
       }
