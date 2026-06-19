@@ -34,7 +34,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         if (accountsList && accountsList.length > 0) {
           setAddress(accountsList[0]);
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         if (error?.code === 4001) {
           console.warn("User rejected connection request");
         } else {
