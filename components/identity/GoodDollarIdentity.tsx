@@ -26,7 +26,7 @@ export default function GoodDollarIdentity() {
     }
   }, [address]);
 
-  const handleVerify = async () => {
+  const handleVerify = async (): Promise<void> => {
     if (!isConnected || !address) {
       alert("Please connect your wallet first.");
       return;
@@ -42,14 +42,14 @@ export default function GoodDollarIdentity() {
     }, 2000);
   };
 
-  const handleClaim = async () => {
+  const handleClaim = async (): Promise<void> => {
     if (!isVerified || !isConnected || !address) return;
     
     setIsClaiming(true);
     
     try {
-      if (typeof window !== "undefined" && (window as any).ethereum) {
-        const provider = new ethers.BrowserProvider((window as any).ethereum);
+      if (typeof window !== "undefined" && (window as { ethereum?: any }).ethereum) {
+        const provider = new ethers.BrowserProvider((window as { ethereum?: any }).ethereum);
         const signer = await provider.getSigner();
         const contract = new ethers.Contract(
           CONTRACTS.API_CREDITS.address,
@@ -67,9 +67,9 @@ export default function GoodDollarIdentity() {
       } else {
         alert("Web3 wallet not detected.");
       }
-    } catch (e: any) {
-      console.error(e);
-      let errMsg = e.reason || e.message || "Unknown error";
+    } catch (e: unknown) {
+      const errObj = e as Record<string, any>;
+      let errMsg = errObj.reason || errObj.message || "Unknown error";
       if (errMsg.includes("Wait 24 hours")) {
          errMsg = "You have already claimed your daily APIC UBI. Please wait 24 hours.";
          setCreditsClaimed(true);
@@ -115,7 +115,7 @@ export default function GoodDollarIdentity() {
           ) : (
             <div className="flex flex-col gap-2">
               <div className="px-6 py-2 bg-[#00E676]/10 border border-[#00E676]/30 text-[#00E676] font-bold rounded-lg text-center flex items-center justify-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                <svg aria-hidden="true" className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                 Verified Human
               </div>
               {!creditsClaimed ? (
