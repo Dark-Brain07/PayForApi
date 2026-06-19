@@ -321,7 +321,8 @@ export default function DashboardPage() {
               onClick={() => setModalOpen(false)}
               aria-label="Close modal"
               title="Close modal"
-              className="absolute top-4 right-4 text-[#64748B] hover:text-white"
+              disabled={isRegistering}
+              className="absolute top-4 right-4 text-[#64748B] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
             >
               ✕
             </button>
