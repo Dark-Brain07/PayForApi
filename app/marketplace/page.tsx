@@ -125,7 +125,7 @@ export default function Marketplace() {
         <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4">Core Platform APIs</h2>
         <div className="columns-1 md:columns-2 gap-6 space-y-6">
           {!isMounted ? Array.from({ length: 4 }).map((_, i) => (
-            <div key={`core-skel-${i}`} className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-[24px] h-[320px] animate-pulse"></div>
+            <div key={`core-skel-${i}`} role="status" aria-label="Loading API" className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-[24px] h-[320px] animate-pulse"></div>
           )) : API_PRODUCTS.map((api) => (
             <div key={api.id} className="break-inside-avoid relative">
               {isCalling && lastApiId === api.id && (
