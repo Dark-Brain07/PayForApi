@@ -135,8 +135,8 @@ export default function DashboardPage() {
         let events = [];
         try {
           events = await contract.queryFilter(filter, fromBlock, "latest");
-        } catch (e) {
-          console.error("Failed to query API registrations", e);
+        } catch (err) {
+          // Fallback handled locally
         }
 
         const deletedCacheKey = CACHE_KEYS.DELETED_ENDPOINTS;
