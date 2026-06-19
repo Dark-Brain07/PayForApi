@@ -43,6 +43,7 @@ export default function GoodDollarIdentity() {
     localStorage.setItem(`g$_verified_${address}`, "true");
   };
 
+  /** Executes the on-chain claim transaction for daily UBI */
   const handleClaim = async (): Promise<void> => {
     if (!isVerified || !isConnected || !address || !ethers.isAddress(address)) return;
     
