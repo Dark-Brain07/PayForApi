@@ -464,8 +464,7 @@ export default function DashboardPage() {
                     let deletedIds: string[] = [];
                     try { 
                       deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]"); 
-                    } catch (e) {
-                      console.error("Failed to parse cached deleted endpoints:", e);
+                    } catch (err) {
                       localStorage.removeItem(deletedCacheKey);
                       deletedIds = [];
                     }
@@ -473,8 +472,8 @@ export default function DashboardPage() {
                         deletedIds.push(selectedSettingsApi.endpoint);
                         try {
                           localStorage.setItem(deletedCacheKey, JSON.stringify(deletedIds));
-                        } catch (e) {
-                          console.error("Storage error", e);
+                        } catch (err) {
+                          // Silent storage error
                         }
                     }
                     setApis(apis.filter(a => a.endpoint !== selectedSettingsApi.endpoint));
