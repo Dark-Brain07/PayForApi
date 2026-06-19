@@ -183,7 +183,7 @@ export default function DashboardPage() {
             try {
               revenueFormatted = Number(ethers.formatEther(rawRevenue));
             } catch (err) {
-              console.error("Format error", err);
+              // fallback to 0
             }
             
             const apiObj = {
