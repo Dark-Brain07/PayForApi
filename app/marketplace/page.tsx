@@ -25,6 +25,7 @@ export interface SelectedProduct {
   priceCredits?: number;
 }
 
+/** Generates a consistent numeric ID from a string using a hash function. */
 const generateNumericId = (str: string): number => Math.abs(str.split('').reduce((hash, char) => ((hash << 5) - hash) + char.charCodeAt(0), 0)) + 1000;
 const escapeHTML = (str: string): string => str ? str.replace(/</g, "&lt;").replace(/>/g, "&gt;") : "";
 
