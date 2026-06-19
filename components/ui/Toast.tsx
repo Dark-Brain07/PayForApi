@@ -43,7 +43,7 @@ export const Toast: React.FC<ToastProps> = ({
     <div 
       role="alert"
       aria-live="assertive"
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
