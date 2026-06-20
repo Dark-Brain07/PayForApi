@@ -1,3 +1,5 @@
+import { loggerInstance } from "./logger";
+
 export class ErrorHandler {
   private static instance: ErrorHandler;
   private constructor() {}
@@ -6,7 +8,7 @@ export class ErrorHandler {
     return ErrorHandler.instance;
   }
   public handle(error: Error): { statusCode: number, message: string } {
-    console.error('[ErrorHandled]', error.message);
+    loggerInstance.error('[ErrorHandled]', error.message);
     return { statusCode: 500, message: 'Internal Server Error' };
   }
 }
