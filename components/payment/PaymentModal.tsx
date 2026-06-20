@@ -172,7 +172,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
               {isProcessing ? (
                 <>
                   <span className={`${SPINNER_CLASSES} border-brand-yellow/20 border-t-brand-yellow`}></span>
-                  <span aria-live="polite">Processing Credits...</span>
+                  <span aria-live="polite" role="status">Processing Credits...</span>
                 </>
               ) : (
                 <span>Pay with {priceCredits} APIC</span>
