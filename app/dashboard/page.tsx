@@ -460,7 +460,7 @@ export default function DashboardPage() {
                 </button>
                 <button 
                   type="button"
-                  aria-label="Delete endpoint"
+                  aria-label={`Delete ${selectedSettingsApi.name}`}
                   title="Permanent Action"
                   onClick={() => {
                     if (!address) return;
