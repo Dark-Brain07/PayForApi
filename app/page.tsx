@@ -106,7 +106,7 @@ export default function Home() {
             </div>
             <div className="mx-auto text-[#666] text-sm font-mono tracking-wider flex items-center space-x-2">
               <span>root@celo</span>
-              <span>~</span>
+              <span aria-hidden="true">~</span>
               <span>pay-for-api</span>
             </div>
           </div>
