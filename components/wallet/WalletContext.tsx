@@ -42,7 +42,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         }
       }
     } else {
-      console.error("Please install MetaMask or use MiniPay!");
+      // Silent catch
     }
   };
 
