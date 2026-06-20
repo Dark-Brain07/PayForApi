@@ -144,13 +144,13 @@ export default function DashboardPage() {
         if (typeof window !== "undefined") {
           try {
             let globalIds: string[] = [];
-            try { globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]"); } catch (e) { localStorage.removeItem(deletedCacheKey); }
+            try { globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]") as string[]; } catch (e) { localStorage.removeItem(deletedCacheKey); }
             let localIds: string[] = [];
             for (let i = 0; i < localStorage.length; i++) {
               const key = localStorage.key(i);
               if (key && key.startsWith("deleted_endpoints_0x")) {
                 try {
-                  localIds = [...localIds, ...JSON.parse(localStorage.getItem(key) || "[]")];
+                  localIds = [...localIds, ...(JSON.parse(localStorage.getItem(key) || "[]") as string[])];
                 } catch (err) {
                   localStorage.removeItem(key);
                 }
