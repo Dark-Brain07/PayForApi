@@ -38,7 +38,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         if (error?.code === 4001) {
           // User rejected, silent catch
         } else {
-          console.error("Failed to connect wallet", error);
+          // Silent catch for connect failure
         }
       }
     } else {
