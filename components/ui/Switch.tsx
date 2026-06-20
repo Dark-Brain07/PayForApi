@@ -10,6 +10,8 @@ export interface SwitchProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: 'sm' | 'md' | 'lg';
   /** Whether the switch is disabled */
   isDisabled?: boolean;
+  /** Accessibility label */
+  ariaLabel?: string;
 }
 
 /**
