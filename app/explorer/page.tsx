@@ -17,7 +17,7 @@ const BLOCKS_TO_QUERY = 2000000;
 /**
  * Shortens an EVM address to the format 0x1234...abcd
  */
-const truncateAddress = (addr: string) => {
+const truncateAddress = (addr: string): string => {
   return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 };
 
