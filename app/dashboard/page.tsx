@@ -323,7 +323,7 @@ export default function DashboardPage() {
               disabled={isRegistering}
               className="absolute top-4 right-4 text-[#64748B] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              ✕
+              <span aria-hidden="true">✕</span>
             </button>
             <h2 id="register-modal-title" className="text-2xl font-bold text-white mb-2">Register API</h2>
             <p className="text-[#94A3B8] text-sm mb-6">Enter your Web2 or Web3 API endpoint URL. Our smart contract on Celo Mainnet will automatically wrap it with x402 payments.</p>
