@@ -107,7 +107,6 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
         throw new Error("No web3 wallet detected. Please install a wallet.");
       }
     } catch (error: unknown) {
-      console.error(error);
       const err = error as Record<string, unknown>;
       let errorMessage = (err?.reason as string) || (err?.message as string) || "Credit payment failed. Please try again.";
       if (typeof errorMessage === "string" && errorMessage.includes("transfer amount exceeds balance")) {
