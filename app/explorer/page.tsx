@@ -57,7 +57,7 @@ export default function Explorer() {
           revenueCusdStr = Number(ethers.formatUnits(cusdBal, 18)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
           revenueApicStr = Number(ethers.formatUnits(apicBal, 18)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
         } catch (e) {
-          console.error("Format error", e);
+          // Silent catch
         }
 
         setStats({ 
