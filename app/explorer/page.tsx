@@ -181,7 +181,7 @@ export default function Explorer() {
                     setCopied(true);
                     setTimeout(() => setCopied(false), 2000);
                   } catch (e) {
-                    console.error("Clipboard permission denied");
+                    // Silently fail
                   }
                 }}
               >
