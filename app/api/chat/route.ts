@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ethers } from "ethers";
 import { CELO_MAINNET } from "@/lib/contracts";
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body: { message?: string; walletAddress?: string; txHash?: string; localTime?: string } = await request.json();
     const { message, walletAddress, txHash, localTime } = body;
