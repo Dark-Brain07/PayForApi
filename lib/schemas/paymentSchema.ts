@@ -12,7 +12,7 @@ export const paymentSchema = z.object({
   endpoint: z.string().trim().toLowerCase().min(1).max(1000, "Endpoint URL must not exceed 1000 characters").url("Must be a valid endpoint URL").refine(url => url.startsWith("https://"), "Endpoint must use HTTPS").describe("Target API endpoint URL"),
   chainId: z.number().int().positive("Chain ID must be positive").describe("The EVM chain ID").default(CELO_MAINNET.chainId),
   blockNumber: z.number().int().nonnegative("Block number must be 0 or greater").optional().describe("Block number"),
-  status: z.enum(["pending", "confirmed", "failed"]).optional().default("pending"),
+  status: z.enum(["pending", "confirmed", "failed"]).optional().default("pending").describe("Transaction status"),
   createdAt: z.string().datetime().optional(),
 }).strict();
 
