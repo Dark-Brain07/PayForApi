@@ -13,6 +13,7 @@ export default function TokenSelector({ selectedToken, onSelect }: TokenSelector
         <div 
           key={key}
           role="button"
+          aria-label={`Select ${token.symbol}`}
           tabIndex={0}
           onClick={() => onSelect(key)}
           onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(key); } }}
