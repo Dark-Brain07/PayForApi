@@ -13,7 +13,7 @@ export const paymentSchema = z.object({
   chainId: z.number().int().positive("Chain ID must be positive").describe("The EVM chain ID").default(CELO_MAINNET.chainId),
   blockNumber: z.number().int().nonnegative("Block number must be 0 or greater").optional().describe("Block number"),
   status: z.enum(["pending", "confirmed", "failed"]).optional().default("pending").describe("Transaction status"),
-  createdAt: z.string().datetime().optional(),
+  createdAt: z.string().datetime().optional().describe("Payment creation time"),
 }).strict();
 
 export type PaymentData = z.infer<typeof paymentSchema>;
