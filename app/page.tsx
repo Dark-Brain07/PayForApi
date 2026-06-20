@@ -105,7 +105,7 @@ export default function Home() {
               <div className="w-3 h-3 rounded-full bg-brand-green/80"></div>
             </div>
             <div className="mx-auto text-[#666] text-sm font-mono tracking-wider flex items-center space-x-2">
-              <span>root@celo</span>
+              <span aria-label="Root User">root@celo</span>
               <span aria-hidden="true">~</span>
               <span>pay-for-api</span>
             </div>
