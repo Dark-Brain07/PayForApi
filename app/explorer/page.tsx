@@ -65,7 +65,6 @@ export default function Explorer() {
           revenueApic: revenueApicStr
         });
       } catch (err) {
-        console.error("Failed to fetch network revenue:", err);
         setStats({ revenueCusd: "Error", revenueApic: "Error" });
       } finally {
         setLoading(false);
