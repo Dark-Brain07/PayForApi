@@ -36,7 +36,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         }
       } catch (error: unknown) {
         if (error?.code === 4001) {
-          console.warn("User rejected connection request");
+          // User rejected, silent catch
         } else {
           console.error("Failed to connect wallet", error);
         }
