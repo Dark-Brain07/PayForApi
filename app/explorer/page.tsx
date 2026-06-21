@@ -102,7 +102,7 @@ export default function Explorer() {
         });
         
         const sortedDonors: DonorInfo[] = Object.keys(donations)
-          .map(address => ({ address, amount: donations[address] }))
+          .map((address: string): DonorInfo => ({ address, amount: donations[address] }))
           .sort((a, b) => b.amount - a.amount)
           .slice(0, 10);
           
