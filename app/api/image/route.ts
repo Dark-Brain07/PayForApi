@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
 
     if (!imageResponse.ok) {
       const errData = await imageResponse.text();
-      console.error("Image API Error:", errData);
+      // Silent catch to prevent leaking errors
       throw new Error(`Failed to generate image: ${imageResponse.statusText}`);
     }
 
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error: unknown) {
-    console.error(error);
+    // Silent catch to prevent leaking errors
     return NextResponse.json({ error: "Image generation failed. Please try again." }, { status: 500 });
   }
 }
