@@ -5,6 +5,9 @@ import { EthereumProvider } from "@/hooks/useAuth";
 import { ethers } from "ethers";
 import { CONTRACTS } from "@/lib/contracts";
 
+const SECONDS_IN_DAY = 86400;
+const SECONDS_IN_HOUR = 3600;
+
 export default function Rewards() {
   const { address, isConnected } = useWallet();
   const [balance, setBalance] = useState<string>("0");
@@ -73,14 +76,14 @@ export default function Rewards() {
 
     const interval = setInterval(() => {
       const now = Math.floor(Date.now() / 1000);
-      const targetTime = lastClaimTime + 86400; // 24 hours in seconds
+      const targetTime = lastClaimTime + SECONDS_IN_DAY; // 24 hours in seconds
 
       if (now >= targetTime) {
         setTimeRemaining(null);
       } else {
         const diff = targetTime - now;
-        const h = Math.floor(diff / 3600);
-        const m = Math.floor((diff % 3600) / 60);
+        const h = Math.floor(diff / SECONDS_IN_HOUR);
+        const m = Math.floor((diff % SECONDS_IN_HOUR) / 60);
         const s = diff % 60;
         setTimeRemaining(`${h}h ${m}m ${s}s`);
       }
@@ -88,10 +91,10 @@ export default function Rewards() {
     
     // Initial call to avoid 1s delay
     const now = Math.floor(Date.now() / 1000);
-    const targetTime = lastClaimTime + 86400;
+    const targetTime = lastClaimTime + SECONDS_IN_DAY;
     if (now < targetTime) {
       const diff = targetTime - now;
-      setTimeRemaining(`${Math.floor(diff / 3600)}h ${Math.floor((diff % 3600) / 60)}m ${diff % 60}s`);
+      setTimeRemaining(`${Math.floor(diff / SECONDS_IN_HOUR)}h ${Math.floor((diff % SECONDS_IN_HOUR) / 60)}m ${diff % 60}s`);
     } else {
       setTimeRemaining(null);
     }
