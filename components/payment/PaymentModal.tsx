@@ -123,7 +123,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
       <div role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" className={MODAL_CONTAINER_CLASSES}>
         <div className="p-6 border-b border-brand-border flex justify-between items-center shrink-0">
           <h2 id="payment-modal-title" className="text-xl font-bold text-white">Select Payment Method</h2>
-          <button type="button" aria-label="Close modal" onClick={onClose} className="text-text-secondary hover:text-white transition-colors">
+          <button type="button" aria-label="Close Payment Modal" onClick={onClose} className="text-text-secondary hover:text-white transition-colors">
             <span aria-hidden="true">✕</span>
           </button>
         </div>
@@ -148,6 +148,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
             type="button"
             onClick={handlePay}
             disabled={isProcessing}
+            aria-label="Confirm Payment"
             className="w-full btn-primary py-4 text-lg flex justify-center items-center space-x-2"
           >
             {isProcessing ? (
