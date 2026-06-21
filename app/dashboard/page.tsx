@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { ethers } from "ethers";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { CONTRACTS } from "@/lib/contracts";
@@ -37,7 +37,7 @@ export interface ApiEndpointData {
 /**
  * Main dashboard view for API creators to manage endpoints and track revenue.
  */
-export default function DashboardPage() {
+export default function DashboardPage(): React.JSX.Element {
   const [apis, setApis] = useState<ApiEndpointData[]>([]);
   const [loadingEndpoints, setLoadingEndpoints] = useState(true);
   const [isModalOpen, setModalOpen] = useState(false);
