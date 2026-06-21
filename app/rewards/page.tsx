@@ -243,7 +243,7 @@ export default function Rewards() {
 
             <button 
               onClick={handleClaim} 
-              aria-label="Claim Daily API Credits Faucet"
+              aria-label="Claim Daily API Credits From Faucet"
               disabled={isClaiming || !isConnected || timeRemaining !== null}
               className={`w-full py-4 text-lg font-bold rounded-xl transition-all ${
                 timeRemaining !== null 
@@ -271,7 +271,7 @@ export default function Rewards() {
 
             <button 
               onClick={handleMint} 
-              aria-label="Mint Community NFT"
+              aria-label="Mint a new Community NFT"
               disabled={isMinting || !isConnected}
               className="w-full bg-brand-green/10 border border-brand-green text-brand-green hover:bg-brand-green/20 font-bold px-4 py-4 rounded-lg transition-colors disabled:opacity-50 text-lg"
             >
