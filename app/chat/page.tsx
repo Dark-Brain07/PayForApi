@@ -244,6 +244,7 @@ export default function ChatPage() {
         <div className="w-full flex gap-3 relative">
           <input 
             type="text" 
+            aria-label="Message Input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {
