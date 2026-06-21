@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { MASTER_MERCHANT_WALLET } from "@/lib/contracts";
 
 interface CeloTransactionRequest extends ethers.TransactionRequest {
   feeCurrency?: string;
@@ -12,7 +13,7 @@ export async function processPayment(
   requestId: string,
   isMiniPay: boolean = false,
   decimals: number = 18
-) {
+): Promise<ethers.TransactionReceipt | null> {
   const signer = await provider.getSigner();
   
   // The merchant / receiver address (x402 requirement)
