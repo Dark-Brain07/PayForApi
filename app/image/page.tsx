@@ -271,7 +271,7 @@ export default function ImagePage() {
           <button 
             onClick={handleGenerateClick}
             disabled={!input.trim() || isGenerating}
-            aria-label="Generate Image"
+            aria-label="Generate AI Image"
             className="bg-gradient-to-b from-[#FDE047] to-[#F5C518] hover:brightness-110 text-black font-bold px-5 py-3 sm:px-8 sm:py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(245,197,24,0.3)] flex items-center gap-2 shrink-0"
           >
             <span>Generate</span>
