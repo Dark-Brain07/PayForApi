@@ -33,8 +33,8 @@ export async function POST(request: NextRequest) {
     
     const mockReq = new NextRequest(new URL(`http://localhost/api/crypto?ids=${ids}`));
     return getHandler(mockReq);
-  } catch (error) {
-    console.error(error);
+  } catch (error: unknown) {
+    // Silent catch to prevent leaking errors to standard output
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
