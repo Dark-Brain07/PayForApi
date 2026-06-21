@@ -15,7 +15,7 @@ interface APICardProps {
   /** Brief explanation of what the API does */
   description: string;
   /** Array of placeholder strings for required input parameters */
-  inputs: string[];
+  inputs: readonly string[];
   /** Callback fired when the user clicks 'Call API', passing the filled input values */
   onTryIt: (id: number, name: string, values: string[], priceCredits?: number) => void;
 }
