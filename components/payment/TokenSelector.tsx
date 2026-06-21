@@ -7,10 +7,9 @@ interface TokenSelectorProps {
 }
 
 export default function TokenSelector({ selectedToken, onSelect }: TokenSelectorProps) {
-  const tokens = Object.entries(CELO_STABLECOINS) as [StablecoinKey, typeof CELO_STABLECOINS[StablecoinKey]][];
   return (
     <div role="group" aria-label="Select Payment Token" className="grid grid-cols-2 md:grid-cols-3 gap-3">
-      {tokens.map(([key, token]) => (
+      {(Object.entries(CELO_STABLECOINS) as [StablecoinKey, typeof CELO_STABLECOINS[StablecoinKey]][]).map(([key, token]) => (
         <div 
           key={key}
           role="button"
