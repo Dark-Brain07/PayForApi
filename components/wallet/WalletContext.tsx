@@ -27,15 +27,17 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const connect = async (): Promise<void> => {
     if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
       try {
+        const REQUEST_ACCOUNTS_METHOD = "eth_requestAccounts";
         const accounts = await (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum!.request({
-          method: "eth_requestAccounts",
+          method: REQUEST_ACCOUNTS_METHOD,
         });
         const accountsList = accounts as string[];
         if (accountsList && accountsList.length > 0) {
           setAddress(accountsList[0]);
         }
       } catch (error: unknown) {
-        if (error?.code === 4001) {
+        const USER_REJECTED_CODE = 4001;
+        if (error?.code === USER_REJECTED_CODE) {
           // User rejected, silent catch
         } else {
           // Silent catch for connect failure
