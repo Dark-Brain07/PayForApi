@@ -103,6 +103,7 @@ export default function GoodDollarIdentity() {
           {!isVerified ? (
             <button
               onClick={handleVerify}
+              aria-label="Verify GoodDollar Identity"
               disabled={isVerifying || !isConnected}
               className="px-6 py-3 bg-[#00E676] hover:bg-[#00C853] text-black font-black rounded-lg transition-all shadow-[0_0_15px_rgba(0,230,118,0.3)] hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex justify-center items-center gap-2"
             >
@@ -124,6 +125,7 @@ export default function GoodDollarIdentity() {
               {!creditsClaimed ? (
                 <button
                   onClick={handleClaim}
+                  aria-label="Claim Daily UBI Credits"
                   disabled={isClaiming}
                   className="px-6 py-2 bg-brand-yellow hover:bg-yellow-400 text-black font-black rounded-lg transition-all shadow-[0_0_15px_rgba(245,197,24,0.3)] hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 text-sm flex justify-center items-center gap-2"
                 >
