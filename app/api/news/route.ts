@@ -5,7 +5,7 @@ import { CELO_MAINNET } from "@/lib/contracts";
 
 export const dynamic = 'force-dynamic';
 
-const getHandler = async (req: NextRequest) => {
+const getHandler = async (req: NextRequest): Promise<NextResponse> => {
   const { searchParams } = new URL(req.url);
   const categoryRaw = searchParams.get('category') || 'technology';
   const category = categoryRaw.trim().toLowerCase();
@@ -40,7 +40,7 @@ export const GET = withX402(
   }
 );
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body: { walletAddress?: string; txHash?: string; category?: string } = await request.json();
     const { walletAddress, txHash, category = "technology" } = body;
