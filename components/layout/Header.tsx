@@ -131,7 +131,7 @@ export default function Header() {
                 {!isMiniPay && (
                   <button 
                     type="button"
-                    aria-label="Disconnect Wallet"
+                    aria-label="Disconnect Web3 Wallet"
                     onClick={disconnect}
                     className="bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 px-2 py-2 sm:px-3 rounded-lg transition-colors text-xs sm:text-sm font-bold"
                   >
@@ -143,7 +143,7 @@ export default function Header() {
             ) : (
               <button 
                 type="button"
-                aria-label="Connect Wallet"
+                aria-label="Connect Web3 Wallet"
                 onClick={connect}
                 className="btn-primary px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base"
               >
@@ -154,7 +154,7 @@ export default function Header() {
             {/* Mobile Menu Hamburger */}
             <button 
               type="button"
-              aria-label="Mobile Menu"
+              aria-label="Toggle Mobile Navigation Menu"
               aria-controls="mobile-menu-panel"
               aria-expanded={isMobileMenuOpen}
               className="md:hidden text-[#94A3B8] hover:text-white transition-colors ml-2"
