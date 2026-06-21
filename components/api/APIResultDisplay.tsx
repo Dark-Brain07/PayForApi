@@ -14,6 +14,13 @@ export type ApiData = {
   translation?: string;
 } & Record<string, unknown>;
 
+export interface Article {
+  source?: { name: string };
+  url?: string;
+  title: string;
+  description?: string;
+}
+
 export default function APIResultDisplay({ apiId, data }: { apiId: number, data: ApiData | null }) {
   if (!data) return null;
   
@@ -90,11 +97,17 @@ export default function APIResultDisplay({ apiId, data }: { apiId: number, data:
     const articles = data.articles?.slice(0, 3) || [];
     return (
       <div className="space-y-4">
-        {articles.length === 0 ? <p className="text-white">No articles found. Debug: {JSON.stringify(data)}</p> : null}
-        {articles.map((art: { source?: { name: string }, url?: string, title: string, description?: string }, i: number) => (
+        {articles.length === 0 ? (
+          <div className="p-8 text-center bg-[#0B0E14] rounded-xl border border-[#1E293B] shadow-lg flex flex-col items-center justify-center">
+            <div className="text-4xl mb-3 opacity-50">📰</div>
+            <p className="text-white font-bold mb-1">No Articles Found</p>
+            <p className="text-[#94A3B8] text-sm">We couldn't find any news articles for this query.</p>
+          </div>
+        ) : null}
+        {articles.map((art: Article, i: number) => (
           <div key={i} className="p-5 bg-[#0B0E14] rounded-xl border border-[#1E293B] hover:border-[#F5C518]/50 transition-all flex flex-col group shadow-lg">
             <div className="text-[10px] text-[#F5C518] font-black mb-2 uppercase tracking-widest">{art.source?.name || 'News Source'}</div>
-            <a href={art.url || '#'} target="_blank" rel="noopener noreferrer" className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">{art.title}</a>
+            <a href={art.url || '#'} target="_blank" rel="noopener noreferrer" title={art.title} className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">{art.title}</a>
             {art.description && <p className="text-gray-400 text-sm mt-3 line-clamp-2 leading-relaxed">{art.description}</p>}
           </div>
         ))}
@@ -107,7 +120,7 @@ export default function APIResultDisplay({ apiId, data }: { apiId: number, data:
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {data && typeof data === 'object' && !Array.isArray(data) ? (
-          Object.entries(data).map(([coin, info]: [string, unknown]) => (
+          Object.entries(data).map(([coin, info]: [string, Record<string, number> | unknown]) => (
             <div key={coin} className="p-6 bg-gradient-to-b from-[#0F172A] to-[#020617] rounded-xl border border-[#00E676]/30 flex flex-col items-center justify-center transform hover:-translate-y-1 transition-transform shadow-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-16 h-16 bg-[#00E676] opacity-10 rounded-full -mr-8 -mt-8 blur-xl"></div>
               <div className="text-gray-400 uppercase tracking-widest text-[10px] font-black mb-3 z-10">{coin}</div>
