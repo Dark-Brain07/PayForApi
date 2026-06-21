@@ -38,5 +38,13 @@ export const CELO_MAINNET = {
   blockscout: "https://celo.blockscout.com",
 } as const;
 
+/** 
+ * Master merchant wallet where the 10% platform protocol fee is routed. 
+ * This address is hardcoded to receive all base payments.
+ */
 export const MASTER_MERCHANT_WALLET = "0xfd4960F33670f3477ebe817B184dd59fC4961437";
+
+/** 
+ * Public treasury wallet used for accepting ecosystem donations.
+ */
 export const ECOSYSTEM_DONATION_WALLET = "0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476";
