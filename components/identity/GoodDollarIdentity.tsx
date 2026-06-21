@@ -50,8 +50,8 @@ export default function GoodDollarIdentity() {
     setIsClaiming(true);
     
     try {
-      if (typeof window !== "undefined" && (window as { ethereum?: any }).ethereum) {
-        const provider = new ethers.BrowserProvider((window as { ethereum?: any }).ethereum);
+      if (typeof window !== "undefined" && (window as { ethereum?: import("@/hooks/useAuth").EthereumProvider }).ethereum) {
+        const provider = new ethers.BrowserProvider((window as { ethereum?: import("@/hooks/useAuth").EthereumProvider }).ethereum as any);
         const signer = await provider.getSigner();
         const contract = new ethers.Contract(
           CONTRACTS.API_CREDITS.address,
