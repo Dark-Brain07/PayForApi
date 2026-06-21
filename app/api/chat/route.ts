@@ -54,7 +54,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     });
 
   } catch (error: unknown) {
-    console.error(error);
+    // Silent catch to prevent leaking errors to standard output
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
