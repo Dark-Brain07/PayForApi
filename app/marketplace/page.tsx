@@ -148,7 +148,6 @@ export default function Marketplace() {
 
         <div className="mt-16">
           <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4 flex items-center gap-3">
-            <span className="bg-[#1E293B] text-brand-yellow px-3 py-1 rounded-full text-xs uppercase tracking-widest font-black">New</span>
             Community Creator APIs
           </h2>
           {isLoadingCommunity ? (
