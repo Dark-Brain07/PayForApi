@@ -23,19 +23,21 @@ export type ApiData = {
 export default function APIResultDisplay({ apiId, data }: { apiId: number, data: ApiData | null }) {
   if (!data) return null;
   
-  if (data.error || (data.cod && String(data.cod) !== "200")) {
+  const SUCCESS_CODE = "200";
+  if (data.error || (data.cod && String(data.cod) !== SUCCESS_CODE)) {
     const errorMsg = data.error || data.message || `API Error (Code: ${data.cod})`;
     return <div role="alert" aria-live="assertive" className="text-red-500 font-bold p-4 bg-red-500/10 rounded-xl border border-red-500/20">{errorMsg}</div>;
   }
 
   // Weather
   if (apiId === 0) {
-    const tempCelsius = data.main?.temp !== undefined ? (Number(data.main.temp) - 273.15).toFixed(1) : '--';
+    const KELVIN_OFFSET = 273.15;
+    const tempCelsius = data.main?.temp !== undefined ? (Number(data.main.temp) - KELVIN_OFFSET).toFixed(1) : '--';
     const desc = data.weather?.[0]?.description || 'Unknown';
     const main = data.weather?.[0]?.main || 'Clear';
     
     // Animate based on weather main
-    const getIcon = () => {
+    const getIcon = (): string => {
       if (main.includes('Cloud')) return '☁️';
       if (main.includes('Rain') || main.includes('Drizzle')) return '🌧️';
       if (main.includes('Thunderstorm')) return '⛈️';
@@ -45,7 +47,7 @@ export default function APIResultDisplay({ apiId, data }: { apiId: number, data:
       return '🌡️';
     };
 
-    const getGradient = () => {
+    const getGradient = (): string => {
       if (main.includes('Clear')) return 'from-cyan-400 via-blue-500 to-blue-600';
       if (main.includes('Cloud')) return 'from-blue-400 via-indigo-500 to-gray-600';
       if (main.includes('Haze') || main.includes('Mist') || main.includes('Fog')) return 'from-fuchsia-500 via-purple-500 to-indigo-600';
