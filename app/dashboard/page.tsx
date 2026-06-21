@@ -144,7 +144,7 @@ export default function DashboardPage() {
         if (typeof window !== "undefined") {
           try {
             let globalIds: string[] = [];
-            try { globalIds = (JSON.parse(localStorage.getItem(deletedCacheKey) || "[]") as string[]); } catch (e) { localStorage.removeItem(deletedCacheKey); }
+            try { globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]") as string[]; } catch (e) { localStorage.removeItem(deletedCacheKey); }
             let localIds: string[] = [];
             for (let i = 0; i < localStorage.length; i++) {
               const key = localStorage.key(i);
@@ -280,7 +280,7 @@ export default function DashboardPage() {
                     {api.name.length > 20 ? `${api.name.slice(0, 17)}...` : api.name}
                     <span aria-label="Active Status" title="Active Endpoint" className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400 border border-green-500/20">ACTIVE</span>
                   </h3>
-                  <code role="button" aria-label="Copy endpoint URL to clipboard" title={api.endpoint} className="text-sm text-[#64748B] mt-1 flex items-center gap-2 group/copy cursor-pointer w-fit" onClick={() => { navigator.clipboard.writeText(api.endpoint); alert("Copied to clipboard!"); }}>
+                  <code role="button" aria-label="Copy endpoint URL to clipboard" title={api.endpoint} className="text-sm text-[#64748B] mt-1 flex items-center gap-2 group/copy cursor-pointer w-fit" onClick={() => navigator.clipboard.writeText(api.endpoint)}>
                     {api.endpoint.length > 20 ? `${api.endpoint.slice(0, 8)}...${api.endpoint.slice(-8)}` : api.endpoint}
                     <svg aria-hidden="true" className="w-3.5 h-3.5 opacity-0 group-hover/copy:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                   </code>
@@ -292,7 +292,7 @@ export default function DashboardPage() {
                   </div>
                   <button 
                     onClick={() => setSelectedSettingsApi(api)}
-                    aria-label={`Settings for ${api.name}`}
+                    aria-label={`Open settings for ${api.name}`}
                     title={`Configure ${api.name}`}
                     className="text-sm text-[#94A3B8] hover:text-white transition-colors underline decoration-[#1E293B] hover:decoration-white underline-offset-4"
                   >
@@ -320,7 +320,7 @@ export default function DashboardPage() {
           <div id="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" className="bg-[#0F172A] border border-[#1E293B] rounded-2xl w-full max-w-md p-6 relative">
             <button 
               onClick={() => setModalOpen(false)}
-              aria-label="Close modal"
+              aria-label="Close registration modal"
               title="Close modal"
               disabled={isRegistering}
               className="absolute top-4 right-4 text-[#64748B] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
@@ -392,6 +392,7 @@ export default function DashboardPage() {
               <button 
                 type="button"
                 onClick={handleRegister}
+                aria-label="Register and Get x402 Wrapper"
                 disabled={isRegistering || !newApiName || !newApiEndpoint || !newApiPrice}
                 aria-busy={isRegistering}
                 className="w-full py-3 bg-brand-yellow text-black font-bold rounded-lg hover:bg-yellow-400 transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -410,7 +411,7 @@ export default function DashboardPage() {
             <button 
               type="button"
               onClick={() => setSelectedSettingsApi(null)}
-              aria-label="Close settings"
+              aria-label="Close settings window"
               title="Close settings"
               className="absolute top-4 right-4 text-[#64748B] hover:text-white"
             >
@@ -454,14 +455,14 @@ export default function DashboardPage() {
                 <button 
                   type="button"
                   onClick={() => setSelectedSettingsApi(null)}
-                  aria-label="Close settings modal"
+                  aria-label="Close the settings modal dialog"
                   className="w-full py-3 bg-[#1E293B] hover:bg-[#334155] text-white font-bold rounded-lg transition-all"
                 >
                   Close
                 </button>
                 <button 
                   type="button"
-                  aria-label={`Delete ${selectedSettingsApi.name}`}
+                  aria-label={`Permanently delete ${selectedSettingsApi.name}`}
                   title="Permanent Action"
                   onClick={() => {
                     if (!address) return;
