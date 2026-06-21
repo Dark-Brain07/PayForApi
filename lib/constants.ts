@@ -6,7 +6,7 @@ export const TERMINAL_BOOT_LOGS = [
   "> Loading currencies: [cUSD, cEUR, cKES, cBRL, cGHS, cCOP, PUSO] ... OK",
   "> Checking API Integrations... OK",
   "> SUCCESS: All systems operational."
-];
+] as const;
 
 export const BLOCKS_TO_QUERY = 2000000;
 
