@@ -7,7 +7,7 @@ export class ExcelExporter {
   }
   public export<T extends Record<string, unknown>>(data: T[]): Buffer {
     // Dummy export
-    const csv = data.map((row: T) => Object.values(row).join(',')).join('\n');
+    const csv = data.map((row: T): string => Object.values(row).join(',')).join('\n');
     return Buffer.from(csv, 'utf-8');
   }
 }
