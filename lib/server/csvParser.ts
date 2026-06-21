@@ -6,12 +6,12 @@ export class CsvParser {
     return CsvParser.instance;
   }
   public parse(csv: string): Record<string, string>[] {
-    const lines = csv.split('\n').map(l => l.trim()).filter(l => l);
+    const lines: string[] = csv.split('\n').map(l => l.trim()).filter(l => l);
     if (lines.length < 2) return [];
-    const headers = lines[0].split(',');
-    return lines.slice(1).map(line => {
-      const values = line.split(',');
-      return headers.reduce((obj, header, index) => {
+    const headers: string[] = lines[0].split(',');
+    return lines.slice(1).map((line: string) => {
+      const values: string[] = line.split(',');
+      return headers.reduce((obj: Record<string, string>, header: string, index: number) => {
         obj[header] = values[index] || '';
         return obj;
       }, {} as Record<string, string>);
