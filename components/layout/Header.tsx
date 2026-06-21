@@ -127,7 +127,7 @@ export default function Header() {
                 </div>
 
                 <div title={address || undefined} className="btn-secondary flex items-center space-x-1.5 sm:space-x-2 cursor-default px-2 sm:px-4 text-xs sm:text-base">
-                  <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse shadow-[0_0_10px_#00E676]"></span>
+                  <span aria-hidden="true" className="w-2 h-2 rounded-full bg-brand-green animate-pulse shadow-[0_0_10px_#00E676]"></span>
                   <span className="font-medium">{address ? truncateAddress(address) : "Connected"}</span>
                 </div>
                 {!isMiniPay && (
