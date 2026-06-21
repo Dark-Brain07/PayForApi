@@ -8,6 +8,9 @@ import { CONTRACTS } from "@/lib/contracts";
 const SECONDS_IN_DAY = 86400;
 const SECONDS_IN_HOUR = 3600;
 
+const STATS_POLL_INTERVAL = 10000;
+const TIMER_UPDATE_INTERVAL = 1000;
+
 export default function Rewards() {
   const { address, isConnected } = useWallet();
   const [balance, setBalance] = useState<string>("0");
@@ -62,8 +65,8 @@ export default function Rewards() {
   useEffect(() => {
     if (isConnected) {
       fetchStats();
-      // Poll every 10 seconds
-      const interval = setInterval(fetchStats, 10000);
+      // Poll periodically
+      const interval = setInterval(fetchStats, STATS_POLL_INTERVAL);
       return () => clearInterval(interval);
     }
   }, [isConnected, address]);
@@ -87,7 +90,7 @@ export default function Rewards() {
         const s = diff % 60;
         setTimeRemaining(`${h}h ${m}m ${s}s`);
       }
-    }, 1000);
+    }, TIMER_UPDATE_INTERVAL);
     
     // Initial call to avoid 1s delay
     const now = Math.floor(Date.now() / 1000);
