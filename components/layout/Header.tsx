@@ -8,9 +8,11 @@ import { CELO_STABLECOINS } from "@/lib/stablecoins";
 import { EthereumProvider } from "@/hooks/useAuth";
 
 /** Truncates an EVM address to a 6...4 character format */
-const truncateAddress = (addr: string) => {
+const truncateAddress = (addr: string): string => {
   return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 };
+
+const BALANCE_POLL_INTERVAL = 10000;
 
 export default function Header() {
   const { address, isConnected, connect, disconnect, isMiniPay } = useWallet();
@@ -53,7 +55,7 @@ export default function Header() {
     };
 
     fetchBalances();
-    const interval = setInterval(fetchBalances, 10000);
+    const interval = setInterval(fetchBalances, BALANCE_POLL_INTERVAL);
     return () => clearInterval(interval);
   }, [isConnected, address]);
 
