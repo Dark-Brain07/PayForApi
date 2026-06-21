@@ -29,8 +29,10 @@ export const CONTRACTS = {
   }
 } as const;
 
+export const CELO_MAINNET_ID = 42220;
+
 export const CELO_MAINNET = {
-  chainId: 42220,
+  chainId: CELO_MAINNET_ID,
   rpcUrl: "https://forno.celo.org",
   name: "Celo Mainnet",
   blockscout: "https://celo.blockscout.com",
