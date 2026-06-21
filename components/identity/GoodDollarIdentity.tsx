@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { ethers } from "ethers";
 import { CONTRACTS } from "@/lib/contracts";
+import { type EthereumProvider } from "@/hooks/useAuth";
 
 const DAILY_UBI_AMOUNT = 50;
 
@@ -50,8 +51,8 @@ export default function GoodDollarIdentity() {
     setIsClaiming(true);
     
     try {
-      if (typeof window !== "undefined" && (window as { ethereum?: import("@/hooks/useAuth").EthereumProvider }).ethereum) {
-        const provider = new ethers.BrowserProvider((window as { ethereum?: import("@/hooks/useAuth").EthereumProvider }).ethereum as any);
+      if (typeof window !== "undefined" && (window as { ethereum?: EthereumProvider }).ethereum) {
+        const provider = new ethers.BrowserProvider((window as { ethereum?: EthereumProvider }).ethereum as any);
         const signer = await provider.getSigner();
         const contract = new ethers.Contract(
           CONTRACTS.API_CREDITS.address,
