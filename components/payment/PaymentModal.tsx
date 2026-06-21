@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import TokenSelector from "./TokenSelector";
 import { StablecoinKey, CELO_STABLECOINS, DEFAULT_TOKEN } from "@/lib/stablecoins";
 import { useWallet } from "@/components/wallet/WalletContext";
@@ -22,7 +22,7 @@ interface PaymentModalProps {
   onSuccess: (txHash: string, token: string) => void;
 }
 
-export default function PaymentModal({ isOpen, onClose, productId, productName, priceCredits, onSuccess }: PaymentModalProps) {
+export default function PaymentModal({ isOpen, onClose, productId, productName, priceCredits, onSuccess }: PaymentModalProps): React.JSX.Element | null {
   const { isMiniPay, address } = useWallet();
   const [selectedToken, setSelectedToken] = useState<StablecoinKey>(DEFAULT_TOKEN);
   const [isProcessing, setIsProcessing] = useState(false);
