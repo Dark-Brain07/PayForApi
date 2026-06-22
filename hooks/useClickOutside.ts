@@ -4,6 +4,8 @@ import { useEffect, RefObject } from "react";
 /**
  * Fires handler when a click or touch happens outside the given element.
  * Useful for closing dropdowns, modals, tooltips.
+ * @param ref - Reference to the target DOM element
+ * @param handler - Callback fired on outside click
  */
 export function useClickOutside<T extends HTMLElement>(
   ref: RefObject<T>,
