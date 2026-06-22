@@ -8,5 +8,5 @@
   "chain": "celo",
   "chainId": 42220,
   "miniPayHook": "hooks/useMiniPay.ts",
-  "miniPayHookUrl": "https://github.com/Dark-Brain07/pay-for-api/blob/main/hooks/useMiniPay.ts"
+  "miniPayHookUrl": "https://github.com/Dark-Brain07/PayForApi/blob/main/hooks/useMiniPay.ts"
 }
