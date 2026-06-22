@@ -15,9 +15,9 @@ interface UseModalReturn {
 export function useModal(initial = false, closeOnEsc = true): UseModalReturn {
   const [isOpen, setIsOpen] = useState(initial);
 
-  const open   = useCallback(() => setIsOpen(true), []);
-  const close  = useCallback(() => setIsOpen(false), []);
-  const toggle = useCallback(() => setIsOpen((v) => !v), []);
+  const open   = useCallback((): void => setIsOpen(true), []);
+  const close  = useCallback((): void => setIsOpen(false), []);
+  const toggle = useCallback((): void => setIsOpen((v) => !v), []);
 
   useEffect(() => {
     if (!closeOnEsc) return;
