@@ -4,7 +4,7 @@ import { z } from "zod";
 export const agentSchema = z.object({
   id: z.string().uuid().optional(),
   walletAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
-  name: z.string().max(64),
+  name: z.string().min(1).max(64),
   description: z.string().max(256).optional(),
   endpoints: z.array(z.string().url()).default([]),
   erc8004TokenId: z.string().optional(),
