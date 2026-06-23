@@ -32,9 +32,10 @@
 | AI Translate | /api/translate | 0.003 cUSD |
 | Image Gen | /api/image | 0.01 cUSD |
 
-## 📱 MiniPay Integration
+## 📱 Multi-Wallet & MiniPay Integration
 
-- Auto-detects `window.ethereum.isMiniPay`
+- **Universal Web3 Access**: Full support for WalletConnect, MetaMask, Rabby, and Coinbase Wallet via RainbowKit/Wagmi.
+- **Seamless MiniPay Support**: Auto-detects `window.ethereum.isMiniPay` for Opera Mini browser users.
 - Auto-connects wallet — no popups
 - Uses cUSD as feeCurrency for all transactions
 - Discovery manifest: `/.well-known/minipay.json`
@@ -319,6 +320,8 @@ Before running the project locally, you must configure a series of environment v
 - WEATHER_API_KEY: Sourced from OpenWeatherMap for real-time meteorological data.
 
 - NEWS_API_KEY: Used to fetch global news headlines for the News API endpoint.
+
+- NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: Required for RainbowKit multi-wallet support (get from cloud.walletconnect.com).
 
 ### 3. Smart Contract Deployment Guide
 
