@@ -12,12 +12,15 @@ export async function POST(request: NextRequest) {
     }
 
     // Verify payment on Celo Mainnet
+    console.log(`[API/Image] Verifying txHash: ${txHash}`);
     const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
     const tx = await provider.getTransaction(txHash);
     
     if (!tx) {
-      return NextResponse.json({ error: "Transaction not found" }, { status: 402 });
+      console.error(`[API/Image] Transaction NOT FOUND on Celo Mainnet: ${txHash}`);
+      return NextResponse.json({ error: "Transaction not found on Celo Mainnet" }, { status: 402 });
     }
+    console.log(`[API/Image] Transaction found:`, tx.hash);
 
     // Generate image using Pollinations AI authenticated endpoint
     const imageResponse = await fetch("https://gen.pollinations.ai/v1/images/generations", {
@@ -37,8 +40,7 @@ export async function POST(request: NextRequest) {
 
     if (!imageResponse.ok) {
       const errData = await imageResponse.text();
-      // Silent catch to prevent leaking errors
-      throw new Error(`Failed to generate image: ${imageResponse.statusText}`);
+      throw new Error(`Failed to generate image: ${imageResponse.statusText} - ${errData}`);
     }
 
     const data = await imageResponse.json();
@@ -58,7 +60,8 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error: unknown) {
-    // Silent catch to prevent leaking errors
-    return NextResponse.json({ error: "Image generation failed. Please try again." }, { status: 500 });
+    console.error("Image Gen API Error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+    return NextResponse.json({ error: `Image generation failed: ${errorMessage}` }, { status: 500 });
   }
 }

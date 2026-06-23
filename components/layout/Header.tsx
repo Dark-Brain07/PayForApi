@@ -6,6 +6,7 @@ import { ethers } from "ethers";
 import { CONTRACTS } from "@/lib/contracts";
 import { CELO_STABLECOINS } from "@/lib/stablecoins";
 import { EthereumProvider } from "@/hooks/useAuth";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 /** Truncates an EVM address to a 6...4 character format */
 const truncateAddress = (addr: string): string => {
@@ -143,14 +144,63 @@ export default function Header() {
                 )}
               </div>
             ) : (
-              <button 
-                type="button"
-                aria-label="Connect Web3 Wallet"
-                onClick={connect}
-                className="btn-primary px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base"
-              >
-                Connect Wallet
-              </button>
+              !isMiniPay && (
+                <ConnectButton.Custom>
+                  {({
+                    account,
+                    chain,
+                    openAccountModal,
+                    openChainModal,
+                    openConnectModal,
+                    mounted,
+                  }) => {
+                    const ready = mounted;
+                    const connected = ready && account && chain;
+
+                    return (
+                      <div
+                        {...(!ready && {
+                          'aria-hidden': true,
+                          'style': {
+                            opacity: 0,
+                            pointerEvents: 'none',
+                            userSelect: 'none',
+                          },
+                        })}
+                      >
+                        {(() => {
+                          if (!connected) {
+                            return (
+                              <button
+                                onClick={openConnectModal}
+                                type="button"
+                                className="btn-primary px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base"
+                              >
+                                Connect Wallet
+                              </button>
+                            );
+                          }
+
+                          if (chain.unsupported) {
+                            return (
+                              <button onClick={openChainModal} type="button" className="bg-red-500 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-xl font-bold">
+                                Wrong network
+                              </button>
+                            );
+                          }
+
+                          return (
+                            <button onClick={openAccountModal} type="button" className="btn-secondary flex items-center space-x-1.5 sm:space-x-2 cursor-pointer px-2 sm:px-4 text-xs sm:text-base">
+                              <span aria-hidden="true" className="w-2 h-2 rounded-full bg-brand-green animate-pulse shadow-[0_0_10px_#00E676]"></span>
+                              <span className="font-medium">{account.displayName}</span>
+                            </button>
+                          );
+                        })()}
+                      </div>
+                    );
+                  }}
+                </ConnectButton.Custom>
+              )
             )}
 
             {/* Mobile Menu Hamburger */}

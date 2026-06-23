@@ -7,7 +7,7 @@ const CodeBlock = ({ code, language = "json" }: { code: string, language?: strin
       <span className="text-xs font-mono text-[#94A3B8]">{language.toUpperCase()}</span>
       <button aria-label={`Copy ${language} code block`} title="Copy Code" className="text-xs text-[#94A3B8] hover:text-white transition-colors">Copy</button>
     </div>
-    <pre className="p-4 overflow-x-auto text-sm font-mono text-[#E2E8F0] whitespace-pre-wrap">
+    <pre className="p-4 overflow-x-auto text-xs sm:text-sm font-mono text-[#E2E8F0] whitespace-pre">
       <code>{code}</code>
     </pre>
   </div>
@@ -25,7 +25,7 @@ export default function Docs() {
       <div className="border-b border-[#1E293B] bg-[#0A0D12] pt-20 pb-16 px-4 md:px-16 relative overflow-hidden shrink-0">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-200">Documentation</span></h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-200">Documentation</span></h1>
           <p className="text-[#94A3B8] text-lg md:text-xl max-w-3xl leading-relaxed font-medium">
             Integrate the world's first fully decentralized, subscriptionless API gateway. 
             Pay For API utilizes the x402 protocol and Celo micropayments to enable frictionless machine-to-machine and human-to-machine data access.
@@ -214,12 +214,12 @@ Content-Type: application/json
                   Smart Contract Registry
                 </h4>
                 <p className="text-base text-[#94A3B8] mb-6 relative z-10 leading-relaxed">Our immutable core registry contract stores all available API endpoints, their dynamic cUSD/APIC prices, and their required schemas completely on-chain, creating a trustless source of truth for all agents.</p>
-                <div className="bg-[#050505] border border-[#1E293B] rounded-xl p-4 flex items-center justify-between relative z-10">
-                  <div>
+                <div className="bg-[#050505] border border-[#1E293B] rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between relative z-10 gap-3">
+                  <div className="w-full sm:w-auto overflow-hidden">
                     <div className="text-[10px] font-black text-[#64748B] uppercase tracking-widest mb-1">Mainnet Agent Wallet</div>
-                    <code className="text-sm font-mono text-white">0x5a8d4Bf8989c65e3964E8e6cD82FC585EbC1fF7a</code>
+                    <code className="text-xs sm:text-sm font-mono text-white break-all">0x5a8d4Bf8989c65e3964E8e6cD82FC585EbC1fF7a</code>
                   </div>
-                  <a href="https://celoscan.io/address/0x5a8d4Bf8989c65e3964E8e6cD82FC585EbC1fF7a" target="_blank" rel="noopener noreferrer" aria-label="Open Celo Explorer in new tab" className="text-[#00E676] text-sm font-bold hover:underline">View on Explorer ↗</a>
+                  <a href="https://celoscan.io/address/0x5a8d4Bf8989c65e3964E8e6cD82FC585EbC1fF7a" target="_blank" rel="noopener noreferrer" aria-label="Open Celo Explorer in new tab" className="text-[#00E676] text-sm font-bold hover:underline shrink-0">View on Explorer ↗</a>
                 </div>
               </div>
             </div>

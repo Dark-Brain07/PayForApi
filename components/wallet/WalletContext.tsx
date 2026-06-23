@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { useMiniPay } from "@/hooks/useMiniPay";
 import { EthereumProvider } from "@/hooks/useAuth";
+import { useAccount, useDisconnect } from "wagmi";
 
 interface WalletContextType {
   address: string | null;
@@ -17,12 +18,18 @@ const WalletContext = createContext<WalletContextType | undefined>(undefined);
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const { isMiniPay, address: miniPayAddress } = useMiniPay();
   const [address, setAddress] = useState<string | null>(null);
+  const { address: wagmiAddress } = useAccount();
+  const { disconnect: wagmiDisconnect } = useDisconnect();
 
   useEffect(() => {
     if (miniPayAddress) {
       setAddress(miniPayAddress);
+    } else if (wagmiAddress) {
+      setAddress(wagmiAddress);
+    } else {
+      setAddress(null);
     }
-  }, [miniPayAddress]);
+  }, [miniPayAddress, wagmiAddress]);
 
   const connect = async (): Promise<void> => {
     if (typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
@@ -50,6 +57,9 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
 
   const disconnect = () => {
     setAddress(null);
+    try {
+      wagmiDisconnect();
+    } catch (e) {}
   };
 
   return (

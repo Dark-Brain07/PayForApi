@@ -195,12 +195,24 @@ export default function ImagePage() {
       <div className="flex flex-col w-full max-w-6xl h-[85vh] min-h-[600px] max-h-[1000px] bg-[#0A0D12] border border-[#1E293B] rounded-3xl shadow-2xl overflow-hidden z-10">
         
       {/* Header Area */}
-      <div className="border-b border-brand-border bg-[#0F141C] p-5 shrink-0 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-white flex items-center gap-2">
-          <span className="text-2xl">🎨</span>
+      <div className="border-b border-brand-border bg-[#0F141C] p-3 sm:p-5 shrink-0 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <h1 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2 self-start sm:self-auto">
+          <span className="text-xl sm:text-2xl">🎨</span>
           Image Generator
         </h1>
-        <div className="text-sm text-text-secondary bg-brand-elevated px-3 py-1 rounded-full border border-brand-border">
+        <div className="flex xl:hidden items-center w-full sm:w-auto mt-1 sm:mt-0">
+          <select 
+            value={paymentToken} 
+            onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
+            disabled={isGenerating}
+            className="w-full sm:w-auto bg-brand-elevated text-xs sm:text-sm text-text-secondary border border-brand-border rounded-lg sm:rounded-full px-3 py-2 sm:py-1 focus:outline-none focus:border-brand-yellow cursor-pointer"
+          >
+            <option value="cUSD">Cost: $0.01 cUSD</option>
+            <option value="cEUR">Cost: €0.01 cEUR</option>
+            <option value="APIC">Cost: 50 APIC Credits</option>
+          </select>
+        </div>
+        <div className="hidden xl:block text-sm text-text-secondary bg-brand-elevated px-3 py-1 rounded-full border border-brand-border">
           Cost: {paymentToken === "APIC" ? "50 APIC" : "$0.01"} / image
         </div>
       </div>

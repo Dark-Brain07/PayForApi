@@ -10,13 +10,19 @@
   },
   "dependencies": {
     "@coinbase/x402": "^2.1.0",
-    "@x402/core": "^2.14.0",
+    "@rainbow-me/rainbowkit": "^2.2.11",
+    "@tanstack/react-query": "^5.101.0",
+    "@x402/core": "^2.16.0",
     "@x402/evm": "^2.14.0",
+    "@x402/next": "^2.16.0",
     "dotenv": "^17.4.2",
     "ethers": "^6.16.0",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "viem": "^2.53.1",
+    "wagmi": "^2.19.5",
+    "x402-fetch": "^1.2.0",
     "x402-next": "^1.2.0"
   },
   "devDependencies": {

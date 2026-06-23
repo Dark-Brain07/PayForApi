@@ -4,6 +4,7 @@ import "./globals.css";
 import { WalletProvider } from "@/components/wallet/WalletContext";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { Providers } from "./providers";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -33,11 +34,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
       </head>
       <body className="bg-brand-black text-white font-mono antialiased">
-        <WalletProvider>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </WalletProvider>
+        <Providers>
+          <WalletProvider>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </WalletProvider>
+        </Providers>
       </body>
     </html>
   );
