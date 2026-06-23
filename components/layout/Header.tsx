@@ -67,9 +67,6 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" aria-label="Pay For API Home" className="flex items-center space-x-3">
               <img src="/logo.png" alt="Pay For API Logo" aria-label="Pay For API Main Logo" width={80} height={80} loading="lazy" className="w-20 h-20 object-contain drop-shadow-xl" />
-              <span className="font-bold text-xl text-white">
-                Pay For <span className="text-brand-yellow">API</span>
-              </span>
             </Link>
           </div>
           

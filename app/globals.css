@@ -5,16 +5,16 @@
   
   --color-brand-yellow: #F5C518;
   --color-brand-green: #00E676;
-  --color-brand-black: #0A0A0A;
-  --color-brand-card: #111111;
+  --color-brand-black: #000000;
+  --color-brand-card: #0A0A0A;
   --color-brand-input: #1A1A1A;
   --color-brand-elevated: #1E1E1E;
   --color-brand-border: #2A2A2A;
 }
 
 :root {
-  --bg-primary: #0A0A0A;
-  --bg-secondary: #111111;
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
   --bg-tertiary: #1A1A1A;
   --bg-elevated: #1E1E1E;
   --accent-yellow: #F5C518;

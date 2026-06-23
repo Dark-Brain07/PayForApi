@@ -36,9 +36,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-brand-black text-white font-mono antialiased">
         <Providers>
           <WalletProvider>
-            <Header />
-            <main className="min-h-screen">{children}</main>
-            <Footer />
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow relative">{children}</main>
+              <Footer />
+            </div>
           </WalletProvider>
         </Providers>
       </body>
