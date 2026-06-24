@@ -57,36 +57,36 @@ export default function APIResultDisplay({ apiId, data }: { apiId: number, data:
     };
 
     return (
-      <div className={`flex flex-col items-center justify-center p-8 bg-gradient-to-br ${getGradient()} rounded-2xl border border-white/20 relative overflow-hidden shadow-2xl`}>
+      <div className={`flex flex-col items-center justify-center p-6 sm:p-8 bg-gradient-to-br ${getGradient()} rounded-2xl border border-white/20 relative overflow-hidden shadow-2xl`}>
         {/* Dark subtle overlay to guarantee text readability */}
-        <div className="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>
         <div className="absolute top-0 left-0 w-full h-full opacity-50 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/40 via-transparent to-transparent animate-pulse"></div>
         
-        <h2 className="text-3xl font-black text-white mb-2 z-10 tracking-tight drop-shadow-lg">{data.name}, {data.sys?.country}</h2>
+        <h2 className="text-2xl sm:text-3xl font-black text-white mb-1 z-10 tracking-tight drop-shadow-lg">{data.name}, {data.sys?.country}</h2>
         
-        <div className="relative z-10 my-6 flex items-center justify-center">
+        <div className="relative z-10 my-4 flex items-center justify-center">
            {/* Colorful glowing aura behind the icon */}
-           <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-pink-400 to-cyan-400 blur-3xl opacity-70 animate-pulse rounded-full w-32 h-32 scale-150"></div>
-           <div className="text-8xl animate-[bounce_3s_infinite] drop-shadow-[0_0_30px_rgba(255,255,255,1)] relative z-10">
+           <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-pink-400 to-cyan-400 blur-3xl opacity-70 animate-pulse rounded-full w-24 h-24 scale-125"></div>
+           <div className="text-7xl animate-[bounce_3s_infinite] drop-shadow-[0_0_30px_rgba(255,255,255,1)] relative z-10">
              {getIcon()}
            </div>
         </div>
         
-        <div className="text-6xl font-black text-white z-10 tracking-tighter drop-shadow-xl">{tempCelsius}°C</div>
-        <p className="text-white capitalize text-2xl mt-2 z-10 font-bold drop-shadow-md tracking-wide">{desc}</p>
+        <div className="text-5xl sm:text-6xl font-black text-white z-10 tracking-tighter drop-shadow-xl">{tempCelsius}°C</div>
+        <p className="text-white capitalize text-xl sm:text-2xl mt-1 z-10 font-bold drop-shadow-md tracking-wide">{desc}</p>
         
-        <div className="grid grid-cols-3 gap-4 mt-10 w-full max-w-md z-10">
-          <div className="bg-black/50 p-4 rounded-xl text-center border border-white/20 backdrop-blur-md shadow-inner">
-            <div className="text-gray-300 text-[10px] font-bold uppercase tracking-widest mb-1">Humidity</div>
-            <div className="text-white font-bold text-lg drop-shadow-sm">{data.main?.humidity}%</div>
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 mt-6 sm:mt-8 w-full max-w-md z-10">
+          <div className="bg-white/20 p-3 sm:p-4 rounded-xl text-center border border-white/30 backdrop-blur-md shadow-lg">
+            <div className="text-white/90 text-[9px] sm:text-[10px] font-black uppercase tracking-widest mb-1">Humidity</div>
+            <div className="text-white font-bold text-base sm:text-lg drop-shadow-md">{data.main?.humidity}%</div>
           </div>
-          <div className="bg-black/50 p-4 rounded-xl text-center border border-white/20 backdrop-blur-md shadow-inner">
-            <div className="text-gray-300 text-[10px] font-bold uppercase tracking-widest mb-1">Wind</div>
-            <div className="text-white font-bold text-lg drop-shadow-sm">{data.wind?.speed} m/s</div>
+          <div className="bg-white/20 p-3 sm:p-4 rounded-xl text-center border border-white/30 backdrop-blur-md shadow-lg">
+            <div className="text-white/90 text-[9px] sm:text-[10px] font-black uppercase tracking-widest mb-1">Wind</div>
+            <div className="text-white font-bold text-base sm:text-lg drop-shadow-md">{data.wind?.speed} m/s</div>
           </div>
-          <div className="bg-black/50 p-4 rounded-xl text-center border border-white/20 backdrop-blur-md shadow-inner">
-            <div className="text-gray-300 text-[10px] font-bold uppercase tracking-widest mb-1">Pressure</div>
-            <div className="text-white font-bold text-lg drop-shadow-sm">{data.main?.pressure} hPa</div>
+          <div className="bg-white/20 p-3 sm:p-4 rounded-xl text-center border border-white/30 backdrop-blur-md shadow-lg">
+            <div className="text-white/90 text-[9px] sm:text-[10px] font-black uppercase tracking-widest mb-1">Pressure</div>
+            <div className="text-white font-bold text-base sm:text-lg drop-shadow-md">{data.main?.pressure} hPa</div>
           </div>
         </div>
       </div>
