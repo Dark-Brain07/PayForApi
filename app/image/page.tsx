@@ -91,7 +91,7 @@ function ImageWithLoader({ src, alt }: { src: string; alt: string }) {
           onClick={handleDownload}
           disabled={isDownloading}
           title="Download Image"
-          className="absolute bottom-3 right-3 bg-black/60 hover:bg-black/90 backdrop-blur-md border border-white/20 text-white p-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] z-10"
+          className="absolute bottom-3 right-3 bg-black/60 hover:bg-black/90 backdrop-blur-md border border-white/20 text-white p-2.5 rounded-xl opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] z-10"
         >
           {isDownloading ? (
              <svg className="w-5 h-5 animate-spin text-brand-yellow" fill="none" viewBox="0 0 24 24">
