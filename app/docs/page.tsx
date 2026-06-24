@@ -56,28 +56,32 @@ export default function Docs() {
         </div>
 
         {/* Mobile Navigation Dropdown */}
-        <div className="md:hidden mb-8">
+        <div className="md:hidden mb-8 relative group z-20">
+          <div className="absolute inset-0 bg-brand-yellow/5 rounded-xl blur-md group-hover:bg-brand-yellow/20 transition-all duration-300 pointer-events-none"></div>
           <select 
             aria-label="Documentation Navigation"
             value={activeTab}
             onChange={(e) => setActiveTab(e.target.value)}
-            className="w-full bg-[#0F141C] border border-[#1E293B] text-white text-sm font-bold rounded-xl px-4 py-3 focus:outline-none focus:border-brand-yellow appearance-none"
+            className="relative w-full bg-[#0F141C]/80 backdrop-blur-xl border border-[#1E293B] hover:border-brand-yellow/50 text-white text-sm font-black tracking-wide rounded-xl pl-5 pr-12 py-4 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer shadow-2xl transition-all duration-300"
           >
-            <optgroup label="Core Concepts">
-              <option value="intro">Introduction</option>
-              <option value="architecture">System Architecture</option>
-              <option value="x402">x402 Authentication</option>
-              <option value="erc8004">ERC-8004 Standard</option>
+            <optgroup label="Core Concepts" className="bg-[#050505] text-[#94A3B8]">
+              <option value="intro" className="text-white font-bold py-2">Introduction</option>
+              <option value="architecture" className="text-white font-bold py-2">System Architecture</option>
+              <option value="x402" className="text-white font-bold py-2">x402 Authentication</option>
+              <option value="erc8004" className="text-white font-bold py-2">ERC-8004 Standard</option>
             </optgroup>
-            <optgroup label="REST Endpoints">
-              <option value="api-chat">Agentic Chat API</option>
-              <option value="api-weather">Weather Info API</option>
-              <option value="api-news">Global News API</option>
-              <option value="api-crypto">Crypto Pulse API</option>
-              <option value="api-summary">AI Summary API</option>
-              <option value="api-translate">AI Translate API</option>
+            <optgroup label="REST Endpoints" className="bg-[#050505] text-[#94A3B8]">
+              <option value="api-chat" className="text-white font-bold py-2">Agentic Chat API</option>
+              <option value="api-weather" className="text-white font-bold py-2">Weather Info API</option>
+              <option value="api-news" className="text-white font-bold py-2">Global News API</option>
+              <option value="api-crypto" className="text-white font-bold py-2">Crypto Pulse API</option>
+              <option value="api-summary" className="text-white font-bold py-2">AI Summary API</option>
+              <option value="api-translate" className="text-white font-bold py-2">AI Translate API</option>
             </optgroup>
           </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-brand-yellow">
+            <svg className="fill-current h-5 w-5 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
         </div>
 
         {/* Content Area */}

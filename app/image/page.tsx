@@ -50,9 +50,32 @@ function LoadingMasterpiece() {
 
 function ImageWithLoader({ src, alt }: { src: string; alt: string }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownload = async () => {
+    try {
+      setIsDownloading(true);
+      const response = await fetch(src);
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = `payforapi-image-${Date.now()}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Failed to download image", error);
+      // Fallback to opening in new tab
+      window.open(src, "_blank");
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   return (
-    <>
+    <div className="relative group inline-block">
       {/* Loading State - Shows until the image fully downloads */}
       {!isLoaded && <LoadingMasterpiece />}
       
@@ -60,9 +83,29 @@ function ImageWithLoader({ src, alt }: { src: string; alt: string }) {
         src={src} 
         alt={alt} 
         onLoad={() => setIsLoaded(true)}
-        className={`max-w-full max-h-[400px] object-contain rounded-xl hover:scale-[1.02] transition-transform cursor-pointer shadow-2xl ring-1 ring-white/10 ${isLoaded ? 'block' : 'hidden'}`}
+        className={`max-w-full max-h-[400px] object-contain rounded-xl shadow-2xl ring-1 ring-white/10 transition-transform ${isLoaded ? 'block' : 'hidden'}`}
       />
-    </>
+      
+      {isLoaded && (
+        <button
+          onClick={handleDownload}
+          disabled={isDownloading}
+          title="Download Image"
+          className="absolute bottom-3 right-3 bg-black/60 hover:bg-black/90 backdrop-blur-md border border-white/20 text-white p-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] z-10"
+        >
+          {isDownloading ? (
+             <svg className="w-5 h-5 animate-spin text-brand-yellow" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+             </svg>
+          ) : (
+             <svg className="w-5 h-5 group-hover:text-brand-yellow transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+             </svg>
+          )}
+        </button>
+      )}
+    </div>
   );
 }
 
@@ -164,7 +207,7 @@ export default function ImagePage() {
   };
 
   return (
-    <main className="fixed inset-0 top-[76px] bottom-0 flex flex-col items-center justify-center p-4 overflow-hidden z-30">
+    <main className="fixed inset-0 top-[104px] bottom-0 flex flex-col items-center justify-start sm:justify-center p-2 sm:p-4 overflow-hidden z-30">
       <title>AI Image Gen | PayForAPI</title>
       <meta name="description" content="Test your Celo Web3 micropayments via an interactive AI Image Generator." />
       
@@ -176,23 +219,28 @@ export default function ImagePage() {
         {/* Payment Selector Widget */}
         <div className="flex flex-col p-5 bg-[#0A0D12] border border-[#1E293B] rounded-2xl shadow-2xl">
           <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Payment Token</div>
-          <select 
-            aria-label="Payment Token"
-            value={paymentToken} 
-            disabled={isGenerating}
-            onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
-            className="w-full bg-[#0F141C] border border-[#1E293B] text-white text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:border-brand-yellow appearance-none cursor-pointer text-center font-bold"
-            style={{ backgroundImage: "url('data:image/svg+xml;charset=US-ASCII,<svg width=\"12\" height=\"8\" viewBox=\"0 0 12 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1 1.5L6 6.5L11 1.5\" stroke=\"%2394A3B8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>')", backgroundRepeat: "no-repeat", backgroundPosition: "right 1rem center", backgroundSize: "12px" }}
-          >
-            <option value="cUSD">cUSD ($0.01)</option>
-            <option value="cEUR">cEUR (€0.01)</option>
-            <option value="APIC">APIC (50 Credits)</option>
-          </select>
+          <div className="relative group w-full">
+            <div className="absolute inset-0 bg-brand-yellow/5 rounded-xl blur-sm group-hover:bg-brand-yellow/20 transition-all duration-300 pointer-events-none"></div>
+            <select 
+              aria-label="Payment Token"
+              value={paymentToken} 
+              disabled={isGenerating}
+              onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
+              className="relative w-full bg-[#0F141C]/90 backdrop-blur-md border border-[#1E293B] hover:border-brand-yellow/50 text-white text-sm font-bold rounded-xl pl-4 pr-10 py-3 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer transition-all disabled:opacity-50"
+            >
+              <option value="cUSD" className="bg-[#050505] text-white">cUSD ($0.01)</option>
+              <option value="cEUR" className="bg-[#050505] text-white">cEUR (€0.01)</option>
+              <option value="APIC" className="bg-[#050505] text-white">APIC (50 Credits)</option>
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
+              <svg className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Main Container */}
-      <div className="flex flex-col w-full max-w-6xl h-[85vh] min-h-[600px] max-h-[1000px] bg-[#0A0D12] border border-[#1E293B] rounded-3xl shadow-2xl overflow-hidden z-10">
+      <div className="flex flex-col w-full max-w-6xl h-full sm:h-[85vh] sm:min-h-[600px] sm:max-h-[1000px] bg-[#0A0D12] border border-[#1E293B] rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden z-10">
         
       {/* Header Area */}
       <div className="border-b border-brand-border bg-[#0F141C] p-3 sm:p-5 shrink-0 flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -200,17 +248,21 @@ export default function ImagePage() {
           <span className="text-xl sm:text-2xl">🎨</span>
           Image Generator
         </h1>
-        <div className="flex xl:hidden items-center w-full sm:w-auto mt-1 sm:mt-0">
+        <div className="flex xl:hidden items-center w-full sm:w-auto mt-1 sm:mt-0 relative group z-20">
+          <div className="absolute inset-0 bg-brand-yellow/5 rounded-xl blur-md group-hover:bg-brand-yellow/20 transition-all duration-300 pointer-events-none"></div>
           <select 
             value={paymentToken} 
             onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
             disabled={isGenerating}
-            className="w-full sm:w-auto bg-brand-elevated text-xs sm:text-sm text-text-secondary border border-brand-border rounded-lg sm:rounded-full px-3 py-2 sm:py-1 focus:outline-none focus:border-brand-yellow cursor-pointer"
+            className="relative w-full sm:w-auto bg-[#0F141C]/80 backdrop-blur-xl border border-[#1E293B] hover:border-brand-yellow/50 text-white text-sm font-black tracking-wide rounded-xl pl-4 pr-10 py-3 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer shadow-xl transition-all duration-300 disabled:opacity-50"
           >
-            <option value="cUSD">Cost: $0.01 cUSD</option>
-            <option value="cEUR">Cost: €0.01 cEUR</option>
-            <option value="APIC">Cost: 50 APIC Credits</option>
+            <option value="cUSD" className="bg-[#050505] text-white py-2">Cost: $0.01 cUSD</option>
+            <option value="cEUR" className="bg-[#050505] text-white py-2">Cost: €0.01 cEUR</option>
+            <option value="APIC" className="bg-[#050505] text-white py-2">Cost: 50 APIC Credits</option>
           </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
+            <svg className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
         </div>
         <div className="hidden xl:block text-sm text-text-secondary bg-brand-elevated px-3 py-1 rounded-full border border-brand-border">
           Cost: {paymentToken === "APIC" ? "50 APIC" : "$0.01"} / image
