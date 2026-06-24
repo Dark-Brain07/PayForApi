@@ -323,32 +323,34 @@ Before running the project locally, you must configure a series of environment v
 
 - NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: Required for RainbowKit multi-wallet support (get from cloud.walletconnect.com).
 
-### 3. Smart Contract Deployment Guide
+### 3. Deployed Smart Contracts
+
+Our smart contracts are deployed and verified on the Celo Mainnet:
+
+- **APICredits (APIC)**: [`0x486776B119aAf9eEe3c215D0e42d9Aa426A76b80`](https://celoscan.io/address/0x486776B119aAf9eEe3c215D0e42d9Aa426A76b80)
+  Implements the ERC20 standard with additional minting logic for daily rewards and streaks.
+  
+- **APIRevenueSplitter**: [`0x5ac6de9FAe3f424C7f07C65283B8953108aa5C78`](https://celoscan.io/address/0x5ac6de9FAe3f424C7f07C65283B8953108aa5C78)
+  Handles the 90/10 split between API creators and the platform treasury.
+
+- **CommunityNFT**: [`0x0D2238a8E6a2c5951E6cBeb8e03278f5d0C8FFB6`](https://celoscan.io/address/0x0D2238a8E6a2c5951E6cBeb8e03278f5d0C8FFB6)
+  A community membership NFT rewarding consistent API consumers.
+
+### 4. Smart Contract Deployment Guide
 
 To deploy the contracts to the Celo network, ensure your wallet is funded with CELO for gas.
 
-#### 3.1 APICredits.sol
-
-This contract implements the ERC20 standard with additional minting logic for daily rewards and streaks.
-
-#### 3.2 APIRevenueSplitter.sol
-
-Handles the 90/10 split between API creators and the platform treasury.
-
 Run the deployment script using Hardhat:
-` ash
+```bash
 npx hardhat run scripts/deploy.ts --network celo
-`
-
-#### 3.3 Contract Verification
+```
 
 Verify your deployed contracts on CeloScan using the @nomicfoundation/hardhat-verify plugin.
-
-` ash
+```bash
 npx hardhat verify --network celo <DEPLOYED_CONTRACT_ADDRESS>
-`
+```
 
-### 4. API Endpoint Reference
+### 5. API Endpoint Reference
 
 Detailed specifications for each premium endpoint offered on the marketplace.
 
