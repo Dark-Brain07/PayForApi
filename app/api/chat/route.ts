@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { ethers } from "ethers";
 import { CELO_MAINNET } from "@/lib/contracts";
 
+export const maxDuration = 60;
+
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body: { message?: string; walletAddress?: string; txHash?: string; localTime?: string } = await request.json();
@@ -54,7 +56,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     });
 
   } catch (error: unknown) {
-    // Silent catch to prevent leaking errors to standard output
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    console.error("Chat API Error:", error);
+    return NextResponse.json({ error: "Internal server error", details: String(error) }, { status: 500 });
   }
 }
