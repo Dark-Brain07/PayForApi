@@ -6,7 +6,7 @@ export const usageSchema = z.object({
   endpoint: z.string().url(),
   callCount: z.number().int().min(0).default(0),
   totalSpent: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string").default("0"),
-  token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"]).default("cUSD"),
+  token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]).default("USDm"),
   month: z.string().regex(/^\d{4}-\d{2}$/, "Format: YYYY-MM"),
   createdAt: z.string().datetime().optional(),
   updatedAt: z.string().datetime().optional(),

@@ -75,7 +75,7 @@
       "trait_type": "APIs Supported"
     },
     {
-      "value": "cUSD, cEUR, cKES, cBRL, cGHS, cCOP, PUSO",
+      "value": "USDm, EURm, KESm, BRLm, GHSm, COPm, PUSO",
       "trait_type": "Settlement Tokens"
     }
   ],
@@ -105,7 +105,7 @@
     "reputation"
   ],
   "operational_metrics": {
-    "fee_currency": "cUSD / cEUR / cKES",
+    "fee_currency": "USDm / EURm / KESm",
     "fee_destination": "Platform Treasury",
     "settlement_currency": "Celo Stablecoins",
     "platform_fee_percent": 5

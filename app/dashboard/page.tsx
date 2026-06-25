@@ -253,7 +253,7 @@ export default function DashboardPage(): React.JSX.Element {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl transition-transform hover:scale-[1.02]">
             <h3 className="text-[#94A3B8] font-medium mb-1">Total Revenue</h3>
-            <p className="text-3xl font-black text-white flex items-center gap-2" aria-live="polite">{loadingEndpoints ? <div className="h-9 w-32 bg-[#1E293B] rounded animate-pulse"></div> : `$${totalRevenue.toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4})}`} <span className="text-sm font-normal text-[#64748B]">cUSD</span></p>
+            <p className="text-3xl font-black text-white flex items-center gap-2" aria-live="polite">{loadingEndpoints ? <div className="h-9 w-32 bg-[#1E293B] rounded animate-pulse"></div> : `$${totalRevenue.toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4})}`} <span className="text-sm font-normal text-[#64748B]">USDm</span></p>
           </div>
           <div className="p-6 bg-[#0F172A] border border-[#1E293B] rounded-2xl">
             <h3 className="text-[#94A3B8] font-medium mb-1">Active Endpoints</h3>
@@ -288,7 +288,7 @@ export default function DashboardPage(): React.JSX.Element {
                 <div className="mt-4 md:mt-0 flex items-center gap-8">
                   <div className="text-right">
                     <p className="text-[#94A3B8] text-sm font-medium">Revenue</p>
-                    <p className="text-brand-yellow font-bold">${api.revenue.toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4})} cUSD</p>
+                    <p className="text-brand-yellow font-bold">${api.revenue.toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4})} USDm</p>
                   </div>
                   <button 
                     onClick={() => setSelectedSettingsApi(api)}
@@ -368,7 +368,7 @@ export default function DashboardPage(): React.JSX.Element {
                 />
               </div>
               <div>
-                <label htmlFor="new-api-price" className="block text-sm font-medium text-[#94A3B8] mb-1">Price per Call (cUSD)</label>
+                <label htmlFor="new-api-price" className="block text-sm font-medium text-[#94A3B8] mb-1">Price per Call (USDm)</label>
                 <Input 
                   id="new-api-price"
                   type="number" 
@@ -445,7 +445,7 @@ export default function DashboardPage(): React.JSX.Element {
               <div>
                 <label className="block text-sm font-medium text-[#94A3B8] mb-1">Withdrawal Available</label>
                 <div className="w-full bg-[#020617] border border-[#1E293B] rounded-lg px-4 py-2.5 text-brand-yellow font-bold">
-                  ${selectedSettingsApi.revenue.toFixed(4)} cUSD
+                  ${selectedSettingsApi.revenue.toFixed(4)} USDm
                 </div>
               </div>
               <p className="text-xs text-brand-yellow mt-2 border border-brand-yellow/30 bg-brand-yellow/10 p-2 rounded">

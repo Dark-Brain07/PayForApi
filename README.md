@@ -13,31 +13,31 @@
 
 | Token | Currency | Price Per Call |
 |---|---|---|
-| cUSD 🇺🇸 | US Dollar | $0.001 |
-| cEUR 🇪🇺 | Euro | €0.001 |
-| cKES 🇰🇪 | Kenyan Shilling | KES 0.13 |
-| cBRL 🇧🇷 | Brazilian Real | R$0.005 |
-| cGHS 🇬🇭 | Ghana Cedi | GHS 0.01 |
-| cCOP 🇨🇴 | Colombian Peso | COP 4.00 |
+| USDm 🇺🇸 | US Dollar | $0.001 |
+| EURm 🇪🇺 | Euro | €0.001 |
+| KESm 🇰🇪 | Kenyan Shilling | KES 0.13 |
+| BRLm 🇧🇷 | Brazilian Real | R$0.005 |
+| GHSm 🇬🇭 | Ghana Cedi | GHS 0.01 |
+| COPm 🇨🇴 | Colombian Peso | COP 4.00 |
 | PUSO 🇵🇭 | Philippine Peso | ₱0.056 |
 
 ## 🤖 Available APIs
 
 | API | Endpoint | Price |
 |---|---|---|
-| Weather Info | /api/weather | 0.001 cUSD |
-| Global News | /api/news | 0.002 cUSD |
-| Crypto Pulse | /api/crypto | 0.001 cUSD |
-| AI Summary | /api/summary | 0.005 cUSD |
-| AI Translate | /api/translate | 0.003 cUSD |
-| Image Gen | /api/image | 0.01 cUSD |
+| Weather Info | /api/weather | 0.001 USDm |
+| Global News | /api/news | 0.002 USDm |
+| Crypto Pulse | /api/crypto | 0.001 USDm |
+| AI Summary | /api/summary | 0.005 USDm |
+| AI Translate | /api/translate | 0.003 USDm |
+| Image Gen | /api/image | 0.01 USDm |
 
 ## 📱 Multi-Wallet & MiniPay Integration
 
 - **Universal Web3 Access**: Full support for WalletConnect, MetaMask, Rabby, and Coinbase Wallet via RainbowKit/Wagmi.
 - **Seamless MiniPay Support**: Auto-detects `window.ethereum.isMiniPay` for Opera Mini browser users.
 - Auto-connects wallet — no popups
-- Uses cUSD as feeCurrency for all transactions
+- Uses USDm as feeCurrency for all transactions
 - Discovery manifest: `/.well-known/minipay.json`
 - Hook: `hooks/useMiniPay.ts`
 
@@ -90,7 +90,7 @@ Pay For API is not just a consumer platform; it is a two-sided marketplace.
 Developers can register their own Web2 or Web3 endpoints via our Creator Dashboard.
 
 ### How it Works:
-1. **Register**: Submit your endpoint URL and desired cUSD price per call.
+1. **Register**: Submit your endpoint URL and desired USDm price per call.
 2. **Wrap**: Our platform provides a reverse-proxy x402 wrapper.
 3. **Earn**: Every successful call routes payment directly to your Celo wallet.
 
@@ -170,27 +170,27 @@ Detailed specifications for each premium endpoint offered on the marketplace.
 
 #### 4.1 POST /api/chat
 
-Accepts a user message and returns an AI-generated response. Requires a 	xHash proving a 0.005 cUSD payment.
+Accepts a user message and returns an AI-generated response. Requires a 	xHash proving a 0.005 USDm payment.
 
 #### 4.2 GET /api/weather
 
-Requires a lat and lon query parameter. Returns current weather data. Price: 0.001 cUSD.
+Requires a lat and lon query parameter. Returns current weather data. Price: 0.001 USDm.
 
 #### 4.3 GET /api/news
 
-Returns the top 10 global news headlines. Price: 0.002 cUSD.
+Returns the top 10 global news headlines. Price: 0.002 USDm.
 
 #### 4.4 GET /api/crypto
 
-Fetches live prices for major cryptocurrencies including BTC, ETH, and CELO. Price: 0.001 cUSD.
+Fetches live prices for major cryptocurrencies including BTC, ETH, and CELO. Price: 0.001 USDm.
 
 #### 4.5 POST /api/summary
 
-Accepts a long text payload and returns a concise AI-generated summary. Price: 0.005 cUSD.
+Accepts a long text payload and returns a concise AI-generated summary. Price: 0.005 USDm.
 
 #### 4.6 POST /api/translate
 
-Accepts text and a target language code. Returns translated text. Price: 0.003 cUSD.
+Accepts text and a target language code. Returns translated text. Price: 0.003 USDm.
 
 ### 5. x402 Protocol Deep Dive
 
@@ -222,7 +222,7 @@ Our platform uses window.ethereum.isMiniPay to seamlessly detect the wallet and 
 
 #### 6.2 Gas Abstraction (FeeCurrency)
 
-All transactions are formatted to use cUSD as the eeCurrency, ensuring users don't need native CELO to pay for gas.
+All transactions are formatted to use USDm as the eeCurrency, ensuring users don't need native CELO to pay for gas.
 
 #### 6.3 Transaction Formatting
 
@@ -254,7 +254,7 @@ The Creator Dashboard empowers developers to monetize their own endpoints on our
 
 #### 8.1 Endpoint Registration
 
-Creators provide their endpoint URL, metadata, and set a custom cUSD price.
+Creators provide their endpoint URL, metadata, and set a custom USDm price.
 
 #### 8.2 Gateway Routing
 
@@ -356,27 +356,27 @@ Detailed specifications for each premium endpoint offered on the marketplace.
 
 #### 4.1 POST /api/chat
 
-Accepts a user message and returns an AI-generated response. Requires a 	xHash proving a 0.005 cUSD payment.
+Accepts a user message and returns an AI-generated response. Requires a 	xHash proving a 0.005 USDm payment.
 
 #### 4.2 GET /api/weather
 
-Requires a lat and lon query parameter. Returns current weather data. Price: 0.001 cUSD.
+Requires a lat and lon query parameter. Returns current weather data. Price: 0.001 USDm.
 
 #### 4.3 GET /api/news
 
-Returns the top 10 global news headlines. Price: 0.002 cUSD.
+Returns the top 10 global news headlines. Price: 0.002 USDm.
 
 #### 4.4 GET /api/crypto
 
-Fetches live prices for major cryptocurrencies including BTC, ETH, and CELO. Price: 0.001 cUSD.
+Fetches live prices for major cryptocurrencies including BTC, ETH, and CELO. Price: 0.001 USDm.
 
 #### 4.5 POST /api/summary
 
-Accepts a long text payload and returns a concise AI-generated summary. Price: 0.005 cUSD.
+Accepts a long text payload and returns a concise AI-generated summary. Price: 0.005 USDm.
 
 #### 4.6 POST /api/translate
 
-Accepts text and a target language code. Returns translated text. Price: 0.003 cUSD.
+Accepts text and a target language code. Returns translated text. Price: 0.003 USDm.
 
 ### 5. x402 Protocol Deep Dive
 
@@ -408,7 +408,7 @@ Our platform uses window.ethereum.isMiniPay to seamlessly detect the wallet and 
 
 #### 6.2 Gas Abstraction (FeeCurrency)
 
-All transactions are formatted to use cUSD as the eeCurrency, ensuring users don't need native CELO to pay for gas.
+All transactions are formatted to use USDm as the eeCurrency, ensuring users don't need native CELO to pay for gas.
 
 #### 6.3 Transaction Formatting
 
@@ -440,7 +440,7 @@ The Creator Dashboard empowers developers to monetize their own endpoints on our
 
 #### 8.1 Endpoint Registration
 
-Creators provide their endpoint URL, metadata, and set a custom cUSD price.
+Creators provide their endpoint URL, metadata, and set a custom USDm price.
 
 #### 8.2 Gateway Routing
 

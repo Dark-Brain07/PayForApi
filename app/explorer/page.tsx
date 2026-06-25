@@ -25,7 +25,7 @@ const truncateAddress = (addr: string): string => {
  * Network explorer view showing total ecosystem revenue and top donors.
  */
 export default function Explorer() {
-  const [stats, setStats] = useState({ revenueCusd: "0.00", revenueApic: "0.00" });
+  const [stats, setStats] = useState({ revenueUsdm: "0.00", revenueApic: "0.00" });
   const [topDonors, setTopDonors] = useState<DonorInfo[]>([]);
   const [loading, setLoading] = useState(true);
   const [leaderboardLoading, setLeaderboardLoading] = useState(true);
@@ -39,33 +39,33 @@ export default function Explorer() {
         const receiverAddress = MASTER_MERCHANT_WALLET;
 
         const erc20Abi = ERC20_BALANCE_ABI;
-        const cusdContract = new ethers.Contract(CELO_STABLECOINS.cUSD.address, erc20Abi, provider);
+        const usdmContract = new ethers.Contract(CELO_STABLECOINS.USDm.address, erc20Abi, provider);
         const apicContract = new ethers.Contract(CONTRACTS.API_CREDITS.address, erc20Abi, provider);
 
-        let cusdBal: bigint = 0n;
+        let usdmBal: bigint = 0n;
         let apicBal: bigint = 0n;
         try {
-          cusdBal = await cusdContract.balanceOf(receiverAddress).catch(() => 0n);
+          usdmBal = await usdmContract.balanceOf(receiverAddress).catch(() => 0n);
           apicBal = await apicContract.balanceOf(receiverAddress).catch(() => 0n);
         } catch (e) {
           // Silent fallback
         }
 
-        let revenueCusdStr = "0.00";
+        let revenueUsdmStr = "0.00";
         let revenueApicStr = "0.00";
         try {
-          revenueCusdStr = Number(ethers.formatUnits(cusdBal, 18)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+          revenueUsdmStr = Number(ethers.formatUnits(usdmBal, 18)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
           revenueApicStr = Number(ethers.formatUnits(apicBal, 18)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
         } catch (e) {
           // Silent catch
         }
 
         setStats({ 
-          revenueCusd: revenueCusdStr,
+          revenueUsdm: revenueUsdmStr,
           revenueApic: revenueApicStr
         });
       } catch (err) {
-        setStats({ revenueCusd: "Error", revenueApic: "Error" });
+        setStats({ revenueUsdm: "Error", revenueApic: "Error" });
       } finally {
         setLoading(false);
       }
@@ -77,14 +77,14 @@ export default function Explorer() {
         const donationWallet = ECOSYSTEM_DONATION_WALLET;
         
         const erc20Abi = ["event Transfer(address indexed from, address indexed to, uint256 value)"];
-        const cusdContract = new ethers.Contract(CELO_STABLECOINS.cUSD.address, erc20Abi, provider);
+        const usdmContract = new ethers.Contract(CELO_STABLECOINS.USDm.address, erc20Abi, provider);
         
         // Query last ~2 million blocks (about 1 month of Celo blocks)
         const currentBlock = await provider.getBlockNumber().catch(() => 0);
         const fromBlock = Math.max(0, currentBlock - BLOCKS_TO_QUERY);
         
-        const filter = cusdContract.filters.Transfer(null, donationWallet);
-        const events = (await cusdContract.queryFilter(filter, fromBlock, "latest")) || [];
+        const filter = usdmContract.filters.Transfer(null, donationWallet);
+        const events = (await usdmContract.queryFilter(filter, fromBlock, "latest")) || [];
         
         const donations: Record<string, number> = {};
         
@@ -134,10 +134,10 @@ export default function Explorer() {
           <div className="absolute -top-10 -right-10 opacity-5">
             <svg aria-hidden="true" width="200" height="200" viewBox="0 0 24 24" fill="currentColor" className="text-[#00E676]"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
           </div>
-          <h3 className="text-[#94A3B8] text-sm font-bold uppercase tracking-wider mb-4 relative z-10">Total Network Revenue (cUSD)</h3>
+          <h3 className="text-[#94A3B8] text-sm font-bold uppercase tracking-wider mb-4 relative z-10">Total Network Revenue (USDm)</h3>
           <p aria-label="Total Celo USD Revenue" className="text-6xl font-black text-[#00E676] drop-shadow-[0_0_15px_rgba(0,230,118,0.4)] relative z-10 flex items-baseline justify-center gap-2">
-            {loading ? <span aria-live="polite" className="animate-pulse">...</span> : stats.revenueCusd}
-            <span className="text-xl text-[#00E676]/70">cUSD</span>
+            {loading ? <span aria-live="polite" className="animate-pulse">...</span> : stats.revenueUsdm}
+            <span className="text-xl text-[#00E676]/70">USDm</span>
           </p>
         </div>
 

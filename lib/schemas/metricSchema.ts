@@ -7,7 +7,7 @@ export const metricSchema = z.object({
   avgLatencyMs: z.number().min(0),
   errorRate: z.number().min(0).max(1),
   totalRevenue: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string").default("0"),
-  token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"]).default("cUSD"),
+  token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]).default("USDm"),
   period: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Format: YYYY-MM-DD"),
   createdAt: z.string().datetime().optional(),
 }).strict();

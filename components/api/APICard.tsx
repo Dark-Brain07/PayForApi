@@ -8,7 +8,7 @@ interface APICardProps {
   id: number;
   /** Display name of the API */
   name: string;
-  /** Formatted string displaying the cost per call in USD (e.g., "$0.001 cUSD/call") */
+  /** Formatted string displaying the cost per call in USD (e.g., "$0.001 USDm/call") */
   priceUsd: string;
   /** Optional credit cost for the API (if using offchain credits) */
   priceCredits?: number;

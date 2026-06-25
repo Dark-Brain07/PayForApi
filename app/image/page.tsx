@@ -118,7 +118,7 @@ export default function ImagePage() {
   const [input, setInput] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const itemsEndRef = useRef<HTMLDivElement>(null);
-  const [paymentToken, setPaymentToken] = useState<StablecoinKey | "APIC">("cUSD");
+  const [paymentToken, setPaymentToken] = useState<StablecoinKey | "APIC">("USDm");
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -225,11 +225,11 @@ export default function ImagePage() {
               aria-label="Payment Token"
               value={paymentToken} 
               disabled={isGenerating}
-              onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
+              onChange={(e) => setPaymentToken(e.target.value as "USDm" | "APIC")}
               className="relative w-full bg-[#0F141C]/90 backdrop-blur-md border border-[#1E293B] hover:border-brand-yellow/50 text-white text-sm font-bold rounded-xl pl-4 pr-10 py-3 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer transition-all disabled:opacity-50"
             >
-              <option value="cUSD" className="bg-[#050505] text-white">cUSD ($0.01)</option>
-              <option value="cEUR" className="bg-[#050505] text-white">cEUR (€0.01)</option>
+              <option value="USDm" className="bg-[#050505] text-white">USDm ($0.01)</option>
+              <option value="EURm" className="bg-[#050505] text-white">EURm (€0.01)</option>
               <option value="APIC" className="bg-[#050505] text-white">APIC (50 Credits)</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
@@ -252,12 +252,12 @@ export default function ImagePage() {
           <div className="absolute inset-0 bg-brand-yellow/5 rounded-xl blur-md group-hover:bg-brand-yellow/20 transition-all duration-300 pointer-events-none"></div>
           <select 
             value={paymentToken} 
-            onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
+            onChange={(e) => setPaymentToken(e.target.value as "USDm" | "APIC")}
             disabled={isGenerating}
             className="relative w-full sm:w-auto bg-[#0F141C]/80 backdrop-blur-xl border border-[#1E293B] hover:border-brand-yellow/50 text-white text-sm font-black tracking-wide rounded-xl pl-4 pr-10 py-3 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer shadow-xl transition-all duration-300 disabled:opacity-50"
           >
-            <option value="cUSD" className="bg-[#050505] text-white py-2">Cost: $0.01 cUSD</option>
-            <option value="cEUR" className="bg-[#050505] text-white py-2">Cost: €0.01 cEUR</option>
+            <option value="USDm" className="bg-[#050505] text-white py-2">Cost: $0.01 USDm</option>
+            <option value="EURm" className="bg-[#050505] text-white py-2">Cost: €0.01 EURm</option>
             <option value="APIC" className="bg-[#050505] text-white py-2">Cost: 50 APIC Credits</option>
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">

@@ -19,7 +19,7 @@ export default function Header() {
   const { address, isConnected, connect, disconnect, isMiniPay } = useWallet();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const [cusdBalance, setCusdBalance] = useState<string>("0.00");
+  const [usdmBalance, setUsdmBalance] = useState<string>("0.00");
   const [apicBalance, setApicBalance] = useState<string>("0.00");
 
   useEffect(() => {
@@ -28,8 +28,8 @@ export default function Header() {
         try {
           const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum!);
           
-          const cusdContract = new ethers.Contract(
-            CELO_STABLECOINS.cUSD.address,
+          const usdmContract = new ethers.Contract(
+            CELO_STABLECOINS.USDm.address,
             ["function balanceOf(address) view returns (uint256)"],
             provider
           );
@@ -41,9 +41,9 @@ export default function Header() {
           );
 
           try {
-            const cusdBal = await cusdContract.balanceOf(address);
-            setCusdBalance(Number(ethers.formatUnits(cusdBal, 18)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}));
-          } catch (e) { setCusdBalance("0.00"); }
+            const usdmBal = await usdmContract.balanceOf(address);
+            setUsdmBalance(Number(ethers.formatUnits(usdmBal, 18)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+          } catch (e) { setUsdmBalance("0.00"); }
 
           try {
             const apicBal = await apicContract.balanceOf(address);
@@ -110,9 +110,9 @@ export default function Header() {
                 {/* Balances & Donate Display */}
                 <div className="hidden lg:flex flex-col items-center gap-1.5">
                   <div className="flex items-center space-x-2 bg-[#0B0E14] border border-[#1E293B] rounded-xl p-1 shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
-                    <div title="cUSD Balance" className="flex items-center px-2 py-1 bg-gradient-to-r from-[#00E676]/10 to-transparent rounded-lg border border-[#00E676]/20 transition-all hover:border-[#00E676]/40">
-                      <span className="text-[#00E676] font-black text-xs mr-1 drop-shadow-[0_0_8px_rgba(0,230,118,0.5)]">{cusdBalance}</span>
-                      <span className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-wider">cUSD</span>
+                    <div title="USDm Balance" className="flex items-center px-2 py-1 bg-gradient-to-r from-[#00E676]/10 to-transparent rounded-lg border border-[#00E676]/20 transition-all hover:border-[#00E676]/40">
+                      <span className="text-[#00E676] font-black text-xs mr-1 drop-shadow-[0_0_8px_rgba(0,230,118,0.5)]">{usdmBalance}</span>
+                      <span className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-wider">USDm</span>
                     </div>
                     <div title="APIC Balance" className="flex items-center px-2 py-1 bg-gradient-to-r from-[#F5C518]/10 to-transparent rounded-lg border border-[#F5C518]/20 transition-all hover:border-[#F5C518]/40">
                       <span className="text-[#F5C518] font-black text-xs mr-1 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">{apicBalance}</span>
@@ -255,8 +255,8 @@ export default function Header() {
                 <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-wider mb-3">Wallet Balances</div>
                 <div className="flex justify-between items-center mb-4">
                    <div className="flex items-center space-x-2">
-                     <span className="text-[#00E676] font-black text-lg">{cusdBalance}</span>
-                     <span className="text-[#94A3B8] font-bold text-sm">cUSD</span>
+                     <span className="text-[#00E676] font-black text-lg">{usdmBalance}</span>
+                     <span className="text-[#94A3B8] font-bold text-sm">USDm</span>
                    </div>
                    <div className="flex items-center space-x-2">
                      <span className="text-[#F5C518] font-black text-lg">{apicBalance}</span>

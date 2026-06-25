@@ -5,7 +5,7 @@ export const ratePlanSchema = z.object({
   name: z.string().max(64),
   callsPerMonth: z.number().int().min(0),
   pricePerCall: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
-  token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"]).default("cUSD"),
+  token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]).default("USDm"),
   overage: z.boolean().default(false),
   overagePricePerCall: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string").optional(),
   createdAt: z.string().datetime().optional(),

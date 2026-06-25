@@ -8,7 +8,7 @@ export const paymentSchema = z.object({
   from: z.string().trim().toLowerCase().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address").describe("Sender address"),
   to:   z.string().trim().toLowerCase().length(42).regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address").describe("Receiver address"),
   amount: z.string().min(1, "Amount is required").max(78, "Amount string too long").regex(/^\d+(\.\d+)?$/, "Must be numeric string").refine(val => parseFloat(val) > 0, "Amount must be greater than 0"),
-  token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"], { required_error: "Token is required" }).describe("Token symbol"),
+  token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"], { required_error: "Token is required" }).describe("Token symbol"),
   endpoint: z.string().trim().toLowerCase().min(1).max(1000, "Endpoint URL must not exceed 1000 characters").url("Must be a valid endpoint URL").refine(url => url.startsWith("https://"), "Endpoint must use HTTPS").describe("Target API endpoint URL"),
   chainId: z.number().int().positive("Chain ID must be positive").describe("The EVM chain ID").default(CELO_MAINNET.chainId),
   blockNumber: z.number().int().nonnegative("Block number must be 0 or greater").optional().describe("Block number"),

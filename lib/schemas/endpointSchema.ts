@@ -6,7 +6,7 @@ export const endpointSchema = z.object({
   creatorAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   url: z.string().url("Must be a valid endpoint URL"),
   pricePerCall: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
-  token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"]).default("cUSD"),
+  token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]).default("USDm"),
   name: z.string().max(64),
   description: z.string().max(256).optional(),
   isActive: z.boolean().default(true),

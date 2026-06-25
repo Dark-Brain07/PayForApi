@@ -3,7 +3,7 @@ export const TERMINAL_BOOT_LOGS = [
   "> Loading ERC-8004 Agent...",
   "> Loading MiniPay x x402 for payment...",
   "> Authenticating node connection...",
-  "> Loading currencies: [cUSD, cEUR, cKES, cBRL, cGHS, cCOP, PUSO] ... OK",
+  "> Loading currencies: [USDm, EURm, KESm, BRLm, GHSm, COPm, PUSO] ... OK",
   "> Checking API Integrations... OK",
   "> SUCCESS: All systems operational."
 ] as const;

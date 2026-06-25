@@ -27,7 +27,7 @@ export default function ChatPage() {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [totalTokens, setTotalTokens] = useState(0);
-  const [paymentToken, setPaymentToken] = useState<StablecoinKey | "APIC">("cUSD");
+  const [paymentToken, setPaymentToken] = useState<StablecoinKey | "APIC">("USDm");
 
   // Load tokens from local storage on mount/address change
   useEffect(() => {
@@ -123,7 +123,7 @@ export default function ChatPage() {
       console.error(e);
       let errorMessage = e?.reason || e?.message || "Payment failed or cancelled.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
-        errorMessage = "Transaction failed: Insufficient cUSD balance.";
+        errorMessage = "Transaction failed: Insufficient USDm balance.";
       }
       setMessages(prev => [...prev, { 
         id: (Date.now() + 1).toString(), 
@@ -157,12 +157,12 @@ export default function ChatPage() {
               value={paymentToken} 
               disabled={isTyping}
               title="Select payment token. Platform fee applies."
-              onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
+              onChange={(e) => setPaymentToken(e.target.value as "USDm" | "APIC")}
               className="relative w-full bg-[#0F141C]/90 backdrop-blur-md border border-[#1E293B] hover:border-brand-yellow/50 text-white text-sm font-bold rounded-xl pl-4 pr-10 py-3 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer transition-all disabled:opacity-50"
             >
-              <option value="cUSD" className="bg-[#050505] text-white">cUSD ($0.005)</option>
-              <option value="cEUR" className="bg-[#050505] text-white">cEUR (€0.005)</option>
-              <option value="cREAL" className="bg-[#050505] text-white">cREAL (R$0.005)</option>
+              <option value="USDm" className="bg-[#050505] text-white">USDm ($0.005)</option>
+              <option value="EURm" className="bg-[#050505] text-white">EURm (€0.005)</option>
+              <option value="BRLm" className="bg-[#050505] text-white">BRLm (R$0.005)</option>
               <option value="APIC" className="bg-[#050505] text-white">APIC (20 Credits)</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
@@ -194,13 +194,13 @@ export default function ChatPage() {
           <div className="absolute inset-0 bg-brand-yellow/5 rounded-xl blur-md group-hover:bg-brand-yellow/20 transition-all duration-300 pointer-events-none"></div>
           <select 
             value={paymentToken} 
-            onChange={(e) => setPaymentToken(e.target.value as "cUSD" | "APIC")}
+            onChange={(e) => setPaymentToken(e.target.value as "USDm" | "APIC")}
             disabled={isTyping}
             className="relative w-full sm:w-auto bg-[#0F141C]/80 backdrop-blur-xl border border-[#1E293B] hover:border-brand-yellow/50 text-white text-sm font-black tracking-wide rounded-xl pl-4 pr-10 py-3 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer shadow-xl transition-all duration-300 disabled:opacity-50"
           >
-            <option value="cUSD" className="bg-[#050505] text-white py-2">Cost: $0.005 cUSD</option>
-            <option value="cEUR" className="bg-[#050505] text-white py-2">Cost: €0.005 cEUR</option>
-            <option value="cREAL" className="bg-[#050505] text-white py-2">Cost: R$0.005 cREAL</option>
+            <option value="USDm" className="bg-[#050505] text-white py-2">Cost: $0.005 USDm</option>
+            <option value="EURm" className="bg-[#050505] text-white py-2">Cost: €0.005 EURm</option>
+            <option value="BRLm" className="bg-[#050505] text-white py-2">Cost: R$0.005 BRLm</option>
             <option value="APIC" className="bg-[#050505] text-white py-2">Cost: 20 APIC Credits</option>
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">

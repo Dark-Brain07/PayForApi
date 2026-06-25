@@ -93,7 +93,7 @@ export default function Docs() {
                 Accessing premium Web2 data and advanced AI models is fundamentally broken in the era of autonomous agents. Developers and everyday users are forced to manage expensive subscriptions, credit cards, and complex API key infrastructure.
               </p>
               <p className="text-[#94A3B8] text-lg leading-relaxed mb-6">
-                <strong>Pay For API</strong> solves this by turning every API call into a trustless, cryptographically verified micro-transaction. By leveraging the extreme low fees of the Celo blockchain and stablecoins (cUSD, cEUR, cREAL), we provide a seamless "Pay As You Go" gateway. No API keys. No sign-ups. Absolute freedom for humans and AI agents.
+                <strong>Pay For API</strong> solves this by turning every API call into a trustless, cryptographically verified micro-transaction. By leveraging the extreme low fees of the Celo blockchain and stablecoins (USDm, EURm, BRLm), we provide a seamless "Pay As You Go" gateway. No API keys. No sign-ups. Absolute freedom for humans and AI agents.
               </p>
               <div className="bg-[#0A0D12] border border-[#1E293B] rounded-2xl p-6 mt-8 shadow-xl">
                 <h4 className="text-brand-yellow font-black uppercase tracking-widest mb-4 text-xs">Key Protocol Benefits</h4>
@@ -182,7 +182,7 @@ export default function Docs() {
               <h3 className="text-xl font-black text-white mt-8 mb-4">Authentication Workflow</h3>
               <div className="bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-6 mb-8">
                 <ol className="list-decimal pl-5 text-[#94A3B8] space-y-4">
-                  <li><strong className="text-white">Transaction:</strong> The Client makes a request to a provider smart contract on Celo, paying the exact required cUSD fee.</li>
+                  <li><strong className="text-white">Transaction:</strong> The Client makes a request to a provider smart contract on Celo, paying the exact required USDm fee.</li>
                   <li><strong className="text-white">Receipt:</strong> The Client receives a Transaction Hash (<code className="bg-[#1E293B] text-white px-2 py-0.5 rounded text-xs font-mono">txHash</code>).</li>
                   <li><strong className="text-white">Execution:</strong> The Client executes a standard REST HTTP POST to the PayForAPI Gateway, embedding the <code className="bg-[#1E293B] text-white px-2 py-0.5 rounded text-xs font-mono">txHash</code> and Wallet Address in the payload.</li>
                   <li><strong className="text-white">Verification:</strong> The Gateway utilizes an RPC node to independently verify the transaction details (value, recipient, timestamp) instantly.</li>
@@ -217,7 +217,7 @@ Content-Type: application/json
                   <span className="w-2 h-2 rounded-full bg-[#00E676] animate-pulse"></span>
                   Smart Contract Registry
                 </h4>
-                <p className="text-base text-[#94A3B8] mb-6 relative z-10 leading-relaxed">Our immutable core registry contract stores all available API endpoints, their dynamic cUSD/APIC prices, and their required schemas completely on-chain, creating a trustless source of truth for all agents.</p>
+                <p className="text-base text-[#94A3B8] mb-6 relative z-10 leading-relaxed">Our immutable core registry contract stores all available API endpoints, their dynamic USDm/APIC prices, and their required schemas completely on-chain, creating a trustless source of truth for all agents.</p>
                 <div className="bg-[#050505] border border-[#1E293B] rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between relative z-10 gap-3">
                   <div className="w-full sm:w-auto overflow-hidden">
                     <div className="text-[10px] font-black text-[#64748B] uppercase tracking-widest mb-1">Mainnet Agent Wallet</div>
@@ -256,7 +256,7 @@ Content-Type: application/json
                     {activeTab === "api-chat" || activeTab === "api-summary" ? "$0.005" : 
                      activeTab === "api-translate" ? "$0.003" : 
                      activeTab === "api-news" ? "$0.002" : "$0.001"} 
-                    <span className="text-sm font-bold text-[#00E676] ml-2">cUSD</span>
+                    <span className="text-sm font-bold text-[#00E676] ml-2">USDm</span>
                   </div>
                 </div>
                 <div className="bg-[#0F141C] border border-[#1E293B] rounded-2xl p-5 flex-1 shadow-lg">

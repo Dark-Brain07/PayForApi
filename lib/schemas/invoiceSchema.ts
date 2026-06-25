@@ -7,7 +7,7 @@ export const invoiceSchema = z.object({
   creatorAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   endpoint: z.string().url(),
   amount: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
-  token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"]).default("cUSD"),
+  token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]).default("USDm"),
   dueAt: z.string().datetime(),
   paidAt: z.string().datetime().optional(),
   txHash: z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash").optional(),

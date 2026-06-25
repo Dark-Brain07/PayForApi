@@ -6,7 +6,7 @@ export const subscriptionSchema = z.object({
   planId: z.string(),
   callsUsed: z.number().int().min(0).default(0),
   callsLimit: z.number().int().min(0),
-  token: z.enum(["cUSD", "cEUR", "cKES", "cBRL", "cGHS", "cCOP", "PUSO"]).default("cUSD"),
+  token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]).default("USDm"),
   status: z.enum(["active", "paused", "expired"]).default("active"),
   renewsAt: z.string().datetime().optional(),
   createdAt: z.string().datetime().optional(),

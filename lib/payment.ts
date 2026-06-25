@@ -34,8 +34,8 @@ export async function processPayment(
     // MiniPay best practices: use legacy tx type and let MiniPay handle fee abstraction automatically
     overrides.type = 0;
   } else {
-    // Celo-specific override to explicitly pay gas (transaction fee) in cUSD
-    overrides.feeCurrency = "0x765DE816845861e75A25fCA122bb6898B8B1282a"; // cUSD contract address
+    // Celo-specific override to explicitly pay gas (transaction fee) in USDm
+    overrides.feeCurrency = "0x765DE816845861e75A25fCA122bb6898B8B1282a"; // USDm contract address
   }
 
   // Direct ERC20 Transfer to receiver with feeCurrency override

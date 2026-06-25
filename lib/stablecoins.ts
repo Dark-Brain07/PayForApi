@@ -1,14 +1,4 @@
 export const CELO_STABLECOINS = {
-  cUSD: {
-    address: "0x765DE816845861e75A25fCA122bb6898B8B1282a",
-    symbol: "cUSD",
-    name: "Celo Dollar",
-    flag: "🇺🇸",
-    country: "United States",
-    decimals: 18,
-    pricePerCall: "0.001",
-    color: "#00E676",
-  },
   USDm: {
     address: "0x765DE816845861e75A25fCA122bb6898B8B1282a",
     symbol: "USDm",
@@ -19,10 +9,10 @@ export const CELO_STABLECOINS = {
     pricePerCall: "0.001",
     color: "#00E676",
   },
-  cEUR: {
+  EURm: {
     address: "0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73",
-    symbol: "cEUR",
-    name: "Celo Euro",
+    symbol: "EURm",
+    name: "Mento Euro",
     flag: "🇪🇺",
     country: "Europe",
     decimals: 18,
@@ -49,40 +39,40 @@ export const CELO_STABLECOINS = {
     pricePerCall: "0.001",
     color: "#26A17B",
   },
-  cKES: {
+  KESm: {
     address: "0x456a3D042C0DbD3db53D5489e98dFb038553B0d0",
-    symbol: "cKES",
-    name: "Celo Kenyan Shilling",
+    symbol: "KESm",
+    name: "Mento Kenyan Shilling",
     flag: "🇰🇪",
     country: "Kenya",
     decimals: 18,
     pricePerCall: "0.13",
     color: "#00E676",
   },
-  cBRL: {
+  BRLm: {
     address: "0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787",
-    symbol: "cBRL",
-    name: "Celo Brazilian Real",
+    symbol: "BRLm",
+    name: "Mento Brazilian Real",
     flag: "🇧🇷",
     country: "Brazil",
     decimals: 18,
     pricePerCall: "0.005",
     color: "#F5C518",
   },
-  cGHS: {
+  GHSm: {
     address: "0xfAeA5F3404bbA20D3cc2f8C4B0A888F55a3c7313",
-    symbol: "cGHS",
-    name: "Celo Ghana Cedi",
+    symbol: "GHSm",
+    name: "Mento Ghana Cedi",
     flag: "🇬🇭",
     country: "Ghana",
     decimals: 18,
     pricePerCall: "0.01",
     color: "#00E676",
   },
-  cCOP: {
+  COPm: {
     address: "0x8A567e2aE79CA692Bd748aB832081C45de4041eA",
-    symbol: "cCOP",
-    name: "Celo Colombian Peso",
+    symbol: "COPm",
+    name: "Mento Colombian Peso",
     flag: "🇨🇴",
     country: "Colombia",
     decimals: 18,
@@ -102,4 +92,4 @@ export const CELO_STABLECOINS = {
 } as const;
 
 export type StablecoinKey = keyof typeof CELO_STABLECOINS;
-export const DEFAULT_TOKEN: StablecoinKey = "cUSD";
+export const DEFAULT_TOKEN: StablecoinKey = "USDm";

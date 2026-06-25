@@ -96,7 +96,7 @@ export default function Marketplace() {
                id: generateNumericId(endpointId), 
                name: `Community API: ${escapeHTML(endpointId).substring(0, 30)}...`, 
                endpoint: escapeHTML(endpointId), 
-               priceUsd: "$0.005 cUSD/call", 
+               priceUsd: "$0.005 USDm/call", 
                priceCredits: 50, 
                description: `Custom endpoint provided by ${creator.substring(0, 8)}...`, 
                inputs: ["param1"] 
