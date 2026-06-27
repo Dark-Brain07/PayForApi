@@ -71,7 +71,8 @@ function InteractiveTerminal() {
 }
 
 /**
- * Landing page featuring an interactive terminal hero section.
+ * Landing page featuring an interactive terminal hero section for devs,
+ * and a simplified AI consumer interface for MiniPay users.
  */
 export default function Home() {
   const router = useRouter();
@@ -79,19 +80,49 @@ export default function Home() {
 
   const handleEnterMarketplace = () => router.push('/marketplace');
 
+  if (isMiniPay) {
+    return (
+      <main className="flex flex-col w-full min-h-screen items-center py-12 px-4">
+        <title>AI Assistant - Pay as you go</title>
+        <meta name="description" content="Your personal AI assistant, paid per question in digital dollars." />
+        
+        <div className="text-center mb-10 mt-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-yellow/10 mb-4 border border-brand-yellow/20">
+            <span className="text-3xl">🤖</span>
+          </div>
+          <h1 className="text-3xl font-black text-white mb-3">Your Personal AI</h1>
+          <p className="text-[#94A3B8] text-sm max-w-xs mx-auto">
+            Get instant answers and images. Pay per question in digital dollars. No subscriptions.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 w-full max-w-sm">
+          <Link href="/chat" className="bg-[#111] border border-[#222] p-5 rounded-2xl hover:border-brand-yellow/50 transition-all flex items-center space-x-4 active:scale-95">
+            <div className="text-3xl bg-brand-yellow/10 p-3 rounded-xl border border-brand-yellow/20">💬</div>
+            <div className="text-left">
+              <h2 className="text-lg font-bold text-white">Ask AI</h2>
+              <p className="text-xs text-[#94A3B8] mt-0.5">Answers, translation, and summaries</p>
+            </div>
+          </Link>
+          
+          <Link href="/image" className="bg-[#111] border border-[#222] p-5 rounded-2xl hover:border-brand-green/50 transition-all flex items-center space-x-4 active:scale-95">
+            <div className="text-3xl bg-brand-green/10 p-3 rounded-xl border border-brand-green/20">🎨</div>
+            <div className="text-left">
+              <h2 className="text-lg font-bold text-white">Create Image</h2>
+              <p className="text-xs text-[#94A3B8] mt-0.5">Generate art from imagination</p>
+            </div>
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="flex flex-col w-full">
       <title>PayForAPI - Celo Web3 API Monetization</title>
       <meta name="description" content="Monetize your AI endpoints instantly on Celo via x402 micropayments." />
       {/* Terminal Hero Section */}
       <section className="pt-20 pb-24 px-4 max-w-5xl mx-auto w-full text-center">
-        {isMiniPay && (
-          <div className="inline-flex items-center space-x-2 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow px-4 py-2 rounded-full mb-8 text-sm font-medium animate-pulse">
-            <span>📱</span>
-            <span>Running in MiniPay — wallet auto-connected</span>
-          </div>
-        )}
-        
         <div 
           onClick={handleEnterMarketplace}
           aria-label="Interactive Terminal"

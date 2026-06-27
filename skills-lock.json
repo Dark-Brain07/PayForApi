@@ -5,6 +5,12 @@
       "source": "celobuilders.xyz",
       "sourceType": "well-known",
       "computedHash": "b56f00d2902dbd6f3a2ce9f54024440a559ca6fdfb7b6ad430cb4403b125a9d6"
+    },
+    "celopedia-skill": {
+      "source": "celo-org/celopedia-skills",
+      "sourceType": "github",
+      "skillPath": "skills/celopedia-skill/SKILL.md",
+      "computedHash": "8b31f3876fd945cdeaa63f68b50d2dfd43b9b923d2dd15e6085a7a8078dcf525"
     }
   }
 }

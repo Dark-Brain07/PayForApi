@@ -71,9 +71,11 @@ export default function Header() {
           </div>
           
           <nav aria-label="Main Navigation" className="hidden md:flex space-x-8 items-center">
-            <Link href="/marketplace" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
-              Marketplace
-            </Link>
+            {!isMiniPay && (
+              <Link href="/marketplace" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
+                Marketplace
+              </Link>
+            )}
             <Link href="/chat" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2 font-semibold">
               <span>AI Chat</span>
               <span className="px-2 py-0.5 bg-gradient-to-r from-brand-yellow to-[#FDE047] text-black text-[9px] font-black uppercase tracking-wider rounded-md shadow-[0_0_12px_rgba(245,197,24,0.6)]">New Released</span>
@@ -82,19 +84,23 @@ export default function Header() {
               <span>Image Gen</span>
               <span className="px-2 py-0.5 bg-gradient-to-r from-green-400 to-[#FDE047] text-black text-[9px] font-black uppercase tracking-wider rounded-md shadow-[0_0_12px_rgba(74,222,128,0.6)]">New</span>
             </Link>
-            <Link href="/rewards" className="text-brand-yellow/90 hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block font-bold drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">
-              Rewards
-            </Link>
-            <Link href="/docs" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
-              Docs
-            </Link>
-            <Link href="/explorer" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
-              Explorer
-            </Link>
-            {isConnected && (
-              <Link href="/dashboard" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
-                Dashboard
-              </Link>
+            {!isMiniPay && (
+              <>
+                <Link href="/rewards" className="text-brand-yellow/90 hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block font-bold drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">
+                  Rewards
+                </Link>
+                <Link href="/docs" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
+                  Docs
+                </Link>
+                <Link href="/explorer" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
+                  Explorer
+                </Link>
+                {isConnected && (
+                  <Link href="/dashboard" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
+                    Dashboard
+                  </Link>
+                )}
+              </>
             )}
           </nav>
 
@@ -124,9 +130,9 @@ export default function Header() {
                   </Link>
                 </div>
 
-                <div title={address || undefined} className="btn-secondary flex items-center space-x-1.5 sm:space-x-2 cursor-default px-2 sm:px-4 text-xs sm:text-base">
+                <div title={isMiniPay ? undefined : (address || undefined)} className="btn-secondary flex items-center space-x-1.5 sm:space-x-2 cursor-default px-2 sm:px-4 text-xs sm:text-base">
                   <span aria-hidden="true" className="w-2 h-2 rounded-full bg-brand-green animate-pulse shadow-[0_0_10px_#00E676]"></span>
-                  <span className="font-medium">{address ? truncateAddress(address) : "Connected"}</span>
+                  <span className="font-medium">{address ? (isMiniPay ? "MiniPay User" : truncateAddress(address)) : "Connected"}</span>
                 </div>
                 {!isMiniPay && (
                   <button 
@@ -224,9 +230,11 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div id="mobile-menu-panel" className="md:hidden border-t border-[#1E293B] py-4 pb-6 absolute left-0 right-0 bg-brand-black shadow-2xl px-4 z-40">
             <nav className="flex flex-col space-y-4">
-              <Link href="/marketplace" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
-                Marketplace
-              </Link>
+              {!isMiniPay && (
+                <Link href="/marketplace" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
+                  Marketplace
+                </Link>
+              )}
               <Link href="/chat" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-semibold text-lg p-2 rounded-lg hover:bg-white/5 flex items-center justify-between">
                 <span>AI Chat</span>
                 <span className="px-2 py-1 bg-gradient-to-r from-brand-yellow/20 to-transparent text-brand-yellow text-[10px] font-black uppercase tracking-wider rounded border border-brand-yellow/30 shadow-[0_0_8px_rgba(245,197,24,0.3)]">New Released</span>
@@ -235,19 +243,23 @@ export default function Header() {
                 <span>Image Gen</span>
                 <span className="px-2 py-1 bg-gradient-to-r from-green-400/20 to-transparent text-green-400 text-[10px] font-black uppercase tracking-wider rounded border border-green-400/30 shadow-[0_0_8px_rgba(74,222,128,0.3)]">New</span>
               </Link>
-              <Link href="/rewards" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">
-                Rewards
-              </Link>
-              <Link href="/docs" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
-                Docs
-              </Link>
-              <Link href="/explorer" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
-                Explorer
-              </Link>
-              {isConnected && (
-                <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow font-black text-lg p-2 rounded-lg bg-brand-yellow/10 border border-brand-yellow/20 hover:scale-[1.02] transition-transform duration-300 block">
-                  Dashboard
-                </Link>
+              {!isMiniPay && (
+                <>
+                  <Link href="/rewards" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]">
+                    Rewards
+                  </Link>
+                  <Link href="/docs" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
+                    Docs
+                  </Link>
+                  <Link href="/explorer" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
+                    Explorer
+                  </Link>
+                  {isConnected && (
+                    <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-brand-yellow font-black text-lg p-2 rounded-lg bg-brand-yellow/10 border border-brand-yellow/20 hover:scale-[1.02] transition-transform duration-300 block">
+                      Dashboard
+                    </Link>
+                  )}
+                </>
               )}
             </nav>
             {isConnected && (

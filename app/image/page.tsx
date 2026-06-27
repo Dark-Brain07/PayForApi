@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { EthereumProvider } from "@/hooks/useAuth";
 import { ethers } from "ethers";
@@ -113,7 +114,7 @@ function ImageWithLoader({ src, alt }: { src: string; alt: string }) {
  * Interactive Image Generation interface to test AI agents using x402 micropayments.
  */
 export default function ImagePage() {
-  const { address } = useWallet();
+  const { address, isMiniPay } = useWallet();
   const [items, setItems] = useState<ImageItem[]>([]);
   const [input, setInput] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -194,6 +195,10 @@ export default function ImagePage() {
       const errObj = e as Record<string, any>;
       let errorMessage = errObj?.reason || errObj?.message || "Payment failed or cancelled.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
+        if (isMiniPay) {
+          window.location.href = "https://link.minipay.xyz/add_cash?tokens=USDm";
+          return;
+        }
         errorMessage = "Transaction failed: Insufficient balance.";
       }
       setItems(prev => [...prev, { 
@@ -342,6 +347,13 @@ export default function ImagePage() {
             <svg aria-hidden="true" className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </button>
         </div>
+        {isMiniPay && (
+          <div className="flex justify-center space-x-6 mt-3 text-[10px] text-[#94A3B8]">
+            <Link href="/terms" className="hover:text-brand-yellow">Terms</Link>
+            <Link href="/privacy" className="hover:text-brand-yellow">Privacy</Link>
+            <a href="https://t.me/payforapi_support" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow">Support</a>
+          </div>
+        )}
       </div>
 
       </div>
