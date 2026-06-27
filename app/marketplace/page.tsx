@@ -238,7 +238,7 @@ export default function Marketplace() {
               apiRequestBody.text = values[0] || "Web3 protocols enable ownership...";
             } else if (id === 4) {
               endpoint = "/api/translate";
-              apiRequestBody.text = values[0] || "Hello, the future is agentic.";
+              apiRequestBody.text = values[0] || "Hello, the future is bright.";
               apiRequestBody.language = values[1] || "Spanish";
             } else if (id >= 100) {
               endpoint = "/api/proxy";

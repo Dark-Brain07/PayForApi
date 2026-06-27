@@ -22,7 +22,7 @@ interface Message {
 export default function ChatPage() {
   const { address, isMiniPay } = useWallet();
   const [messages, setMessages] = useState<Message[]>([
-    { id: "intro", role: "ai", content: "Hello! I am your AI assistant powered by Celo micropayments. How can I help you today?" }
+    { id: "intro", role: "ai", content: "Hello! I am your Smart Assistant. You pay per message using your stablecoins. How can I help you today?" }
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -50,7 +50,7 @@ export default function ChatPage() {
   const handleSendClick = async () => {
     if (!input.trim()) return;
     if (!address) {
-      alert("Please connect your wallet first.");
+      alert("Please connect your account first.");
       return;
     }
     
@@ -82,7 +82,8 @@ export default function ChatPage() {
           tokenAddress,
           amountToPay,
           5, // productId for AI Chat
-          requestId
+          requestId,
+          isMiniPay
         );
         txHash = receipt.hash;
       }
@@ -144,8 +145,8 @@ export default function ChatPage() {
 
   return (
     <main className="fixed inset-0 top-[104px] bottom-0 flex flex-col items-center justify-start sm:justify-center p-2 sm:p-4 overflow-hidden z-30">
-      <title>Agentic Chat | PayForAPI</title>
-      <meta name="description" content="Test your Celo Web3 micropayments via an interactive AI agent." />
+      <title>Smart Assistant | PayForAPI</title>
+      <meta name="description" content="Pay-as-you-go Premium AI Chat without subscriptions." />
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
       
@@ -154,11 +155,11 @@ export default function ChatPage() {
         
         {/* Payment Selector Widget */}
         <div className="flex flex-col p-5 bg-[#0A0D12] border border-[#1E293B] rounded-2xl shadow-2xl">
-          <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Payment Token</div>
+          <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em] mb-3 text-center">Payment Method</div>
           <div className="relative group w-full">
             <div className="absolute inset-0 bg-brand-yellow/5 rounded-xl blur-sm group-hover:bg-brand-yellow/20 transition-all duration-300 pointer-events-none"></div>
             <select 
-              aria-label="Payment Token"
+              aria-label="Payment Method"
               value={paymentToken} 
               disabled={isTyping}
               title="Select payment token. Platform fee applies."
@@ -168,7 +169,7 @@ export default function ChatPage() {
               <option value="USDm" className="bg-[#050505] text-white">USDm ($0.005)</option>
               <option value="EURm" className="bg-[#050505] text-white">EURm (€0.005)</option>
               <option value="BRLm" className="bg-[#050505] text-white">BRLm (R$0.005)</option>
-              <option value="APIC" className="bg-[#050505] text-white">APIC (20 Credits)</option>
+              {!isMiniPay && <option value="APIC" className="bg-[#050505] text-white">Prepaid (20 Credits)</option>}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
               <svg className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -178,11 +179,11 @@ export default function ChatPage() {
 
         {/* Token Stats Widget */}
         <div className="flex flex-col items-center justify-center p-6 bg-[#0A0D12] border border-[#1E293B] rounded-2xl shadow-2xl">
-          <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em] mb-4 text-center">Wallet Tokens Used</div>
+          <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-[0.2em] mb-4 text-center">AI Tokens Used</div>
           <div aria-live="polite" className="text-4xl font-black text-brand-yellow mb-2 drop-shadow-[0_0_15px_rgba(245,197,24,0.4)]">
             {totalTokens.toLocaleString()}
           </div>
-          <div className="text-text-secondary text-sm text-center">Total AI tokens consumed by your connected address</div>
+          <div className="text-text-secondary text-sm text-center">Total AI tokens consumed by your connected account</div>
         </div>
       </div>
 
@@ -193,7 +194,7 @@ export default function ChatPage() {
       <div className="border-b border-brand-border bg-[#0F141C] p-3 sm:p-5 shrink-0 flex flex-col sm:flex-row items-center justify-between gap-3">
         <h1 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2 self-start sm:self-auto">
           <span className="w-2 h-2 rounded-full bg-[#00E676] animate-pulse"></span>
-          Agentic Chat
+          Smart Assistant
         </h1>
         <div className="flex xl:hidden items-center w-full sm:w-auto mt-1 sm:mt-0 relative group z-20">
           <div className="absolute inset-0 bg-brand-yellow/5 rounded-xl blur-md group-hover:bg-brand-yellow/20 transition-all duration-300 pointer-events-none"></div>
@@ -206,7 +207,7 @@ export default function ChatPage() {
             <option value="USDm" className="bg-[#050505] text-white py-2">Cost: $0.005 USDm</option>
             <option value="EURm" className="bg-[#050505] text-white py-2">Cost: €0.005 EURm</option>
             <option value="BRLm" className="bg-[#050505] text-white py-2">Cost: R$0.005 BRLm</option>
-            <option value="APIC" className="bg-[#050505] text-white py-2">Cost: 20 APIC Credits</option>
+            {!isMiniPay && <option value="APIC" className="bg-[#050505] text-white py-2">Cost: 20 Prepaid Credits</option>}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
             <svg className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -268,6 +269,17 @@ export default function ChatPage() {
 
       {/* Input Area */}
       <div className="p-4 sm:p-5 bg-[#0F141C] border-t border-brand-border shrink-0">
+        <div className="flex flex-wrap gap-2 mb-3">
+          {["✍️ Draft a professional email", "🌐 Translate to Spanish", "💡 Brainstorm business ideas"].map((suggestion) => (
+            <button
+              key={suggestion}
+              onClick={() => setInput(suggestion)}
+              className="text-xs bg-[#1E293B] hover:bg-[#2D3748] text-[#94A3B8] hover:text-white px-3 py-1.5 rounded-full transition-colors border border-[#334155]"
+            >
+              {suggestion}
+            </button>
+          ))}
+        </div>
         <div className="w-full flex gap-3 relative">
           <input 
             type="text" 

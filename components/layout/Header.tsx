@@ -137,7 +137,7 @@ export default function Header() {
                 {!isMiniPay && (
                   <button 
                     type="button"
-                    aria-label="Disconnect Web3 Wallet"
+                    aria-label="Disconnect"
                     onClick={disconnect}
                     className="bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 px-2 py-2 sm:px-3 rounded-lg transition-colors text-xs sm:text-sm font-bold"
                   >
@@ -264,7 +264,7 @@ export default function Header() {
             </nav>
             {isConnected && (
               <div className="mt-6 pt-6 border-t border-[#1E293B]">
-                <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-wider mb-3">Wallet Balances</div>
+                <div className="text-[#94A3B8] text-xs font-bold uppercase tracking-wider mb-3">Your Balances</div>
                 <div className="flex justify-between items-center mb-4">
                    <div className="flex items-center space-x-2">
                      <span className="text-[#00E676] font-black text-lg">{usdmBalance}</span>

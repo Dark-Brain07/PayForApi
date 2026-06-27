@@ -46,7 +46,7 @@ export default function Docs() {
 
           <h3 className="text-[10px] font-black text-[#94A3B8] uppercase tracking-[0.2em] mb-4">REST Endpoints</h3>
           <ul className="space-y-3 mb-8 border-l border-[#1E293B] pl-4">
-            <li><button onClick={() => setActiveTab("api-chat")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-chat" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>Agentic Chat</button></li>
+            <li><button onClick={() => setActiveTab("api-chat")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-chat" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>Smart Assistant</button></li>
             <li><button onClick={() => setActiveTab("api-weather")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-weather" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>Weather Info</button></li>
             <li><button onClick={() => setActiveTab("api-news")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-news" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>Global News</button></li>
             <li><button onClick={() => setActiveTab("api-crypto")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "api-crypto" ? "text-white translate-x-1" : "text-[#64748B] hover:text-white hover:translate-x-1"}`}>Crypto Pulse</button></li>
@@ -71,7 +71,7 @@ export default function Docs() {
               <option value="erc8004" className="text-white font-bold py-2">ERC-8004 Standard</option>
             </optgroup>
             <optgroup label="REST Endpoints" className="bg-[#050505] text-[#94A3B8]">
-              <option value="api-chat" className="text-white font-bold py-2">Agentic Chat API</option>
+              <option value="api-chat" className="text-white font-bold py-2">Smart Assistant API</option>
               <option value="api-weather" className="text-white font-bold py-2">Weather Info API</option>
               <option value="api-news" className="text-white font-bold py-2">Global News API</option>
               <option value="api-crypto" className="text-white font-bold py-2">Crypto Pulse API</option>
@@ -234,7 +234,7 @@ Content-Type: application/json
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end border-b border-[#1E293B] pb-4 mb-8 gap-4">
                 <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-                  {activeTab === "api-chat" && "Agentic AI Chat API"}
+                  {activeTab === "api-chat" && "Smart Assistant API"}
                   {activeTab === "api-weather" && "Real-Time Weather API"}
                   {activeTab === "api-news" && "Global News API"}
                   {activeTab === "api-crypto" && "Crypto Pulse API"}
@@ -286,7 +286,7 @@ ${
   activeTab === "api-news" ? '  "category": "technology"' :
   activeTab === "api-crypto" ? '  "ids": "celo,bitcoin,ethereum"' :
   activeTab === "api-summary" ? '  "text": "Extensive text block of documentation to be summarized into key points..."' :
-  '  "text": "Hello world, the future is decentralized and agentic.",\n  "language": "French"'
+  '  "text": "Hello world, the future is decentralized and bright.",\n  "language": "French"'
 }
 }`}
               />
