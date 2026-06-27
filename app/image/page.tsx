@@ -161,7 +161,8 @@ export default function ImagePage() {
           tokenAddress,
           amountToPay,
           6, // productId for Image Gen
-          requestId
+          requestId,
+          isMiniPay
         );
         txHash = receipt.hash;
       }
