@@ -193,7 +193,6 @@ export default function ChatPage() {
       {/* Header Area */}
       <div className="border-b border-brand-border bg-[#0F141C] p-3 sm:p-5 shrink-0 flex flex-col sm:flex-row items-center justify-between gap-3">
         <h1 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2 self-start sm:self-auto">
-          <span className="w-2 h-2 rounded-full bg-[#00E676] animate-pulse"></span>
           Smart Assistant
         </h1>
         <div className="flex xl:hidden items-center w-full sm:w-auto mt-1 sm:mt-0 relative group z-20">
