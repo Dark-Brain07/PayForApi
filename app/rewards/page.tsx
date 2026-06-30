@@ -11,7 +11,7 @@ const SECONDS_IN_HOUR = 3600;
 const STATS_POLL_INTERVAL = 10000;
 const TIMER_UPDATE_INTERVAL = 1000;
 
-export default function Rewards() {
+export default function Rewards(): React.JSX.Element {
   const { address, isConnected } = useWallet();
   const [balance, setBalance] = useState<string>("0");
   const [nftsMinted, setNftsMinted] = useState<string>("0");
