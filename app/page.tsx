@@ -88,7 +88,7 @@ export default function Home() {
         
         <div className="text-center mb-10 mt-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-yellow/10 mb-4 border border-brand-yellow/20">
-            <span className="text-3xl">🤖</span>
+            <span className="text-3xl" role="img" aria-label="Robot">🤖</span>
           </div>
           <h1 className="text-3xl font-black text-white mb-3">Your Personal AI</h1>
           <p className="text-[#94A3B8] text-sm max-w-xs mx-auto">
