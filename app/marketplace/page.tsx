@@ -158,7 +158,7 @@ export default function Marketplace() {
             </div>
           ) : communityApis.length > 0 ? (
             <div className="columns-1 md:columns-2 gap-6 space-y-6">
-              {communityApis.map((api) => (
+              {communityApis?.map((api) => (
                 <div key={api.id} className="break-inside-avoid relative">
                   {isCalling && lastApiId === api.id && (
                     <div aria-hidden="true" className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 rounded-2xl flex flex-col items-center justify-center">
