@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * Returns the current window width and height.
+ */
 export function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
