@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { CELO_MAINNET_ID } from "../contracts";
 
 /** ERC-8004 registered onchain agent */
 export const agentSchema = z.object({
@@ -9,7 +10,7 @@ export const agentSchema = z.object({
   endpoints: z.array(z.string().url()).default([]),
   erc8004TokenId: z.string().optional(),
   registryAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address").optional(),
-  chainId: z.number().int().default(42220),
+  chainId: z.number().int().default(CELO_MAINNET_ID),
   isActive: z.boolean().default(true),
   createdAt: z.string().datetime().optional(),
 }).strict();
