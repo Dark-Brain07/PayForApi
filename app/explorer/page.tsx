@@ -159,7 +159,7 @@ export default function Explorer() {
         <div className="card overflow-hidden border border-[#1E293B] shadow-lg flex flex-col">
           <div className="p-6 border-b border-[#1E293B] bg-[#0B0E14] text-center sm:text-left shrink-0">
             <h2 className="text-xl font-bold text-white uppercase tracking-wider flex items-center justify-center sm:justify-start gap-2">
-              <span>💖</span> Support The Ecosystem
+              <span role="img" aria-label="Support Heart">💖</span> Support The Ecosystem
             </h2>
           </div>
           <div className="p-8 text-center text-[#94A3B8] bg-brand-elevated flex-grow flex flex-col justify-center">
