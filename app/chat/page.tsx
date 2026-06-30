@@ -37,7 +37,7 @@ export default function ChatPage() {
         const stored = localStorage.getItem(`chat_tokens_${address}`);
         if (stored) setTotalTokens(parseInt(stored, 10));
       } catch (e) {
-        console.error("Storage error", e);
+        // Silent storage error
       }
     }
   }, [address]);
