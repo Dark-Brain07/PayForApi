@@ -97,7 +97,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 w-full max-w-sm">
-          <Link href="/chat" className="bg-[#111] border border-[#222] p-5 rounded-2xl hover:border-brand-yellow/50 transition-all flex items-center space-x-4 active:scale-95">
+          <Link href="/chat" aria-label="Open AI Chat" className="bg-[#111] border border-[#222] p-5 rounded-2xl hover:border-brand-yellow/50 transition-all flex items-center space-x-4 active:scale-95">
             <div className="text-3xl bg-brand-yellow/10 p-3 rounded-xl border border-brand-yellow/20">💬</div>
             <div className="text-left">
               <h2 className="text-lg font-bold text-white">Ask AI</h2>
@@ -158,7 +158,7 @@ export default function Home() {
             <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
             <span className="relative flex items-center gap-2 text-lg">
               Explore API Marketplace
-              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+              <svg aria-hidden="true" className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
             </span>
           </Link>
         </div>
