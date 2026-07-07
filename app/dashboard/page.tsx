@@ -329,7 +329,7 @@ export default function DashboardPage(): React.JSX.Element {
             </button>
             <h2 id="register-modal-title" className="text-2xl font-bold text-white mb-2">Register API</h2>
             <p className="text-[#94A3B8] text-sm mb-6">Enter your Web2 or Web3 API endpoint URL. Our smart contract on Celo Mainnet will automatically wrap it with x402 payments.</p>
-            {errorMsg && <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">{errorMsg}</div>}
+            {errorMsg && <div role="alert" aria-live="polite" className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">{errorMsg}</div>}
             
             <div className="space-y-4">
               <div>
