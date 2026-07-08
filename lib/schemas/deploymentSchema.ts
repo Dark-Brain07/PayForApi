@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { CELO_MAINNET_ID } from "../contracts";
 
 export const deploymentSchema = z.object({
   id: z.string().uuid().optional(),
@@ -7,7 +8,7 @@ export const deploymentSchema = z.object({
   commitSha: z.string().length(40, "Must be a full git SHA"),
   deployedBy: z.string(),
   contractAddresses: z.record(z.string(), z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address")).default({}),
-  chainId: z.number().int().default(42220),
+  chainId: z.number().int().default(CELO_MAINNET_ID),
   deployedAt: z.string().datetime(),
   createdAt: z.string().datetime().optional(),
 }).strict();
