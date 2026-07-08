@@ -1,6 +1,11 @@
+/**
+ * useTimeout Hook
+ * React hook for declarative timeouts.
+ */
 "use client";
 import { useEffect, useRef } from 'react';
 
+/** Custom hook for handling timeouts in functional components */
 export function useTimeout(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback);
   useEffect(() => {
