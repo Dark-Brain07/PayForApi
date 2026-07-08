@@ -1,11 +1,10 @@
 import { z } from "zod";
-import { CELO_MAINNET_ID } from "../contracts";
 
 const checkSchema = z.object({
   name: z.string(),
   status: z.enum(["up", "down"]),
   latencyMs: z.number().min(0).optional(),
-  message: z.string().optional(),
+  message: z.string().trim().optional(),
 });
 
 export const healthReportSchema = z.object({
@@ -13,7 +12,7 @@ export const healthReportSchema = z.object({
   status: z.enum(["healthy", "degraded", "down"]),
   checks: z.array(checkSchema).default([]),
   version: z.string().optional(),
-  chainId: z.number().int().default(CELO_MAINNET_ID),
+  chainId: z.number().int().default(42220),
   checkedAt: z.string().datetime(),
 }).strict();
 
