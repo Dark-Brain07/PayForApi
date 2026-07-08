@@ -11,4 +11,8 @@ export class ExcelExporter {
     return Buffer.from(csv, 'utf-8');
   }
 }
+/**
+ * Singleton instance of the ExcelExporter class.
+ * Used for exporting data to CSV/Excel formats.
+ */
 export const excelExporterInstance = ExcelExporter.getInstance();
