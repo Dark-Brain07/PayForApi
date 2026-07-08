@@ -14,13 +14,14 @@ const truncateAddress = (addr: string): string => {
 };
 
 const BALANCE_POLL_INTERVAL = 10000;
+const DEFAULT_BALANCE = "0.00";
 
 export default function Header() {
   const { address, isConnected, connect, disconnect, isMiniPay } = useWallet();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const [usdmBalance, setUsdmBalance] = useState<string>("0.00");
-  const [apicBalance, setApicBalance] = useState<string>("0.00");
+  const [usdmBalance, setUsdmBalance] = useState<string>(DEFAULT_BALANCE);
+  const [apicBalance, setApicBalance] = useState<string>(DEFAULT_BALANCE);
 
   useEffect(() => {
     const fetchBalances = async () => {
@@ -186,7 +187,7 @@ export default function Header() {
 
                           if (chain.unsupported) {
                             return (
-                              <button onClick={openChainModal} type="button" className="bg-red-500 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-xl font-bold">
+                              <button onClick={openChainModal} type="button" aria-label="Change Network" className="bg-red-500 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-xl font-bold">
                                 Wrong network
                               </button>
                             );
