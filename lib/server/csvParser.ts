@@ -18,4 +18,8 @@ export class CsvParser {
     });
   }
 }
+/**
+ * Singleton instance of the CsvParser class.
+ * Used for parsing CSV formatted strings into structured data.
+ */
 export const csvParserInstance = CsvParser.getInstance();
