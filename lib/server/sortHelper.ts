@@ -1,3 +1,7 @@
+/**
+ * Sort Helper Utility
+ * Provides sorting functions for arrays of objects.
+ */
 export class SortHelper {
   private static instance: SortHelper;
   private constructor() {}
