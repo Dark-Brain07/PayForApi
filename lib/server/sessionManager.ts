@@ -26,4 +26,5 @@ export class SessionManager {
     return this.sessions.get(sessionId);
   }
 }
+/** Global singleton instance of SessionManager */
 export const sessionManagerInstance = SessionManager.getInstance();
