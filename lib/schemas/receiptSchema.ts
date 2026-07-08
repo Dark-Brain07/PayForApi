@@ -3,7 +3,7 @@ import { CELO_MAINNET_ID } from "../contracts";
 
 /** On-chain payment receipt for a completed x402 call */
 export const receiptSchema = z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().trim().uuid().optional(),
   txHash: z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash"),
   from: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   to:   z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
