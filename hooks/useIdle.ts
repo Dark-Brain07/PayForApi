@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
 
 export function useIdle(ms: number = 60000, events: string[] = defaultEvents) {
-  const [isIdle, setIsIdle] = useState(false);
+  const [isIdle, setIsIdle] = useState<boolean>(false);
   useEffect(() => {
     let timeout = setTimeout(() => setIsIdle(true), ms);
     const handleActivity = () => {
