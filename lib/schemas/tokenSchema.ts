@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { CELO_MAINNET_ID } from "../contracts";
 
 const CELO_TOKENS: Record<string, { address: string; decimals: number }> = {
   USDm: { address: "0x765DE816845861e75A25fCA122bb6898B8B1282a", decimals: 18 },
@@ -14,8 +13,8 @@ const CELO_TOKENS: Record<string, { address: string; decimals: number }> = {
 export const tokenSchema = z.object({
   symbol: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]),
   contractAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
-  decimals: z.number().int().default(18),
-  chainId: z.number().int().default(CELO_MAINNET_ID),
+  decimals: z.number().int().default(18).describe("The number of decimals for the token"),
+  chainId: z.number().int().default(42220),
 }).strict();
 
 export type TokenData = z.infer<typeof tokenSchema>;
