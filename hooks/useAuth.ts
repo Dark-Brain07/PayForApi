@@ -87,7 +87,7 @@ export function useAuth(): AuthState & {
       const isProviderError = (e: unknown): e is ProviderRpcError => typeof e === 'object' && e !== null && 'code' in e;
       setState((s) => ({
         ...s,
-        error: isProviderError(err) && err.code === USER_REJECTED_CODE ? "User rejected connection" : (err instanceof Error ? err.message : String(err)),
+        error: isProviderError(err) && err.code === USER_REJECTED_CODE ? "User rejected connection" : ((err as Error)?.message ?? String(err)),
         isConnecting: false,
       }));
       return null;
