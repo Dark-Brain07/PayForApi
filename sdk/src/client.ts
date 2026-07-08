@@ -43,7 +43,6 @@ export class PayForApiClient {
       
       let response = await fetch(url, init);
       if (response.status === HTTP_STATUS_PAYMENT_REQUIRED) {
-         console.log(`[PayForApiClient] 402 Payment Required at ${url}. Automatically resolving...`);
          
          const authHeader = response.headers.get('WWW-Authenticate');
          if (!authHeader) {
