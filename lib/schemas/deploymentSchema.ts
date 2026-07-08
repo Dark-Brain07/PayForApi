@@ -2,7 +2,7 @@ import { z } from "zod";
 import { CELO_MAINNET_ID } from "../contracts";
 
 export const deploymentSchema = z.object({
-  id: z.string().uuid().optional(),
+  id: z.string().trim().uuid().optional(),
   version: z.string().regex(/^\d+\.\d+\.\d+$/, "Must be semver"),
   environment: z.enum(["development", "staging", "production"]),
   commitSha: z.string().length(40, "Must be a full git SHA"),
