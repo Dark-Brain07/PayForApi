@@ -68,7 +68,7 @@ export class PayForApiClient {
          });
          
          // Process result
-         await this.x402HttpClient.processPaymentResult(paymentPayload, (name: string) => response.headers.get(name), response.status);
+         this.x402HttpClient.processPaymentResult(paymentPayload, (name: string) => response.headers.get(name), response.status);
       }
       
       return response;
