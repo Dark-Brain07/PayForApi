@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { CELO_MAINNET_ID } from "../contracts";
 
 /** On-chain Celo transaction record */
 export const transactionSchema = z.object({
@@ -8,7 +9,7 @@ export const transactionSchema = z.object({
   to:   z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   value: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
   token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]),
-  chainId: z.number().int().default(42220),
+  chainId: z.number().int().default(CELO_MAINNET_ID),
   blockNumber: z.number().int().positive().optional(),
   gasUsed: z.string().optional(),
   status: z.enum(["pending", "confirmed", "failed"]).default("pending"),
