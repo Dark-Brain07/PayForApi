@@ -6,6 +6,7 @@ import React from 'react';
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
+  default?: boolean;
 }
 
 /**
@@ -32,7 +33,7 @@ export const Alert: React.FC<AlertProps> = ({
   size = 'md', 
   className = '', 
   ...props 
-}) => {
+}): React.JSX.Element => {
   return (
     <div 
       role="alert"
