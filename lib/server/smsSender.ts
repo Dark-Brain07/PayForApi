@@ -1,3 +1,7 @@
+/**
+ * SMS Sender Utility
+ * Handles sending SMS notifications.
+ */
 import { loggerInstance } from './logger';
 export class SmsSender {
   private static instance: SmsSender;
