@@ -223,7 +223,7 @@ Content-Type: application/json
                     <div className="text-[10px] font-black text-[#64748B] uppercase tracking-widest mb-1">Mainnet Agent Wallet</div>
                     <code className="text-xs sm:text-sm font-mono text-white break-all">0x5a8d4Bf8989c65e3964E8e6cD82FC585EbC1fF7a</code>
                   </div>
-                  <a href="https://celoscan.io/address/0x5a8d4Bf8989c65e3964E8e6cD82FC585EbC1fF7a" target="_blank" rel="noopener noreferrer" aria-label="Open Celo Explorer in new tab" className="text-[#00E676] text-sm font-bold hover:underline shrink-0">View on Explorer ↗</a>
+                  <a href="https://celoscan.io/address/0x5a8d4Bf8989c65e3964E8e6cD82FC585EbC1fF7a" target="_blank" rel="noopener noreferrer" aria-label="Open Celo Explorer in new tab" title="View on Celo Explorer" className="text-[#00E676] text-sm font-bold hover:underline shrink-0">View on Explorer ↗</a>
                 </div>
               </div>
             </div>
