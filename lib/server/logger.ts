@@ -8,13 +8,13 @@ export class Logger {
   /**
    * Logs an informational message with an ISO timestamp.
    */
-  public info(message: string, ...meta: unknown[]) {
+  public info(message: string, ...meta: unknown[]): void {
     console.log(`[INFO] ${new Date().toISOString()}: ${message}`, ...meta);
   }
   /**
    * Logs an error message with an ISO timestamp.
    */
-  public error(message: string, ...meta: unknown[]) {
+  public error(message: string, ...meta: unknown[]): void {
     console.error(`[ERROR] ${new Date().toISOString()}: ${message}`, ...meta);
   }
 }
