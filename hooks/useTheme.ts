@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect } from 'react';
 
+/** Custom hook to manage light and dark themes */
 export function useTheme(defaultTheme = 'light') {
-  const [theme, setTheme] = useState(defaultTheme);
+  const [theme, setTheme] = useState<string>(defaultTheme);
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const root = window.document.documentElement;
