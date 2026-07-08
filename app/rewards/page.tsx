@@ -173,7 +173,7 @@ export default function Rewards(): React.JSX.Element {
 
         <div className="mb-12 max-w-4xl mx-auto bg-gradient-to-r from-[#F5C518]/20 via-[#F5C518]/5 to-transparent border border-[#F5C518]/30 rounded-2xl p-8 relative overflow-hidden shadow-[0_0_40px_rgba(245,197,24,0.1)]">
           <div className="absolute -top-10 -right-10 opacity-10">
-            <svg aria-hidden="true" width="200" height="200" viewBox="0 0 24 24" fill="currentColor" className="text-[#F5C518]"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor" className="text-[#F5C518]"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </div>
           <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6">
             <div className="flex-shrink-0 bg-[#F5C518]/20 p-5 rounded-full border border-[#F5C518]/50 shadow-[0_0_20px_rgba(245,197,24,0.3)]">
@@ -189,7 +189,7 @@ export default function Rewards(): React.JSX.Element {
         </div>
 
         {/* Streak Progress Chart */}
-        <div aria-live="polite" className="mb-12 max-w-4xl mx-auto bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-8 relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden">
+        <div aria-live="polite" title="Mega Bonus Progress Tracker Tooltip" className="mb-12 max-w-4xl mx-auto bg-[#0B0E14] border border-[#1E293B] rounded-2xl p-8 relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden">
           <h3 className="text-xl font-bold text-white mb-8 text-center uppercase tracking-widest text-[#94A3B8]">Mega Bonus Progress Tracker</h3>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             {[1, 2, 3, 4, 5, 6, 7].map((day) => {
@@ -229,15 +229,15 @@ export default function Rewards(): React.JSX.Element {
           )}
         </div>
 
-        {error && <div role="alert" aria-live="polite" className="mb-6 p-4 bg-red-500/10 border border-red-500/50 text-red-500 rounded-xl text-center font-medium max-w-2xl mx-auto">{error}</div>}
-        {success && <div role="status" aria-live="polite" className="mb-6 p-4 bg-brand-green/10 border border-brand-green/50 text-brand-green rounded-xl text-center font-medium max-w-2xl mx-auto">{success}</div>}
+        {error && <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 text-red-500 rounded-xl text-center font-medium max-w-2xl mx-auto">{error}</div>}
+        {success && <div className="mb-6 p-4 bg-brand-green/10 border border-brand-green/50 text-brand-green rounded-xl text-center font-medium max-w-2xl mx-auto">{success}</div>}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Faucet Card */}
           <div className="card p-8 flex flex-col items-center text-center relative overflow-hidden group hover:border-brand-yellow/50 transition-colors duration-300">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-yellow/5 to-transparent pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity"></div>
             <div className="w-16 h-16 bg-brand-yellow/10 rounded-full flex items-center justify-center mb-4 border border-brand-yellow/20">
-              <svg aria-hidden="true" className="w-8 h-8 text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <svg className="w-8 h-8 text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">API Credits Faucet</h2>
             <p className="text-text-secondary mb-8">Get 100 APIC on your first visit, and 50 APIC every 24 hours.</p>
@@ -265,7 +265,7 @@ export default function Rewards(): React.JSX.Element {
           <div className="card p-8 flex flex-col items-center text-center relative overflow-hidden group hover:border-brand-green/50 transition-colors duration-300">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-green/5 to-transparent pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity"></div>
             <div className="w-16 h-16 bg-brand-green/10 rounded-full flex items-center justify-center mb-4 border border-brand-green/20">
-              <svg aria-hidden="true" className="w-8 h-8 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+              <svg className="w-8 h-8 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">Community NFT</h2>
             <p className="text-text-secondary mb-8">Mint unlimited NFTs. Keep a 7-day streak for a 1,000 APIC bonus.</p>
