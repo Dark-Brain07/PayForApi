@@ -1,3 +1,7 @@
+/**
+ * Session Manager Utility
+ * Manages user sessions in memory.
+ */
 export interface SessionData {
   userId: string;
   createdAt: number;
