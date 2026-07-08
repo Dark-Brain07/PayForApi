@@ -200,7 +200,7 @@ export default function Explorer() {
             </h2>
             <div className="flex gap-3 items-center">
               <button type="button" title="Refresh leaderboard" onClick={() => window.location.reload()} disabled={leaderboardLoading} className="text-xs text-[#94A3B8] hover:text-white flex items-center gap-1 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"><span aria-hidden="true">↻</span> Refresh</button>
-              <span className="text-xs font-bold text-[#F5C518] bg-[#F5C518]/10 px-3 py-1 rounded-full border border-[#F5C518]/30">STABLECOINS</span>
+              <span title="Stablecoin Donations" className="text-xs font-bold text-[#F5C518] bg-[#F5C518]/10 px-3 py-1 rounded-full border border-[#F5C518]/30">STABLECOINS</span>
             </div>
           </div>
           <div className="p-0 flex-grow bg-[#050505] overflow-y-auto overflow-x-auto max-h-[400px] lg:max-h-full">
