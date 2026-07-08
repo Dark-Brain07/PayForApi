@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ethers } from "ethers";
 import { CELO_MAINNET } from "@/lib/contracts";
+import { loggerInstance } from "@/lib/server/logger";
 
 export const maxDuration = 60;
+
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
@@ -56,7 +58,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     });
 
   } catch (error: unknown) {
-    console.error("Chat API Error:", error);
+    loggerInstance.error("Chat API Error:", { error });
     return NextResponse.json({ error: "Internal server error", details: String(error) }, { status: 500 });
   }
 }
