@@ -139,6 +139,7 @@ export default function Header() {
                   <button 
                     type="button"
                     aria-label="Disconnect"
+                    title="Disconnect Wallet"
                     onClick={disconnect}
                     className="bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 px-2 py-2 sm:px-3 rounded-lg transition-colors text-xs sm:text-sm font-bold"
                   >
