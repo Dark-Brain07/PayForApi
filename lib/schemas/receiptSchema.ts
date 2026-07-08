@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { CELO_MAINNET_ID } from "../contracts";
 
 /** On-chain payment receipt for a completed x402 call */
 export const receiptSchema = z.object({
@@ -9,7 +10,7 @@ export const receiptSchema = z.object({
   amount: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
   token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]),
   endpoint: z.string().url(),
-  chainId: z.number().int().default(42220),
+  chainId: z.number().int().default(CELO_MAINNET_ID),
   blockNumber: z.number().int().positive().optional(),
   issuedAt: z.string().datetime(),
 }).strict();
