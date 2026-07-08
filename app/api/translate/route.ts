@@ -38,6 +38,8 @@ export const GET = withX402(
   }
 );
 
+import { loggerInstance } from "@/lib/server/logger";
+
 export async function POST(request: NextRequest) {
   try {
     const { walletAddress, txHash, text = "hello", language = "French" } = await request.json();
@@ -49,7 +51,7 @@ export async function POST(request: NextRequest) {
     const mockReq = new NextRequest(new URL(`http://localhost/api/translate?text=${encodeURIComponent(text)}&language=${encodeURIComponent(language)}`));
     return getHandler(mockReq);
   } catch (error) {
-    console.error(error);
+    loggerInstance.error("Translation API error", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
