@@ -52,7 +52,7 @@ export class PayForApiClient {
          const paymentRequired = this.x402HttpClient.getPaymentRequiredResponse((name: string) => response.headers.get(name));
          
          // Create payment payload
-         const paymentPayload = await this.x402HttpClient.createPaymentPayload(paymentRequired);
+         const paymentPayload = this.x402HttpClient.createPaymentPayload(paymentRequired);
          
          // Encode payment header
          const headers = new Headers(init?.headers);
