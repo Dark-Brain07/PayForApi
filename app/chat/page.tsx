@@ -172,7 +172,7 @@ export default function ChatPage() {
               {!isMiniPay && <option value="APIC" className="bg-[#050505] text-white">Prepaid (20 Credits)</option>}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
-              <svg aria-hidden="true" className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              <svg className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
             </div>
           </div>
         </div>
@@ -209,7 +209,7 @@ export default function ChatPage() {
             {!isMiniPay && <option value="APIC" className="bg-[#050505] text-white py-2">Cost: 20 Prepaid Credits</option>}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
-            <svg aria-hidden="true" className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            <svg className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
           </div>
         </div>
         <div className="hidden xl:block text-sm text-text-secondary bg-brand-elevated px-3 py-1 rounded-full border border-brand-border">
@@ -307,9 +307,9 @@ export default function ChatPage() {
         </div>
         {isMiniPay && (
           <div className="flex justify-center space-x-6 mt-3 text-[10px] text-[#94A3B8]">
-            <Link href="/terms" className="hover:text-brand-yellow">Terms</Link>
-            <Link href="/privacy" className="hover:text-brand-yellow">Privacy</Link>
-            <a href="https://t.me/payforapi_support" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow">Support</a>
+            <Link href="/terms" title="Terms of Service" className="hover:text-brand-yellow">Terms</Link>
+            <Link href="/privacy" title="Privacy Policy" className="hover:text-brand-yellow">Privacy</Link>
+            <a href="https://t.me/payforapi_support" title="Contact Support" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow">Support</a>
           </div>
         )}
       </div>
