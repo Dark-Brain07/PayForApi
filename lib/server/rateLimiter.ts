@@ -1,3 +1,7 @@
+/**
+ * Rate Limiter Utility
+ * Provides in-memory rate limiting functionality.
+ */
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
 
 export class RateLimiter {
