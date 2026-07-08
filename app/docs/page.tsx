@@ -38,7 +38,7 @@ export default function Docs() {
         <div className="w-full md:w-64 shrink-0 border-r border-[#1E293B] pr-6 sticky top-24 h-fit hidden md:block">
           <h3 className="text-[10px] font-black text-[#94A3B8] uppercase tracking-[0.2em] mb-4">Core Concepts</h3>
           <ul className="space-y-3 mb-10">
-            <li><button onClick={() => setActiveTab("intro")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "intro" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>Introduction</button></li>
+            <li><button onClick={() => setActiveTab("intro")} title="Introduction Tab" className={`text-sm font-bold transition-all text-left w-full ${activeTab === "intro" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>Introduction</button></li>
             <li><button onClick={() => setActiveTab("architecture")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "architecture" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>System Architecture</button></li>
             <li><button onClick={() => setActiveTab("x402")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "x402" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>x402 Authentication</button></li>
             <li><button onClick={() => setActiveTab("erc8004")} className={`text-sm font-bold transition-all text-left w-full ${activeTab === "erc8004" ? "text-brand-yellow translate-x-1" : "text-[#94A3B8] hover:text-white hover:translate-x-1"}`}>ERC-8004 Standard</button></li>
@@ -80,7 +80,7 @@ export default function Docs() {
             </optgroup>
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-brand-yellow">
-            <svg aria-hidden="true" className="fill-current h-5 w-5 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            <svg className="fill-current h-5 w-5 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
           </div>
         </div>
 
