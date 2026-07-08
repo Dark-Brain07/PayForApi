@@ -1,9 +1,10 @@
 import { z } from "zod";
+import { CELO_MAINNET_ID } from "../contracts";
 
 export const sessionSchema = z.object({
   id: z.string().uuid().optional(),
   walletAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
-  chainId: z.number().int().default(42220),
+  chainId: z.number().int().default(CELO_MAINNET_ID),
   isMiniPay: z.boolean().default(false),
   expiresAt: z.string().datetime(),
   ipAddress: z.string().ip().optional(),
