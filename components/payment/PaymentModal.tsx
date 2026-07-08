@@ -123,7 +123,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
       <div role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" className={MODAL_CONTAINER_CLASSES}>
         <div className="p-6 border-b border-brand-border flex justify-between items-center shrink-0">
           <h2 id="payment-modal-title" className="text-xl font-bold text-white">Select Payment Method</h2>
-          <button type="button" aria-label="Close Payment Modal" onClick={onClose} className="text-text-secondary hover:text-white transition-colors">
+          <button type="button" aria-label="Close Payment Modal" title="Close" onClick={onClose} className="text-text-secondary hover:text-white transition-colors">
             <span aria-hidden="true">✕</span>
           </button>
         </div>
@@ -137,7 +137,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
           <TokenSelector selectedToken={selectedToken} onSelect={setSelectedToken} />
           
           {error && (
-            <div role="alert" aria-live="polite" className="mt-4 p-3 bg-error/10 border border-error/20 text-error rounded-lg text-sm text-center">
+            <div role="alert" className="mt-4 p-3 bg-error/10 border border-error/20 text-error rounded-lg text-sm text-center">
               {error}
             </div>
           )}
