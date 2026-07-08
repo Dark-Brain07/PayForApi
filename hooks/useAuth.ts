@@ -100,7 +100,7 @@ export function useAuth(): AuthState & {
       address: null,
       isConnected: false,
       chainId: null,
-      isMiniPay: typeof window !== "undefined" ? !!window.ethereum?.isMiniPay : false,
+      isMiniPay: typeof window !== "undefined" ? (window.ethereum?.isMiniPay ?? false) : false,
       isConnecting: false,
       error: null,
     });
