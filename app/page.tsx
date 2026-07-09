@@ -11,7 +11,7 @@ const MATRIX_BG_URL = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
 
 const BOOT_SPEED_MS = 150;
 
-function InteractiveTerminal() {
+function InteractiveTerminal(): React.JSX.Element {
   const router = useRouter();
   const [bootLogs, setBootLogs] = useState<string[]>([]);
   const [isReady, setIsReady] = useState(false);
