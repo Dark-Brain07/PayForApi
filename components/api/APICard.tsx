@@ -23,7 +23,7 @@ interface APICardProps {
 export default function APICard({ id, name, priceUsd, priceCredits = 0, description, inputs, onTryIt }: APICardProps) {
   const [values, setValues] = useState<string[]>(Array(inputs.length).fill(""));
 
-  const getIcon = () => {
+  const getIcon = (): string => {
     switch (name) {
       case "Weather Info": return "🌤️";
       case "Global News": return "🌍";
