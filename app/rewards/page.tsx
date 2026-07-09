@@ -26,7 +26,7 @@ export default function Rewards(): React.JSX.Element {
   
   const MAX_SUPPLY = 100000;
 
-  const fetchStats = async () => {
+  const fetchStats = async (): Promise<void> => {
     if (!address || typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) return;
     try {
       const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum as unknown as ethers.Eip1193Provider);
