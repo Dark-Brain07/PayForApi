@@ -40,7 +40,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       body: JSON.stringify({
         model: process.env.AI_MODEL_NAME || "gpt-4o-mini",
         messages: [
-          { role: "system", content: `You are a highly capable AI assistant. The exact current date and time for the user is ${localTime || new Date().toLocaleString()}. This time is ALREADY in the user's local timezone. Do NOT add or subtract any hours. If the user asks for the current time, reply with EXACTLY this time without performing any timezone conversions.` },
+          { role: "system", content: process.env.SYSTEM_PROMPT || `You are a highly capable AI assistant. The exact current date and time for the user is ${localTime || new Date().toLocaleString()}. This time is ALREADY in the user's local timezone. Do NOT add or subtract any hours. If the user asks for the current time, reply with EXACTLY this time without performing any timezone conversions.` },
           { role: "user", content: message }
         ],
         max_tokens: 500,
