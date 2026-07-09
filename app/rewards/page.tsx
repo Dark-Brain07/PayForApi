@@ -27,6 +27,7 @@ export default function Rewards(): React.JSX.Element {
   
   const MAX_SUPPLY = 100000;
 
+  /** Fetches and updates user reward statistics including balances and streaks */
   const fetchStats = async (): Promise<void> => {
     if (!address || typeof window === "undefined" || !(window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) return;
     try {
