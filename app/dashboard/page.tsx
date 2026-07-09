@@ -239,7 +239,7 @@ export default function DashboardPage(): React.JSX.Element {
           </div>
           <button 
             type="button"
-            onClick={() => setModalOpen(true)}
+            onClick={(): void => setModalOpen(true)}
             aria-label="Register New API"
             aria-haspopup="dialog"
             aria-expanded={isModalOpen}
