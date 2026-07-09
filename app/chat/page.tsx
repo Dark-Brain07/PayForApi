@@ -121,8 +121,7 @@ export default function ChatPage() {
         role: "ai", 
         content: data.response || "Error: No response generated." 
       }]);
-    } catch (e: unknown) {
-      console.error(e);
+    } catch (e: any) {
       let errorMessage = e?.reason || e?.message || "Payment failed or cancelled.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
         if (isMiniPay) {
