@@ -20,7 +20,7 @@ interface APICardProps {
   onTryIt: (id: number, name: string, values: string[], priceCredits?: number) => void;
 }
 
-export default function APICard({ id, name, priceUsd, priceCredits = 0, description, inputs, onTryIt }: APICardProps) {
+export default function APICard({ id, name, priceUsd, priceCredits = 0, description, inputs, onTryIt }: APICardProps): React.JSX.Element {
   const [values, setValues] = useState<string[]>(Array(inputs.length).fill(""));
 
   const getIcon = (): string => {
