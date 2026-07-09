@@ -53,7 +53,7 @@ export default function Marketplace() {
 
   // Fetch Community APIs from the blockchain
   useEffect(() => {
-    async function fetchCommunityApis() {
+    async function fetchCommunityApis(): Promise<void> {
       try {
         const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
         const contract = new ethers.Contract(CONTRACTS.API_REVENUE_SPLITTER.address, CONTRACTS.API_REVENUE_SPLITTER.abi, provider);
