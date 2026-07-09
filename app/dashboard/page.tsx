@@ -336,7 +336,7 @@ export default function DashboardPage(): React.JSX.Element {
             <div className="space-y-4">
               <div>
                 <label htmlFor="new-api-name" className="block text-sm font-medium text-[#94A3B8] mb-1">API Name</label>
-                <Input 
+                <Input aria-required="true" 
                   id="new-api-name"
                   type="text" 
                   value={newApiName}
