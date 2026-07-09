@@ -206,7 +206,7 @@ export default function Explorer() {
           </div>
           <div className="p-0 flex-grow bg-[#050505] overflow-y-auto overflow-x-auto max-h-[400px] lg:max-h-full">
             <div className="min-w-[400px]">
-              <table className="w-full text-left border-collapse relative">
+              <table role="table" className="w-full text-left border-collapse relative">
               <thead className="bg-[#1E293B] sticky top-0 z-10 shadow-md">
                 <tr>
                   <th className="py-3 px-6 text-[#94A3B8] font-bold text-xs uppercase tracking-wider">Rank</th>
