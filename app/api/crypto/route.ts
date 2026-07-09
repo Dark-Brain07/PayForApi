@@ -1,5 +1,6 @@
 import { withX402 } from 'x402-next';
 import { NextRequest, NextResponse } from "next/server";
+import { loggerInstance } from "@/lib/server/logger";
 import { ethers } from "ethers";
 import { CELO_MAINNET } from "@/lib/contracts";
 
@@ -34,7 +35,7 @@ export async function POST(request: NextRequest) {
     const mockReq = new NextRequest(new URL(`http://localhost/api/crypto?ids=${ids}`));
     return getHandler(mockReq);
   } catch (error: unknown) {
-    // Silent catch to prevent leaking errors to standard output
+    loggerInstance.error(String(error));
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
