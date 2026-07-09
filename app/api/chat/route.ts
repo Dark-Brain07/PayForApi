@@ -38,7 +38,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini", // Or whatever model you want to use from Freemodel
+        model: process.env.AI_MODEL_NAME || "gpt-4o-mini",
         messages: [
           { role: "system", content: `You are a highly capable AI assistant. The exact current date and time for the user is ${localTime || new Date().toLocaleString()}. This time is ALREADY in the user's local timezone. Do NOT add or subtract any hours. If the user asks for the current time, reply with EXACTLY this time without performing any timezone conversions.` },
           { role: "user", content: message }
