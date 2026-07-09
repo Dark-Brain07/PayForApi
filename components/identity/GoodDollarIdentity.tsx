@@ -30,6 +30,7 @@ export default function GoodDollarIdentity(): React.JSX.Element {
     }
   }, [address]);
 
+  /** Triggers the GoodDollar identity verification process */
   const handleVerify = async (): Promise<void> => {
     if (!isConnected || !address) {
       alert("Please connect your wallet first.");
