@@ -14,7 +14,7 @@ const BASE_BUTTON_CLASSES = "inline-flex items-center justify-center rounded-md 
  * Enterprise-grade Button component for the design system.
  * Supports multiple variants, sizes, and accessibility standards.
  */
-export const Button: React.FC<ButtonProps> = ({ 
+export const Button: React.FunctionComponent<ButtonProps> = ({ 
   children, 
   variant = 'default', 
   size = 'md', 
