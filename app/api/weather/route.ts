@@ -18,7 +18,7 @@ const getHandler = async (req: NextRequest) => {
 
 export const GET = withX402(
   getHandler,
-  (process.env.NEXT_PUBLIC_GATEWAY_ADDRESS || '0x0000000000000000000000000000000000000000') as `0x${string}`,
+  (process.env.NEXT_PUBLIC_GATEWAY_ADDRESS || ethers.ZeroAddress) as `0x${string}`,
   {
     price: '$0.001',
     network: 'celo-mainnet',
