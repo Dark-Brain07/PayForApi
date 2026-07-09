@@ -19,7 +19,7 @@ interface Message {
 /**
  * Interactive chat interface to test AI agents using x402 micropayments.
  */
-export default function ChatPage() {
+export default function ChatPage(): React.JSX.Element {
   const { address, isMiniPay } = useWallet();
   const [messages, setMessages] = useState<Message[]>([
     { id: "intro", role: "ai", content: "Hello! I am your Smart Assistant. You pay per message using your stablecoins. How can I help you today?" }
