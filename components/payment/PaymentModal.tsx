@@ -22,6 +22,7 @@ interface PaymentModalProps {
   onSuccess: (txHash: string, token: string) => void;
 }
 
+/** Modal component for handling crypto token payments */
 export default function PaymentModal({ isOpen, onClose, productId, productName, priceCredits, onSuccess }: PaymentModalProps): React.JSX.Element | null {
   const { isMiniPay, address } = useWallet();
   const [selectedToken, setSelectedToken] = useState<StablecoinKey>(DEFAULT_TOKEN);
