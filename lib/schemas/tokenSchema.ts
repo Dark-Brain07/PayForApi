@@ -11,9 +11,10 @@ const CELO_TOKENS: Record<string, { address: string; decimals: number }> = {
   PUSO: { address: "0x105d4A9306D2E55a71d2Eb95B81553AE1dC20d7B", decimals: 18 },
 };
 
+const EVM_ADDRESS_REGEX = /^0x[0-9a-fA-F]{40}$/;
 export const tokenSchema = z.object({
   symbol: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]),
-  contractAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
+  contractAddress: z.string().regex(EVM_ADDRESS_REGEX, "Invalid EVM address"),
   decimals: z.number().int().default(18).describe("The number of decimals for the token"),
   chainId: z.number().int().default(CELO_MAINNET_ID),
 }).strict();
