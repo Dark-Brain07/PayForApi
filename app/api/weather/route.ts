@@ -1,4 +1,5 @@
 import { withX402 } from 'x402-next';
+import { loggerInstance } from '@/lib/server/logger';
 import { NextRequest, NextResponse } from "next/server";
 import { ethers } from "ethers";
 import { CELO_MAINNET } from "@/lib/contracts";
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
     const mockReq = new NextRequest(new URL(`http://localhost/api/weather?city=${city}`));
     return getHandler(mockReq);
   } catch (error) {
-    console.error(error);
+    loggerInstance.error(String(error));
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
