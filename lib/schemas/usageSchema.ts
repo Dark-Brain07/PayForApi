@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+/** Schema for validating API usage records */
 export const usageSchema = z.object({
   id: z.string().uuid().optional(),
   walletAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
