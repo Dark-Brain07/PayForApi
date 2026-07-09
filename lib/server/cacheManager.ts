@@ -11,7 +11,7 @@ export class CacheManager {
   public set(key: string, value: unknown, ttlMs: number = 60000) {
     this.cache.set(key, { value, expiry: Date.now() + ttlMs });
   }
-  public get(key: string) {
+  public get(key: string): unknown {
     const item = this.cache.get(key);
     if (!item) return null;
     if (Date.now() > item.expiry) {
