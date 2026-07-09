@@ -165,9 +165,9 @@ export default function ChatPage(): React.JSX.Element {
               onChange={(e) => setPaymentToken(e.target.value as "USDm" | "APIC")}
               className="relative w-full bg-[#0F141C]/90 backdrop-blur-md border border-[#1E293B] hover:border-brand-yellow/50 text-white text-sm font-bold rounded-xl pl-4 pr-10 py-3 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow appearance-none cursor-pointer transition-all disabled:opacity-50"
             >
-              <option value="USDm" className="bg-[#050505] text-white">USDm ($0.005)</option>
-              <option value="EURm" className="bg-[#050505] text-white">EURm (€0.005)</option>
-              <option value="BRLm" className="bg-[#050505] text-white">BRLm (R$0.005)</option>
+              {Object.keys(CELO_STABLECOINS).map(token => (
+                <option key={token} value={token} className="bg-[#050505] text-white">{token} (~$0.005)</option>
+              ))}
               {!isMiniPay && <option value="APIC" className="bg-[#050505] text-white">Prepaid (20 Credits)</option>}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
