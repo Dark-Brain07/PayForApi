@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 
+/** A styled component for displaying code snippets with syntax language indication */
 const CodeBlock = ({ code, language = "json" }: { code: string, language?: string }) => (
   <div className="relative group rounded-xl overflow-hidden bg-[#050505] border border-[#1E293B] shadow-inner my-6">
     <div className="flex justify-between items-center px-4 py-2 bg-[#0F141C] border-b border-[#1E293B]">
