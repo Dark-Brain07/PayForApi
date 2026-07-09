@@ -20,4 +20,5 @@ export const tokenSchema = z.object({
 
 export type TokenData = z.infer<typeof tokenSchema>;
 export { CELO_TOKENS };
+/** Validates token data against the tokenSchema */
 export const validateToken = (data: unknown) => tokenSchema.safeParse(data);
