@@ -47,6 +47,7 @@ export default function ChatPage(): React.JSX.Element {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
+  /** Handles sending the chat message and processing payment */
   const handleSendClick = async () => {
     if (!input.trim()) return;
     if (!address) {
