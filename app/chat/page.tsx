@@ -285,7 +285,7 @@ export default function ChatPage(): React.JSX.Element {
             aria-label="Message Input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
+            onKeyDown={(e): void => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
                 handleSendClick();
