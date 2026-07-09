@@ -7,6 +7,7 @@ import { CONTRACTS } from "@/lib/contracts";
 import Input from "@/components/ui/Input";
 import { EthereumProvider } from "@/hooks/useAuth";
 import GoodDollarIdentity from "@/components/identity/GoodDollarIdentity";
+import { loggerInstance } from "@/lib/server/logger";
 
 /** Shared styling classes for text inputs in the dashboard. */
 const INPUT_CLASSES = [
@@ -210,7 +211,7 @@ export default function DashboardPage(): React.JSX.Element {
           setDeletedApis(fetchedDeletedApis);
         }
       } catch (error) {
-        // Silent fallback
+        loggerInstance.error(String(error));
       } finally {
         if (isMounted) setLoadingEndpoints(false);
       }
