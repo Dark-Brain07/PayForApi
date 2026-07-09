@@ -52,7 +52,8 @@ export default function DashboardPage(): React.JSX.Element {
 
   const handleRegister = async (): Promise<void> => {
     setErrorMsg("");
-    if (!newApiName.trim() || !newApiEndpoint.trim()) { setErrorMsg("Please fill all fields with valid text"); return; }
+    const ERR_EMPTY = "Please fill all fields with valid text";
+    if (!newApiName.trim() || !newApiEndpoint.trim()) { setErrorMsg(ERR_EMPTY); return; }
     if (!isConnected || !address) { setErrorMsg("Please connect your Web3 wallet first to register an API."); return; }
     if (typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
       setErrorMsg("No Web3 wallet detected");
