@@ -16,7 +16,7 @@ const CodeBlock = ({ code, language = "json" }: { code: string, language?: strin
 /**
  * Documentation page explaining the protocol architecture and integration details.
  */
-export default function Docs() {
+export default function Docs(): React.JSX.Element {
   const [activeTab, setActiveTab] = useState("intro");
 
   return (
