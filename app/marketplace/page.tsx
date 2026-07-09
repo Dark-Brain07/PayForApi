@@ -221,7 +221,7 @@ export default function Marketplace() {
           setIsCalling(true);
           try {
             const { id, values } = product!;
-            let apiRequestBody: ApiRequestPayload = { txHash, walletAddress: address || "0x0000000000000000000000000000000000000000" };
+            let apiRequestBody: ApiRequestPayload = { txHash, walletAddress: address || ethers.ZeroAddress };
             let endpoint = "";
             
             if (id === 0) {
