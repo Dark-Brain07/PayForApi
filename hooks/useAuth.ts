@@ -1,5 +1,6 @@
 "use client";
 import { useState, useCallback, useEffect } from "react";
+import { CELO_MAINNET_ID } from "@/lib/contracts";
 
 /**
  * Interface representing the injected Web3 provider (window.ethereum).
@@ -26,7 +27,7 @@ export interface AuthState {
   error: string | null;
 }
 
-const CELO_CHAIN_ID = 42220;
+const CELO_CHAIN_ID = CELO_MAINNET_ID;
 const CELO_CHAIN_HEX = `0x${CELO_CHAIN_ID.toString(16)}`;
 export const USER_REJECTED_CODE = 4001;
 export const CHAIN_MISSING_CODE = 4902;
