@@ -8,7 +8,7 @@ import { type EthereumProvider } from "@/hooks/useAuth";
 
 const DAILY_UBI_AMOUNT = 50;
 
-export default function GoodDollarIdentity() {
+export default function GoodDollarIdentity(): React.JSX.Element {
   const { address, isConnected } = useWallet();
   const [isVerified, setIsVerified] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
