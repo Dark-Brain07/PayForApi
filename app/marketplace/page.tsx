@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import APICard from "@/components/api/APICard";
 
+/** Represents a custom API registered by a community creator */
 export interface CommunityApi {
   id: number;
   name: string;
