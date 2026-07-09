@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ethers } from "ethers";
 import { CELO_MAINNET } from "@/lib/contracts";
+import { loggerInstance } from "@/lib/server/logger";
 
 export async function POST(request: NextRequest) {
   try {
@@ -60,7 +61,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error: unknown) {
-    console.error("Image Gen API Error:", error);
+    loggerInstance.error("Image Gen API Error:", error);
     const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
     return NextResponse.json({ error: `Image generation failed: ${errorMessage}` }, { status: 500 });
   }
