@@ -5,6 +5,7 @@ import { useWallet } from "@/components/wallet/WalletContext";
 import { ethers } from "ethers";
 import { CONTRACTS } from "@/lib/contracts";
 import { type EthereumProvider } from "@/hooks/useAuth";
+import { loggerInstance } from "@/lib/server/logger";
 
 const DAILY_UBI_AMOUNT = 50;
 
@@ -78,6 +79,7 @@ export default function GoodDollarIdentity(): React.JSX.Element {
          setCreditsClaimed(true);
          localStorage.setItem(`g$_claimed_${address}`, "true");
       }
+      loggerInstance.error(`Claim failed: ${errMsg}`);
       alert(`Claim failed: ${errMsg}`);
     } finally {
       setIsClaiming(false);
