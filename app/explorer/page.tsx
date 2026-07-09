@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import { CONTRACTS, CELO_MAINNET, MASTER_MERCHANT_WALLET, ECOSYSTEM_DONATION_WALLET } from "@/lib/contracts";
 import { CELO_STABLECOINS } from "@/lib/stablecoins";
 
+/** Represents a donor and their total contribution */
 interface DonorInfo {
   address: string;
   amount: number;
