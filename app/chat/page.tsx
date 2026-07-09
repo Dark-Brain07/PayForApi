@@ -171,7 +171,7 @@ export default function ChatPage() {
               {!isMiniPay && <option value="APIC" className="bg-[#050505] text-white">Prepaid (20 Credits)</option>}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-yellow">
-              <svg className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              <svg aria-hidden="true" className="fill-current h-4 w-4 drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
             </div>
           </div>
         </div>
