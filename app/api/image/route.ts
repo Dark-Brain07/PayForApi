@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import { CELO_MAINNET } from "@/lib/contracts";
 import { loggerInstance } from "@/lib/server/logger";
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body: { prompt?: string; walletAddress?: string; txHash?: string } = await request.json();
     const { prompt, walletAddress, txHash } = body;
