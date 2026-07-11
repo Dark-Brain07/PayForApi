@@ -14,4 +14,4 @@ export class RequestValidator {
     }
   }
 }
-export const requestValidatorInstance = RequestValidator.getInstance();
+export const requestValidatorInstance: RequestValidator = RequestValidator.getInstance();
