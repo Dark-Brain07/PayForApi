@@ -40,7 +40,7 @@ export const GET = withX402(
 
 import { loggerInstance } from "@/lib/server/logger";
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const { walletAddress, txHash, text = "hello", language = "French" } = await request.json();
     if (!walletAddress || !txHash) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
