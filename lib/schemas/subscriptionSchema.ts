@@ -3,7 +3,7 @@ import { z } from "zod";
 export const subscriptionSchema = z.object({
   id: z.string().uuid().optional(),
   walletAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
-  planId: z.string(),
+  planId: z.string().trim(),
   callsUsed: z.number().int().min(0).default(0),
   callsLimit: z.number().int().min(0),
   token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]).default("USDm"),
