@@ -15,4 +15,4 @@ export class SmsSender {
     return true;
   }
 }
-export const smsSenderInstance = SmsSender.getInstance();
+export const smsSenderInstance: SmsSender = SmsSender.getInstance();
