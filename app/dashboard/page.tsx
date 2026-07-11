@@ -38,7 +38,7 @@ export interface ApiEndpointData {
 /**
  * Main dashboard view for API creators to manage endpoints and track revenue.
  */
-export default function DashboardPage(): React.JSX.Element {
+export default function DashboardPage(): React.ReactElement {
   const [apis, setApis] = useState<ApiEndpointData[]>([]);
   const [loadingEndpoints, setLoadingEndpoints] = useState(true);
   const [isModalOpen, setModalOpen] = useState(false);
