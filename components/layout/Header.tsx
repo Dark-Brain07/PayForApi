@@ -209,7 +209,7 @@ export default function Header() {
             )}
 
             {/* Mobile Menu Hamburger */}
-            <button 
+            <button title="Toggle Menu"
               type="button"
               aria-label="Toggle Mobile Navigation Menu"
               aria-controls="mobile-menu-panel"
