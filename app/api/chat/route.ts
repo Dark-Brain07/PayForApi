@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import { CELO_MAINNET } from "@/lib/contracts";
 import { loggerInstance } from "@/lib/server/logger";
 
-export const maxDuration = 60;
+export const maxDuration: number = 60;
 
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
