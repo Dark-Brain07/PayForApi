@@ -4,7 +4,7 @@ export const userSchema = z.object({
   id: z.string().uuid().optional(),
   walletAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   ens: z.string().optional(),
-  email: z.string().trim().email().optional(),
+  email: z.string().trim().toLowerCase().email().optional(),
   role: z.enum(["user", "creator", "admin"]).default("user"),
   isMiniPay: z.boolean().default(false),
   createdAt: z.string().datetime().optional(),
