@@ -8,7 +8,7 @@ export const sessionSchema = z.object({
   isMiniPay: z.boolean().default(false),
   expiresAt: z.string().datetime(),
   ipAddress: z.string().ip().optional(),
-  userAgent: z.string().max(256).optional(),
+  userAgent: z.string().trim().max(256).optional(),
   createdAt: z.string().datetime().optional(),
 }).strict();
 
