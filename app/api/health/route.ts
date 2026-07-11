@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
-/** API health check endpoint */
+/**
+ * API health check endpoint
+ */
 export async function GET(): Promise<NextResponse> {
   return NextResponse.json({
     status: "healthy",
