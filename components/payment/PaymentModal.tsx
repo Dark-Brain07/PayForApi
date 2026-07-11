@@ -145,7 +145,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
         </div>
         
         <div className="p-6 border-t border-brand-border bg-brand-elevated space-y-3 shrink-0">
-          <button 
+          <button aria-label="Confirm Payment"
             type="button"
             onClick={handlePay}
             disabled={isProcessing}
