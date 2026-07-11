@@ -27,4 +27,4 @@ export class SessionManager {
   }
 }
 /** Global singleton instance of SessionManager */
-export const sessionManagerInstance = SessionManager.getInstance();
+export const sessionManagerInstance: SessionManager = SessionManager.getInstance();
