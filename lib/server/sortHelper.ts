@@ -17,4 +17,4 @@ export class SortHelper {
     });
   }
 }
-export const sortHelperInstance = SortHelper.getInstance();
+export const sortHelperInstance: SortHelper = SortHelper.getInstance();
