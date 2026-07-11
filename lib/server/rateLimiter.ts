@@ -34,4 +34,4 @@ export class RateLimiter {
   }
 }
 
-export const rateLimiterInstance = RateLimiter.getInstance();
+export const rateLimiterInstance: RateLimiter = RateLimiter.getInstance();
