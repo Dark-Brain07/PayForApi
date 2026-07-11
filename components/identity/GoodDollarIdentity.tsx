@@ -104,7 +104,7 @@ export default function GoodDollarIdentity(): React.JSX.Element {
         
         <div className="flex flex-col gap-3 shrink-0 w-full sm:w-auto">
           {!isVerified ? (
-            <button
+            <button title="Verify Identity"
               onClick={handleVerify}
               aria-label="Verify GoodDollar Identity"
               disabled={isVerifying || !isConnected}
