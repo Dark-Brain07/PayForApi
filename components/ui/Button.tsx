@@ -39,7 +39,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   };
   
   return (
-    <button 
+    <button data-component-type="button"
       type={props.type || "button"}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       disabled={isDisabled || props.disabled || isLoading}
