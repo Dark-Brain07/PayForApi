@@ -9,4 +9,4 @@ export class ResponseValidator {
     return response !== null && typeof response === 'object' && 'success' in response;
   }
 }
-export const responseValidatorInstance = ResponseValidator.getInstance();
+export const responseValidatorInstance: ResponseValidator = ResponseValidator.getInstance();
