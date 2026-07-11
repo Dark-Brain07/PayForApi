@@ -11,7 +11,10 @@ const SECONDS_IN_HOUR = 3600;
 const STATS_POLL_INTERVAL = 10000;
 const TIMER_UPDATE_INTERVAL = 1000;
 
-/** Handles user reward claiming and daily APIC distribution */
+/**
+ * Handles user reward claiming and daily APIC distribution
+ * @returns React.JSX.Element
+ */
 export default function Rewards(): React.JSX.Element {
   const { address, isConnected } = useWallet();
   const [balance, setBalance] = useState<string>("0");
