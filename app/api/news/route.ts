@@ -40,6 +40,7 @@ export const GET = withX402(
   }
 );
 
+/** Handles global news API requests */
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body: { walletAddress?: string; txHash?: string; category?: string } = await request.json();
