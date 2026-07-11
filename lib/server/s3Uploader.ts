@@ -10,4 +10,4 @@ export class S3Uploader {
     return `https://s3.mock.com/bucket/${key}`;
   }
 }
-export const s3UploaderInstance = S3Uploader.getInstance();
+export const s3UploaderInstance: S3Uploader = S3Uploader.getInstance();
