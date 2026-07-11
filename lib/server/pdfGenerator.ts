@@ -10,4 +10,4 @@ export class PdfGenerator {
     return Buffer.from('%PDF-1.4 mock pdf content ' + html.length, 'utf-8');
   }
 }
-export const pdfGeneratorInstance = PdfGenerator.getInstance();
+export const pdfGeneratorInstance: PdfGenerator = PdfGenerator.getInstance();
