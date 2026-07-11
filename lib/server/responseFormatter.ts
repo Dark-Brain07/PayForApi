@@ -12,4 +12,4 @@ export class ResponseFormatter {
     return { success: false, error: message, code };
   }
 }
-export const responseFormatterInstance = ResponseFormatter.getInstance();
+export const responseFormatterInstance: ResponseFormatter = ResponseFormatter.getInstance();
