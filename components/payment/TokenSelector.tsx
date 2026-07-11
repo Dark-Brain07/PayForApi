@@ -11,7 +11,7 @@ export default function TokenSelector({ selectedToken, onSelect }: TokenSelector
     <div role="group" aria-label="Select Payment Token" className="grid grid-cols-2 md:grid-cols-3 gap-3">
       {(Object.entries(CELO_STABLECOINS) as [StablecoinKey, typeof CELO_STABLECOINS[StablecoinKey]][]).map(([key, token]) => (
         <div 
-          key={key}
+          key={token.symbol}
           role="button"
           aria-label={`Select ${token.symbol}`}
           tabIndex={0}
