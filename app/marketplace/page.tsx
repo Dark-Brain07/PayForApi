@@ -39,7 +39,7 @@ import { CONTRACTS, CELO_MAINNET } from "@/lib/contracts";
 import { API_PRODUCTS } from "@/lib/data";
 import { BLOCKS_TO_QUERY, CACHE_KEYS } from "@/lib/constants";
 
-export default function Marketplace() {
+export default function Marketplace(): React.JSX.Element {
   const { address } = useWallet();
   const [selectedProduct, setSelectedProduct] = useState<SelectedProduct | null>(null);
   const [apiResult, setApiResult] = useState<string | null>(null);
