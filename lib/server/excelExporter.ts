@@ -15,4 +15,4 @@ export class ExcelExporter {
  * Singleton instance of the ExcelExporter class.
  * Used for exporting data to CSV/Excel formats.
  */
-export const excelExporterInstance = ExcelExporter.getInstance();
+export const excelExporterInstance: ExcelExporter = ExcelExporter.getInstance();
