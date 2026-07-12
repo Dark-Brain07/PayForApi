@@ -1,6 +1,8 @@
+const ALLOWED_ORIGINS = ['http://localhost:3000', 'https://example.com'];
+
 export class CorsMiddleware {
   private static instance: CorsMiddleware;
-  private allowedOrigins = ['http://localhost:3000', 'https://example.com'];
+  private allowedOrigins = ALLOWED_ORIGINS;
   private constructor() {}
   public static getInstance(): CorsMiddleware {
     if (!CorsMiddleware.instance) CorsMiddleware.instance = new CorsMiddleware();
