@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+/** Hook to manage state synchronized with localStorage */
 export function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
     if (typeof window === 'undefined') return initialValue;
