@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * Custom hook to track animation progress over a given duration.
+ * @param duration Duration in milliseconds
+ * @returns Progress value between 0 and 1
+ */
 export function useAnimation(duration = 500) {
   const [progress, setProgress] = useState(0);
   useEffect(() => {
