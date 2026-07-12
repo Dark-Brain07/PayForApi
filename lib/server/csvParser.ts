@@ -6,6 +6,7 @@ export class CsvParser {
     return CsvParser.instance;
   }
   public parse(csv: string): Record<string, string>[] {
+    if (!csv) return [];
     const lines = csv.split('\n').map((l: string): string => l.trim()).filter((l: string): boolean => Boolean(l));
     if (lines.length < 2) return [];
     const headers = lines[0].split(',');
