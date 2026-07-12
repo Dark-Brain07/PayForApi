@@ -43,6 +43,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     <div 
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       aria-disabled={isDisabled}
+      aria-required="false"
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
