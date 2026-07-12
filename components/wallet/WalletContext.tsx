@@ -13,7 +13,8 @@ interface WalletContextType {
   isMiniPay: boolean;
 }
 
-const WalletContext = createContext<WalletContextType | undefined>(undefined);
+const INITIAL_STATE = undefined;
+const WalletContext = createContext<WalletContextType | undefined>(INITIAL_STATE);
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const { isMiniPay, address: miniPayAddress } = useMiniPay();
