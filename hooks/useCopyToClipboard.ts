@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+/**
+ * Custom hook to copy text to the system clipboard.
+ * @returns A tuple containing the copied text and the copy function.
+ */
 export function useCopyToClipboard() {
   const [copiedText, setCopiedText] = useState<string | null>(null);
   const copy = async (text: string) => {
