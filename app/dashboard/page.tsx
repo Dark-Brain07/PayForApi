@@ -241,6 +241,7 @@ export default function DashboardPage(): React.ReactElement {
             type="button"
             onClick={(): void => setModalOpen(true)}
             aria-label="Register New API"
+            title="Register New API"
             aria-haspopup="dialog"
             aria-expanded={isModalOpen}
             aria-controls="register-modal"
