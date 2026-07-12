@@ -165,6 +165,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
           {priceCredits && (
             <button 
               type="button"
+              aria-label="Confirm Credit Payment"
               onClick={handlePayCredits}
               disabled={isProcessing}
               className="w-full bg-brand-yellow/10 border border-brand-yellow/30 hover:bg-brand-yellow/20 text-brand-yellow font-bold py-4 rounded-xl transition-colors text-lg flex justify-center items-center space-x-2"
