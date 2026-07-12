@@ -40,6 +40,7 @@ export const Card: React.FC<CardProps> = ({
     <div 
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       aria-disabled={isDisabled}
+      aria-labelledby={props['aria-labelledby'] || "card-heading"}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
