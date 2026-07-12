@@ -1,3 +1,5 @@
+const DEFAULT_TTL_MS = 60000;
+
 export class CacheManager {
   private static instance: CacheManager;
   private cache: Map<string, { value: unknown; expiry: number }>;
@@ -8,7 +10,7 @@ export class CacheManager {
     if (!CacheManager.instance) CacheManager.instance = new CacheManager();
     return CacheManager.instance;
   }
-  public set(key: string, value: unknown, ttlMs: number = 60000) {
+  public set(key: string, value: unknown, ttlMs: number = DEFAULT_TTL_MS) {
     this.cache.set(key, { value, expiry: Date.now() + ttlMs });
   }
   public get(key: string): unknown {
