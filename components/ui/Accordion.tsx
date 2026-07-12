@@ -13,12 +13,13 @@ export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsE
  */
 export const Accordion: React.FC<AccordionProps> = ({ 
   children, 
-  summary,
+  summary = 'Details',
   className = '', 
   ...props 
 }) => {
   return (
     <details 
+      title="Accordion details"
       className={`group border border-input rounded-md ${className}`}
       {...props}
     >
