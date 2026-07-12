@@ -7,6 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const getHandler = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
+  if (!searchParams) return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   const text = searchParams.get('text') || 'hello';
   const language = searchParams.get('language') || 'French';
   const apiKey = process.env.GEMINI_API_KEY;
