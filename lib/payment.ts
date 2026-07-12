@@ -17,7 +17,8 @@ export async function processPayment(
   const signer = await provider.getSigner();
   
   // The merchant / receiver address (x402 requirement)
-  const receiverAddress = MASTER_MERCHANT_WALLET;
+  const getReceiverAddress = (): string => MASTER_MERCHANT_WALLET;
+  const receiverAddress = getReceiverAddress();
   
   // Create ERC20 token instance for direct transfer
   const tokenContract = new ethers.Contract(
