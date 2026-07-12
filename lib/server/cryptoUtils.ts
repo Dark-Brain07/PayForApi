@@ -1,4 +1,6 @@
 import { createHash, randomBytes } from 'crypto';
+const DEFAULT_TOKEN_LENGTH = 32;
+
 export class CryptoUtils {
   private static instance: CryptoUtils;
   private constructor() {}
@@ -9,7 +11,7 @@ export class CryptoUtils {
   public hash(data: string): string {
     return createHash('sha256').update(data).digest('hex');
   }
-  public generateRandomToken(bytes: number = 32): string {
+  public generateRandomToken(bytes: number = DEFAULT_TOKEN_LENGTH): string {
     return randomBytes(bytes).toString('hex');
   }
 }
