@@ -12,6 +12,8 @@ export interface DrawerProps extends React.HTMLAttributes<HTMLDivElement> {
   isDisabled?: boolean;
 }
 
+const DEFAULT_SIZE = 'md';
+
 /**
  * Enterprise-grade Drawer component for the design system.
  * Supports multiple variants, sizes, and accessibility standards.
@@ -19,7 +21,7 @@ export interface DrawerProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Drawer: React.FC<DrawerProps> = ({ 
   children, 
   variant = 'default', 
-  size = 'md', 
+  size = DEFAULT_SIZE, 
   isDisabled = false, 
   className = '', 
   ...props 
