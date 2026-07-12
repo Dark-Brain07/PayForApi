@@ -122,8 +122,9 @@ export default function ChatPage(): React.JSX.Element {
         role: "ai", 
         content: data.response || "Error: No response generated." 
       }]);
-    } catch (e: any) {
-      let errorMessage = e?.reason || e?.message || "Payment failed or cancelled.";
+    } catch (e: unknown) {
+      const errObj = e as Record<string, any>;
+      let errorMessage = errObj?.reason || errObj?.message || "Payment failed or cancelled.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
         if (isMiniPay) {
           window.location.href = "https://link.minipay.xyz/add_cash?tokens=USDm";
