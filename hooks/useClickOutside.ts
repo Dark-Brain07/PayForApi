@@ -12,6 +12,7 @@ export function useClickOutside<T extends HTMLElement>(
   handler: () => void
 ): void {
   useEffect(() => {
+    /** Internal listener for mouse and touch events */
     const listener = (e: MouseEvent | TouchEvent) => {
       if (!ref.current || ref.current.contains(e.target as Node)) return;
       handler();
