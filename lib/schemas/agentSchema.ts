@@ -8,7 +8,7 @@ export const agentSchema = z.object({
   name: z.string().min(1).max(64),
   description: z.string().max(256).optional(),
   endpoints: z.array(z.string().url()).default([]),
-  erc8004TokenId: z.string().optional(),
+  erc8004TokenId: z.string().min(1).optional(),
   registryAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address").optional(),
   chainId: z.number().int().default(CELO_MAINNET_ID),
   isActive: z.boolean().default(true),
