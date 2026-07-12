@@ -31,6 +31,7 @@ const CELO_CHAIN_ID = CELO_MAINNET_ID;
 const CELO_CHAIN_HEX = `0x${CELO_CHAIN_ID.toString(16)}`;
 export const USER_REJECTED_CODE = 4001;
 export const CHAIN_MISSING_CODE = 4902;
+const CELO_DECIMALS = 18;
 
 /**
  * Generic EVM wallet auth hook. Auto-detects MiniPay.
@@ -127,7 +128,7 @@ export function useAuth(): AuthState & {
               chainId: CELO_CHAIN_HEX,
               chainName: "Celo Mainnet",
               rpcUrls: ["https://forno.celo.org"],
-              nativeCurrency: { name: "CELO", symbol: "CELO", decimals: 18 },
+              nativeCurrency: { name: "CELO", symbol: "CELO", decimals: CELO_DECIMALS },
               blockExplorerUrls: ["https://celoscan.io/"]
             }]
           });
