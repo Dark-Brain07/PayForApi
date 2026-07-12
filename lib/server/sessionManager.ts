@@ -17,8 +17,9 @@ export class SessionManager {
     if (!SessionManager.instance) SessionManager.instance = new SessionManager();
     return SessionManager.instance;
   }
+const RADIX = 36;
   public createSession(userId: string) {
-    const sessionId = Math.random().toString(36).substring(2);
+    const sessionId = Math.random().toString(RADIX).substring(2);
     this.sessions.set(sessionId, { userId, createdAt: Date.now() });
     return sessionId;
   }
