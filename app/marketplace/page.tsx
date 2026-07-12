@@ -187,7 +187,7 @@ export default function Marketplace(): React.JSX.Element {
                 No community APIs are available yet. Be the first visionary to register your endpoint on the Creator Dashboard and start monetizing.
               </p>
               
-              <a href="/dashboard" target="_blank" rel="noopener noreferrer" aria-label="Launch Creator Dashboard in a new tab" title="Launch Creator Dashboard" className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-brand-yellow/10 hover:bg-brand-yellow/20 border border-brand-yellow/20 rounded-xl text-brand-yellow font-bold transition-all duration-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.15)]">
+              <a href="/dashboard" data-internal="true" target="_blank" rel="noopener noreferrer" aria-label="Launch Creator Dashboard in a new tab" title="Launch Creator Dashboard" className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-brand-yellow/10 hover:bg-brand-yellow/20 border border-brand-yellow/20 rounded-xl text-brand-yellow font-bold transition-all duration-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.15)]">
                 Launch Creator Dashboard
                 <svg title="Launch Icon" className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
