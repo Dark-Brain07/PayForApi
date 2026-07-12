@@ -9,7 +9,7 @@ export const auditSchema = z.object({
   metadata: z.record(z.string(), z.unknown()).default({}),
   ipAddress: z.string().ip().optional(),
   userAgent: z.string().max(256).optional(),
-  createdAt: z.string().datetime().optional(),
+  createdAt: z.string().datetime(),
 }).strict();
 
 export type AuditData = z.infer<typeof auditSchema>;
