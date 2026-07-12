@@ -194,7 +194,7 @@ export default function ImagePage(): React.JSX.Element {
 
     } catch (e: unknown) {
       console.error(e);
-      const errObj = e as Record<string, any>;
+      const errObj = e as Record<string, unknown>;
       let errorMessage = errObj?.reason || errObj?.message || "Payment failed or cancelled.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
         if (isMiniPay) {
