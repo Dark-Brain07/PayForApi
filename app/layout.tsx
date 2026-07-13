@@ -25,6 +25,9 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
+/**
+ * Main application layout wrapping all routes with global providers
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }): React.JSX.Element {
   return (
     <html lang="en" className={jetbrainsMono.variable}>
