@@ -21,3 +21,6 @@ export function useWindowSize(): { width: number; height: number } {
   }, []);
   return windowSize;
 }
+
+/** Default export for the useWindowSize hook */
+export default useWindowSize;
