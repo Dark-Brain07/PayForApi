@@ -6,7 +6,7 @@ export const deploymentSchema = z.object({
   version: z.string().regex(/^\d+\.\d+\.\d+$/, "Must be semver"),
   environment: z.enum(["development", "staging", "production"]),
   commitSha: z.string().length(40, "Must be a full git SHA"),
-  deployedBy: z.string(),
+  deployedBy: z.string().trim(),
   contractAddresses: z.record(z.string(), z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address")).default({}),
   chainId: z.number().int().default(CELO_MAINNET_ID),
   deployedAt: z.string().datetime(),
