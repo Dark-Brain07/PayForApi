@@ -26,4 +26,5 @@ export function useClickOutside<T extends HTMLElement>(
   }, [ref, handler]);
 }
 
+/** Default export for useClickOutside */
 export default useClickOutside;
