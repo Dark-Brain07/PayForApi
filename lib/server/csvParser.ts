@@ -9,9 +9,10 @@ export class CsvParser {
     if (!csv) return [];
     const lines = csv.split('\n').map((l: string): string => l.trim()).filter((l: string): boolean => Boolean(l));
     if (lines.length < 2) return [];
-    const headers = lines[0].split(',');
+    const CSV_DELIMITER = ',';
+    const headers = lines[0].split(CSV_DELIMITER);
     return lines.slice(1).map((line: string): Record<string, string> => {
-      const values = line.split(',');
+      const values = line.split(CSV_DELIMITER);
       return headers.reduce((obj: Record<string, string>, header: string, index: number): Record<string, string> => {
         obj[header] = values[index] || '';
         return obj;
