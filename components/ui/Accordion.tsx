@@ -33,4 +33,5 @@ export const Accordion: React.FC<AccordionProps> = ({
   );
 };
 
+/** Default export for the Accordion UI component */
 export default Accordion;
