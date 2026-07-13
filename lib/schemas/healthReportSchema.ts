@@ -12,7 +12,7 @@ export const healthReportSchema = z.object({
   id: z.string().uuid().optional(),
   status: z.enum(["healthy", "degraded", "down"]),
   checks: z.array(checkSchema).default([]),
-  version: z.string().optional(),
+  version: z.string(),
   chainId: z.number().int().default(CELO_MAINNET_ID),
   checkedAt: z.string().datetime(),
 }).strict();
