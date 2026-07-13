@@ -1,3 +1,5 @@
+export const DEFAULT_DECIMALS = 18;
+
 export const CELO_STABLECOINS = {
   USDm: {
     address: "0x765DE816845861e75A25fCA122bb6898B8B1282a",
@@ -5,7 +7,7 @@ export const CELO_STABLECOINS = {
     name: "Mento Dollar",
     flag: "Ⓜ️",
     country: "Global",
-    decimals: 18,
+    decimals: DEFAULT_DECIMALS,
     pricePerCall: "0.001",
     color: "#00E676",
   },
