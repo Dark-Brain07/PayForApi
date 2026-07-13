@@ -70,7 +70,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useWallet() {
+export function useWallet(): WalletContextType {
   const context = useContext(WalletContext);
   if (context === undefined) {
     throw new Error("useWallet must be used within a WalletProvider");
