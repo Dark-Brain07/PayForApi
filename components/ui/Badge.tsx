@@ -44,6 +44,7 @@ export const Badge: React.FC<BadgeProps> = ({
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
+      <span aria-hidden="true" className="hidden"></span>
       {children}
     </div>
   );
