@@ -234,8 +234,8 @@ export default function Rewards(): React.JSX.Element {
           )}
         </div>
 
-        {error && <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 text-red-500 rounded-xl text-center font-medium max-w-2xl mx-auto">{error}</div>}
-        {success && <div className="mb-6 p-4 bg-brand-green/10 border border-brand-green/50 text-brand-green rounded-xl text-center font-medium max-w-2xl mx-auto">{success}</div>}
+        {error && <div aria-live="assertive" className="mb-6 p-4 bg-red-500/10 border border-red-500/50 text-red-500 rounded-xl text-center font-medium max-w-2xl mx-auto">{error}</div>}
+        {success && <div aria-live="polite" className="mb-6 p-4 bg-brand-green/10 border border-brand-green/50 text-brand-green rounded-xl text-center font-medium max-w-2xl mx-auto">{success}</div>}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Faucet Card */}
