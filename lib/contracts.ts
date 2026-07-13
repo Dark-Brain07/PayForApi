@@ -1,3 +1,5 @@
+const API_REVENUE_SPLITTER_ADDRESS = "0x5ac6de9FAe3f424C7f07C65283B8953108aa5C78";
+
 export const CONTRACTS = {
   COMMUNITY_NFT: {
     address: process.env.NEXT_PUBLIC_NFT_ADDRESS || "0x0D2238a8E6a2c5951E6cBeb8e03278f5d0C8FFB6",
@@ -19,7 +21,7 @@ export const CONTRACTS = {
     ],
   },
   API_REVENUE_SPLITTER: {
-    address: "0x5ac6de9FAe3f424C7f07C65283B8953108aa5C78",
+    address: API_REVENUE_SPLITTER_ADDRESS,
     abi: [
       "function registerApi(string memory endpointId) external",
       "function payForApi(string memory endpointId, address tokenAddress, uint256 amount) external",
@@ -42,6 +44,7 @@ export const CELO_MAINNET = {
  * Master merchant wallet where the 10% platform protocol fee is routed. 
  * This address is hardcoded to receive all base payments.
  */
+export const PROTOCOL_FEE_PERCENTAGE = 10;
 export const MASTER_MERCHANT_WALLET = "0xfd4960F33670f3477ebe817B184dd59fC4961437";
 
 /** 
