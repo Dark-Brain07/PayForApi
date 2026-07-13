@@ -11,7 +11,8 @@ export class SmsSender {
     return SmsSender.instance;
   }
   public async send(phone: string, text: string): Promise<boolean> {
-    loggerInstance.info(`Sending SMS to ${phone}: ${text}`);
+    const LOG_PREFIX = 'Sending SMS to';
+    loggerInstance.info(`${LOG_PREFIX} ${phone}: ${text}`);
     return true;
   }
 }
