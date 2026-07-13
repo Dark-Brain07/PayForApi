@@ -146,7 +146,7 @@ export default function DashboardPage(): React.ReactElement {
         if (typeof window !== "undefined") {
           try {
             let globalIds: string[] = [];
-            try { globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]") as string[]; } catch (e) { localStorage.removeItem(deletedCacheKey); }
+            try { globalIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]") as string[]; } catch (e: unknown) { localStorage.removeItem(deletedCacheKey); }
             let localIds: string[] = [];
             for (let i = 0; i < localStorage.length; i++) {
               const key = localStorage.key(i);
