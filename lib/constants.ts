@@ -8,6 +8,8 @@ export const TERMINAL_BOOT_LOGS = [
   "> SUCCESS: All systems operational."
 ] as const;
 
+export const getTerminalLogs = (): readonly string[] => TERMINAL_BOOT_LOGS;
+
 export const BLOCKS_TO_QUERY = 2000000;
 
 export const CACHE_KEYS = {
