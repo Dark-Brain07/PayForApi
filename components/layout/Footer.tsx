@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const FOOTER_TAGLINE = "Decentralized, subscriptionless Web3 API Gateway.";
+
 export default function Footer() {
   const pathname = usePathname();
   
@@ -20,7 +22,7 @@ export default function Footer() {
             </span>
           </Link>
           <p className="text-sm text-[#94A3B8] font-medium text-center">
-            Decentralized, subscriptionless Web3 API Gateway.
+            {FOOTER_TAGLINE}
             <br />Built for the Celo Ecosystem.
           </p>
         </div>
