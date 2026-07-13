@@ -6,7 +6,7 @@ export const claimSchema = z.object({
   creatorAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   amount: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
   token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]).default("USDm"),
-  merkleProof: z.array(z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash")).default([]),
+  merkleProof: z.array(z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash")).min(0).default([]),
   txHash: z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash").optional(),
   claimed: z.boolean().default(false),
   claimedAt: z.string().datetime().optional(),
