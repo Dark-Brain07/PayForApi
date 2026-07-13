@@ -95,7 +95,7 @@ export default function StatsPage(): React.JSX.Element {
         </div>
       </div>
       
-      <div className="mt-8 text-center text-xs text-[#94A3B8]">
+      <div aria-live="polite" className="mt-8 text-center text-xs text-[#94A3B8]">
         Metrics are aggregated from on-chain event logs and PostHog analytics.
       </div>
     </main>
