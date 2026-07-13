@@ -51,4 +51,5 @@ export const Label: React.FC<LabelProps> = ({
   );
 };
 
+/** Default export for the Label UI component */
 export default Label;
