@@ -1,8 +1,10 @@
 const API_REVENUE_SPLITTER_ADDRESS = "0x5ac6de9FAe3f424C7f07C65283B8953108aa5C78";
 
+const COMMUNITY_NFT_ADDRESS = "0x0D2238a8E6a2c5951E6cBeb8e03278f5d0C8FFB6";
+
 export const CONTRACTS = {
   COMMUNITY_NFT: {
-    address: process.env.NEXT_PUBLIC_NFT_ADDRESS || "0x0D2238a8E6a2c5951E6cBeb8e03278f5d0C8FFB6",
+    address: process.env.NEXT_PUBLIC_NFT_ADDRESS || COMMUNITY_NFT_ADDRESS,
     abi: [
       "function mint(uint256 amount) external",
       "function totalSupply() external view returns (uint256)",
