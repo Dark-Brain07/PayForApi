@@ -26,14 +26,14 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 }): React.JSX.Element => {
   const baseStyles = BASE_BUTTON_CLASSES;
   
-  const variantStyles: Record<string, string> = {
+  const variantStyles: Record<NonNullable<ButtonProps["variant"]>, string> = {
     default: "bg-primary text-primary-foreground hover:bg-primary/90",
     primary: "bg-blue-600 text-white hover:bg-blue-700",
     outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
     ghost: "hover:bg-accent hover:text-accent-foreground"
   };
 
-  const sizeStyles: Record<string, string> = {
+  const sizeStyles: Record<NonNullable<ButtonProps["size"]>, string> = {
     sm: "h-9 px-3 text-sm",
     md: "h-10 px-4 py-2",
     lg: "h-11 px-8 rounded-md text-lg"
