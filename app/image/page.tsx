@@ -304,7 +304,7 @@ export default function ImagePage(): React.JSX.Element {
               
               <div className="flex justify-center items-center w-full min-h-[200px] rounded-xl relative">
                 {item.error ? (
-                   <div className="text-red-500 font-bold p-4 text-center bg-red-500/10 rounded-xl w-full border border-red-500/20">{item.error}</div>
+                   <div role="alert" aria-live="assertive" className="text-red-500 font-bold p-4 text-center bg-red-500/10 rounded-xl w-full border border-red-500/20">{item.error}</div>
                 ) : item.imageUrl ? (
                    <ImageWithLoader src={item.imageUrl} alt={item.prompt} />
                 ) : (
