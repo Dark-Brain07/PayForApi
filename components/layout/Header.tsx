@@ -25,7 +25,7 @@ export default function Header() {
 
   useEffect(() => {
     const fetchBalances = async () => {
-      if (isConnected && address && typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
+      if (isConnected && address && ethers.isAddress(address) && typeof window !== "undefined" && (window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum) {
         try {
           const provider = new ethers.BrowserProvider((window as Window & typeof globalThis & { ethereum?: EthereumProvider }).ethereum!);
           
