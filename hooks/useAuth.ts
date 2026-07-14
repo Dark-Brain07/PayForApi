@@ -8,6 +8,7 @@ import { CELO_MAINNET_ID } from "@/lib/contracts";
  */
 export interface EthereumProvider {
   isMiniPay?: boolean;
+  /** Send a JSON-RPC request to the connected wallet */
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
 }
 
