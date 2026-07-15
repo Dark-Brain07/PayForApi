@@ -5,7 +5,7 @@ export class HealthCheck {
     if (!HealthCheck.instance) HealthCheck.instance = new HealthCheck();
     return HealthCheck.instance;
   }
-  public getStatus() {
+  public getStatus(): { status: string; uptime: number; timestamp: Date } {
     return { status: 'OK', uptime: process.uptime(), timestamp: new Date() };
   }
 }
