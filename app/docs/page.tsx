@@ -251,7 +251,7 @@ Content-Type: application/json
                 <div className="bg-[#0F141C] border border-[#1E293B] rounded-2xl p-5 flex-1 shadow-lg">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-[10px] font-black text-[#94A3B8] uppercase tracking-widest">Execution Cost</span>
-                    <span className="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span>
+                    <span className="w-2 h-2 rounded-full bg-brand-yellow animate-pulse" aria-hidden="true"></span>
                   </div>
                   <div className="text-3xl font-black text-white">
                     {activeTab === "api-chat" || activeTab === "api-summary" ? "$0.005" : 
