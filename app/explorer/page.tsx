@@ -133,7 +133,7 @@ export default function Explorer(): React.JSX.Element {
         <div className="card p-8 border border-[#1E293B] shadow-xl relative overflow-hidden group hover:border-[#334155] transition-all flex flex-col items-center justify-center text-center">
           <div className="absolute inset-0 bg-gradient-to-br from-[#00E676]/5 to-transparent opacity-50"></div>
           <div className="absolute -top-10 -right-10 opacity-5">
-            <svg role="presentation" aria-hidden="true" width="200" height="200" viewBox="0 0 24 24" fill="currentColor" className="text-[#00E676]"><title>Revenue Icon</title><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <svg role="presentation" aria-hidden="true" focusable="false" width="200" height="200" viewBox="0 0 24 24" fill="currentColor" className="text-[#00E676]"><title>Revenue Icon</title><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
           </div>
           <h3 className="text-[#94A3B8] text-sm font-bold uppercase tracking-wider mb-4 relative z-10">Total Network Revenue (USDm)</h3>
           <p aria-label="Total Celo USD Revenue" className="text-6xl font-black text-[#00E676] drop-shadow-[0_0_15px_rgba(0,230,118,0.4)] relative z-10 flex items-baseline justify-center gap-2">
