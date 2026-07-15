@@ -14,7 +14,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
 
     // Verify payment on Celo Mainnet
-    console.log(`[API/Image] Verifying txHash: ${txHash}`);
+    loggerInstance.info(`[API/Image] Verifying txHash: ${txHash}`);
     const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
     const tx = await provider.getTransaction(txHash);
     
