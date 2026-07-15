@@ -46,6 +46,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       disabled={isDisabled || props.disabled || isLoading}
       aria-disabled={isDisabled || props.disabled || isLoading}
       aria-busy={isLoading}
+      title={props.title || "Button"}
       aria-live="polite"
       data-state={isDisabled || props.disabled || isLoading ? 'disabled' : 'active'}
       {...props}
