@@ -73,7 +73,7 @@ export default function GoodDollarIdentity(): React.JSX.Element {
         alert("Web3 wallet not detected.");
       }
     } catch (e: unknown) {
-      const errObj = e as Record<string, any>;
+      const errObj = e as Record<string, unknown>;
       let errMsg = errObj.reason || errObj.message || "Unknown error";
       if (errMsg.includes("Wait 24 hours")) {
          errMsg = "You have already claimed your daily APIC UBI. Please wait 24 hours.";
