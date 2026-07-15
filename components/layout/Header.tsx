@@ -188,7 +188,7 @@ export default function Header() {
 
                           if (chain.unsupported) {
                             return (
-                              <button onClick={openChainModal} type="button" aria-label="Change Network" className="bg-red-500 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-xl font-bold">
+                              <button onClick={openChainModal} type="button" aria-label="Change Network" title="Change Network" className="bg-red-500 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-xl font-bold">
                                 Wrong network
                               </button>
                             );
