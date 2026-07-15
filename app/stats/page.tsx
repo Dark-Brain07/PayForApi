@@ -6,7 +6,7 @@ export default function StatsPage(): React.JSX.Element {
     <main className="flex flex-col w-full min-h-screen pt-24 pb-12 px-4 max-w-5xl mx-auto">
       <title>Platform Analytics | PayForAPI</title>
       
-      <div className="mb-10 text-center">
+      <div className="mb-10 text-center" aria-label="Stats Header">
         <h1 className="text-4xl font-black text-white mb-3">Platform <span className="text-brand-yellow">Analytics</span></h1>
         <p className="text-[#94A3B8]">Transparent on-chain metrics and usage statistics.</p>
       </div>
