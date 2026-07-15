@@ -7,7 +7,7 @@ export const webhookSchema = z.object({
   events: z.array(
     z.enum(["payment.success", "payment.failed", "api.call", "creator.earning", "endpoint.registered"])
   ),
-  secret: z.string().min(16).optional(),
+  secret: z.string().min(16).max(255).optional(),
   isActive: z.boolean().default(true),
   createdAt: z.string().datetime().optional(),
 }).strict();
