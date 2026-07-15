@@ -1,3 +1,4 @@
+/** Terminal boot sequences */
 export const TERMINAL_BOOT_LOGS = [
   "> Initialize Celo Network...",
   "> Loading ERC-8004 Agent...",
