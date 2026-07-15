@@ -69,7 +69,7 @@ function ImageWithLoader({ src, alt }: { src: string; alt: string }) {
     } catch (error) {
       console.error("Failed to download image", error);
       // Fallback to opening in new tab
-      window.open(src, "_blank");
+      if (typeof window !== "undefined") window.open(src, "_blank");
     } finally {
       setIsDownloading(false);
     }
