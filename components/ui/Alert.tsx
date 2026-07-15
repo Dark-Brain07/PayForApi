@@ -36,7 +36,7 @@ export const Alert: React.FC<AlertProps> = ({
 }): React.JSX.Element => {
   return (
     <div 
-      role="alert" aria-atomic="true"
+      role="alert" aria-atomic="true" title="Alert"
       aria-live="polite"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       {...props}
