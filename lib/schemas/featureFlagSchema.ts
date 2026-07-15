@@ -1,8 +1,9 @@
 import { z } from "zod";
 
+const KEY_REGEX = /^[a-z][a-zA-Z0-9]*$/;
 export const featureFlagSchema = z.object({
   id: z.string().uuid().optional(),
-  key: z.string().regex(/^[a-z][a-zA-Z0-9]*$/, "camelCase key required"),
+  key: z.string().regex(KEY_REGEX, "camelCase key required"),
   value: z.union([z.boolean(), z.string(), z.number()]),
   enabled: z.boolean().default(true),
   description: z.string().max(256).optional(),
