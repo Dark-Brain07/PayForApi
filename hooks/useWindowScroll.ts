@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+/** Returns the current window scroll position and scroll direction */
 export function useWindowScroll() {
   const [state, setState] = useState({ x: 0, y: 0, direction: 'none' });
   useEffect(() => {
