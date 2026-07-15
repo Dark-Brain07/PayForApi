@@ -4,7 +4,7 @@ import React from 'react';
  * Props for the Badge component
  */
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'primary' | 'outline' | 'ghost';
+  variant: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isDisabled?: boolean;
 }
