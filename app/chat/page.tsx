@@ -123,7 +123,7 @@ export default function ChatPage(): React.JSX.Element {
         content: data.response || "Error: No response generated." 
       }]);
     } catch (e: unknown) {
-      const errObj = e as Record<string, any>;
+      const errObj = e as Record<string, unknown>;
       let errorMessage = errObj?.reason || errObj?.message || "Payment failed or cancelled.";
       if (errorMessage.includes("transfer amount exceeds balance")) {
         if (isMiniPay && typeof window !== "undefined") {
