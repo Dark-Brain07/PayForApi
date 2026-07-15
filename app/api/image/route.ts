@@ -22,7 +22,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       loggerInstance.error(`[API/Image] Transaction NOT FOUND on Celo Mainnet: ${txHash}`);
       return NextResponse.json({ error: "Transaction not found on Celo Mainnet" }, { status: 402 });
     }
-    console.log(`[API/Image] Transaction found:`, tx.hash);
+    loggerInstance.info(`[API/Image] Transaction found:`, tx.hash);
 
     // Generate image using Pollinations AI authenticated endpoint
     const imageResponse = await fetch("https://gen.pollinations.ai/v1/images/generations", {
