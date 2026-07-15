@@ -54,7 +54,7 @@ export default function GoodDollarIdentity(): React.JSX.Element {
     
     try {
       if (typeof window !== "undefined" && (window as { ethereum?: EthereumProvider }).ethereum) {
-        const provider = new ethers.BrowserProvider((window as { ethereum?: EthereumProvider }).ethereum as any);
+        const provider = new ethers.BrowserProvider((window as { ethereum?: EthereumProvider }).ethereum as unknown as ethers.Eip1193Provider);
         const signer = await provider.getSigner();
         const contract = new ethers.Contract(
           CONTRACTS.API_CREDITS.address,
