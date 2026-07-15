@@ -8,7 +8,8 @@ export class JwtUtils {
     return JwtUtils.instance;
   }
   public sign(payload: Record<string, unknown>): string {
-    const header = Buffer.from(JSON.stringify({ alg: 'HS256', typ: 'JWT' })).toString('base64');
+    const ALG_HS256 = 'HS256';
+    const header = Buffer.from(JSON.stringify({ alg: ALG_HS256, typ: 'JWT' })).toString('base64');
     const body = Buffer.from(JSON.stringify(payload)).toString('base64');
     const signature = createHmac('sha256', this.secret).update(header + '.' + body).digest('base64');
     return `${header}.${body}.${signature}`;
