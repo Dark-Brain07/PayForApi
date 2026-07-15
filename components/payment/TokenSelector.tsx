@@ -8,7 +8,7 @@ interface TokenSelectorProps {
 
 export default function TokenSelector({ selectedToken, onSelect }: TokenSelectorProps) {
   return (
-    <div role="group" aria-label="Select Payment Token" className="grid grid-cols-2 md:grid-cols-3 gap-3">
+    <div role="group" aria-label="Select Payment Token" aria-live="polite" className="grid grid-cols-2 md:grid-cols-3 gap-3">
       {(Object.entries(CELO_STABLECOINS || {}) as [StablecoinKey, typeof CELO_STABLECOINS[StablecoinKey]][]).map(([key, token]) => (
         <div 
           key={token.symbol}
