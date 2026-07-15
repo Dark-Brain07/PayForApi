@@ -19,7 +19,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const tx = await provider.getTransaction(txHash);
     
     if (!tx) {
-      console.error(`[API/Image] Transaction NOT FOUND on Celo Mainnet: ${txHash}`);
+      loggerInstance.error(`[API/Image] Transaction NOT FOUND on Celo Mainnet: ${txHash}`);
       return NextResponse.json({ error: "Transaction not found on Celo Mainnet" }, { status: 402 });
     }
     console.log(`[API/Image] Transaction found:`, tx.hash);
