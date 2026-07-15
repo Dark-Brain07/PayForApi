@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { CELO_MAINNET_ID } from "../contracts";
 
+/** Schema for user session validation */
 export const sessionSchema = z.object({
   id: z.string().trim().uuid().optional(),
   walletAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
