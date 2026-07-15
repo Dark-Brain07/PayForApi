@@ -255,7 +255,7 @@ export default function ChatPage(): React.JSX.Element {
         ))}
         
         {isTyping && (
-          <div className="flex justify-start">
+          <div className="flex justify-start" aria-live="polite">
             <div className="max-w-[85%] bg-brand-border/20 rounded-2xl rounded-bl-sm p-4 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-brand-yellow/50 animate-bounce"></span>
               <span className="w-2 h-2 rounded-full bg-brand-yellow/70 animate-bounce" style={{animationDelay: "150ms"}}></span>
