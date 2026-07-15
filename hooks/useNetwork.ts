@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 
+/** Returns the current network connection status */
 export function useNetwork(): { isOnline: boolean } {
   const [isOnline, setIsOnline] = useState(typeof navigator !== 'undefined' ? navigator.onLine : true);
   useEffect(() => {
