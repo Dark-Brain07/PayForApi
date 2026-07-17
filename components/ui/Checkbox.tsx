@@ -40,7 +40,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   };
   
   return (
-    <div 
+    <div role="checkbox"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       aria-disabled={isDisabled}
       aria-required="false"
