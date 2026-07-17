@@ -155,7 +155,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
           >
             {isProcessing ? (
               <>
-                <span className={`${SPINNER_CLASSES} border-black/20 border-t-black`}></span>
+                <span aria-hidden="true" className={`${SPINNER_CLASSES} border-black/20 border-t-black`}></span>
                 <span aria-live="polite" role="status">Processing on Celo...</span>
               </>
             ) : (
