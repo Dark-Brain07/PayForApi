@@ -28,7 +28,8 @@ export interface SelectedProduct {
 }
 
 /** Generates a consistent numeric ID from a string using a hash function. */
-const generateNumericId = (str: string): number => Math.abs(str.split('').reduce((hash, char) => ((hash << 5) - hash) + char.charCodeAt(0), 0)) + 1000;
+const BASE_ID_OFFSET = 1000;
+const generateNumericId = (str: string): number => Math.abs(str.split('').reduce((hash, char) => ((hash << 5) - hash) + char.charCodeAt(0), 0)) + BASE_ID_OFFSET;
 const escapeHTML = (str: string): string => str ? str.replace(/</g, "&lt;").replace(/>/g, "&gt;") : "";
 
 import PaymentModal from "@/components/payment/PaymentModal";
