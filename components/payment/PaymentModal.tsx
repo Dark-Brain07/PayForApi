@@ -156,7 +156,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
             {isProcessing ? (
               <>
                 <span aria-hidden="true" className={`${SPINNER_CLASSES} border-black/20 border-t-black`}></span>
-                <span aria-live="polite" role="status">Processing on Celo...</span>
+                <span aria-live="polite" aria-busy="true" role="status">Processing on Celo...</span>
               </>
             ) : (
               <span>Pay {CELO_STABLECOINS[selectedToken].pricePerCall} {CELO_STABLECOINS[selectedToken].symbol}</span>
