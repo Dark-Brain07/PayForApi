@@ -29,7 +29,7 @@ type WindowWithEthereum = Window & typeof globalThis & { ethereum?: EthereumProv
 
 import { BLOCKS_TO_QUERY, CACHE_KEYS } from "@/lib/constants";
 
-const MOCK_TOTAL_CALLS = 14204;
+export const MOCK_TOTAL_CALLS = 14204;
 
 export interface ApiEndpointData {
   readonly name: string;
