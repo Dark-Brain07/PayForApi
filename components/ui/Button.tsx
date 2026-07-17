@@ -23,7 +23,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   isLoading = false,
   className = '', 
   ...props 
-}): React.JSX.Element => {
+}): React.ReactElement => {
   const baseStyles = BASE_BUTTON_CLASSES;
   
   const variantStyles: Record<NonNullable<ButtonProps["variant"]>, string> = {
