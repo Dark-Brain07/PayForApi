@@ -2,7 +2,7 @@ import { z } from "zod";
 import { CELO_MAINNET_ID } from "../contracts";
 
 export const walletSchema = z.object({
-  address: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
+  address: z.string().trim().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   chainId: z.number().int().positive().default(CELO_MAINNET_ID),
   isMiniPay: z.boolean().default(false),
   balances: z.record(z.string(), z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string")).default({}),
