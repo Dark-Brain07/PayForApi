@@ -2,6 +2,11 @@ import { x402Client, x402HTTPClient } from '@x402/core/client';
 import { registerExactEvmScheme } from '@x402/evm/exact/client';
 import { privateKeyToAccount } from 'viem/accounts';
 
+/**
+ * Constructs a full URL from a base path and endpoint.
+ */
+export const constructUrl = (base: string, endpoint: string): string => `${base.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`;
+
 const HTTP_STATUS_PAYMENT_REQUIRED = 402;
 
 export interface PayForApiClientOptions {
