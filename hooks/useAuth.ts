@@ -97,7 +97,10 @@ export function useAuth(): AuthState & {
     }
   }, []);
 
-  /** Clear current wallet session state */
+  /**
+   * Clears the current wallet session state and disconnects.
+   * @returns {void}
+   */
   const disconnect = useCallback(() => {
     setState({
       address: null,
