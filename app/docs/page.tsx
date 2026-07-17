@@ -21,7 +21,7 @@ export default function Docs(): React.ReactElement {
   const [activeTab, setActiveTab] = useState("intro");
 
   return (
-    <main className="flex flex-col w-full min-h-[90vh] bg-black">
+    <main role="article" className="flex flex-col w-full min-h-[90vh] bg-black">
       {/* Docs Hero */}
       <div className="border-b border-[#1E293B] bg-[#0A0D12] pt-20 pb-16 px-4 md:px-16 relative overflow-hidden shrink-0">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
