@@ -23,7 +23,7 @@ const RADIX = 36;
     this.sessions.set(sessionId, { userId, createdAt: Date.now() });
     return sessionId;
   }
-  public getSession(sessionId: string) {
+  public getSession(sessionId: string | null) {
     return this.sessions.get(sessionId);
   }
 }
