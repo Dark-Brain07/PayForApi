@@ -33,7 +33,7 @@ export const CONTRACTS = {
   }
 } as const;
 
-export const CELO_MAINNET_ID = 42220;
+export const CELO_MAINNET_ID: number = 42220;
 
 export const CELO_MAINNET = {
   chainId: CELO_MAINNET_ID,
