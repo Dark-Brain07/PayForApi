@@ -5,6 +5,10 @@ interface CeloTransactionRequest extends ethers.TransactionRequest {
   feeCurrency?: string;
 }
 
+/**
+ * Processes a crypto payment transaction.
+ * @returns {Promise<ethers.TransactionReceipt | null>} The transaction receipt or null
+ */
 export async function processPayment(
   provider: ethers.BrowserProvider,
   tokenAddress: string,
