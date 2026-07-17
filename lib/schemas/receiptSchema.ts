@@ -6,7 +6,7 @@ export const receiptSchema = z.object({
   id: z.string().trim().uuid().optional(),
   txHash: z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash"),
   from: z.string().toLowerCase().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
-  to:   z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
+  to:   z.string().trim().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   amount: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
   token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]),
   endpoint: z.string().url(),
