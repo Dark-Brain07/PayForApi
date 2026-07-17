@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ReactNode } from "react";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { WalletProvider } from "@/components/wallet/WalletContext";
@@ -28,7 +29,7 @@ export const viewport: Viewport = {
 /**
  * Main application layout wrapping all routes with global providers
  */
-export default function RootLayout({ children }: { children: React.ReactNode }): React.JSX.Element {
+export default function RootLayout({ children }: { children: ReactNode }): React.JSX.Element {
   return (
     <html lang="en" className={jetbrainsMono.variable}>
       <head>
