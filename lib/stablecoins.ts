@@ -1,5 +1,8 @@
 export const DEFAULT_DECIMALS = 18;
 
+/**
+ * Registry of supported Celo stablecoins and their metadata.
+ */
 export const CELO_STABLECOINS = {
   USDm: {
     address: "0x765DE816845861e75A25fCA122bb6898B8B1282a",
