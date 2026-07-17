@@ -6,7 +6,7 @@ interface TokenSelectorProps {
   onSelect: (token: StablecoinKey) => void;
 }
 
-export default function TokenSelector({ selectedToken, onSelect }: TokenSelectorProps) {
+export default function TokenSelector({ selectedToken, onSelect }: TokenSelectorProps): React.ReactElement {
   return (
     <div role="group" aria-label="Select Payment Token" aria-live="polite" className="grid grid-cols-2 md:grid-cols-3 gap-3">
       {(Object.entries(CELO_STABLECOINS || {}) as [StablecoinKey, typeof CELO_STABLECOINS[StablecoinKey]][]).map(([key, token]) => (
