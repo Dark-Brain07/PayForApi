@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 export function useHistory<T>(initialState: T) {
-  const [history, setHistory] = useState<T[]>([initialState]);
+  const [history, setHistory] = useState<ReadonlyArray<T>>([initialState]);
   const [pointer, setPointer] = useState<number>(0);
   const current = history[pointer];
   const set = useCallback((newState: T) => {
