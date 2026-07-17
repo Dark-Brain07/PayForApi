@@ -35,7 +35,7 @@ export class PayForApiClient {
    * If a 402 Payment Required is returned, it automatically signs and pays
    * using the agent's configured Celo wallet, then retries the request.
    */
-  async fetch(url: string, init?: RequestInit): Promise<Response> {
+  public async fetch(url: string, init?: RequestInit): Promise<Response> {
     try {
       // Execute the request via the x402 HTTP client wrapper
       // It handles the interception of the 402, paying the invoice, and retrying
