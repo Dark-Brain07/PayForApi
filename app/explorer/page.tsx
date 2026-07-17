@@ -16,7 +16,9 @@ const STATS_POLL_INTERVAL_MS = 15000;
 const BLOCKS_TO_QUERY = 2000000;
 
 /**
- * Shortens an EVM address to the format 0x1234...abcd
+ * Shortens an EVM address to the format 0x1234...abcd for UI display.
+ * @param addr The full Ethereum/Celo address string
+ * @returns The truncated address string
  */
 const truncateAddress = (addr: string): string => {
   return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
