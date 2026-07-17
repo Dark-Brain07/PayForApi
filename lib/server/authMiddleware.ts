@@ -8,7 +8,7 @@ export class AuthMiddleware {
   public verifyToken(token: string): boolean {
     return token.length > 10; // Basic implementation
   }
-  public extractUser(_token: string) {
+  public extractUser(_token: string): { id: string, role: string } {
     return { id: "user-1", role: "admin" };
   }
 }
