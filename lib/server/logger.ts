@@ -15,8 +15,8 @@ export class Logger {
    * Logs an error message with an ISO timestamp.
    * @param {string} message - The error message to log
    */
-  public error(message: string, ...meta: unknown[]): void {
-    console.error(`[ERROR] ${new Date().toISOString()}: ${message}`, ...meta);
+  public error(message: string, metadata?: Record<string, unknown>): void {
+    console.error(`[ERROR] ${new Date().toISOString()}: ${message}`, metadata || {});
   }
 }
 export const loggerInstance = Logger.getInstance();
