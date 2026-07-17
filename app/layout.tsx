@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
           <WalletProvider>
             <div className="flex flex-col min-h-screen">
               <Header />
-              <main className="flex-grow relative">{children}</main>
+              <main id="main-content" className="flex-grow relative">{children}</main>
               <Footer />
             </div>
           </WalletProvider>
