@@ -23,7 +23,7 @@ interface PaymentModalProps {
 }
 
 /** Modal component for handling crypto token payments */
-export default function PaymentModal({ isOpen, onClose, productId, productName, priceCredits, onSuccess }: PaymentModalProps): React.JSX.Element | null {
+export default function PaymentModal({ isOpen, onClose, productId, productName, priceCredits, onSuccess }: PaymentModalProps): React.ReactElement | null {
   const { isMiniPay, address } = useWallet();
   const [selectedToken, setSelectedToken] = useState<StablecoinKey>(DEFAULT_TOKEN);
   const [isProcessing, setIsProcessing] = useState(false);
