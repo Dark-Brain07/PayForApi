@@ -95,7 +95,7 @@ export default function APICard({ id, name, priceUsd, priceCredits = 0, descript
               />
             );
         })}
-        <button title={`Execute ${name} API`} aria-label="Execute API"
+        <button aria-pressed="false" title={`Execute ${name} API`} aria-label="Execute API"
           type="button"
           onClick={() => {
             const MAX_INPUT_LENGTH = 1000;
