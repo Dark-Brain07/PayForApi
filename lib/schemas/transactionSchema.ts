@@ -7,7 +7,7 @@ export const transactionSchema = z.object({
   txHash: z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash"),
   from: z.string().toLowerCase().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   to:   z.string().trim().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
-  value: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
+  value: z.string().trim().regex(/^\d+(\.\d+)?$/, "Must be numeric string"),
   token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]),
   chainId: z.number().int().default(CELO_MAINNET_ID),
   blockNumber: z.number().int().positive().optional(),
