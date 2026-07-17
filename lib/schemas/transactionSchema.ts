@@ -4,6 +4,7 @@ import { CELO_MAINNET_ID } from "../contracts";
 /** On-chain Celo transaction record */
 export const transactionSchema = z.object({
   id: z.string().trim().uuid().optional(),
+  /** Requires exact 64 character hex string with 0x prefix */
   txHash: z.string().regex(/^0x[0-9a-fA-F]{64}$/, "Invalid tx hash"),
   from: z.string().toLowerCase().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
   to:   z.string().trim().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
