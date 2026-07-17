@@ -13,6 +13,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
+          <div aria-live="polite" className="sr-only"></div>
           {children}
         </RainbowKitProvider>
       </QueryClientProvider>
