@@ -20,7 +20,7 @@ export const Card: React.FC<CardProps> = ({
   isDisabled = false, 
   className = '', 
   ...props 
-}) => {
+}): React.ReactNode => {
   const baseStyles = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:ring-1 hover:ring-brand-green/30" as const;
   
   const variantStyles: Record<NonNullable<CardProps["variant"]>, string> = {
