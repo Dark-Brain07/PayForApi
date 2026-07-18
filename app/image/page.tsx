@@ -49,6 +49,7 @@ function LoadingMasterpiece() {
   );
 }
 
+/** Renders an image with a loading state */
 function ImageWithLoader({ src, alt }: { src: string; alt: string }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
