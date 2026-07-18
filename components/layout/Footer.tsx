@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 const FOOTER_TAGLINE = "Decentralized, subscriptionless Web3 API Gateway." as const;
 const LOGO_SIZE = 60;
 
-export default function Footer() {
+export default function Footer(): React.ReactNode {
   const pathname = usePathname();
   
   if (pathname === "/chat" || pathname === "/image") {
