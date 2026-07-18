@@ -15,7 +15,7 @@ export const CONTRACTS = {
     ],
   },
   API_CREDITS: {
-    address: process.env.NEXT_PUBLIC_CREDITS_ADDRESS || "0x486776B119aAf9eEe3c215D0e42d9Aa426A76b80",
+    address: process.env.NEXT_PUBLIC_CREDITS_ADDRESS ?? "0x486776B119aAf9eEe3c215D0e42d9Aa426A76b80",
     abi: [
       "function claim() external",
       "function balanceOf(address account) external view returns (uint256)",
