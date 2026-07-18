@@ -60,7 +60,7 @@ export const CELO_STABLECOINS = {
     name: "Mento Brazilian Real",
     flag: "🇧🇷",
     country: "Brazil",
-    decimals: 18,
+    decimals: DEFAULT_DECIMALS,
     pricePerCall: "0.005",
     color: "#F5C518",
   },
