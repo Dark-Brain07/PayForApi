@@ -178,7 +178,7 @@ export default function Rewards(): React.JSX.Element {
 
         <div className="mb-12 max-w-4xl mx-auto bg-gradient-to-r from-[#F5C518]/20 via-[#F5C518]/5 to-transparent border border-[#F5C518]/30 rounded-2xl p-8 relative overflow-hidden shadow-[0_0_40px_rgba(245,197,24,0.1)]">
           <div className="absolute -top-10 -right-10 opacity-10">
-            <svg aria-hidden="true" width="200" height="200" viewBox="0 0 24 24" fill="currentColor" className="text-[#F5C518]"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg aria-hidden="true" width="200" height="200" viewBox="0 0 24 24" fill="currentColor" className="text-[#F5C518]"><title>Reward Claim</title><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </div>
           <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6">
             <div className="flex-shrink-0 bg-[#F5C518]/20 p-5 rounded-full border border-[#F5C518]/50 shadow-[0_0_20px_rgba(245,197,24,0.3)]">
