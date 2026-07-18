@@ -5,7 +5,7 @@ const COMMUNITY_NFT_ADDRESS = "0x0D2238a8E6a2c5951E6cBeb8e03278f5d0C8FFB6";
 /** Global smart contract configuration mapping */
 export const CONTRACTS = {
   COMMUNITY_NFT: {
-    address: process.env.NEXT_PUBLIC_NFT_ADDRESS || COMMUNITY_NFT_ADDRESS,
+    address: process.env.NEXT_PUBLIC_NFT_ADDRESS ?? COMMUNITY_NFT_ADDRESS,
     abi: [
       "function mint(uint256 amount) external",
       "function totalSupply() external view returns (uint256)",
