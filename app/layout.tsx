@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 /**
  * Main application layout wrapping all routes with global providers
  */
-export default function RootLayout({ children }: { children: ReactNode }): React.JSX.Element {
+export default function RootLayout({ children = null }: { children?: ReactNode }): React.JSX.Element {
   return (
     <html lang="en" className={jetbrainsMono.variable}>
       <head>
