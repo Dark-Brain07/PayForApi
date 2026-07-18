@@ -70,7 +70,7 @@ export const CELO_STABLECOINS = {
     name: "Mento Ghana Cedi",
     flag: "🇬🇭",
     country: "Ghana",
-    decimals: 18,
+    decimals: DEFAULT_DECIMALS,
     pricePerCall: "0.01",
     color: "#00E676",
   },
