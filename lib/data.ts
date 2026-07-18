@@ -1,5 +1,6 @@
 const PRICE_0_001 = "$0.001 USDm/call";
 
+/** Array of all available API products and their pricing */
 export const API_PRODUCTS = [
   { id: 0, name: "Weather Info", priceUsd: PRICE_0_001, priceCredits: 10, description: "Real-time global weather parameters.", inputs: ["Dhaka"] },
   { id: 1, name: "Global News", priceUsd: "$0.002 USDm/call", priceCredits: 15, description: "Latest headlines by category.", inputs: ["technology"] },
