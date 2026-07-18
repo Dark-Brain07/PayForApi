@@ -15,7 +15,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 /**
  * Enterprise-grade Input component for the design system.
  */
-const baseStyles = "flex w-full rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
+const baseStyles = "flex w-full rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" as const;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(({ 
   variant = 'default', 
