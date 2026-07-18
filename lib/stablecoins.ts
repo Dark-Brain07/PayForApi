@@ -90,7 +90,7 @@ export const CELO_STABLECOINS = {
     name: "Philippine Peso",
     flag: "🇵🇭",
     country: "Philippines",
-    decimals: 18,
+    decimals: DEFAULT_DECIMALS,
     pricePerCall: "0.056",
     color: "#00E676",
   },
