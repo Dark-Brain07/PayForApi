@@ -41,6 +41,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   
   return (
     <button data-component-type="button"
+      role="button"
       type={props.type || "button"}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       disabled={isDisabled || props.disabled || isLoading}
