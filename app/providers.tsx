@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { wagmiConfig } from "@/lib/wagmiConfig";
 import "@rainbow-me/rainbowkit/styles.css";
 
+const DEFAULT_CHAIN = "celo";
+
 const queryClient = new QueryClient();
 
 /** Main providers wrapper */
