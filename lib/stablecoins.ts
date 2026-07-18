@@ -20,7 +20,7 @@ export const CELO_STABLECOINS = {
     name: "Mento Euro",
     flag: "🇪🇺",
     country: "Europe",
-    decimals: 18,
+    decimals: DEFAULT_DECIMALS,
     pricePerCall: "0.001",
     color: "#F5C518",
   },
