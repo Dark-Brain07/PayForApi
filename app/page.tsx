@@ -11,6 +11,7 @@ export const MATRIX_BG_URL = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDov
 
 const BOOT_SPEED_MS = 150 as const;
 
+/** Renders the animated terminal boot sequence */
 function InteractiveTerminal(): React.JSX.Element {
   const router = useRouter();
   const [bootLogs, setBootLogs] = useState<string[]>([]);
