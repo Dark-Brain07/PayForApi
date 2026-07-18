@@ -50,7 +50,7 @@ export const CELO_STABLECOINS = {
     name: "Mento Kenyan Shilling",
     flag: "🇰🇪",
     country: "Kenya",
-    decimals: 18,
+    decimals: DEFAULT_DECIMALS,
     pricePerCall: "0.13",
     color: "#00E676",
   },
