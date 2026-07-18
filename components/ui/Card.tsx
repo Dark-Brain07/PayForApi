@@ -23,7 +23,7 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const baseStyles = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:ring-1 hover:ring-brand-green/30";
   
-  const variantStyles = {
+  const variantStyles: Record<NonNullable<CardProps["variant"]>, string> = {
     default: "bg-primary text-primary-foreground hover:bg-primary/90",
     primary: "bg-blue-600 text-white hover:bg-blue-700",
     outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
