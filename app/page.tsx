@@ -75,7 +75,7 @@ function InteractiveTerminal(): React.JSX.Element {
  * and a simplified AI consumer interface for MiniPay users.
  */
 /** Main landing page component for the PayForAPI application */
-export default function Home(): React.JSX.Element {
+export default function Home(): React.ReactElement {
   const router = useRouter();
   const { isMiniPay } = useWallet();
 
