@@ -80,7 +80,7 @@ export const CELO_STABLECOINS = {
     name: "Mento Colombian Peso",
     flag: "🇨🇴",
     country: "Colombia",
-    decimals: 18,
+    decimals: DEFAULT_DECIMALS,
     pricePerCall: "4.00",
     color: "#F5C518",
   },
