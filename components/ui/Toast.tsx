@@ -33,7 +33,7 @@ export const Toast: React.FC<ToastProps> = ({
     ghost: "hover:bg-accent hover:text-accent-foreground"
   };
 
-  const sizeStyles = {
+  const sizeStyles: Record<NonNullable<ToastProps["size"]>, string> = {
     sm: "h-9 px-3 text-sm",
     md: "h-10 px-4 py-2",
     lg: "h-11 px-8 rounded-md text-lg"
