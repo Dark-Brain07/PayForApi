@@ -37,7 +37,7 @@ export const Badge: React.FC<BadgeProps> = ({
   };
   
   return (
-    <div 
+    <div role="status"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       title="Badge"
       aria-disabled={isDisabled}
