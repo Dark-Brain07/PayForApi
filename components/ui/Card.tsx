@@ -37,7 +37,7 @@ export const Card: React.FC<CardProps> = ({
   };
   
   return (
-    <div 
+    <div role="region"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       aria-disabled={isDisabled}
       aria-labelledby={props['aria-labelledby'] || "card-heading"}
