@@ -277,7 +277,7 @@ export default function DashboardPage(): React.ReactElement {
               <span aria-hidden="true">↻</span> Refresh
             </button>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4" aria-live="polite">
             {apis?.map((api, idx) => (
               <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/50 border border-[#1E293B] hover:border-[#334155] rounded-xl transition-all group">
                 <div>
