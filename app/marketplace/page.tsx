@@ -36,6 +36,13 @@ import PaymentModal from "@/components/payment/PaymentModal";
 import APIResultDisplay from "@/components/api/APIResultDisplay";
 import { useWallet } from "@/components/wallet/WalletContext";
 import { ethers } from "ethers";
+import Link from "next/link";
+
+const API_TABS = {
+  CORE: "Core Platform APIs",
+  COMMUNITY: "Community Creator APIs"
+} as const;
+
 import { CONTRACTS, CELO_MAINNET } from "@/lib/contracts";
 import { API_PRODUCTS } from "@/lib/data";
 import { BLOCKS_TO_QUERY, CACHE_KEYS } from "@/lib/constants";
@@ -128,7 +135,7 @@ export default function Marketplace(): React.JSX.Element {
           <p className="text-[#94A3B8] text-lg md:text-xl max-w-2xl mx-auto font-medium">Sub-cent micropayments seamlessly enabled by x402 on Celo. No subscriptions, just pure utility.</p>
         </div>
         
-        <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4">Core Platform APIs</h2>
+        <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4">{API_TABS.CORE}</h2>
         <div className="columns-1 md:columns-2 gap-6 space-y-6">
           {!isMounted ? Array.from({ length: 4 }).map((_, i) => (
             <div key={`core-skel-${i}`} role="status" aria-label="Loading API" className="break-inside-avoid bg-[#0F172A] border border-[#1E293B] rounded-[24px] h-[320px] animate-pulse"></div>
@@ -150,7 +157,7 @@ export default function Marketplace(): React.JSX.Element {
 
         <div className="mt-16">
           <h2 className="text-2xl font-black text-white mb-6 tracking-tight border-b border-[#1E293B] pb-4 flex items-center gap-3">
-            Community Creator APIs
+            {API_TABS.COMMUNITY}
           </h2>
           {isLoadingCommunity ? (
             <div className="columns-1 md:columns-2 gap-6 space-y-6">
