@@ -15,4 +15,5 @@ export const webhookSchema = z.object({
 
 export type WebhookData = z.infer<typeof webhookSchema>;
 export const validateWebhook = (data: unknown) => webhookSchema.safeParse(data);
+/** Parses the input data and returns it as WebhookData, or throws an error */
 export const parseWebhookOrThrow = (data: unknown): WebhookData => webhookSchema.parse(data);
