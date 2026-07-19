@@ -12,4 +12,5 @@ export const walletSchema = z.object({
 
 export type WalletData = z.infer<typeof walletSchema>;
 export const validateWallet = (data: unknown) => walletSchema.safeParse(data);
+/** Parses the input data and returns it as WalletData, or throws an error */
 export const parseWalletOrThrow = (data: unknown): WalletData => walletSchema.parse(data);
