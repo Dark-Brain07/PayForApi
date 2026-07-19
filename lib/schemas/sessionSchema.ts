@@ -18,4 +18,5 @@ export const sessionSchema = z.object({
 
 export type SessionData = z.infer<typeof sessionSchema>;
 export const validateSession = (data: unknown): ReturnType<typeof sessionSchema.safeParse> => sessionSchema.safeParse(data);
+/** Parses the input data and returns it as SessionData, or throws an error */
 export const parseSessionOrThrow = (data: unknown): SessionData => sessionSchema.parse(data);
