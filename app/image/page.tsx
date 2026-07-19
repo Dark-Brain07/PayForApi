@@ -85,6 +85,7 @@ function ImageWithLoader({ src, alt }: { src: string; alt: string }) {
         src={src} 
         alt={alt} 
         loading="lazy"
+        decoding="async"
         onLoad={() => setIsLoaded(true)}
         className={`max-w-full max-h-[400px] object-contain rounded-xl shadow-2xl ring-1 ring-white/10 transition-transform ${isLoaded ? 'block' : 'hidden'}`}
       />
