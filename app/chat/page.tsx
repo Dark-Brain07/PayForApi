@@ -236,7 +236,7 @@ const ChatPage: React.FC = () => {
                       try {
                         navigator.clipboard.writeText(msg.content);
                       } catch (e) {
-                        console.error("Clipboard permission denied");
+                        console.warn("Clipboard permission denied");
                       }
                     }} className="text-xs text-[#94A3B8] hover:text-white" title="Copy Message">Copy</button>
                   )}
