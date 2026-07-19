@@ -78,7 +78,7 @@ export class PayForApiClient {
       
       return response;
     } catch (error: unknown) {
-      console.error('[PayForApiClient] Error fetching data:', error);
+      console.warn('[PayForApiClient] Error fetching data:', error);
       throw error;
     }
   }
