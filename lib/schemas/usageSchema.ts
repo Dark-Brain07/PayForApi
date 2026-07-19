@@ -15,4 +15,5 @@ export const usageSchema = z.object({
 
 export type UsageData = z.infer<typeof usageSchema>;
 export const validateUsage = (data: unknown) => usageSchema.safeParse(data);
+/** Parses the input data and returns it as UsageData, or throws an error */
 export const parseUsageOrThrow = (data: unknown): UsageData => usageSchema.parse(data);
