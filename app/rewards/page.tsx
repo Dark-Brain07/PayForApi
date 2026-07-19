@@ -63,7 +63,7 @@ export default function Rewards(): React.JSX.Element {
       const minted = await nftContract.totalSupply();
       setNftsMinted(minted.toString());
     } catch (err) {
-      console.error("Error fetching stats:", err);
+      console.warn("Error fetching stats:", err);
     }
   };
 
