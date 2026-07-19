@@ -12,5 +12,6 @@ export const notificationSchema = z.object({
 }).strict();
 
 export type NotificationData = z.infer<typeof notificationSchema>;
+/** Validates notification data against the notificationSchema safely without throwing */
 export const validateNotification = (data: unknown) => notificationSchema.safeParse(data);
 export const parseNotificationOrThrow = (data: unknown): NotificationData => notificationSchema.parse(data);
