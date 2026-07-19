@@ -229,8 +229,9 @@ export default function Marketplace(): React.JSX.Element {
           setSelectedProduct(null);
           setIsCalling(true);
           try {
+            const ZERO_ADDRESS = ethers.ZeroAddress;
             const { id, values } = product!;
-            let apiRequestBody: ApiRequestPayload = { txHash, walletAddress: address || ethers.ZeroAddress };
+            let apiRequestBody: ApiRequestPayload = { txHash, walletAddress: address || ZERO_ADDRESS };
             let endpoint = "";
             
             if (id === 0) {
