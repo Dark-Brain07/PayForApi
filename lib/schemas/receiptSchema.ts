@@ -16,5 +16,6 @@ export const receiptSchema = z.object({
 }).strict();
 
 export type ReceiptData = z.infer<typeof receiptSchema>;
+/** Validates receipt data against the receiptSchema without throwing */
 export const validateReceipt = (data: unknown) => receiptSchema.safeParse(data);
 export const parseReceiptOrThrow = (data: unknown): ReceiptData => receiptSchema.parse(data);
