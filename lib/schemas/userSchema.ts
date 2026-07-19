@@ -13,4 +13,5 @@ export const userSchema = z.object({
 
 export type UserData = z.infer<typeof userSchema>;
 export const validateUser = (data: unknown): ReturnType<typeof userSchema.safeParse> => userSchema.safeParse(data);
+/** Parses the input data and returns it as UserData, or throws an error */
 export const parseUserOrThrow = (data: unknown): UserData => userSchema.parse(data);
