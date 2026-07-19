@@ -99,7 +99,7 @@ export default function APIResultDisplay({ apiId, data }: { apiId: number, data:
     return (
       <div className="space-y-4">
         {articles.length === 0 ? <p className="text-white">No articles found. Debug: {JSON.stringify(data)}</p> : null}
-        {articles.map((art: Article, i: number) => (
+        {(articles || []).map((art: Article, i: number) => (
           <div key={art.url || i} className="p-5 bg-[#0B0E14] rounded-xl border border-[#1E293B] hover:border-[#F5C518]/50 transition-all flex flex-col group shadow-lg">
             <div className="text-[10px] text-[#F5C518] font-black mb-2 uppercase tracking-widest">{art.source?.name || 'News Source'}</div>
             <a href={art.url || '#'} target="_blank" rel="noopener noreferrer" className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">{art.title}</a>
