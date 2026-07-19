@@ -19,4 +19,5 @@ export const transactionSchema = z.object({
 
 export type TransactionData = z.infer<typeof transactionSchema>;
 export const validateTransaction = (data: unknown) => transactionSchema.safeParse(data);
+/** Parses the input data and returns it as TransactionData, or throws an error */
 export const parseTransactionOrThrow = (data: unknown): TransactionData => transactionSchema.parse(data);
