@@ -50,7 +50,7 @@ function InteractiveTerminal(): React.JSX.Element {
   return (
     <>
       <div aria-live="polite" className="absolute top-6 left-6 text-brand-green/50 text-[10px] md:text-xs font-mono space-y-1 text-left">
-        {bootLogs.map((log, index) => (
+        {bootLogs.map((log: string, index: number) => (
           <p key={index} className={log?.includes("SUCCESS") ? "text-brand-green font-bold mt-2" : ""}>
             {log}
           </p>
