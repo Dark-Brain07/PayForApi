@@ -128,6 +128,7 @@ export default function Home(): React.ReactElement {
         <div 
           onClick={handleEnterMarketplace}
           aria-label="Interactive Terminal"
+          aria-pressed="false"
           role="button"
           tabIndex={0}
           className="max-w-4xl mx-auto bg-[#0a0a0a] border border-[#222] rounded-xl shadow-[0_0_50px_rgba(0,255,0,0.1)] overflow-hidden cursor-pointer group hover:border-brand-green/50 transition-all duration-300 relative"
