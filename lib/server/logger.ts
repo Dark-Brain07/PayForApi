@@ -19,4 +19,5 @@ export class Logger {
     console.error(`[ERROR] ${new Date().toISOString()}: ${message}`, metadata || {});
   }
 }
+/** Global singleton logger instance */
 export const loggerInstance = Logger.getInstance();
