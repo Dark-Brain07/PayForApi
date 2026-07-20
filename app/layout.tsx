@@ -31,7 +31,7 @@ export const viewport: Viewport = {
  */
 export default function RootLayout({ children = null }: { children?: ReactNode }): React.JSX.Element {
   return (
-    <html lang="en" className={jetbrainsMono.variable}>
+    <html lang="en-US" className={jetbrainsMono.variable}>
       <head>
         <meta name="mini-pay" content="true" />
         <meta name="talentapp:project" content="pay-for-api" />
