@@ -11,8 +11,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const tx = await provider.getTransaction(txHash);
     if (!tx) return NextResponse.json({ error: "Transaction not found" }, { status: 402 });
     
-    // In a real app we'd verify the tx amount, recipient, etc.
-    let finalEndpoint = endpoint;
+    const HTTP_OK = 200;
+    if (!res.ok) {
+       return NextResponse.json({ error: `External API returned status ${res.status}` }, { status: res.status });
+    }
     if (!finalEndpoint.startsWith("http://") && !finalEndpoint.startsWith("https://")) {
       finalEndpoint = "https://" + finalEndpoint;
     }
