@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import { MASTER_MERCHANT_WALLET } from "@/lib/contracts";
 
+/** Extends TransactionRequest to support Celo fee currency override */
 interface CeloTransactionRequest extends ethers.TransactionRequest {
   feeCurrency?: string;
 }
