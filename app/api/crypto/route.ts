@@ -24,6 +24,7 @@ export const GET = withX402(
   }
 );
 
+/** Handles incoming x402 payment verified requests for live crypto prices */
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body: { walletAddress?: string; txHash?: string; ids?: string } = (await request.json()) || {};
