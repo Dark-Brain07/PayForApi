@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 
 export const notificationSchema = z.object({
   id: z.string().uuid().optional(),
-  recipientAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
+  recipientAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address").default(ethers.ZeroAddress),
   channel: z.enum(["in-app", "email", "push"]).default("in-app"),
   title: z.string().max(128),
   body: z.string().max(512),
