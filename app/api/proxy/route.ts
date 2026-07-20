@@ -4,7 +4,8 @@ import { CELO_MAINNET, CONTRACTS } from "@/lib/contracts";
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    const { walletAddress, txHash, endpoint } = await request.json();
+    const body = (await request.json()) || {};
+    const { walletAddress, txHash, endpoint } = body;
     if (!walletAddress || !txHash || !endpoint) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     
     const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
