@@ -488,7 +488,7 @@ export default function DashboardPage(): React.ReactElement {
                           // Silent storage error
                         }
                     }
-                    setApis(apis.filter(a => a.endpoint !== selectedSettingsApi.endpoint));
+                    setApis(apis?.filter(a => a.endpoint !== selectedSettingsApi.endpoint) || []);
                     setDeletedApis([...deletedApis, selectedSettingsApi]);
                     setSelectedSettingsApi(null);
                   }}
