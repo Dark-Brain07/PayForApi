@@ -47,6 +47,7 @@ export const CELO_MAINNET = {
  * Master merchant wallet where the 10% platform protocol fee is routed. 
  * This address is hardcoded to receive all base payments.
  */
+/** Protocol fee percentage taken from each API call */
 export const PROTOCOL_FEE_PERCENTAGE = 10;
 export const MASTER_MERCHANT_WALLET = "0xfd4960F33670f3477ebe817B184dd59fC4961437";
 
