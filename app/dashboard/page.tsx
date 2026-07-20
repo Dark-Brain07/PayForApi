@@ -475,7 +475,7 @@ export default function DashboardPage(): React.ReactElement {
                     const deletedCacheKey = CACHE_KEYS.DELETED_ENDPOINTS;
                     let deletedIds: string[] = [];
                     try { 
-                      deletedIds = JSON.parse(localStorage.getItem(deletedCacheKey) || "[]") as string[]; 
+                      deletedIds = (JSON.parse(localStorage.getItem(deletedCacheKey) || "[]") as string[]); 
                     } catch (err) {
                       localStorage.removeItem(deletedCacheKey);
                       deletedIds = [];
