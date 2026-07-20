@@ -57,7 +57,7 @@ export default function APIResultDisplay({ apiId, data }: { apiId: number, data:
     };
 
     return (
-      <div className={`flex flex-col items-center justify-center p-6 sm:p-8 bg-gradient-to-br ${getGradient()} rounded-2xl border border-white/20 relative overflow-hidden shadow-2xl`}>
+      <div aria-live="polite" className={`flex flex-col items-center justify-center p-6 sm:p-8 bg-gradient-to-br ${getGradient()} rounded-2xl border border-white/20 relative overflow-hidden shadow-2xl`}>
         {/* Dark subtle overlay to guarantee text readability */}
         <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>
         <div className="absolute top-0 left-0 w-full h-full opacity-50 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/40 via-transparent to-transparent animate-pulse"></div>
