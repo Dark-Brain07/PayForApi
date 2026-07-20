@@ -9,6 +9,7 @@ import { EthereumProvider } from "@/hooks/useAuth";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 /** Truncates an EVM address to a 6...4 character format */
+export interface NavItem { name: string; href: string; icon?: React.ReactNode; }
 const truncateAddress = (addr: string): string => {
   return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 };
@@ -228,7 +229,7 @@ export default function Header(): React.JSX.Element {
           </div>
         </div>
 
-        {/* Mobile Navigation Panel */}
+        {/** @component Header navigation component for the application */}
         {isMobileMenuOpen && (
           <div id="mobile-menu-panel" className="md:hidden border-t border-[#1E293B] py-4 pb-6 absolute left-0 right-0 bg-brand-black shadow-2xl px-4 z-40">
             <nav className="flex flex-col space-y-4">
