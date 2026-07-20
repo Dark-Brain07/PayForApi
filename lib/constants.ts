@@ -11,6 +11,7 @@ export const TERMINAL_BOOT_LOGS = [
 
 export const getTerminalLogs = (): readonly string[] => TERMINAL_BOOT_LOGS;
 
+/** Mainnet Chain ID */
 export const BLOCKS_TO_QUERY: number = 2000000;
 
 /** Local storage cache keys */
