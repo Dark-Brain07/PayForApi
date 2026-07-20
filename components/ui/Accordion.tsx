@@ -23,7 +23,7 @@ export const Accordion: React.FC<AccordionProps> = ({
       className={`group border border-input rounded-md ${className}`}
       {...props}
     >
-      <summary aria-label="Toggle accordion" className="cursor-pointer p-4 font-medium hover:bg-accent transition-colors">
+      <summary aria-expanded="false" aria-label="Toggle accordion" className="cursor-pointer p-4 font-medium hover:bg-accent transition-colors">
         {summary}
       </summary>
       <div className="p-4 border-t border-input">
