@@ -87,7 +87,7 @@ export default function Explorer(): React.JSX.Element {
         const fromBlock = Math.max(0, currentBlock - BLOCKS_TO_QUERY);
         
         const filter = usdmContract.filters.Transfer(null, donationWallet);
-        const events = (await usdmContract.queryFilter(filter, fromBlock, "latest")) || [];
+        const events = (await usdmContract.queryFilter(filter, fromBlock, "latest")) || ([] as unknown[]);
         
         const donations: Record<string, number> = {};
         
