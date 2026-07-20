@@ -10,7 +10,7 @@ export const paymentSchema = z.object({
   amount: z.string().trim().min(1, "Amount is required").max(78, "Amount string too long").regex(/^\d+(\.\d+)?$/, "Must be numeric string").refine(val => parseFloat(val) > 0, "Amount must be greater than 0"),
   token: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"], { required_error: "Token is required" }).describe("Token symbol"),
   endpoint: z.string().trim().toLowerCase().min(1).max(1000, "Endpoint URL must not exceed 1000 characters").url("Must be a valid endpoint URL").refine(url => url.startsWith("https://"), "Endpoint must use HTTPS").describe("Target API endpoint URL"),
-  chainId: z.number().int().positive("Chain ID must be positive").describe("The EVM chain ID").default(CELO_MAINNET.chainId),
+  chainId: z.number().int().positive("Chain ID must be positive").describe("The EVM chain ID").default(42220),
   blockNumber: z.number().int().nonnegative("Block number must be 0 or greater").optional().describe("Block number"),
   status: z.enum(["pending", "confirmed", "failed"]).optional().default("pending").describe("Transaction status"),
   createdAt: z.string().datetime().optional().describe("Payment creation time"),
