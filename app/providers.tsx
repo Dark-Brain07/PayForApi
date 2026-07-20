@@ -9,7 +9,7 @@ const DEFAULT_CHAIN = "celo";
 
 const queryClient = new QueryClient();
 
-/** Main providers wrapper */
+/** Main providers wrapper function for React Query and Wagmi */
 export function Providers({ children }: { children: React.ReactNode }): React.JSX.Element {
   return (
     <WagmiProvider config={wagmiConfig}>
