@@ -6,7 +6,7 @@ import { loggerInstance } from "@/lib/server/logger";
 /** Handles AI image generation requests */
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    const body: { prompt?: string; walletAddress?: string; txHash?: string } = await request.json();
+    const body: { prompt?: string; walletAddress?: string; txHash?: string } = (await request.json()) || {};
     const { prompt, walletAddress, txHash } = body;
 
     if (!prompt || !walletAddress || !txHash) {
