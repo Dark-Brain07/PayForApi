@@ -17,7 +17,7 @@ const truncateAddress = (addr: string): string => {
 const BALANCE_POLL_INTERVAL = 10000;
 const DEFAULT_BALANCE = "0.00";
 
-export default function Header(): React.JSX.Element {
+export default function Header(): React.ReactElement {
   const { address, isConnected, connect, disconnect, isMiniPay } = useWallet();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
