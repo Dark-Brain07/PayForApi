@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ethers } from "ethers";
 import { CELO_MAINNET_ID } from "../contracts";
 
 /** On-chain Celo transaction record */
