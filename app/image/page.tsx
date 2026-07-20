@@ -8,6 +8,8 @@ import { processPayment } from "@/lib/payment";
 import { CELO_STABLECOINS, StablecoinKey } from "@/lib/stablecoins";
 import { CONTRACTS } from "@/lib/contracts";
 
+const FALLBACK_TX_HASH = "0x0000000000000000000000000000000000000000";
+
 /** Represents a generated image or message in the UI */
 interface ImageItem {
   id: string;
@@ -141,7 +143,6 @@ export default function ImagePage(): React.JSX.Element {
     setIsGenerating(true);
 
     try {
-      const FALLBACK_TX_HASH = "0x0000000000000000000000000000000000000000";
       let txHash = FALLBACK_TX_HASH; 
       
       // Execute background transaction without modal popup
