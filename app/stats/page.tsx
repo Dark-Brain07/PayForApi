@@ -1,7 +1,7 @@
 "use client";
 
 /** Stats page component */
-export default function StatsPage(): React.JSX.Element {
+export default function StatsPage(): React.ReactElement {
   return (
     <main className="flex flex-col w-full min-h-screen pt-24 pb-12 px-4 max-w-5xl mx-auto">
       <title>Platform Analytics | PayForAPI</title>
