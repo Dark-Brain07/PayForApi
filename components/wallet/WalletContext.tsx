@@ -16,6 +16,7 @@ interface WalletContextType {
 const INITIAL_STATE = undefined;
 const WalletContext = createContext<WalletContextType | undefined>(INITIAL_STATE);
 
+/** Main provider component for WalletContext */
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const { isMiniPay, address: miniPayAddress } = useMiniPay();
   const [address, setAddress] = useState<string | null>(null);
