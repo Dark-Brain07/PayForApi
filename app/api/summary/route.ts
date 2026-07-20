@@ -38,7 +38,7 @@ export const GET = withX402(
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    const body: { walletAddress?: string; txHash?: string; text?: string } = await request.json();
+    const body: { walletAddress?: string; txHash?: string; text?: string } = (await request.json()) || {};
     const { walletAddress, txHash, text = "Example text to summarize" } = body;
     if (!walletAddress || !txHash) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
