@@ -1,4 +1,4 @@
-export const DEFAULT_DECIMALS = 18;
+export const DEFAULT_DECIMALS: number = 18;
 
 /**
  * Registry of supported Celo stablecoins and their metadata.
