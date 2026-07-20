@@ -43,7 +43,8 @@ import { loggerInstance } from "@/lib/server/logger";
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    const { walletAddress, txHash, text = "hello", language = "French" } = await request.json();
+    const body: { walletAddress?: string; txHash?: string; text?: string; language?: string } = (await request.json()) || {};
+    const { walletAddress, txHash, text = "hello", language = "French" } = body;
     if (!walletAddress || !txHash) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
     const tx = await provider.getTransaction(txHash);
