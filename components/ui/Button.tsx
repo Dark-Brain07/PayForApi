@@ -6,6 +6,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: 'sm' | 'md' | 'lg';
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isLoading?: boolean;
+  isDisabled?: boolean;
 }
 
 /** Core classes for the button component */
