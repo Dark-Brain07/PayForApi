@@ -55,7 +55,7 @@ const ChatPage: React.FC = () => {
       return;
     }
     
-    const userMessage = input.trim();
+    const userMessage: string = input.trim();
     setInput(""); // clear input immediately to feel responsive
     setIsTyping(true);
 
