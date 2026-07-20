@@ -4,7 +4,7 @@
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
-  isDisabled?: boolean;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isLoading?: boolean;
 }
 
