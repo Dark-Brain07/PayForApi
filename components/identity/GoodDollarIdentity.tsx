@@ -74,7 +74,7 @@ export default function GoodDollarIdentity(): React.JSX.Element {
       }
     } catch (e: unknown) {
       const errObj = e as Record<string, unknown>;
-      let errMsg = errObj.reason || errObj.message || "Unknown error";
+      let errMsg: string = (errObj.reason as string) || (errObj.message as string) || "Unknown error";
       if (errMsg.includes("Wait 24 hours")) {
          errMsg = "You have already claimed your daily APIC UBI. Please wait 24 hours.";
          setCreditsClaimed(true);
