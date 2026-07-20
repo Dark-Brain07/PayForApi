@@ -279,7 +279,7 @@ export default function DashboardPage(): React.ReactElement {
           </div>
           <div className="space-y-4" aria-live="polite">
             {apis?.map((api, idx) => (
-              <div key={idx} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/50 border border-[#1E293B] hover:border-[#334155] rounded-xl transition-all group">
+              <div key={`api-${api.endpoint}-${idx}`} className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#0F172A]/50 border border-[#1E293B] hover:border-[#334155] rounded-xl transition-all group">
                 <div>
                   <h3 className="text-lg font-bold text-white flex items-center gap-2" title={api.name}>
                     {api.name.length > 20 ? `${api.name.slice(0, 17)}...` : api.name}
