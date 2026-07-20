@@ -1,3 +1,4 @@
+/** Base pricing for standard APIs */
 const PRICE_0_001 = "$0.001 USDm/call";
 
 /** Array of all available API products and their pricing */
