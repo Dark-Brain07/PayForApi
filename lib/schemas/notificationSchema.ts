@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ethers } from "ethers";
 
 export const notificationSchema = z.object({
   id: z.string().uuid().optional(),
