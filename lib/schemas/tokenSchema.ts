@@ -12,6 +12,7 @@ const CELO_TOKENS: Record<string, { address: string; decimals: number }> = {
 };
 
 const EVM_ADDRESS_REGEX = /^0x[0-9a-fA-F]{40}$/;
+/** Schema for validating Celo ecosystem tokens */
 export const tokenSchema = z.object({
   symbol: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]),
   contractAddress: z.string().trim().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
