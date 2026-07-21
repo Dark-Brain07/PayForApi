@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+/** Zod schema for validating user profiles and roles */
 export const userSchema = z.object({
   id: z.string().uuid().optional(),
   walletAddress: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
