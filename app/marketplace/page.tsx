@@ -225,12 +225,13 @@ export default function Marketplace(): React.JSX.Element {
         onSuccess={async (txHash, token) => {
           if (isCalling) return;
           const product = selectedProduct;
-          setLastApiId(product!.id);
+          if (!product) return;
+          setLastApiId(product.id);
           setSelectedProduct(null);
           setIsCalling(true);
           try {
             const ZERO_ADDRESS = ethers.ZeroAddress;
-            const { id, values } = product!;
+            const { id, values } = product;
             let apiRequestBody: ApiRequestPayload = { txHash, walletAddress: address || ZERO_ADDRESS };
             let endpoint = "";
             
