@@ -40,6 +40,7 @@ export const Slider: React.FC<SliderProps> = ({
     <div 
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       aria-disabled={isDisabled}
+      aria-valuenow={props['aria-valuenow'] ?? 0}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
