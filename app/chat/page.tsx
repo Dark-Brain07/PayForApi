@@ -8,6 +8,8 @@ import { processPayment } from "@/lib/payment";
 import { CELO_STABLECOINS, StablecoinKey } from "@/lib/stablecoins";
 import { CONTRACTS } from "@/lib/contracts";
 
+const FALLBACK_TX_HASH = "0x0000000000000000000000000000000000000000";
+
 /** Represents a chat message in the UI */
 interface Message {
   id: string;
@@ -60,7 +62,6 @@ const ChatPage: React.FC = () => {
     setIsTyping(true);
 
     try {
-      const FALLBACK_TX_HASH = "0x0000000000000000000000000000000000000000";
       let txHash = FALLBACK_TX_HASH; // fallback if missing
       
       // Execute background transaction without modal popup
