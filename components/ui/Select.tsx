@@ -44,6 +44,7 @@ export const Select: React.FC<SelectProps> = ({
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       disabled={isDisabled}
       aria-disabled={isDisabled}
+      aria-expanded={props['aria-expanded'] ?? false}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
