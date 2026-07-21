@@ -19,6 +19,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   variant = 'default', 
   size = 'md', 
   isDisabled = false, 
+  placement = 'top',
   className = '', 
   ...props 
 }) => {
