@@ -42,7 +42,7 @@ export const Switch: React.FC<SwitchProps> = ({
   };
   
   return (
-    <button aria-selected={false}
+    <button aria-selected={false} aria-pressed={props['aria-pressed'] ?? false}
       role="switch"
       type="button"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
