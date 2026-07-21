@@ -4,7 +4,7 @@ import React from 'react';
  * Props for the Badge component
  */
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant: 'default' | 'primary' | 'outline' | 'ghost';
+  variant?: 'default' | 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isDisabled?: boolean;
 }
@@ -19,8 +19,8 @@ export const Badge: React.FC<BadgeProps> = ({
   size = 'md', 
   isDisabled = false, 
   className = '', 
-} 
-}): React.JSX.Element => {
+  ...props
+}): React.ReactElement => {
   const baseStyles = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 truncate" as const;
   
   const variantStyles: Record<NonNullable<BadgeProps["variant"]>, string> = {
