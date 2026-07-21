@@ -41,6 +41,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   
   return (
     <div role="checkbox"
+      aria-checked={props['aria-checked'] || 'false'}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
       aria-disabled={isDisabled}
       aria-required="false"
