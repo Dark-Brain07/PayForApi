@@ -42,22 +42,17 @@ export default function StatsPage(): React.ReactElement {
         <div className="bg-[#0A0D12] border border-[#1E293B] rounded-2xl p-6 shadow-xl">
           <h2 className="text-lg font-bold text-white mb-4">Top Regions (MiniPay)</h2>
           <div role="group" aria-label="Region Stats" className="space-y-4">
-            <div>
-              <div className="flex justify-between text-sm mb-1"><span className="text-[#94A3B8]">Nigeria 🇳🇬</span><span className="text-white font-bold">45%</span></div>
-              <div className="w-full bg-[#1E293B] rounded-full h-2"><div className="bg-brand-yellow h-2 rounded-full" style={{width: '45%'}}></div></div>
-            </div>
-            <div>
-              <div className="flex justify-between text-sm mb-1"><span className="text-[#94A3B8]">Kenya 🇰🇪</span><span className="text-white font-bold">28%</span></div>
-              <div className="w-full bg-[#1E293B] rounded-full h-2"><div className="bg-brand-yellow h-2 rounded-full" style={{width: '28%'}}></div></div>
-            </div>
-            <div>
-              <div className="flex justify-between text-sm mb-1"><span className="text-[#94A3B8]">Ghana 🇬🇭</span><span className="text-white font-bold">15%</span></div>
-              <div className="w-full bg-[#1E293B] rounded-full h-2"><div className="bg-brand-yellow h-2 rounded-full" style={{width: '15%'}}></div></div>
-            </div>
-            <div>
-              <div className="flex justify-between text-sm mb-1"><span className="text-[#94A3B8]">Other</span><span className="text-white font-bold">12%</span></div>
-              <div className="w-full bg-[#1E293B] rounded-full h-2"><div className="bg-[#94A3B8] h-2 rounded-full" style={{width: '12%'}}></div></div>
-            </div>
+            {[
+              { label: "Nigeria 🇳🇬", percent: "45%", width: "45%", color: "bg-brand-yellow" },
+              { label: "Kenya 🇰🇪", percent: "28%", width: "28%", color: "bg-brand-yellow" },
+              { label: "Ghana 🇬🇭", percent: "15%", width: "15%", color: "bg-brand-yellow" },
+              { label: "Other", percent: "12%", width: "12%", color: "bg-[#94A3B8]" }
+            ]?.map((region, i) => (
+              <div key={i}>
+                <div className="flex justify-between text-sm mb-1"><span className="text-[#94A3B8]">{region.label}</span><span className="text-white font-bold">{region.percent}</span></div>
+                <div className="w-full bg-[#1E293B] rounded-full h-2"><div className={`${region.color} h-2 rounded-full`} style={{width: region.width}}></div></div>
+              </div>
+            ))}
           </div>
         </div>
 
