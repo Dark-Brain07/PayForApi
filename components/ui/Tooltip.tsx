@@ -42,6 +42,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     <div 
       role="tooltip"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
+      aria-label={props['aria-label'] || "Tooltip"}
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
