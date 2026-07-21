@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+/** Zod schema for validating API keys */
 export const apiKeySchema = z.object({
   id: z.string().uuid().optional(),
   key: z.string().trim().regex(/^[a-zA-Z0-9_-]+$/, "Invalid API key format").min(32).max(128),
