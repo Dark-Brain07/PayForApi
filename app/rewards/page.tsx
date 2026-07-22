@@ -110,7 +110,7 @@ export default function Rewards(): React.JSX.Element {
     return () => clearInterval(interval);
   }, [lastClaimTime]);
 
-  /** Process reward claim transaction */
+  /** Claim rewards from protocol */
   const handleClaim = async () => {
     if (!isConnected) return setError("Connect wallet first!");
     setError(null);
