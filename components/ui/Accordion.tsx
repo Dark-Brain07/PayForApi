@@ -13,10 +13,10 @@ export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsE
  */
 export const Accordion: React.FC<AccordionProps> = ({ 
   children, 
-  summary = 'Details',
+  summary = 'Accordion Details',
   className = '', 
   ...props 
-}) => {
+}): React.JSX.Element => {
   return (
     <details 
       title="Accordion details"
