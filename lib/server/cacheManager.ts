@@ -10,7 +10,7 @@ export class CacheManager {
     if (!CacheManager.instance) CacheManager.instance = new CacheManager();
     return CacheManager.instance;
   }
-  public set(key: string, value: unknown, ttlMs: number = DEFAULT_TTL_MS) {
+  public set(key: string, value: unknown, ttlMs: number = DEFAULT_TTL_MS): void {
     this.cache.set(key, { value, expiry: Date.now() + ttlMs });
   }
   public get(key: string): unknown {
