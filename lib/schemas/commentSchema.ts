@@ -5,5 +5,5 @@ export const commentSchema = z.object({
   postId: z.string().uuid(),
   authorId: z.string().uuid(),
   content: z.string().min(1).max(1000),
-  createdAt: z.date()
+  createdAt: z.date().describe("Comment creation timestamp")
 });
