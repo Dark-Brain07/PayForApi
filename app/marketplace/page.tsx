@@ -20,8 +20,11 @@ export interface ApiRequestPayload {
 }
 
 export interface SelectedProduct {
-  /** The unique product ID */
   id: number;
+  name: string;
+  values: string[];
+  priceCredits?: number;
+}
   name: string;
   values: string[];
   priceCredits?: number;
