@@ -104,7 +104,7 @@ export function useAuth(): AuthState & {
    * Clears the current wallet session state and disconnects.
    * @returns {void}
    */
-  const disconnect = useCallback(() => {
+  const disconnect = useCallback((): void => {
     setState({
       address: null,
       isConnected: false,
