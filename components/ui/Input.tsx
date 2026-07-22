@@ -47,6 +47,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
       aria-required={props.required ? 'true' : undefined}
       aria-describedby={error && props.id ? `${props.id}-error` : props['aria-describedby']}
       title={props.title || (typeof props.placeholder === 'string' ? props.placeholder : "Input field")}
+      aria-label={props['aria-label'] || props.name || "input field"}
       {...props}
     />
   );
