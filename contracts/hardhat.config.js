@@ -1,12 +1,14 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config({ path: "../.env.local" });
 
+const CELO_MAINNET_CHAIN_ID = 42220;
+
 module.exports = {
   solidity: "0.8.20",
   networks: {
     celo: {
       url: "https://forno.celo.org",
-      chainId: 42220,
+      chainId: CELO_MAINNET_CHAIN_ID,
       accounts: process.env.DEPLOYER_PRIVATE_KEY ? [process.env.DEPLOYER_PRIVATE_KEY] : [],
     },
     alfajores: {
