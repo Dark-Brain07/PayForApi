@@ -9,8 +9,6 @@ import { EthereumProvider } from "@/hooks/useAuth";
 import GoodDollarIdentity from "@/components/identity/GoodDollarIdentity";
 import { loggerInstance } from "@/lib/server/logger";
 
-const ERR_EMPTY = "Please fill all fields with valid text";
-
 /** Shared styling classes for text inputs in the dashboard. */
 const INPUT_CLASSES = [
   "w-full bg-[#020617] border border-[#1E293B] rounded-lg",
