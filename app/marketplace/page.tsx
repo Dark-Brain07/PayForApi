@@ -19,7 +19,7 @@ export interface ApiRequestPayload {
   [key: string]: unknown;
 }
 
-export interface Activity { id: string; }
+export interface SelectedProduct {
   /** The unique product ID */
   id: number;
   name: string;
