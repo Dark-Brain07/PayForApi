@@ -19,15 +19,12 @@ export interface ApiRequestPayload {
   [key: string]: unknown;
 }
 
-export interface SelectedProduct {
+export interface Activity { id: string; }
+  /** The unique product ID */
   id: number;
   name: string;
   values: string[];
-  priceCredits?: number;
-}
-  name: string;
-  values: string[];
-  priceCredits?: number;
+  priceCredits: number;
 }
 
 /** Generates a consistent numeric ID from a string using a hash function. */
