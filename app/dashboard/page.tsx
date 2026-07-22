@@ -9,6 +9,8 @@ import { EthereumProvider } from "@/hooks/useAuth";
 import GoodDollarIdentity from "@/components/identity/GoodDollarIdentity";
 import { loggerInstance } from "@/lib/server/logger";
 
+const ERR_EMPTY = "Please fill all fields with valid text";
+
 /** Shared styling classes for text inputs in the dashboard. */
 const INPUT_CLASSES = [
   "w-full bg-[#020617] border border-[#1E293B] rounded-lg",
@@ -55,7 +57,6 @@ export default function DashboardPage(): React.ReactElement {
 
   const handleRegister = async (): Promise<void> => {
     setErrorMsg("");
-    const ERR_EMPTY = "Please fill all fields with valid text";
     if (!newApiName.trim() || !newApiEndpoint.trim()) { setErrorMsg(ERR_EMPTY); return; }
     if (!isConnected || !address) { setErrorMsg("Please connect your Web3 wallet first to register an API."); return; }
     if (typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
