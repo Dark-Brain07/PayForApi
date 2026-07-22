@@ -16,6 +16,7 @@ const truncateAddress = (addr: string): string => {
 
 const BALANCE_POLL_INTERVAL = 10000;
 const DEFAULT_BALANCE = "0.00";
+const ERC20_BALANCE_ABI = ["function balanceOf(address) view returns (uint256)"];
 
 export default function Header(): React.JSX.Element {
   const { address, isConnected, connect, disconnect, isMiniPay } = useWallet();
@@ -32,7 +33,7 @@ export default function Header(): React.JSX.Element {
           
           const usdmContract = new ethers.Contract(
             CELO_STABLECOINS.USDm.address,
-            ["function balanceOf(address) view returns (uint256)"],
+            ERC20_BALANCE_ABI,
             provider
           );
           
