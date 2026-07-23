@@ -16,7 +16,7 @@ const EVM_ADDRESS_REGEX = /^0x[0-9a-fA-F]{40}$/;
 export const tokenSchema = z.object({
   symbol: z.enum(["USDm", "EURm", "KESm", "BRLm", "GHSm", "COPm", "PUSO"]),
   contractAddress: z.string().trim().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid EVM address"),
-  decimals: z.number().int().min(0).default(18).describe("The number of decimals for the token"),
+  decimals: z.number().int().min(0).max(36, "Decimals cannot exceed 36").default(18).describe("The number of decimals for the token"),
   chainId: z.number().int().default(CELO_MAINNET_ID),
 }).strict();
 
