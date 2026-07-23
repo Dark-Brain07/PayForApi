@@ -55,6 +55,7 @@ export default function DashboardPage(): React.ReactElement {
 
   const handleRegister = async (): Promise<void> => {
     setErrorMsg("");
+    const ERR_EMPTY = "Please fill all fields with valid text";
     if (!newApiName.trim() || !newApiEndpoint.trim()) { setErrorMsg(ERR_EMPTY); return; }
     if (!isConnected || !address) { setErrorMsg("Please connect your Web3 wallet first to register an API."); return; }
     if (typeof window === "undefined" || !(window as WindowWithEthereum).ethereum) {
@@ -211,7 +212,7 @@ export default function DashboardPage(): React.ReactElement {
           setApis(fetchedApis);
           setDeletedApis(fetchedDeletedApis);
         }
-      } catch (error) {
+      } catch (error: unknown) {
         loggerInstance.error(String(error));
       } finally {
         if (isMounted) setLoadingEndpoints(false);
