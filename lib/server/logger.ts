@@ -18,6 +18,13 @@ export class Logger {
   public error(message: string, metadata?: Record<string, unknown>): void {
     console.error(`[ERROR] ${new Date().toISOString()}: ${message}`, metadata || {});
   }
+  /**
+   * Logs a warning message with an ISO timestamp.
+   * @param {string} message - The warning message to log
+   */
+  public warn(message: string, metadata?: Record<string, unknown>): void {
+    console.warn(`[WARN] ${new Date().toISOString()}: ${message}`, metadata || {});
+  }
 }
 /** Global singleton logger instance */
 export const loggerInstance = Logger.getInstance();
