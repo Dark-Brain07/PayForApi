@@ -183,7 +183,7 @@ export default function Explorer(): React.JSX.Element {
                     navigator.clipboard.writeText(MASTER_MERCHANT_WALLET);
                     setCopied(true);
                     setTimeout(() => setCopied(false), 2000);
-                  } catch (e) {
+                  } catch (e: unknown) {
                     // Silently fail
                   }
                 }}
