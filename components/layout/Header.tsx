@@ -16,7 +16,6 @@ const truncateAddress = (addr: string): string => {
 
 const BALANCE_POLL_INTERVAL = 10000;
 const DEFAULT_BALANCE = "0.00";
-const ERC20_BALANCE_ABI = ["function balanceOf(address) view returns (uint256)"];
 
 export default function Header(): React.JSX.Element {
   const { address, isConnected, connect, disconnect, isMiniPay } = useWallet();
@@ -33,7 +32,7 @@ export default function Header(): React.JSX.Element {
           
           const usdmContract = new ethers.Contract(
             CELO_STABLECOINS.USDm.address,
-            ERC20_BALANCE_ABI,
+            ["function balanceOf(address) view returns (uint256)"],
             provider
           );
           
@@ -52,7 +51,7 @@ export default function Header(): React.JSX.Element {
             const apicBal = await apicContract.balanceOf(address);
             setApicBalance(Number(ethers.formatUnits(apicBal, 18)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}));
           } catch (e) { setApicBalance("0.00"); }
-        } catch (error) {
+        } catch (error: unknown) {
           // Silent catch for background fetching
         }
       }
