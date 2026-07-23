@@ -22,8 +22,6 @@ interface PaymentModalProps {
   onSuccess: (txHash: string, token: string) => void;
 }
 
-const ZERO_ADDRESS = ethers.ZeroAddress;
-
 /** Modal component for handling crypto token payments */
 export default function PaymentModal({ isOpen, onClose, productId, productName, priceCredits, onSuccess }: PaymentModalProps): React.ReactElement | null {
   const { isMiniPay, address } = useWallet();
@@ -40,6 +38,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
   if (!isOpen) return null;
 
   const handlePay = async (): Promise<void> => {
+    const ZERO_ADDRESS = ethers.ZeroAddress;
     if (!address || address === ZERO_ADDRESS) {
       setError("Please connect a valid wallet first.");
       return;
@@ -174,7 +173,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
             >
               {isProcessing ? (
                 <>
-                  <span className={`${SPINNER_CLASSES} border-brand-yellow/20 border-t-brand-yellow`}></span>
+                  <span aria-hidden="true" className={`${SPINNER_CLASSES} border-brand-yellow/20 border-t-brand-yellow`}></span>
                   <span aria-live="polite" role="status">Processing Credits...</span>
                 </>
               ) : (
