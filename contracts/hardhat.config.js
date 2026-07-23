@@ -3,6 +3,7 @@ require("dotenv").config({ path: "../.env.local" });
 
 const CELO_MAINNET_CHAIN_ID = 42220;
 
+/** @type import('hardhat/config').HardhatUserConfig Configuration for Celo Mainnet and Alfajores deployments */
 module.exports = {
   solidity: "0.8.20",
   networks: {
