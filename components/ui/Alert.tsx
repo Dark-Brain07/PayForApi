@@ -37,6 +37,7 @@ export const Alert: React.FC<AlertProps> = ({
   return (
     <div 
       role="alert" aria-atomic="true" title="Alert"
+      aria-label={props['aria-label'] || "System Alert"}
       aria-live="assertive"
       aria-describedby={props['aria-describedby'] || undefined}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
