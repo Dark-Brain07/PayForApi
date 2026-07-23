@@ -30,7 +30,9 @@ export interface AuthState {
 
 const CELO_CHAIN_ID = CELO_MAINNET_ID;
 const CELO_CHAIN_HEX = `0x${CELO_CHAIN_ID.toString(16)}`;
+/** Standard RPC error code when user rejects a wallet transaction prompt */
 export const USER_REJECTED_CODE = 4001;
+/** Standard RPC error code when requested network chain is missing in wallet */
 export const CHAIN_MISSING_CODE = 4902;
 const CELO_DECIMALS = 18;
 
