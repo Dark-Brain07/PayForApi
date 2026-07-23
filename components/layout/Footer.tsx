@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+/** Main promotional tagline displayed in the site footer */
 const FOOTER_TAGLINE = "Decentralized, subscriptionless Web3 API Gateway." as const;
 const LOGO_SIZE = 60;
 
