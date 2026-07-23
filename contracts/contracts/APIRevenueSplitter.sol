@@ -20,6 +20,7 @@ contract APIRevenueSplitter is Ownable {
     event PaymentProcessed(string endpointId, uint256 amount, uint256 creatorShare, uint256 platformShare);
 
     constructor(address _platformWallet) Ownable(msg.sender) {
+        require(_platformWallet != address(0), "Invalid wallet address");
         platformWallet = _platformWallet;
     }
 
