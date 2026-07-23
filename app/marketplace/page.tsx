@@ -29,6 +29,7 @@ export interface Activity { id: string; }
 
 /** Generates a consistent numeric ID from a string using a hash function. */
 const BASE_ID_OFFSET = 1000;
+const DEFAULT_COMMUNITY_API_CREDITS = 50;
 const generateNumericId = (str: string): number => Math.abs(str.split('').reduce((hash, char) => ((hash << 5) - hash) + char.charCodeAt(0), 0)) + BASE_ID_OFFSET;
 const escapeHTML = (str: string): string => str ? str.replace(/</g, "&lt;").replace(/>/g, "&gt;") : "";
 
@@ -106,7 +107,7 @@ export default function Marketplace(): React.JSX.Element {
                name: `Community API: ${escapeHTML(endpointId).substring(0, 30)}...`, 
                endpoint: escapeHTML(endpointId), 
                priceUsd: "$0.005 USDm/call", 
-               priceCredits: 50, 
+               priceCredits: DEFAULT_COMMUNITY_API_CREDITS, 
                description: `Custom endpoint provided by ${creator.substring(0, 8)}...`, 
                inputs: ["param1"] 
              });
