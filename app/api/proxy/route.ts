@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { ethers } from "ethers";
 import { CELO_MAINNET, CONTRACTS } from "@/lib/contracts";
 
+/**
+ * Handles x402 payment validation and proxies requests to community API endpoints.
+ * @param {NextRequest} request - Next.js HTTP Request
+ * @returns {Promise<NextResponse>} Next.js HTTP Response
+ */
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body = (await request.json()) || {};
