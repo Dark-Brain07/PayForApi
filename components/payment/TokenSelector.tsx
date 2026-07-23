@@ -13,6 +13,7 @@ export default function TokenSelector({ selectedToken, onSelect }: TokenSelector
         <div 
           key={token.symbol}
           role="button"
+          aria-pressed={selectedToken === key}
           aria-label={`Select ${token.symbol}`}
           aria-keyshortcuts="Enter Space"
           tabIndex={0}
