@@ -47,6 +47,7 @@ export async function processPayment(
   // Direct ERC20 Transfer to receiver with feeCurrency override
   const transferTx = await tokenContract.transfer(receiverAddress, parsedAmount, overrides);
   const receipt = await transferTx.wait();
+  if (!receipt) throw new Error("Transaction execution failed or returned null receipt");
   
   return receipt;
 }
