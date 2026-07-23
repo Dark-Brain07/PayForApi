@@ -50,7 +50,7 @@ const ChatPage: React.FC = () => {
   }, [messages, isTyping]);
 
   /** Handles sending the chat message and processing payment */
-  const handleSendClick = async () => {
+  const handleSendClick = async (): Promise<void> => {
     if (!input.trim()) return;
     if (!address) {
       alert("Please connect your account first.");
