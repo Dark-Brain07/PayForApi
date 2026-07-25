@@ -10,6 +10,8 @@ export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | 'lg';
   /** Whether the toast is disabled */
   isDisabled?: boolean;
+  /** Toast auto-dismiss duration in milliseconds */
+  duration?: number;
 }
 
 /**
