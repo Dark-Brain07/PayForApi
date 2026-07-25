@@ -4,6 +4,17 @@
  */
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
 
+export interface RateLimitOptions {
+  windowMs?: number;
+  maxRequests?: number;
+}
+
+export interface RateLimitResult {
+  allowed: boolean;
+  remaining: number;
+  resetAt: number;
+}
+
 export class RateLimiter {
   private static instance: RateLimiter;
   private windowMs: number;
@@ -19,7 +30,7 @@ export class RateLimiter {
     return RateLimiter.instance;
   }
 
-  public check(key: string): { allowed: boolean; remaining: number; resetAt: number } {
+  public check(key: string): RateLimitResult {
     const now = Date.now();
     const entry = requestCounts.get(key);
 
