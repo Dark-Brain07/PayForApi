@@ -48,8 +48,8 @@ export default function StatsPage(): React.ReactElement {
         <div className="bg-[#0A0D12] border border-[#1E293B] rounded-2xl p-6 shadow-xl">
           <h2 className="text-lg font-bold text-white mb-4">Top Regions (MiniPay)</h2>
           <div role="group" aria-label="Region Stats" className="space-y-4">
-            {regions.map((region, i) => (
-              <div key={i}>
+            {regions.map((region) => (
+              <div key={region.label}>
                 <div className="flex justify-between text-sm mb-1"><span className="text-[#94A3B8]">{region.label}</span><span className="text-white font-bold">{region.percent}</span></div>
                 <div className="w-full bg-[#1E293B] rounded-full h-2"><div className={`${region.color} h-2 rounded-full`} style={{width: region.width}}></div></div>
               </div>
