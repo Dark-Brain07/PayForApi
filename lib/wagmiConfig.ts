@@ -1,6 +1,8 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
 import { celo } from "viem/chains";
 
+export const CELO_MAINNET_ID = 42220 as const;
+
 /** Shared Wagmi configuration instance for RainbowKit integrations */
 export const wagmiConfig = getDefaultConfig({
   appName: "Pay For API" as const,
