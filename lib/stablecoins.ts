@@ -97,4 +97,5 @@ export const CELO_STABLECOINS = {
 } as const;
 
 export type StablecoinKey = keyof typeof CELO_STABLECOINS;
+/** Default fallback payment token symbol for the application */
 export const DEFAULT_TOKEN: StablecoinKey = "USDm";
