@@ -219,6 +219,7 @@ export default function Header(): React.JSX.Element {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <svg role="img" aria-hidden="true" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <title>Mobile Menu Icon</title>
                 {isMobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -232,7 +233,7 @@ export default function Header(): React.JSX.Element {
         {/** @component Header navigation component for the application */}
         {isMobileMenuOpen && (
           <div id="mobile-menu-panel" className="md:hidden border-t border-[#1E293B] py-4 pb-6 absolute left-0 right-0 bg-brand-black shadow-2xl px-4 z-40">
-            <nav aria-label="Mobile Navigation" className="flex flex-col space-y-4">
+            <nav className="flex flex-col space-y-4">
               {!isMiniPay && (
                 <Link href="/marketplace" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-brand-yellow hover:translate-x-2 transition-all duration-300 font-bold text-lg p-2 rounded-lg hover:bg-white/5 block">
                   Marketplace
