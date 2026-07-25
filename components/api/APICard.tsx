@@ -35,7 +35,7 @@ export default function APICard({ id, name, priceUsd, priceCredits = 0, descript
   };
 
   return (
-    <div className="group relative bg-[#0B0E14] border border-[#1E293B] rounded-[24px] p-6 sm:p-8 flex flex-col h-fit hover:border-brand-yellow/40 transition-all duration-500 shadow-xl hover:shadow-[0_0_40px_rgba(245,197,24,0.12)] overflow-hidden">
+    <div className="group relative bg-[#0B0E14] border border-[#1E293B] rounded-[24px] p-6 sm:p-8 flex flex-col h-fit hover:border-brand-yellow/40 transition-all duration-500 shadow-xl hover:shadow-[0_0_40px_rgba(245,197,24,0.12)] overflow-hidden will-change-transform">
       {/* Subtle background glow effect on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
