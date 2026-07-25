@@ -36,7 +36,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
        return NextResponse.json({ error: `External API returned status ${res.status}` }, { status: res.status });
     }
 
-    const data = await res.json();
+    let data;
+    try {
+      data = await res.json();
+    } catch {
+      return NextResponse.json({ error: "Failed to parse API response JSON" }, { status: 502 });
+    }
     return NextResponse.json(data);
   } catch (error) {
     console.warn(error);
