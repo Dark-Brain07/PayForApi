@@ -8,7 +8,7 @@ export const walletSchema = z.object({
   isMiniPay: z.boolean().default(false),
   balances: z.record(z.string(), z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string")).default({}),
   isConnected: z.boolean().default(false),
-  ensName: z.string().trim().toLowerCase().max(255, "ENS name too long").optional(),
+  ensName: z.string().trim().toLowerCase().min(1, "ENS name cannot be empty").max(255, "ENS name too long").optional(),
 }).strict();
 
 export type WalletData = z.infer<typeof walletSchema>;
