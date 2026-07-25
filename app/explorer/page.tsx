@@ -30,6 +30,7 @@ const truncateAddress = (addr: string): string => {
 export interface ExplorerStats {
   revenueUsdm: string;
   revenueApic: string;
+  lastUpdated?: number;
 }
 
 export default function Explorer(): React.JSX.Element {
