@@ -38,7 +38,7 @@ export function useToast(durationMs = 3500): UseToastReturn {
   );
 
   const remove = useCallback((id: string) => {
-    setToasts((t) => t.filter((x) => x.id !== id));
+    setToasts((t) => (t || []).filter((x) => x.id !== id));
   }, []);
 
   return {
