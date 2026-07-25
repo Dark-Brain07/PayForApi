@@ -262,7 +262,9 @@ export default function Rewards(): React.JSX.Element {
                 : "btn-primary"
               }`}
             >
-              {isClaiming ? "Claiming..." : timeRemaining ? `Claim in ${timeRemaining}` : "Claim Daily Credits"}
+              <span aria-live="polite" role="status">
+                {isClaiming ? "Claiming..." : timeRemaining ? `Claim in ${timeRemaining}` : "Claim Daily Credits"}
+              </span>
             </button>
           </div>
 
