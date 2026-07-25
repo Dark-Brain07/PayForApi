@@ -19,7 +19,12 @@ const getHandler = async (req: NextRequest): Promise<NextResponse<unknown>> => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ contents: [{ parts: [{ text: "Summarize this text: " + text }] }] })
     });
-    const data = await response.json();
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      return NextResponse.json({ error: "Invalid JSON response from AI provider" }, { status: 502 });
+    }
     return NextResponse.json({ summary: data.candidates?.[0]?.content?.parts?.[0]?.text || "Summary failed" });
   } catch (error) {
     return NextResponse.json({ error: "Failed to generate summary" });
