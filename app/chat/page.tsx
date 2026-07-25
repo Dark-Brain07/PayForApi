@@ -222,8 +222,8 @@ const ChatPage: React.FC = () => {
       {/* Messages Area */}
       <div className="flex-grow overflow-y-auto p-4 sm:p-6 custom-scrollbar bg-[#050505]">
         <div className="w-full space-y-6 pb-4">
-          {messages.map((msg) => (
-          <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+          {messages.map((msg, index) => (
+          <div key={msg.id || `chat-msg-${index}`} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             <div className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-4 ${
               msg.role === "user" 
                 ? "bg-brand-elevated border border-brand-border text-white rounded-br-sm" 
