@@ -13,6 +13,7 @@ export const sessionSchema = z.object({
   expiresAt: z.string().datetime(),
   ipAddress: z.string().ip().optional(),
   userAgent: z.string().trim().max(256).optional(),
+  email: z.string().trim().email("Invalid email address").optional(),
   createdAt: z.string().datetime().optional(),
 }).strict();
 
