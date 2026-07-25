@@ -55,3 +55,14 @@ export const MASTER_MERCHANT_WALLET = "0xfd4960F33670f3477ebe817B184dd59fC496143
  * Public treasury wallet used for accepting ecosystem donations.
  */
 export const ECOSYSTEM_DONATION_WALLET = "0x6Ea99501B46040e9C99c6FfcCD7D64eA8F726476";
+
+/**
+ * Calculates the protocol fee and creator revenue split for a given payment amount.
+ * @param {bigint} totalAmount - The total payment amount in token units
+ * @returns {{ protocolFee: bigint; creatorAmount: bigint }} Split fee amounts
+ */
+export function calculateRevenueSplit(totalAmount: bigint): { protocolFee: bigint; creatorAmount: bigint } {
+  const protocolFee = (totalAmount * BigInt(PROTOCOL_FEE_PERCENTAGE)) / 100n;
+  const creatorAmount = totalAmount - protocolFee;
+  return { protocolFee, creatorAmount };
+}
