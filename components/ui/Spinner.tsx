@@ -40,6 +40,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
       data-state={isDisabled ? 'disabled' : 'active'}
       role="status"
       aria-live="polite"
+      aria-label={props['aria-label'] || "Loading..."}
       {...props}
     >
       {children}
