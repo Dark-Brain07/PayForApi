@@ -1,5 +1,10 @@
 import { loggerInstance } from "./logger";
 
+export interface ApiErrorResponse {
+  statusCode: number;
+  message: string;
+}
+
 export class ErrorHandler {
   private static instance: ErrorHandler;
   private constructor() {}
@@ -10,7 +15,7 @@ export class ErrorHandler {
   /**
    * Handles server errors and returns a standardized response object.
    */
-  public handle(error: unknown): { statusCode: number, message: string } {
+  public handle(error: unknown): ApiErrorResponse {
     const msg = error instanceof Error ? error.message : String(error);
     loggerInstance.error('[ErrorHandled]', msg);
     return { statusCode: 500, message: 'Internal Server Error' };
