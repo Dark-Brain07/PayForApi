@@ -14,10 +14,11 @@ export const getTerminalLogs = (): readonly string[] => TERMINAL_BOOT_LOGS;
 /** Formats and sanitizes terminal log messages */
 export const formatLogMessage = (msg: string): string => (msg || '').trim();
 
-/** Mainnet Chain ID */
+/** Celo Mainnet Chain ID */
+export const CELO_MAINNET_CHAIN_ID: number = 42220;
 export const BLOCKS_TO_QUERY: number = 2000000;
 
-/** Local storage cache keys for client-side data persistence */
+/** Local storage cache keys */
 export const CACHE_KEYS = {
   DELETED_ENDPOINTS: "deleted_endpoints_global"
 } as const;
