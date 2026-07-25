@@ -215,7 +215,7 @@ export default function Header(): React.JSX.Element {
               aria-label="Toggle Mobile Navigation Menu"
               aria-controls="mobile-menu-panel"
               aria-expanded={isMobileMenuOpen}
-              className="md:hidden text-[#94A3B8] hover:text-white transition-colors ml-2"
+              className="md:hidden text-[#94A3B8] hover:text-white transition-colors ml-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-yellow"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <svg role="img" aria-hidden="true" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
