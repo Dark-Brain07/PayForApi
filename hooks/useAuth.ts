@@ -18,6 +18,12 @@ export interface ProviderRpcError extends Error {
 
 /**
  * Represents the current authentication state of the wallet session.
+ * @property {string | null} address - The active connected wallet EVM address
+ * @property {boolean} isConnected - True if wallet is actively connected
+ * @property {number | null} chainId - Connected EVM chain ID number
+ * @property {boolean} isMiniPay - True if injected provider is MiniPay wallet
+ * @property {boolean} isConnecting - True while connection modal is open/pending
+ * @property {string | null} error - Current connection or RPC error message
  */
 export interface AuthState {
   address: string | null;
