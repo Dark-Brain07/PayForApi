@@ -21,9 +21,10 @@ export async function processPayment(
 ): Promise<ethers.TransactionReceipt | null> {
   const signer = await provider.getSigner();
   
-  // The merchant / receiver address (x402 requirement)
+  const ZERO_ADDRESS = ethers.ZeroAddress;
   const getReceiverAddress = (): string => MASTER_MERCHANT_WALLET;
   const receiverAddress = getReceiverAddress();
+  if (receiverAddress === ZERO_ADDRESS) throw new Error("Invalid receiver address");
   
   // Create ERC20 token instance for direct transfer
   const tokenContract = new ethers.Contract(
