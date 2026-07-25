@@ -17,7 +17,7 @@ export const formatLogMessage = (msg: string): string => (msg || '').trim();
 /** Mainnet Chain ID */
 export const BLOCKS_TO_QUERY: number = 2000000;
 
-/** Local storage cache keys */
+/** Local storage cache keys for client-side data persistence */
 export const CACHE_KEYS = {
   DELETED_ENDPOINTS: "deleted_endpoints_global"
 } as const;
