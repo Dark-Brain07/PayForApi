@@ -10,10 +10,10 @@ import { CELO_MAINNET, CONTRACTS } from "@/lib/contracts";
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body = (await request.json()) || {};
-    const { walletAddress, txHash, endpoint } = body;
+    const walletAddress = typeof body.walletAddress === "string" ? body.walletAddress.trim() : "";
+    const txHash = typeof body.txHash === "string" ? body.txHash.trim() : "";
+    const endpoint = typeof body.endpoint === "string" ? body.endpoint.trim() : "";
     if (!walletAddress || !txHash || !endpoint) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
-    const cleanAddress = String(walletAddress).trim();
-    const cleanTxHash = String(txHash).trim();
     
     const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
     const tx = await provider.getTransaction(txHash);
