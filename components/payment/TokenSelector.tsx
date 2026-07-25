@@ -15,6 +15,7 @@ export default function TokenSelector({ selectedToken, onSelect }: TokenSelector
           role="button"
           aria-pressed={selectedToken === key}
           aria-label={`Select ${token.symbol}`}
+          title={`Select ${token.name || token.symbol}`}
           aria-keyshortcuts="Enter Space"
           tabIndex={0}
           onClick={() => onSelect(key)}
