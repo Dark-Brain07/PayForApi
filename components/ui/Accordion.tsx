@@ -1,7 +1,8 @@
 import React from 'react';
 
 /**
- * Props for the Accordion component
+ * Interface defining properties for the Accordion collapsible UI component.
+ * Extends standard HTMLDetailsElement attributes with summary node customization.
  */
 export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsElement> {
   /** The summary or title of the accordion */
