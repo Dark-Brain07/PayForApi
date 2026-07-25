@@ -14,6 +14,8 @@ export class ErrorHandler {
   }
   /**
    * Handles server errors and returns a standardized response object.
+   * @param {unknown} error - The caught server exception or error instance
+   * @returns {ApiErrorResponse} Standardized HTTP status and message payload
    */
   public handle(error: unknown): ApiErrorResponse {
     const msg = error instanceof Error ? error.message : String(error);
@@ -21,7 +23,4 @@ export class ErrorHandler {
     return { statusCode: 500, message: 'Internal Server Error' };
   }
 }
-/**
- * Global singleton instance of ErrorHandler for handling application-wide API errors.
- */
 export const errorHandlerInstance = ErrorHandler.getInstance();
