@@ -48,7 +48,7 @@ export const Select: React.FC<SelectProps> = ({
       data-state={isDisabled ? 'disabled' : 'active'}
       {...props}
     >
-      {children}
+      {children || <option value="">No options available</option>}
     </select>
   );
 };
