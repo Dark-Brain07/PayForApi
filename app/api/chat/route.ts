@@ -11,6 +11,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const body: { message?: string; walletAddress?: string; txHash?: string; localTime?: string } = await request.json();
     const { message, walletAddress, txHash, localTime } = body;
 
+    loggerInstance.info(`[ChatAPI] Received chat request from ${walletAddress || 'anonymous'}`);
     if (!message?.trim() || !walletAddress || !txHash) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
