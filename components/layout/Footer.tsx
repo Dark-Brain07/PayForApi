@@ -26,7 +26,7 @@ export default function Footer(): React.ReactNode {
           </Link>
           <p className="text-sm text-[#94A3B8] font-medium text-center">
             {FOOTER_TAGLINE}
-            <br />Built for the Celo Ecosystem.
+            <br />© {new Date().getFullYear()} Pay For API. Built for the Celo Ecosystem.
           </p>
         </div>
       </div>
