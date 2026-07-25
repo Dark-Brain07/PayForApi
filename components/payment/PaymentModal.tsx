@@ -152,6 +152,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
             type="button"
             onClick={handlePay}
             disabled={isProcessing}
+            aria-busy={isProcessing}
             aria-label="Confirm Payment"
             className="w-full btn-primary py-4 text-lg flex justify-center items-center space-x-2"
           >
