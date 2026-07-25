@@ -122,7 +122,7 @@ export default function GoodDollarIdentity(): React.JSX.Element {
           ) : (
             <div className="flex flex-col gap-2">
               <div className="px-6 py-2 bg-[#00E676]/10 border border-[#00E676]/30 text-[#00E676] font-bold rounded-lg text-center flex items-center justify-center gap-2">
-                <svg aria-hidden="true" className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                <svg aria-hidden="true" title="Verified Human Badge" className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                 Verified Human
               </div>
               {!creditsClaimed ? (
