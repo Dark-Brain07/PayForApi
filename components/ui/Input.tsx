@@ -33,9 +33,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
   };
 
   const sizeStyles: Record<string, string> = {
-    sm: "h-9 px-3 text-sm",
-    md: "h-10 px-4 py-2",
-    lg: "h-11 px-8 rounded-md text-lg"
+    sm: "h-9 px-3 py-1.5 text-sm",
+    md: "h-10 px-4 py-2 text-base",
+    lg: "h-12 px-5 py-3 rounded-lg text-lg"
   };
   
   return (
@@ -47,7 +47,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
       aria-required={props.required ? 'true' : undefined}
       aria-describedby={error && props.id ? `${props.id}-error` : props['aria-describedby']}
       title={props.title || (typeof props.placeholder === 'string' ? props.placeholder : "Input field")}
-      aria-label={props['aria-label'] || props.name || "input field"}
       {...props}
     />
   );
