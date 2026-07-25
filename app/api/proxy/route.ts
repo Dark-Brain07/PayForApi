@@ -12,6 +12,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const body = (await request.json()) || {};
     const { walletAddress, txHash, endpoint } = body;
     if (!walletAddress || !txHash || !endpoint) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    const cleanAddress = String(walletAddress).trim();
+    const cleanTxHash = String(txHash).trim();
     
     const provider = new ethers.JsonRpcProvider(CELO_MAINNET.rpcUrl);
     const tx = await provider.getTransaction(txHash);
