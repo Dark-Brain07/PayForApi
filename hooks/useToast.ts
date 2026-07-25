@@ -31,7 +31,7 @@ export function useToast(durationMs = 3500): UseToastReturn {
       const id = `toast-${Date.now()}-${Math.random().toString(36).slice(2)}`;
       setToasts((t) => [...t, { id, message, type }]);
       setTimeout(() => {
-        setToasts((t) => t.filter((x) => x.id !== id));
+        setToasts((t) => (t || []).filter((x) => x.id !== id));
       }, durationMs);
     },
     [durationMs]
