@@ -21,4 +21,7 @@ export class ErrorHandler {
     return { statusCode: 500, message: 'Internal Server Error' };
   }
 }
+/**
+ * Global singleton instance of ErrorHandler for handling application-wide API errors.
+ */
 export const errorHandlerInstance = ErrorHandler.getInstance();
