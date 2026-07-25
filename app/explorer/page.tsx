@@ -27,8 +27,13 @@ const truncateAddress = (addr: string): string => {
 /**
  * Network explorer view showing total ecosystem revenue and top donors.
  */
+export interface ExplorerStats {
+  revenueUsdm: string;
+  revenueApic: string;
+}
+
 export default function Explorer(): React.JSX.Element {
-  const [stats, setStats] = useState({ revenueUsdm: "0.00", revenueApic: "0.00" });
+  const [stats, setStats] = useState<ExplorerStats>({ revenueUsdm: "0.00", revenueApic: "0.00" });
   const [topDonors, setTopDonors] = useState<DonorInfo[]>([]);
   const [loading, setLoading] = useState(true);
   const [leaderboardLoading, setLeaderboardLoading] = useState(true);
