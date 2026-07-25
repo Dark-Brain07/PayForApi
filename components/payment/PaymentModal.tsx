@@ -82,7 +82,7 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
   };
 
   const handlePayCredits = async (): Promise<void> => {
-    if (!address || address === "0x0000000000000000000000000000000000000000") {
+    if (!address || address === ethers.ZeroAddress) {
       setError("Please connect a valid wallet first.");
       return;
     }
