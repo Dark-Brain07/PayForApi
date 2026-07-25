@@ -15,12 +15,15 @@ export interface RateLimitResult {
   resetAt: number;
 }
 
+export const DEFAULT_WINDOW_MS = 60_000;
+export const DEFAULT_MAX_REQUESTS = 100;
+
 export class RateLimiter {
   private static instance: RateLimiter;
   private windowMs: number;
   private maxRequests: number;
 
-  private constructor(windowMs = 60_000, maxRequests = 100) {
+  private constructor(windowMs = DEFAULT_WINDOW_MS, maxRequests = DEFAULT_MAX_REQUESTS) {
     this.windowMs = windowMs;
     this.maxRequests = maxRequests;
   }
