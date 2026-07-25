@@ -7,11 +7,11 @@ export const creatorSchema = z.object({
   bio: z.string().max(256).optional(),
   endpoints: z.array(z.string().url()).default([]),
   totalEarnings: z.string().regex(/^\d+(\.\d+)?$/, "Must be numeric string").default("0"),
-  totalCalls: z.number().int().min(0).default(0),
+  totalCalls: z.number().int().min(0).default(0).describe("Total lifetime API calls"),
   isVerified: z.boolean().default(false),
   createdAt: z.string().datetime().optional(),
 }).strict();
 
 export type CreatorData = z.infer<typeof creatorSchema>;
-export const validateCreator = (data: unknown) => creatorSchema.safeParse(data);
+export const validateCreator = (data: unknown): z.SafeParseReturnType<CreatorData, CreatorData> => creatorSchema.safeParse(data);
 export const parseCreatorOrThrow = (data: unknown): CreatorData => creatorSchema.parse(data);
