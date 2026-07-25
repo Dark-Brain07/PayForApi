@@ -29,7 +29,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   
   const variantStyles: Record<NonNullable<ButtonProps["variant"]>, string> = {
     default: "bg-primary text-primary-foreground hover:bg-primary/90",
-    primary: "bg-blue-600 text-white hover:bg-blue-700",
+    primary: "bg-brand-yellow text-black hover:bg-yellow-400 font-bold",
     outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
     ghost: "hover:bg-accent hover:text-accent-foreground"
   };
