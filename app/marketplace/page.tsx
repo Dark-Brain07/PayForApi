@@ -24,6 +24,7 @@ export interface SelectedProduct {
   id: number;
   name: string;
   priceCredits: number;
+  values?: string[];
 }
 
 /** Generates a consistent numeric ID from a string using a hash function. */
