@@ -39,6 +39,7 @@ export const Badge: React.FC<BadgeProps> = ({
   return (
     <div role="status"
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim()}
+      aria-label={props['aria-label'] || "Badge tag"}
       title="Badge"
       aria-disabled={isDisabled}
       data-state={isDisabled ? 'disabled' : 'active'}
