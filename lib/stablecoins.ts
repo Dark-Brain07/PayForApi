@@ -1,4 +1,5 @@
 export const DEFAULT_DECIMALS: number = 18;
+export const SIX_DECIMALS: number = 6;
 
 /**
  * Registry of supported Celo stablecoins and their metadata.
@@ -30,7 +31,7 @@ export const CELO_STABLECOINS = {
     name: "USD Coin",
     flag: "💵",
     country: "United States",
-    decimals: 6,
+    decimals: SIX_DECIMALS,
     pricePerCall: "0.001",
     color: "#2775CA",
   },
@@ -40,7 +41,7 @@ export const CELO_STABLECOINS = {
     name: "Tether",
     flag: "💵",
     country: "United States",
-    decimals: 6,
+    decimals: SIX_DECIMALS,
     pricePerCall: "0.001",
     color: "#26A17B",
   },
