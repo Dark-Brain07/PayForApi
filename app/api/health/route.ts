@@ -10,5 +10,5 @@ export async function GET(): Promise<NextResponse> {
     chain: "Celo Mainnet",
     x402Support: true,
     timestamp: new Date().toISOString()
-  });
+  }, { status: 200 });
 }
