@@ -43,7 +43,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
       aria-label={props['aria-label'] || "Loading..."}
       {...props}
     >
-      {children}
+      {children || <span className="sr-only">Loading...</span>}
     </div>
   );
 };
