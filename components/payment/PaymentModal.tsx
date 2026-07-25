@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import TokenSelector from "./TokenSelector";
 import { StablecoinKey, CELO_STABLECOINS, DEFAULT_TOKEN } from "@/lib/stablecoins";
 import { useWallet } from "@/components/wallet/WalletContext";
@@ -28,6 +28,8 @@ export default function PaymentModal({ isOpen, onClose, productId, productName, 
   const [selectedToken, setSelectedToken] = useState<StablecoinKey>(DEFAULT_TOKEN);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const selectedTokenDetails = useMemo(() => CELO_STABLECOINS[selectedToken], [selectedToken]);
 
   useEffect(() => {
     if (isMiniPay) {
