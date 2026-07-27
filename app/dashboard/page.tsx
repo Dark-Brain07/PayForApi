@@ -88,7 +88,7 @@ export default function DashboardPage(): React.ReactElement {
         throw new Error(err.shortMessage || err.message || "Transaction rejected or failed");
       }
       
-      setApis([...apis, { name: newApiName, endpoint: newApiEndpoint, revenue: 0 }]);
+      setApis([...(apis || []), { name: newApiName, endpoint: newApiEndpoint, revenue: 0 }]);
       setModalOpen(false);
       setNewApiName("");
       setNewApiEndpoint("");
