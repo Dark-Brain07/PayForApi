@@ -110,6 +110,7 @@ export default function Rewards(): React.JSX.Element {
     return () => clearInterval(interval);
   }, [lastClaimTime]);
 
+  /** Handles claiming daily API credits from the ecosystem faucet */
   const handleClaim = async () => {
     if (!isConnected) return setError("Connect wallet first!");
     setError(null);
