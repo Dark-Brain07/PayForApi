@@ -74,7 +74,7 @@ export default function Header(): React.JSX.Element {
           
           <nav aria-label="Main Navigation" className="hidden md:flex space-x-8 items-center">
             {!isMiniPay && (
-              <Link href="/marketplace" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
+              <Link href="/marketplace" aria-label="Marketplace Navigation" className="text-text-secondary hover:text-brand-yellow hover:-translate-y-1 hover:scale-110 transition-all duration-300 inline-block">
                 Marketplace
               </Link>
             )}
