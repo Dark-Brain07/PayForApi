@@ -8,7 +8,7 @@ import { processPayment } from "@/lib/payment";
 import { CELO_STABLECOINS, StablecoinKey } from "@/lib/stablecoins";
 import { CONTRACTS } from "@/lib/contracts";
 
-const FALLBACK_TX_HASH = "0x0000000000000000000000000000000000000000";
+const FALLBACK_TX_HASH = ethers.ZeroHash;
 
 /** Represents a chat message in the UI */
 interface Message {
