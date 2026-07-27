@@ -148,7 +148,7 @@ export function useAuth(): AuthState & {
             }]
           });
           return;
-        } catch (addErr) {
+        } catch (addErr: unknown) {
           setState((s) => ({ ...s, error: "Failed to add Celo network" }));
           return;
         }
