@@ -9,7 +9,7 @@ import { processPayment } from "@/lib/payment";
 import { CONTRACTS } from "@/lib/contracts";
 import { EthereumProvider } from "@/hooks/useAuth";
 
-const MODAL_CONTAINER_CLASSES = "bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]";
+const MODAL_CONTAINER_CLASSES = "bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh] transition-all duration-300";
 const SPINNER_CLASSES = "w-5 h-5 border-2 rounded-full animate-spin";
 
 /** Props for the PaymentModal component handling x402 transactions */
