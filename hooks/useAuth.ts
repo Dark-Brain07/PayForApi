@@ -12,6 +12,9 @@ export interface EthereumProvider {
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
 }
 
+/**
+ * Extended Error interface for JSON-RPC provider errors containing numerical error code.
+ */
 export interface ProviderRpcError extends Error {
   code: number;
 }
