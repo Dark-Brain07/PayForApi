@@ -289,7 +289,9 @@ export default function Rewards(): React.JSX.Element {
               disabled={isMinting || !isConnected}
               className="w-full bg-brand-green/10 border border-brand-green text-brand-green hover:bg-brand-green/20 font-bold px-4 py-4 rounded-lg transition-colors disabled:opacity-50 text-lg"
             >
-              {isMinting ? "Minting..." : "Mint 1 NFT"}
+              <span aria-live="polite" role="status">
+                {isMinting ? "Minting..." : "Mint 1 NFT"}
+              </span>
             </button>
           </div>
         </div>
