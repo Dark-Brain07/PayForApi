@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { CELO_MAINNET_ID } from "../contracts";
 
+const CELO_MAINNET_CHAIN_ID = CELO_MAINNET_ID;
+
 const CELO_TOKENS: Record<string, { address: string; decimals: number }> = {
   USDm: { address: "0x765DE816845861e75A25fCA122bb6898B8B1282a", decimals: 18 },
   EURm: { address: "0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73", decimals: 18 },
