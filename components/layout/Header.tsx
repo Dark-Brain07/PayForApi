@@ -68,7 +68,7 @@ export default function Header(): React.JSX.Element {
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
             <Link href="/" aria-label="Pay For API Home" data-theme-toggle="false" title="Pay For API Home" className="flex items-center space-x-3">
-              <img role="img" src="/logo.png" alt="Pay For API Logo" aria-label="Pay For API Main Logo" title="Pay For API Logo" width={80} height={80} loading="lazy" decoding="async" className="w-20 h-20 object-contain drop-shadow-xl" />
+              <img role="img" src="/logo.png" alt="Pay For API Logo" aria-label="Pay For API Main Logo" title="Pay For API Logo" width={80} height={80} loading="lazy" fetchPriority="low" decoding="async" className="w-20 h-20 object-contain drop-shadow-xl" />
             </Link>
           </div>
           
